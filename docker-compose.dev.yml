@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: emtools-mongodb-dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data_dev:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=emtools
+    networks:
+      - emtools-network-dev
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: emtools-backend-dev
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017
+      - MONGODB_DB_NAME=emtools
+      - SECRET_KEY=dev-secret-key
+    volumes:
+      - ./backend:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - mongodb
+    networks:
+      - emtools-network-dev
+
+volumes:
+  mongodb_data_dev:
+
+networks:
+  emtools-network-dev:
+    driver: bridge
