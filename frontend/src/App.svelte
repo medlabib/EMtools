@@ -28,7 +28,9 @@
 </script>
 
 {#if $isLoading}
-  <div class="loading">Loading...</div>
+  <div class="flex justify-center items-center h-screen">
+    <span class="loading loading-spinner loading-lg text-primary"></span>
+  </div>
 {:else}
   <Router {url}>
     <Layout>
@@ -49,13 +51,3 @@
     </Layout>
   </Router>
 {/if}
-
-<style>
-  .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 1.5rem;
-  }
-</style>
