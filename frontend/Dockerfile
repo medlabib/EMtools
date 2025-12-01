@@ -35,14 +35,15 @@ COPY --from=build /app/dist /usr/share/nginx/html
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Create non-root user
+# Create non-root user and fix permissions for nginx
 RUN addgroup -g 1001 -S emtools && \
     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G emtools emtools && \
-    chown -R emtools:emtools /var/cache/nginx /var/run /var/log/nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
-
-# Security: Remove default nginx files
-RUN rm -rf /usr/share/nginx/html/index.html 2>/dev/null || true
+    chown -R emtools:emtools /var/cache/nginx /var/log/nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html && \
+    # Fix nginx.pid location - move to /tmp which is writable
+    sed -i 's|/var/run/nginx.pid|/tmp/nginx.pid|g' /etc/nginx/nginx.conf && \
+    # Remove user directive (not needed when running as non-root)
+    sed -i '/^user/d' /etc/nginx/nginx.conf
 
 # Use non-root user
 USER emtools
@@ -50,8 +51,8 @@ USER emtools
 # Expose port
 EXPOSE 80
 
-# Health check
+# Health check using curl (available in alpine)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
+    CMD curl -f http://localhost:80/ || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]

@@ -7,7 +7,7 @@
 [![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
 [![Version](https://img.shields.io/badge/Version-Alpha%201.0.0-orange)](https://github.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com)
-[![Tests](https://img.shields.io/badge/Tests-313%20passed-brightgreen?logo=pytest)](https://pytest.org)
+[![Tests](https://img.shields.io/badge/Tests-367%20passed-brightgreen?logo=pytest)](https://pytest.org)
 [![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
 [![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-34%25-yellow)](https://vitest.dev)
 [![Security](https://img.shields.io/badge/Security-Hardened-blue?logo=shield)](SECURITY.md)
@@ -31,6 +31,7 @@ Application full-stack pour les urgentistes francophones : calculateurs médicau
 | 💉 **Drogues Vasoactives** | Calcul de débit PSE (Noradrénaline, Adrénaline, Dobutamine, Dopamine, Isoprénaline, Milrinone) |
 | 💊 **Sédation & Analgésie** | Protocoles ISR (Étomidate, Kétamine, Propofol, Succinylcholine, Rocuronium, Fentanyl, Midazolam, Morphine) |
 | ⚗️ **Troubles Métaboliques** | Dysnatrémie (Adrogué-Madias), Dyskaliémie, Dyscalcémie |
+| 📊 **Gaz du Sang & Ventilation** | Analyse GDS de réanimation, ratio P/F, mécanique ventilatoire, transport O2 |
 
 ### 📊 Calculateurs Médicaux (33 scores)
 
@@ -73,11 +74,12 @@ EMTOOLS/
 │   │   ├── lib/
 │   │   │   ├── components/      # Layout, ProtectedRoute
 │   │   │   ├── pages/           # Home, Login, Tools...
-│   │   │   │   └── tools/       # 6 clinical tools
+│   │   │   │   └── tools/       # 7 clinical tools
 │   │   │   │       ├── calculators/   # 33 scoring systems
 │   │   │   │       ├── vasoactive/    # Drug calculations
 │   │   │   │       ├── sedation/      # RSI protocols
-│   │   │   │       └── metabolic/     # Electrolyte corrections
+│   │   │   │       ├── metabolic/     # Electrolyte corrections
+│   │   │   │       └── bloodgas/      # ABG analysis & ventilation
 │   │   │   ├── stores/          # Auth store
 │   │   │   └── locales/         # i18n (en, fr)
 │   │   └── App.svelte
