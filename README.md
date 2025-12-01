@@ -7,7 +7,7 @@
 [![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
 [![Version](https://img.shields.io/badge/Version-Beta%201.0.0-orange)](https://github.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com)
-[![Tests](https://img.shields.io/badge/Tests-367%20passed-brightgreen?logo=pytest)](https://pytest.org)
+[![Tests](https://img.shields.io/badge/Tests-323%20passed-brightgreen?logo=vitest)](https://vitest.dev)
 [![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
 [![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-39%25-yellow)](https://vitest.dev)
 [![Security](https://img.shields.io/badge/Security-Hardened-blue?logo=shield)](SECURITY.md)
@@ -27,23 +27,25 @@ Application full-stack pour les urgentistes francophones : calculateurs médicau
 |-------|-------------|
 | 🏥 **Dossier Médical** | Génération rapide avec évaluation ABCDE structurée |
 | 📋 **Pastebin Sécurisé** | Partage temporaire (max 24h), images auto-compressées (5MB→2MB) |
-| 🧮 **Calculateurs Médicaux** | 33 scores cliniques (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |
+| 🧮 **Calculateurs Médicaux** | 41 scores cliniques (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |
 | 💉 **Drogues Vasoactives** | Calcul de débit PSE (Noradrénaline, Adrénaline, Dobutamine, Dopamine, Isoprénaline, Milrinone) |
 | 💊 **Sédation & Analgésie** | Protocoles ISR (Étomidate, Kétamine, Propofol, Succinylcholine, Rocuronium, Fentanyl, Midazolam, Morphine) |
 | ⚗️ **Troubles Métaboliques** | Dysnatrémie (Adrogué-Madias), Dyskaliémie, Dyscalcémie |
 | 📊 **Gaz du Sang & Ventilation** | Analyse GDS de réanimation, ratio P/F, mécanique ventilatoire, transport O2 |
+| 🦠 **Guide Antibiotiques** | Posologies, ajustements rénaux, interactions médicamenteuses |
 
-### 📊 Calculateurs Médicaux (33 scores)
+### 📊 Calculateurs Médicaux (41 scores)
 
-- **Cardiologie**: HEART, TIMI, CHA₂DS₂-VASc, HAS-BLED
-- **Neurologie**: NIHSS, Glasgow, Hunt-Hess, Fisher
-- **Pneumologie/EP-TVP**: Wells EP, Wells TVP, PERC, Geneva, PESI
-- **Sepsis**: qSOFA, SOFA, NEWS2
-- **Trauma**: RTS, ISS, TRISS
-- **Pédiatrie**: PRISM III, PIM2, APGAR
-- **Toxicologie**: Nomogramme Paracétamol, Rumack-Matthew
-- **Gastro**: Rockall, Glasgow-Blatchford, MELD, Child-Pugh
-- **MSK**: Ottawa (genou, cheville), Canadian C-Spine
+- **Trauma**: GCS, RTS, SI (Shock Index), FOUR Score
+- **Cardiologie**: HEART, CHA₂DS₂-VASc, HAS-BLED, CSRS, QTc
+- **Neurologie**: NIHSS, ABCD², ICH Score, Hunt-Hess
+- **EP-TVP**: Wells EP, Wells TVP, PERC, Geneva révisé, sPESI
+- **Sepsis**: qSOFA, NEWS2, CURB-65, LRINEC, Centor
+- **Pédiatrie**: PECARN, Westley (Croup), PAS (Appendicite), CDS
+- **Toxicologie**: CIWA-Ar (Sevrage alcool), COWS (Sevrage opioïdes)
+- **Gastro**: Alvarado, BISAP, Glasgow-Blatchford, Rockall, MELD
+- **MSK**: Ottawa (cheville, genou), NEXUS, Canadian C-Spine
+- **Laboratoire**: ClCr (Cockcroft-Gault), Calcium corrigé, A-a Gradient
 
 ### 🔧 Fonctionnalités Techniques
 
