@@ -1,15 +1,15 @@
 # EMTOOLS 🏥
 
-> **Version Alpha 1.0.0** | *Beta 0.1.0 on Docker Hub*
+> **Version Beta 1.0.0** | *Beta 0.1.0 on Docker Hub*
 
 **Outils numériques pour la médecine d'urgence**
 
 [![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
-[![Version](https://img.shields.io/badge/Version-Alpha%201.0.0-orange)](https://github.com)
+[![Version](https://img.shields.io/badge/Version-Beta%201.0.0-orange)](https://github.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com)
 [![Tests](https://img.shields.io/badge/Tests-367%20passed-brightgreen?logo=pytest)](https://pytest.org)
 [![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
-[![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-34%25-yellow)](https://vitest.dev)
+[![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-39%25-yellow)](https://vitest.dev)
 [![Security](https://img.shields.io/badge/Security-Hardened-blue?logo=shield)](SECURITY.md)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com)
 [![Svelte](https://img.shields.io/badge/Svelte-4.2.8-FF3E00?logo=svelte)](https://svelte.dev)
