@@ -17,6 +17,7 @@
   import Sedation from './lib/pages/tools/Sedation.svelte';
   import MetabolicDisorders from './lib/pages/tools/MetabolicDisorders.svelte';
   import BloodGasVentilation from './lib/pages/tools/BloodGasVentilation.svelte';
+  import AntibioticGuide from './lib/pages/tools/AntibioticGuide.svelte';
   import NotFound from './lib/pages/NotFound.svelte';
   
   export let url = '';
@@ -43,6 +44,7 @@
       <Route path="/tools/sedation"><ProtectedRoute component={Sedation} /></Route>
       <Route path="/tools/metabolic-disorders"><ProtectedRoute component={MetabolicDisorders} /></Route>
       <Route path="/tools/blood-gas"><ProtectedRoute component={BloodGasVentilation} /></Route>
+      <Route path="/tools/antibiotic-guide"><ProtectedRoute component={AntibioticGuide} /></Route>
       <Route path="*" component={NotFound} />
     </Layout>
   </Router>
