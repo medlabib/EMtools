@@ -1,20 +1,21 @@
 # EMTOOLS 🏥
 
-> **Version Alpha 0.1.0**
+> **Version Alpha 1.0.0** | *Beta 0.1.0 on Docker Hub*
 
 **Outils numériques pour la médecine d'urgence**
 
 [![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
-[![Version](https://img.shields.io/badge/Version-Alpha%200.1.0-orange)](https://github.com)
-[![Tests](https://img.shields.io/badge/Tests-156%20passed-brightgreen?logo=pytest)](https://pytest.org)
+[![Version](https://img.shields.io/badge/Version-Alpha%201.0.0-orange)](https://github.com)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com)
+[![Tests](https://img.shields.io/badge/Tests-313%20passed-brightgreen?logo=pytest)](https://pytest.org)
 [![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
-[![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-35%25-yellow)](https://vitest.dev)
+[![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-34%25-yellow)](https://vitest.dev)
 [![Security](https://img.shields.io/badge/Security-Hardened-blue?logo=shield)](SECURITY.md)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com)
 [![Svelte](https://img.shields.io/badge/Svelte-4.2.8-FF3E00?logo=svelte)](https://svelte.dev)
 [![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?logo=mongodb)](https://www.mongodb.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?logo=typescript)](https://www.typescriptlang.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Application full-stack pour les urgentistes francophones : calculateurs médicaux, protocoles de sédation, drogues vasoactives, corrections métaboliques et plus.
 
@@ -25,7 +26,7 @@ Application full-stack pour les urgentistes francophones : calculateurs médicau
 | Outil | Description |
 |-------|-------------|
 | 🏥 **Dossier Médical** | Génération rapide avec évaluation ABCDE structurée |
-| 📋 **Pastebin Sécurisé** | Partage temporaire (max 24h) avec mot de passe |
+| 📋 **Pastebin Sécurisé** | Partage temporaire (max 24h), images auto-compressées (5MB→2MB) |
 | 🧮 **Calculateurs Médicaux** | 33 scores cliniques (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |
 | 💉 **Drogues Vasoactives** | Calcul de débit PSE (Noradrénaline, Adrénaline, Dobutamine, Dopamine, Isoprénaline, Milrinone) |
 | 💊 **Sédation & Analgésie** | Protocoles ISR (Étomidate, Kétamine, Propofol, Succinylcholine, Rocuronium, Fentanyl, Midazolam, Morphine) |
@@ -254,24 +255,28 @@ npm run test:coverage # Avec couverture
 |-----------------|-------|--------|
 | `stores/auth.test.ts` | 5 | ✅ Passé |
 | `lib/api.test.ts` | 3 | ✅ Passé |
+| `lib/imageCompressor.test.ts` | 20 | ✅ Passé |
+| `components/components.test.ts` | 24 | ✅ Passé |
+| `pages/pages.test.ts` | 53 | ✅ Passé |
+| `tools/tools-pages.test.ts` | 60 | ✅ Passé |
 | `calculators/calculators.test.ts` | 10 | ✅ Passé |
 | `vasoactive/drugs.test.ts` | 9 | ✅ Passé |
 | `metabolic/metabolic.test.ts` | 17 | ✅ Passé |
 | `sedation/sedation.test.ts` | 52 | ✅ Passé |
 | `i18n/i18n.test.ts` | 8 | ✅ Passé |
-| **Total Frontend** | **104** | **✅ 100% passés** |
+| **Total Frontend** | **261** | **✅ 100% passés** |
 
 **Couverture Frontend :**
 
 | Module | Coverage |
 |--------|----------|
 | `vasoactive/drugs.ts` | 98.32% |
+| `sedation/drugs.ts` | 99.03% |
 | `calculators/*` | 89.46% |
 | `lib/api.ts` | 82.14% |
-| `sedation/*` | 72.15% |
 | `metabolic/*` | 68.13% |
 | `stores/auth.ts` | 55.43% |
-| **Global** | **~35%** |
+| **Global** | **~34%** |
 
 ### Backend Tests (pytest)
 
@@ -312,9 +317,9 @@ pytest --cov=app --cov-report=html  # Avec couverture
 
 | Suite | Tests | Passés | Coverage |
 |-------|-------|--------|----------|
-| Frontend (Vitest) | 104 | ✅ 104 | ~35% |
+| Frontend (Vitest) | 261 | ✅ 261 | ~34% |
 | Backend (pytest) | 52 | ✅ 52 | 75% |
-| **Total** | **156** | **✅ 156** | - |
+| **Total** | **313** | **✅ 313** | - |
 
 ## 🐳 Commandes Docker
 
@@ -342,12 +347,37 @@ Les protocoles et calculs sont basés sur :
 
 ⚠️ **Avertissement**: Outil d'aide à la décision uniquement. Ne remplace pas le jugement clinique.
 
+## 🐳 Déploiement Docker
+
+### Production
+
+```bash
+# Configurer les variables d'environnement
+cp backend/.env.example .env
+# Éditer .env avec vos valeurs de production
+
+# Démarrer en production
+docker-compose -f docker-compose.prod.yml up -d
+
+# Vérifier le statut
+docker-compose -f docker-compose.prod.yml ps
+```
+
+### Variables d'environnement requises
+
+| Variable | Description | Obligatoire |
+|----------|-------------|-------------|
+| `SECRET_KEY` | Clé JWT (générer avec `python -c "import secrets; print(secrets.token_urlsafe(64))"`) | ✅ |
+| `ADMIN_PASSWORD` | Mot de passe admin (12+ caractères) | ✅ |
+| `MONGO_ROOT_PASSWORD` | Mot de passe MongoDB | ✅ |
+| `CORS_ORIGINS` | Domaines autorisés | Production |
+
 ## 🤖 Généré par IA
 
 Ce projet a été entièrement généré par **Claude Sonnet 4** (Anthropic) via GitHub Copilot.
 
-- **Version**: Alpha 0.1.0
-- **Date**: Janvier 2025
+- **Version**: Alpha 1.0.0 (Beta 0.1.0 on Docker Hub)
+- **Date**: Décembre 2025
 - **Modèle**: Claude Sonnet 4
 - **IDE**: Visual Studio Code avec GitHub Copilot
 
@@ -357,7 +387,9 @@ L'IA a généré :
 - 33 calculateurs médicaux
 - Protocoles de sédation et drogues vasoactives
 - Corrections métaboliques (Adrogué-Madias)
-- Tests unitaires (155 tests: 104 frontend + 51 backend)
+- Tests unitaires (313 tests: 261 frontend + 52 backend)
+- Compresseur d'images automatique (>2MB → compression JPEG)
+- Configuration Docker production-ready
 - Documentation complète
 - Politique de sécurité (SECURITY.md)
 

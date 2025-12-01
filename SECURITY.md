@@ -87,6 +87,10 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
 | 2025-12-01 | 0.1.0 | Added password validation |
 | 2025-12-01 | 0.1.0 | Added input validation for pastes |
 | 2025-12-01 | 0.1.0 | Migrated from passlib to direct bcrypt |
+| 2025-12-01 | 1.0.0-alpha | Production Docker configuration |
+| 2025-12-01 | 1.0.0-alpha | Added nginx security headers |
+| 2025-12-01 | 1.0.0-alpha | Multi-stage Dockerfile builds |
+| 2025-12-01 | 1.0.0-alpha | Non-root container users |
 
 ## 🔄 Dependencies Security
 
