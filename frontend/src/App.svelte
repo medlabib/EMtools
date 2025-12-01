@@ -12,6 +12,10 @@
   import Tools from './lib/pages/Tools.svelte';
   import MedicalReport from './lib/pages/tools/MedicalReport.svelte';
   import Pastebin from './lib/pages/tools/Pastebin.svelte';
+  import MedicalCalculator from './lib/pages/tools/MedicalCalculator.svelte';
+  import VasoactiveDrugs from './lib/pages/tools/VasoactiveDrugs.svelte';
+  import Sedation from './lib/pages/tools/Sedation.svelte';
+  import MetabolicDisorders from './lib/pages/tools/MetabolicDisorders.svelte';
   import NotFound from './lib/pages/NotFound.svelte';
   
   export let url = '';
@@ -33,6 +37,10 @@
       <Route path="/tools/medical-report"><ProtectedRoute component={MedicalReport} /></Route>
       <Route path="/tools/pastebin"><ProtectedRoute component={Pastebin} /></Route>
       <Route path="/tools/pastebin/view/:id"><ProtectedRoute component={Pastebin} /></Route>
+      <Route path="/tools/medical-calculator"><ProtectedRoute component={MedicalCalculator} /></Route>
+      <Route path="/tools/vasoactive-drugs"><ProtectedRoute component={VasoactiveDrugs} /></Route>
+      <Route path="/tools/sedation"><ProtectedRoute component={Sedation} /></Route>
+      <Route path="/tools/metabolic-disorders"><ProtectedRoute component={MetabolicDisorders} /></Route>
       <Route path="*" component={NotFound} />
     </Layout>
   </Router>
