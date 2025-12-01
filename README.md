@@ -1,11 +1,11 @@
 # EMTOOLS 🏥
 
-> **Version Beta 1.0.0** | *Beta 0.1.0 on Docker Hub*
+> **Version Beta 1.0.2** | *Beta 0.1.0 on Docker Hub*
 
 **Outils numériques pour la médecine d'urgence**
 
 [![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
-[![Version](https://img.shields.io/badge/Version-Beta%201.0.0-orange)](https://github.com)
+[![Version](https://img.shields.io/badge/Version-Beta%201.0.2-orange)](https://github.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com)
 [![Tests](https://img.shields.io/badge/Tests-323%20passed-brightgreen?logo=vitest)](https://vitest.dev)
 [![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
