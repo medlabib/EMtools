@@ -38,8 +38,9 @@ describe('AntibioticGuide Component', () => {
   it('renders the header and tabs', () => {
     render(AntibioticGuide);
     expect(screen.getByText('💊 Guide Antibiotiques')).toBeTruthy();
-    expect(screen.getByText('🔍 Recherche')).toBeTruthy();
-    expect(screen.getByText('📂 Par Classe')).toBeTruthy();
+    // Tabs now have emojis in separate spans, so look for text content
+    expect(screen.getByText(/Recherche/)).toBeTruthy();
+    expect(screen.getByText(/Classes/)).toBeTruthy();
   });
 
   it('renders antibiotic cards in search tab', () => {
@@ -64,7 +65,8 @@ describe('AntibioticGuide Component', () => {
 
   it('switches tabs', async () => {
     render(AntibioticGuide);
-    const renalTab = screen.getByText('🩺 Ajustement Rénal');
+    // Find tab by partial text match since emoji is in separate span
+    const renalTab = screen.getByText(/Rénal/);
     await fireEvent.click(renalTab);
     
     expect(screen.getByText('DFG estimé (mL/min)')).toBeTruthy();
