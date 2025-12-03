@@ -251,7 +251,7 @@
               <div>
                 <span class="text-xs uppercase tracking-wide opacity-70">État Clinique</span>
                 <div class="text-lg font-bold">
-                  {results.status} <span class="text-primary">{results.primary}</span>
+                  {results.status} <span class="text-cyan-400">{results.primary}</span>
                 </div>
               </div>
               {#if results.lactate_status !== "Normal"}

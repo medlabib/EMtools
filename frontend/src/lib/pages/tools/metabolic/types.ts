@@ -86,7 +86,7 @@ export interface PotassiumTreatment {
 }
 
 export interface DyskalemiaResult {
-  severity: 'mild' | 'moderate' | 'severe' | 'critical';
+  severity: 'normal' | 'mild' | 'moderate' | 'severe' | 'critical';
   treatments: PotassiumTreatment[];
   monitoringInterval: string;
   targetRange: [number, number];

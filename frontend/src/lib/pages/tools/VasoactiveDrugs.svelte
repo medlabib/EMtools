@@ -83,14 +83,14 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {#each drugs as drug}
               <button 
-                class="card bg-base-100 border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-200 text-left"
+                class="card bg-base-100 border border-base-300 hover:border-primary hover:shadow-lg transition-all duration-200 text-left overflow-hidden"
                 on:click={() => selectDrug(drug)}
               >
                 <div class="card-body p-4">
-                  <h3 class="font-bold text-base">{drug.name}</h3>
-                  <p class="text-sm text-base-content/60">{drug.genericName}</p>
-                  <p class="text-sm text-base-content/70 line-clamp-2">{drug.description}</p>
-                  <div class="badge badge-primary badge-outline mt-2">
+                  <h3 class="font-bold text-base truncate">{drug.name}</h3>
+                  <p class="text-sm text-base-content/60 truncate">{drug.genericName}</p>
+                  <p class="text-sm text-base-content/70 line-clamp-2 min-h-[2.5rem]">{drug.description}</p>
+                  <div class="badge badge-primary badge-outline mt-2 truncate max-w-full">
                     {drug.doseRange.min} - {drug.doseRange.max} {drug.doseUnit}
                   </div>
                 </div>
@@ -291,7 +291,51 @@
 </div>
 
 <style>
-  /* Custom effect bars - not available in DaisyUI */
+  /* Effects Section */
+  .effects-section {
+    background: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .effects-section h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: oklch(var(--bc));
+  }
+
+  .effects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .effect-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: oklch(var(--b2));
+    border-radius: 0.75rem;
+  }
+
+  .receptor-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: oklch(var(--p));
+  }
+
+  .effect-label {
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    color: oklch(var(--bc) / 0.6);
+  }
+
+  /* Effect bars */
   .effect-bars {
     display: flex;
     gap: 3px;
@@ -302,9 +346,64 @@
     height: 20px;
     background-color: oklch(var(--b3));
     border-radius: 2px;
+    transition: all 0.2s ease;
   }
 
   .bar.active.high { background-color: oklch(var(--er)); }
   .bar.active.moderate { background-color: oklch(var(--wa)); }
   .bar.active.low { background-color: oklch(var(--su)); }
+
+  /* Info Sections */
+  .info-section {
+    background: oklch(var(--b1));
+    border: 1px solid oklch(var(--b3));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-section h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: oklch(var(--bc));
+  }
+
+  .info-section ul {
+    list-style: disc;
+    list-style-position: inside;
+    space-y: 0.25rem;
+  }
+
+  .info-section li {
+    color: oklch(var(--bc) / 0.8);
+    padding: 0.25rem 0;
+  }
+
+  .info-section.warning {
+    background: oklch(var(--wa) / 0.1);
+    border-color: oklch(var(--wa) / 0.3);
+  }
+
+  .info-section.warning h2 {
+    color: oklch(var(--wa));
+  }
+
+  .info-section.danger {
+    background: oklch(var(--er) / 0.1);
+    border-color: oklch(var(--er) / 0.3);
+  }
+
+  .info-section.danger h2 {
+    color: oklch(var(--er));
+  }
+
+  .info-section.notes {
+    background: oklch(var(--in) / 0.1);
+    border-color: oklch(var(--in) / 0.3);
+  }
+
+  .info-section.notes h2 {
+    color: oklch(var(--in));
+  }
 </style>

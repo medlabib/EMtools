@@ -154,10 +154,10 @@
             class="card bg-base-100/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-base-content/5 hover:border-primary/30 group"
             style="animation: fadeInUp 0.4s ease-out {i * 0.05}s both;"
           >
-            <div class="card-body">
-              <div class="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
-              <h3 class="card-title text-lg group-hover:text-primary transition-colors">{tool.title}</h3>
-              <p class="text-base-content/60 text-sm line-clamp-3">{tool.description}</p>
+            <div class="card-body p-4">
+              <div class="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
+              <h3 class="card-title text-base font-semibold group-hover:text-primary transition-colors line-clamp-1">{tool.title}</h3>
+              <p class="text-base-content/60 text-sm line-clamp-2 min-h-[2.5rem]">{tool.description}</p>
             </div>
           </div>
         {/each}

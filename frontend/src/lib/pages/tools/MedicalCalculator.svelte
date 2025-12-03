@@ -157,14 +157,14 @@
     <!-- Calculator Grid -->
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {#each filteredCalculators as calc}
-        <button class="card bg-base-100 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all text-left" on:click={() => selectCalculator(calc)}>
+        <button class="card bg-base-100 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all text-left overflow-hidden" on:click={() => selectCalculator(calc)}>
           <div class="card-body p-4">
             <div class="flex justify-between items-start mb-2">
-              <span class="badge badge-primary badge-outline">{calc.shortName}</span>
-              <span class="badge badge-ghost text-xs">{categoryLabels[calc.category]}</span>
+              <span class="badge badge-primary badge-outline truncate max-w-[60%]">{calc.shortName}</span>
+              <span class="badge badge-ghost text-xs truncate max-w-[35%]">{categoryLabels[calc.category]}</span>
             </div>
-            <h3 class="font-semibold text-sm">{calc.name}</h3>
-            <p class="text-xs text-base-content/60 line-clamp-2">{calc.description}</p>
+            <h3 class="font-semibold text-sm truncate">{calc.name}</h3>
+            <p class="text-xs text-base-content/60 line-clamp-2 min-h-[2.5rem]">{calc.description}</p>
           </div>
         </button>
       {/each}

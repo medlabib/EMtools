@@ -289,12 +289,12 @@ export const DYSKALEMIA_REFERENCES: Reference[] = [
  * Classify hyperkalemia severity
  * Based on AHA/KDIGO guidelines
  */
-export function classifyHyperkalemiaSeverity(k: number, hasECGChanges: boolean): 'mild' | 'moderate' | 'severe' | 'critical' {
+export function classifyHyperkalemiaSeverity(k: number, hasECGChanges: boolean): 'normal' | 'mild' | 'moderate' | 'severe' | 'critical' {
   if (k >= 7.0 || hasECGChanges) return 'critical';
   if (k >= 6.5) return 'severe';
   if (k >= 6.0) return 'moderate';
   if (k >= 5.5) return 'mild';
-  return 'mild';
+  return 'normal'; // K < 5.5 is normal range
 }
 
 /**

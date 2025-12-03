@@ -108,12 +108,12 @@
               </div>
               
               <!-- Title -->
-              <h2 class="card-title text-lg group-hover:text-primary transition-colors duration-300">
+              <h2 class="card-title text-base font-semibold group-hover:text-primary transition-colors duration-300 line-clamp-1">
                 {$_(tool.titleKey)}
               </h2>
               
-              <!-- Description -->
-              <p class="text-base-content/60 text-sm leading-relaxed line-clamp-2">{$_(tool.descKey)}</p>
+              <!-- Description - properly clamped -->
+              <p class="text-base-content/60 text-sm leading-relaxed line-clamp-2 min-h-[2.5rem]">{$_(tool.descKey)}</p>
               
               <!-- Arrow indicator -->
               <div class="card-actions justify-end mt-auto pt-4">

@@ -46,6 +46,12 @@ coverage.xml
 # Frontend test coverage
 frontend/coverage/
 
+# Playwright test results - DO NOT COMMIT
+frontend/test-results/
+
+# Test screenshots (temporary) - only keep curated ones
+frontend/screenshots/test-*.png
+
 # Vitest
 *.lcov
 

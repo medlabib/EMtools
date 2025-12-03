@@ -234,17 +234,18 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {#each paste.images as img, i}
               <div class="relative group">
-                <figure class="rounded-lg overflow-hidden bg-base-200">
+                <figure class="rounded-lg overflow-hidden bg-base-200 aspect-video">
                   <button 
                     type="button"
-                    class="w-full h-48 p-0 border-0 bg-transparent cursor-pointer"
+                    class="w-full h-full p-0 border-0 bg-transparent cursor-pointer flex items-center justify-center"
                     on:click={() => window.open(img, '_blank')}
                     aria-label="Voir image {i + 1} en plein écran"
                   >
                     <img 
                       src={img} 
                       alt="Pièce jointe {i + 1}" 
-                      class="w-full h-full object-cover hover:scale-105 transition-transform"
+                      class="max-w-full max-h-full object-contain hover:scale-105 transition-transform"
+                      on:error={() => console.error('Image failed to load:', i)}
                     />
                   </button>
                 </figure>

@@ -173,17 +173,17 @@
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {#each filteredAntibiotics as antibiotic}
-          <button class="card bg-base-100 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all text-left" on:click={() => selectAntibiotic(antibiotic)}>
+          <button class="card bg-base-100 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all text-left overflow-hidden" on:click={() => selectAntibiotic(antibiotic)}>
             <div class="card-body p-4">
               <div class="mb-2">
-                <h3 class="font-bold text-base">{antibiotic.name}</h3>
-                <span class="text-sm text-base-content/60 italic">{antibiotic.genericName}</span>
+                <h3 class="font-bold text-base truncate">{antibiotic.name}</h3>
+                <span class="text-sm text-base-content/60 italic truncate block">{antibiotic.genericName}</span>
               </div>
               <div class="flex flex-wrap gap-2 mb-2">
                 <span class="badge badge-primary badge-sm">{classLabels[antibiotic.class]}</span>
                 <span class="badge badge-ghost badge-sm">{antibiotic.route.join(' / ')}</span>
               </div>
-              <p class="text-xs text-base-content/70 line-clamp-2">{antibiotic.indications.slice(0, 2).join(', ')}</p>
+              <p class="text-xs text-base-content/70 line-clamp-2 min-h-[2.5rem]">{antibiotic.indications.slice(0, 2).join(', ')}</p>
             </div>
           </button>
         {/each}

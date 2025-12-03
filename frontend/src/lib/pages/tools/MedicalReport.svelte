@@ -183,8 +183,9 @@
     const genderSuffix = isFemale ? 'e' : '';
     const nameStr = form.patientName ? ` ${form.patientName}` : '';
     const patientIntro = `${$_('medicalReport.report.intro')} ${isFemale ? $_('medicalReport.report.femalePatient') : $_('medicalReport.report.malePatient')}${nameStr}`;
+    const ageStr = form.age ? `${form.age} ${$_('medicalReport.report.years')}` : `... ${$_('medicalReport.report.years')}`;
     
-    let r = `${patientIntro} ${$_('medicalReport.report.years').replace('years', form.age || '...')} ${$_('medicalReport.report.presentsFor')} ${form.motif || '...'}.\n\n`;
+    let r = `${patientIntro} ${ageStr} ${$_('medicalReport.report.presentsFor')} ${form.motif || '...'}.\n\n`;
 
     // Context
     if (form.isTrauma) {
@@ -269,7 +270,8 @@
       terrainFullText = `${$_('medicalReport.report.withHistoryOf')} ${terrainSummary}`;
     }
 
-    r += `${patientIntro} ${$_('medicalReport.report.years').replace('years', form.age || '..')} ${$_('medicalReport.report.presentsFor')} ${form.motif || '...'}, ${terrainFullText}, ${severityDesc}`;
+    const summaryAgeStr = form.age ? `${form.age} ${$_('medicalReport.report.years')}` : `.. ${$_('medicalReport.report.years')}`;
+    r += `${patientIntro} ${summaryAgeStr} ${$_('medicalReport.report.presentsFor')} ${form.motif || '...'}, ${terrainFullText}, ${severityDesc}`;
 
     report = r;
   }
@@ -403,11 +405,27 @@
             </div>
           </div>
           
-          <div class="bg-error/10 p-3 rounded-lg mt-4">
-            <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" bind:checked={form.isTrauma} class="checkbox checkbox-error" />
-              <span class="font-semibold text-error">{$_('medicalReport.context.traumaQuestion')}</span>
-            </label>
+          <div class="mt-4">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between p-4 rounded-xl border-2 transition-all duration-200 {form.isTrauma 
+                ? 'bg-error/15 border-error text-error shadow-md' 
+                : 'bg-base-200 border-base-300 hover:border-error/50 hover:bg-error/5'}"
+              on:click={() => form.isTrauma = !form.isTrauma}
+            >
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">{form.isTrauma ? '🚨' : '🏥'}</span>
+                <div class="text-left">
+                  <span class="font-semibold block">{$_('medicalReport.context.traumaQuestion')}</span>
+                  <span class="text-sm opacity-70">{form.isTrauma ? 'Contexte traumatique activé' : 'Cliquez pour activer'}</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-12 h-7 rounded-full transition-colors duration-200 {form.isTrauma ? 'bg-error' : 'bg-base-300'} relative">
+                  <div class="absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-all duration-200 {form.isTrauma ? 'left-6' : 'left-1'}"></div>
+                </div>
+              </div>
+            </button>
           </div>
           
           {#if form.isTrauma}
@@ -524,10 +542,19 @@
             
             {#if form.isTrauma}
               <div class="form-control justify-end">
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" bind:checked={form.traumaEmphysema} class="checkbox" />
-                  <span>{$_('medicalReport.breathing.traumaEmphysema')}</span>
-                </label>
+                <button
+                  type="button"
+                  class="flex items-center gap-3 px-4 py-2 rounded-lg border-2 transition-all duration-200 {form.traumaEmphysema 
+                    ? 'border-warning bg-warning/10 text-warning-content' 
+                    : 'border-base-300 bg-base-200 hover:border-base-content/30'}"
+                  on:click={() => form.traumaEmphysema = !form.traumaEmphysema}
+                >
+                  <span class="text-lg">{form.traumaEmphysema ? '💨' : '🫁'}</span>
+                  <span class="text-sm font-medium">{$_('medicalReport.breathing.traumaEmphysema')}</span>
+                  <div class="w-10 h-5 rounded-full transition-colors duration-200 {form.traumaEmphysema ? 'bg-warning' : 'bg-base-300'} relative ml-auto">
+                    <div class="absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 {form.traumaEmphysema ? 'left-5' : 'left-0.5'}"></div>
+                  </div>
+                </button>
               </div>
             {/if}
           </div>

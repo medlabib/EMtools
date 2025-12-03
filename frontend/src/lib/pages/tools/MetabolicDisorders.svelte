@@ -198,6 +198,8 @@
       case 'critical': return 'bg-red-600';
       case 'severe': return 'bg-orange-500';
       case 'moderate': return 'bg-yellow-500';
+      case 'mild': return 'bg-amber-400';
+      case 'normal': return 'bg-green-500';
       default: return 'bg-green-500';
     }
   }
@@ -207,7 +209,9 @@
       case 'critical': return 'Critique';
       case 'severe': return 'Sévère';
       case 'moderate': return 'Modérée';
-      default: return 'Légère';
+      case 'mild': return 'Légère';
+      case 'normal': return 'Normal';
+      default: return 'Normal';
     }
   }
 </script>

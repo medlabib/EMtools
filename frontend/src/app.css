@@ -94,6 +94,12 @@
     @apply outline-none ring-2 ring-primary/50;
   }
   
+  /* Fix transparent dropdown backgrounds */
+  .select,
+  select {
+    @apply bg-base-100;
+  }
+  
   /* Button hover animations */
   .btn {
     @apply transition-all duration-200;
@@ -129,6 +135,32 @@
   
   ::-webkit-scrollbar-thumb:hover {
     background: oklch(var(--bc) / 0.3);
+  }
+}
+
+/* ================================
+   Text Truncation Utilities
+   ================================ */
+@layer utilities {
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 

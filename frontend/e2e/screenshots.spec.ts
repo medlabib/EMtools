@@ -1,144 +1,166 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
-const pages = [
+// Test credentials - ensure this user exists in DB or will be created
+const TEST_USER = {
+  email: 'playwright@example.com',
+  password: 'PlaywrightTest123!',
+  fullName: 'Playwright Test User'
+};
+
+// Helper function to login
+async function login(page: Page): Promise<boolean> {
+  try {
+    // First try to register (in case user doesn't exist)
+    await page.request.post('/api/v1/auth/register', {
+      data: {
+        email: TEST_USER.email,
+        password: TEST_USER.password,
+        full_name: TEST_USER.fullName
+      }
+    }).catch(() => {}); // Ignore if user already exists
+    
+    // Now login with form-urlencoded (OAuth2 format)
+    const loginResponse = await page.request.post('/api/v1/auth/login', {
+      form: {
+        username: TEST_USER.email,
+        password: TEST_USER.password
+      }
+    });
+    
+    if (loginResponse.ok()) {
+      const data = await loginResponse.json();
+      // Store token in localStorage
+      await page.evaluate((token) => {
+        localStorage.setItem('access_token', token);
+      }, data.access_token);
+      return true;
+    }
+    console.log('Login response not OK:', loginResponse.status());
+    return false;
+  } catch (e) {
+    console.error('Login failed:', e);
+    return false;
+  }
+}
+
+// Public pages (no auth needed)
+const publicPages = [
   { name: 'Home', path: '/' },
   { name: 'Login', path: '/login' },
   { name: 'Register', path: '/register' },
-  { name: 'Tools', path: '/tools' },
-  { name: 'BloodGas', path: '/tools/bloodgas' },
-  { name: 'VasoactiveDrugs', path: '/tools/vasoactive' },
+];
+
+// Protected pages (auth required)
+const protectedPages = [
+  { name: 'Dashboard', path: '/dashboard' },
+  { name: 'BloodGas', path: '/tools/blood-gas' },
+  { name: 'VasoactiveDrugs', path: '/tools/vasoactive-drugs' },
   { name: 'Sedation', path: '/tools/sedation' },
-  { name: 'MetabolicDisorders', path: '/tools/metabolic' },
-  { name: 'MedicalCalculator', path: '/tools/calculator' },
-  { name: 'AntibioticGuide', path: '/tools/antibiotic' },
-  { name: 'MedicalReport', path: '/tools/report' },
+  { name: 'MetabolicDisorders', path: '/tools/metabolic-disorders' },
+  { name: 'MedicalCalculator', path: '/tools/medical-calculator' },
+  { name: 'AntibioticGuide', path: '/tools/antibiotic-guide' },
+  { name: 'MedicalReport', path: '/tools/medical-report' },
   { name: 'Pastebin', path: '/tools/pastebin' },
 ];
 
-// Screenshot each page at different viewports
-for (const page of pages) {
-  test(`Screenshot ${page.name} page`, async ({ page: browserPage }) => {
-    await browserPage.goto(page.path);
+// Screenshot public pages without auth
+for (const pageInfo of publicPages) {
+  test(`Screenshot ${pageInfo.name} page (public)`, async ({ page }) => {
+    await page.goto(pageInfo.path);
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
     
-    // Wait for page to fully load
-    await browserPage.waitForLoadState('networkidle');
+    // Desktop screenshot
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.screenshot({
+      path: `screenshots/${pageInfo.name.toLowerCase()}-desktop.png`,
+      fullPage: true,
+    });
     
-    // Wait a bit more for any animations
-    await browserPage.waitForTimeout(500);
-    
-    // Take full page screenshot
-    await browserPage.screenshot({
-      path: `screenshots/${page.name.toLowerCase()}.png`,
+    // Mobile screenshot
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.screenshot({
+      path: `screenshots/${pageInfo.name.toLowerCase()}-mobile.png`,
       fullPage: true,
     });
   });
 }
 
-// Test tool functionality with interactions
-test('BloodGas - Fill form and capture results', async ({ page }) => {
-  await page.goto('/tools/bloodgas');
-  await page.waitForLoadState('networkidle');
-  
-  // Fill in some values
-  await page.fill('input[name="ph"]', '7.35');
-  await page.fill('input[name="paco2"]', '40');
-  await page.fill('input[name="hco3"]', '24');
-  await page.fill('input[name="pao2"]', '95');
-  await page.fill('input[name="lactate"]', '1.5');
-  
-  await page.waitForTimeout(500);
-  await page.screenshot({ path: 'screenshots/bloodgas-filled.png', fullPage: true });
-});
-
-test('VasoactiveDrugs - Select drug and capture', async ({ page }) => {
-  await page.goto('/tools/vasoactive');
-  await page.waitForLoadState('networkidle');
-  
-  // Click first drug card if visible
-  const drugCard = page.locator('.card').first();
-  if (await drugCard.isVisible()) {
-    await drugCard.click();
-    await page.waitForTimeout(500);
-    await page.screenshot({ path: 'screenshots/vasoactive-selected.png', fullPage: true });
-  }
-});
-
-test('Sedation - Navigate tabs', async ({ page }) => {
-  await page.goto('/tools/sedation');
-  await page.waitForLoadState('networkidle');
-  
-  // Screenshot main view
-  await page.screenshot({ path: 'screenshots/sedation-main.png', fullPage: true });
-  
-  // Click on different tabs if present
-  const tabs = page.locator('.tabs .tab, [role="tab"], button:has-text("RASS"), button:has-text("Richmond")');
-  const tabCount = await tabs.count();
-  
-  for (let i = 0; i < Math.min(tabCount, 3); i++) {
-    await tabs.nth(i).click();
-    await page.waitForTimeout(300);
-    await page.screenshot({ path: `screenshots/sedation-tab-${i}.png`, fullPage: true });
-  }
-});
-
-test('MetabolicDisorders - Navigate electrolytes', async ({ page }) => {
-  await page.goto('/tools/metabolic');
-  await page.waitForLoadState('networkidle');
-  
-  await page.screenshot({ path: 'screenshots/metabolic-main.png', fullPage: true });
-  
-  // Click on different electrolyte tabs
-  const tabButtons = page.locator('.tab-btn, [role="tab"], button');
-  const count = await tabButtons.count();
-  
-  for (let i = 0; i < Math.min(count, 5); i++) {
-    const btn = tabButtons.nth(i);
-    const text = await btn.textContent();
-    if (text && (text.includes('K') || text.includes('Na') || text.includes('Ca') || text.includes('Mg') || text.includes('Phos'))) {
-      await btn.click();
-      await page.waitForTimeout(300);
-      await page.screenshot({ path: `screenshots/metabolic-${text.trim().toLowerCase().replace(/[^a-z]/g, '')}.png`, fullPage: true });
+// Screenshot protected pages with auth
+for (const pageInfo of protectedPages) {
+  test(`Screenshot ${pageInfo.name} page (authenticated)`, async ({ page }) => {
+    // Login first
+    await page.goto('/');
+    const loggedIn = await login(page);
+    
+    if (!loggedIn) {
+      console.warn(`Could not login, skipping ${pageInfo.name}`);
+      return;
     }
-  }
-});
+    
+    // Navigate to protected page
+    await page.goto(pageInfo.path);
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(800);
+    
+    // Desktop screenshot
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.screenshot({
+      path: `screenshots/${pageInfo.name.toLowerCase()}-desktop.png`,
+      fullPage: true,
+    });
+    
+    // Mobile screenshot
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.screenshot({
+      path: `screenshots/${pageInfo.name.toLowerCase()}-mobile.png`,
+      fullPage: true,
+    });
+  });
+}
 
-test('MedicalCalculator - Test calculators', async ({ page }) => {
-  await page.goto('/tools/calculator');
-  await page.waitForLoadState('networkidle');
-  
-  await page.screenshot({ path: 'screenshots/calculator-main.png', fullPage: true });
-});
+// Interactive tests with authentication
+test.describe('Interactive Tool Screenshots', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await login(page);
+  });
 
-test('AntibioticGuide - Browse antibiotics', async ({ page }) => {
-  await page.goto('/tools/antibiotic');
-  await page.waitForLoadState('networkidle');
-  
-  await page.screenshot({ path: 'screenshots/antibiotic-main.png', fullPage: true });
-  
-  // Click on first antibiotic card
-  const card = page.locator('.card, button').first();
-  if (await card.isVisible()) {
-    await card.click();
+  test('BloodGas - Fill form and capture results', async ({ page }) => {
+    await page.goto('/tools/blood-gas');
+    await page.waitForLoadState('networkidle');
     await page.waitForTimeout(500);
-    await page.screenshot({ path: 'screenshots/antibiotic-selected.png', fullPage: true });
-  }
-});
+    
+    await page.screenshot({ path: 'screenshots/bloodgas-interactive.png', fullPage: true });
+  });
 
-test('MedicalReport - Form states', async ({ page }) => {
-  await page.goto('/tools/report');
-  await page.waitForLoadState('networkidle');
-  
-  await page.screenshot({ path: 'screenshots/report-empty.png', fullPage: true });
-  
-  // Fill some fields
-  await page.fill('input[type="text"]', 'Test Patient');
-  await page.waitForTimeout(300);
-  await page.screenshot({ path: 'screenshots/report-partial.png', fullPage: true });
-});
+  test('VasoactiveDrugs - Select drug and capture', async ({ page }) => {
+    await page.goto('/tools/vasoactive-drugs');
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
+    
+    // Click first drug card if visible
+    const drugCard = page.locator('.card').first();
+    if (await drugCard.isVisible()) {
+      await drugCard.click();
+      await page.waitForTimeout(500);
+    }
+    await page.screenshot({ path: 'screenshots/vasoactive-interactive.png', fullPage: true });
+  });
 
-test('Pastebin - Create paste interface', async ({ page }) => {
-  await page.goto('/tools/pastebin');
-  await page.waitForLoadState('networkidle');
-  
-  await page.screenshot({ path: 'screenshots/pastebin-main.png', fullPage: true });
+  test('MedicalCalculator - Explore calculators', async ({ page }) => {
+    await page.goto('/tools/medical-calculator');
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
+    
+    await page.screenshot({ path: 'screenshots/calculator-interactive.png', fullPage: true });
+  });
+
+  test('MedicalReport - Form view', async ({ page }) => {
+    await page.goto('/tools/medical-report');
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
+    
+    await page.screenshot({ path: 'screenshots/report-interactive.png', fullPage: true });
+  });
 });
