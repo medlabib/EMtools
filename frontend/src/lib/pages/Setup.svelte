@@ -218,7 +218,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>{error}</span>
-            <button class="btn btn-ghost btn-sm btn-circle" on:click={() => error = ''}>✕</button>
+            <button class="btn btn-ghost btn-ghost-contrast btn-sm btn-circle" on:click={() => error = ''}>✕</button>
           </div>
         {/if}
 
@@ -288,7 +288,7 @@
                 {/if}
                 <button 
                   type="button"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs btn-circle"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 btn btn-ghost btn-ghost-contrast btn-xs btn-circle"
                   on:click={() => showPassword = !showPassword}
                 >
                   {#if showPassword}
@@ -518,7 +518,7 @@
         <!-- Navigation Buttons -->
         <div class="card-actions justify-between mt-6">
           {#if currentStep > 1}
-            <button class="btn btn-ghost" on:click={prevStep}>
+            <button class="btn btn-ghost btn-ghost-contrast" on:click={prevStep}>
               ← Précédent
             </button>
           {:else}

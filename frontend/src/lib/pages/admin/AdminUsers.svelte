@@ -197,7 +197,7 @@
     <div class="container mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <a href="/admin" class="btn btn-ghost btn-sm btn-square">
+          <a href="/admin" class="btn btn-ghost btn-ghost-contrast btn-sm btn-square">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -235,7 +235,7 @@
               />
               {#if searchQuery}
                 <button 
-                  class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs btn-circle"
+                  class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-ghost-contrast btn-xs btn-circle"
                   on:click={clearSearch}
                 >
                   ✕
@@ -335,7 +335,7 @@
                     <td class="text-sm text-base-content/70">{formatDate(user.created_at)}</td>
                     <td class="text-right">
                       <div class="dropdown dropdown-end">
-                        <button tabindex="0" class="btn btn-ghost btn-sm btn-square">
+                        <button tabindex="0" class="btn btn-ghost btn-ghost-contrast btn-sm btn-square">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                           </svg>

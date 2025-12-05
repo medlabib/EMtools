@@ -156,7 +156,7 @@
   <div class="bg-base-100 shadow-sm border-b border-base-300">
     <div class="container mx-auto px-4 py-4">
       <div class="flex items-center gap-3">
-        <a href="/admin" class="btn btn-ghost btn-sm btn-square">
+  <a href="/admin" class="btn btn-ghost btn-ghost-contrast btn-sm btn-square">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
@@ -173,7 +173,7 @@
     {#if error}
       <div class="alert alert-error mb-4">
         <span>{error}</span>
-        <button class="btn btn-ghost btn-sm" on:click={() => error = ''}>✕</button>
+  <button class="btn btn-ghost btn-ghost-contrast btn-sm" on:click={() => error = ''}>✕</button>
       </div>
     {/if}
 
@@ -217,7 +217,7 @@
             </span>
             
             <button 
-              class="btn btn-ghost btn-sm tooltip tooltip-bottom" 
+              class="btn btn-ghost btn-ghost-contrast btn-sm tooltip tooltip-bottom" 
               data-tip="Exporter CSV"
               on:click={exportLogs}
               disabled={filteredLogs.length === 0}
@@ -228,7 +228,7 @@
             </button>
 
             <button 
-              class="btn btn-ghost btn-sm tooltip tooltip-bottom" 
+              class="btn btn-ghost btn-ghost-contrast btn-sm tooltip tooltip-bottom" 
               data-tip="Actualiser"
               on:click={loadLogs}
             >
@@ -257,7 +257,7 @@
             </svg>
             <p>Aucun journal trouvé</p>
             {#if searchQuery}
-              <button class="btn btn-sm btn-ghost mt-2" on:click={() => searchQuery = ''}>Effacer la recherche</button>
+              <button class="btn btn-sm btn-ghost btn-ghost-contrast mt-2" on:click={() => searchQuery = ''}>Effacer la recherche</button>
             {/if}
           </div>
         </div>
@@ -373,7 +373,7 @@
   {@const badge = getActionBadge(selectedLog.action)}
   <div class="modal modal-open">
     <div class="modal-box max-w-lg">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" on:click={closeDetailsModal}>✕</button>
+      <button class="btn btn-sm btn-circle btn-ghost btn-ghost-contrast absolute right-2 top-2" on:click={closeDetailsModal}>✕</button>
       
       <h3 class="font-bold text-lg flex items-center gap-2">
         <span class="badge {badge.class}">{badge.label}</span>
@@ -416,8 +416,8 @@
         {/if}
       </div>
       
-      <div class="modal-action">
-        <button class="btn btn-ghost" on:click={closeDetailsModal}>Fermer</button>
+        <div class="modal-action">
+        <button class="btn btn-ghost btn-ghost-contrast" on:click={closeDetailsModal}>Fermer</button>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop" on:click={closeDetailsModal}>

@@ -37,7 +37,7 @@
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-3" aria-label="Main navigation">
       {#if $authStore.isAuthenticated}
-        <Link to="/dashboard" class="btn btn-ghost btn-sm gap-2 hover:bg-primary/10 hover:text-primary transition-colors">
+  <Link to="/dashboard" class="btn btn-ghost btn-ghost-contrast btn-sm gap-2 hover:bg-primary/10 hover:text-primary transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
           </svg>
@@ -50,7 +50,7 @@
           <span class="text-base-content/80 max-w-[120px] truncate">{$authStore.user?.full_name || $authStore.user?.email}</span>
         </div>
         <button 
-          class="btn btn-ghost btn-sm text-base-content/60 hover:text-error hover:bg-error/10" 
+          class="btn btn-ghost btn-ghost-contrast btn-sm text-base-content/60 hover:text-error hover:bg-error/10" 
           on:click={handleLogout}
           aria-label="Log out of your account"
         >
@@ -59,7 +59,7 @@
           </svg>
         </button>
       {:else}
-        <Link to="/login" class="btn btn-ghost btn-sm gap-2 hover:bg-primary/10 hover:text-primary">
+  <Link to="/login" class="btn btn-ghost btn-ghost-contrast btn-sm gap-2 hover:bg-primary/10 hover:text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
           </svg>
@@ -80,7 +80,7 @@
     <!-- Mobile menu button -->
     <div class="md:hidden">
       <button 
-        class="btn btn-ghost btn-circle"
+        class="btn btn-ghost btn-ghost-contrast btn-circle"
         on:click={() => mobileMenuOpen = !mobileMenuOpen}
         aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
       >
@@ -97,13 +97,13 @@
   {#if mobileMenuOpen}
     <div class="md:hidden bg-base-100/95 backdrop-blur-xl border-b border-base-content/5 animate-fade-in-down shadow-xl">
       <nav class="flex flex-col p-4 gap-2">
-        <Link to="/" class="btn btn-ghost justify-start gap-3 h-12" on:click={closeMenu}>
+  <Link to="/" class="btn btn-ghost btn-ghost-contrast justify-start gap-3 h-12" on:click={closeMenu}>
           <span class="text-lg">🏠</span>
           <span>{$_('nav.home') || 'Home'}</span>
         </Link>
         
         {#if $authStore.isAuthenticated}
-          <Link to="/dashboard" class="btn btn-ghost justify-start gap-3 h-12" on:click={closeMenu}>
+          <Link to="/dashboard" class="btn btn-ghost btn-ghost-contrast justify-start gap-3 h-12" on:click={closeMenu}>
             <span class="text-lg">🛠️</span>
             <span>{$_('nav.tools')}</span>
           </Link>
@@ -127,7 +127,7 @@
             {$_('nav.logout')}
           </button>
         {:else}
-          <Link to="/login" class="btn btn-ghost justify-start gap-3 h-12" on:click={closeMenu}>
+          <Link to="/login" class="btn btn-ghost btn-ghost-contrast justify-start gap-3 h-12" on:click={closeMenu}>
             <span class="text-lg">🔐</span>
             <span>{$_('nav.login')}</span>
           </Link>

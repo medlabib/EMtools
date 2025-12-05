@@ -208,27 +208,27 @@
   
   .btn-ghost:hover {
     @apply text-primary;
-    background-color: color-mix(in oklch, var(--color-primary) 15%, transparent);
+    background-color: rgba(59, 130, 246, 0.12);
   }
   
   .btn-ghost:focus-visible {
     @apply outline outline-2 outline-offset-2 outline-primary text-primary;
-    background-color: color-mix(in oklch, var(--color-primary) 15%, transparent);
+    background-color: rgba(59, 130, 246, 0.12);
   }
 
   /* Strong override class for ghost buttons where utility hover classes are not present
      Ensures clear, high-contrast hover states across UI components. */
   .btn.btn-ghost.btn-ghost-contrast:hover {
-    color: var(--color-primary) !important;
-    /* mix the primary color lightly with the theme base for a subtle but visible background */
-    background-color: color-mix(in oklch, var(--color-primary) 20%, var(--color-base-100));
+    color: var(--color-primary, #3b82f6) !important;
+    /* subtle tinted background for visibility */
+    background-color: rgba(59, 130, 246, 0.15);
     border-color: transparent;
   }
 
   .btn.btn-ghost.btn-ghost-contrast:focus-visible {
-    color: var(--color-primary) !important;
-    background-color: color-mix(in oklch, var(--color-primary) 20%, var(--color-base-100));
-    outline: 2px solid color-mix(in oklch, var(--color-primary) 35%, var(--color-base-100));
+    color: var(--color-primary, #3b82f6) !important;
+    background-color: rgba(59, 130, 246, 0.15);
+    outline: 2px solid rgba(59, 130, 246, 0.4);
     outline-offset: 2px;
   }
   

@@ -165,7 +165,7 @@
   <div class="bg-base-100 shadow-sm border-b border-base-300">
     <div class="container mx-auto px-4 py-4">
       <div class="flex items-center gap-3">
-        <a href="/admin" class="btn btn-ghost btn-sm btn-square">
+  <a href="/admin" class="btn btn-ghost btn-ghost-contrast btn-sm btn-square">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
@@ -190,7 +190,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
           <span>{error}</span>
-          <button class="btn btn-ghost btn-sm" on:click={() => error = ''}>✕</button>
+          <button class="btn btn-ghost btn-ghost-contrast btn-sm" on:click={() => error = ''}>✕</button>
         </div>
       {/if}
 
@@ -320,7 +320,7 @@
                 {#each domainList as domain}
                   <span class="badge badge-lg gap-2">
                     @{domain}
-                    <button class="btn btn-ghost btn-xs btn-circle" on:click={() => removeDomain(domain)}>✕</button>
+                    <button class="btn btn-ghost btn-ghost-contrast btn-xs btn-circle" on:click={() => removeDomain(domain)}>✕</button>
                   </span>
                 {/each}
               </div>

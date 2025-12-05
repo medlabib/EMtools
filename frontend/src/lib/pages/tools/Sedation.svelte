@@ -248,7 +248,7 @@
                     {@const drug = getDrugById(drugId)}
                     {#if drug}
                       {@const calc = calculateDose(drug)}
-                      <button class="btn btn-ghost btn-sm w-full justify-between" on:click={() => selectDrug(drug)}>
+                      <button class="btn btn-ghost btn-ghost-contrast btn-sm w-full justify-between" on:click={() => selectDrug(drug)}>
                         <span>{drug.name}</span>
                         <span class="font-bold text-primary">{formatDose(calc.total)} {drug.doseUnit.replace('/kg', '')}</span>
                       </button>
@@ -307,7 +307,7 @@
 
   {:else}
     <!-- Drug Detail View -->
-    <button class="btn btn-ghost btn-sm mb-4" on:click={goBack}>← Retour</button>
+  <button class="btn btn-ghost btn-ghost-contrast btn-sm mb-4" on:click={goBack}>← Retour</button>
 
     <div class="card bg-base-100 shadow-lg">
       <div class="card-body">

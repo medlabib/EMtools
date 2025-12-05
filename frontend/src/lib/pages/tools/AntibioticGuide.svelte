@@ -281,10 +281,10 @@
             </div>
             
             <div class="flex flex-wrap gap-2">
-              {#each patientMedications as med}
+                {#each patientMedications as med}
                 <span class="badge badge-lg gap-1 py-3">
                   {med}
-                  <button class="btn btn-ghost btn-xs" on:click={() => removeMedication(med)}>×</button>
+                  <button class="btn btn-ghost btn-ghost-contrast btn-xs" on:click={() => removeMedication(med)}>×</button>
                 </span>
               {/each}
             </div>
@@ -359,7 +359,7 @@
 
   {:else}
     <!-- Detail View -->
-    <button class="btn btn-ghost gap-2 mb-4" on:click={goBack}>
+    <button class="btn btn-ghost btn-ghost-contrast gap-2 mb-4" on:click={goBack}>
       <span>←</span> Retour
     </button>
 
