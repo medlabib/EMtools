@@ -109,23 +109,86 @@
     @apply transform -translate-y-0.5;
   }
   
-  /* Fix btn-ghost visibility on light backgrounds */
+  /* ================================
+     Accessible Button Contrast Fixes
+     Ensures WCAG AA compliance (4.5:1 ratio)
+     ================================ */
+  
+  /* Ghost buttons - visible on both light and dark */
   .btn-ghost {
     @apply text-base-content;
   }
   
   .btn-ghost:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    @apply bg-base-content/15 text-base-content;
   }
   
-  /* Fix btn-outline visibility */
+  .btn-ghost:focus-visible {
+    @apply bg-base-content/15 outline outline-2 outline-offset-2 outline-base-content/50;
+  }
+  
+  /* Outline buttons - high contrast borders and hover */
   .btn-outline {
-    @apply text-base-content;
-    border-color: rgba(0, 0, 0, 0.3);
+    @apply text-base-content border-2;
+    border-color: currentColor;
   }
   
   .btn-outline:hover {
     @apply bg-base-content text-base-100 border-base-content;
+  }
+  
+  /* Primary outline variant */
+  .btn-outline.btn-primary {
+    @apply text-primary border-primary;
+  }
+  
+  .btn-outline.btn-primary:hover {
+    @apply bg-primary text-primary-content border-primary;
+  }
+  
+  /* Secondary outline variant */
+  .btn-outline.btn-secondary {
+    @apply text-secondary border-secondary;
+  }
+  
+  .btn-outline.btn-secondary:hover {
+    @apply bg-secondary text-secondary-content border-secondary;
+  }
+  
+  /* Error outline variant */
+  .btn-outline.btn-error {
+    @apply text-error border-error;
+  }
+  
+  .btn-outline.btn-error:hover {
+    @apply bg-error text-error-content border-error;
+  }
+  
+  /* Success outline variant */
+  .btn-outline.btn-success {
+    @apply text-success border-success;
+  }
+  
+  .btn-outline.btn-success:hover {
+    @apply bg-success text-success-content border-success;
+  }
+  
+  /* Warning outline variant */
+  .btn-outline.btn-warning {
+    @apply text-warning border-warning;
+  }
+  
+  .btn-outline.btn-warning:hover {
+    @apply bg-warning text-warning-content border-warning;
+  }
+  
+  /* Info outline variant */
+  .btn-outline.btn-info {
+    @apply text-info border-info;
+  }
+  
+  .btn-outline.btn-info:hover {
+    @apply bg-info text-info-content border-info;
   }
   
   /* Ensure checkbox visibility */

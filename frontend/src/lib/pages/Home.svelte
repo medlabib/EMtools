@@ -116,7 +116,7 @@
               <span>✨</span>
               Créer un compte gratuit
             </Link>
-            <Link to="/login" class="btn btn-ghost btn-lg gap-2 border border-base-content/10 hover:bg-base-content/5 hover:-translate-y-1 transition-all">
+            <Link to="/login" class="btn btn-outline btn-lg gap-2 hover:-translate-y-1 transition-all">
               <span>🔐</span>
               Se connecter
             </Link>

@@ -214,55 +214,134 @@
 
         {#if error}
           <div class="alert alert-error mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             <span>{error}</span>
-            <button class="btn btn-ghost btn-sm" on:click={() => error = ''}>✕</button>
+            <button class="btn btn-ghost btn-sm btn-circle" on:click={() => error = ''}>✕</button>
+          </div>
+        {/if}
+
+        {#if success}
+          <div class="alert alert-success mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{success}</span>
           </div>
         {/if}
 
         <!-- Step 1: Admin Account -->
         {#if currentStep === 1}
           <div class="space-y-4">
-            <h2 class="text-lg font-semibold">Créer le compte administrateur</h2>
+            <h2 class="text-lg font-semibold flex items-center gap-2">
+              <span class="badge badge-primary badge-sm">1</span>
+              Créer le compte administrateur
+            </h2>
             <p class="text-sm text-base-content/60">Ce compte aura tous les droits d'administration.</p>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Email</span></label>
+              <label class="label"><span class="label-text">Email <span class="text-error">*</span></span></label>
               <input 
                 type="email" 
-                class="input input-bordered" 
+                class="input input-bordered {!emailValid ? 'input-error' : adminEmail ? 'input-success' : ''}" 
                 bind:value={adminEmail}
                 placeholder="admin@example.com"
               />
+              {#if adminEmail && !emailValid}
+                <label class="label"><span class="label-text-alt text-error">Adresse email invalide</span></label>
+              {/if}
             </div>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Nom d'utilisateur</span></label>
+              <label class="label"><span class="label-text">Nom d'utilisateur <span class="text-error">*</span></span></label>
               <input 
                 type="text" 
-                class="input input-bordered" 
+                class="input input-bordered {!usernameValid ? 'input-error' : adminUsername ? 'input-success' : ''}" 
                 bind:value={adminUsername}
                 placeholder="admin"
               />
+              {#if adminUsername && !usernameValid}
+                <label class="label"><span class="label-text-alt text-error">3-20 caractères alphanumériques uniquement</span></label>
+              {:else}
+                <label class="label"><span class="label-text-alt text-base-content/50">Lettres, chiffres et underscore (_) uniquement</span></label>
+              {/if}
             </div>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Mot de passe</span></label>
-              <input 
-                type="password" 
-                class="input input-bordered" 
-                bind:value={adminPassword}
-                placeholder="••••••••"
-              />
+              <label class="label"><span class="label-text">Mot de passe <span class="text-error">*</span></span></label>
+              <div class="relative">
+                {#if showPassword}
+                  <input 
+                    type="text"
+                    class="input input-bordered w-full pr-12" 
+                    bind:value={adminPassword}
+                    placeholder="••••••••"
+                  />
+                {:else}
+                  <input 
+                    type="password"
+                    class="input input-bordered w-full pr-12" 
+                    bind:value={adminPassword}
+                    placeholder="••••••••"
+                  />
+                {/if}
+                <button 
+                  type="button"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs btn-circle"
+                  on:click={() => showPassword = !showPassword}
+                >
+                  {#if showPassword}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                    </svg>
+                  {:else}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  {/if}
+                </button>
+              </div>
+              
+              {#if adminPassword}
+                <div class="mt-2">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="text-xs text-base-content/60">Force:</span>
+                    <div class="flex gap-1 flex-1">
+                      {#each [0, 1, 2, 3] as i}
+                        <div class="h-1.5 flex-1 rounded-full {i <= passwordStrength.score ? passwordStrength.color : 'bg-base-300'}"></div>
+                      {/each}
+                    </div>
+                    <span class="text-xs font-medium {passwordStrength.score >= 2 ? 'text-success' : 'text-warning'}">{passwordStrength.label}</span>
+                  </div>
+                  <p class="text-xs text-base-content/50">Minimum 8 caractères. Utilisez des majuscules, chiffres et caractères spéciaux.</p>
+                </div>
+              {/if}
             </div>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Confirmer le mot de passe</span></label>
-              <input 
-                type="password" 
-                class="input input-bordered" 
-                bind:value={confirmPassword}
-                placeholder="••••••••"
-              />
+              <label class="label"><span class="label-text">Confirmer le mot de passe <span class="text-error">*</span></span></label>
+              {#if showPassword}
+                <input 
+                  type="text"
+                  class="input input-bordered {confirmPassword && !passwordsMatch ? 'input-error' : confirmPassword && passwordsMatch ? 'input-success' : ''}" 
+                  bind:value={confirmPassword}
+                  placeholder="••••••••"
+                />
+              {:else}
+                <input 
+                  type="password"
+                  class="input input-bordered {confirmPassword && !passwordsMatch ? 'input-error' : confirmPassword && passwordsMatch ? 'input-success' : ''}" 
+                  bind:value={confirmPassword}
+                  placeholder="••••••••"
+                />
+              {/if}
+              {#if confirmPassword && !passwordsMatch}
+                <label class="label"><span class="label-text-alt text-error">Les mots de passe ne correspondent pas</span></label>
+              {:else if confirmPassword && passwordsMatch}
+                <label class="label"><span class="label-text-alt text-success">✓ Les mots de passe correspondent</span></label>
+              {/if}
             </div>
           </div>
         {/if}
@@ -270,44 +349,62 @@
         <!-- Step 2: Signup Mode -->
         {#if currentStep === 2}
           <div class="space-y-4">
-            <h2 class="text-lg font-semibold">Mode d'inscription</h2>
+            <h2 class="text-lg font-semibold flex items-center gap-2">
+              <span class="badge badge-primary badge-sm">2</span>
+              Mode d'inscription
+            </h2>
             <p class="text-sm text-base-content/60">Choisissez comment les utilisateurs peuvent créer un compte.</p>
 
             <div class="space-y-3">
               <label 
-                class="flex items-start gap-3 p-3 rounded-lg border cursor-pointer hover:bg-base-200 transition-colors {signupMode === 'open' ? 'border-primary bg-primary/5' : 'border-base-300'}"
+                class="flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer hover:bg-base-200/50 transition-all {signupMode === 'open' ? 'border-primary bg-primary/5 shadow-sm' : 'border-base-300'}"
               >
                 <input type="radio" name="signup-mode" class="radio radio-primary mt-0.5" bind:group={signupMode} value="open" />
-                <div>
-                  <div class="font-medium">Ouvert</div>
-                  <div class="text-sm text-base-content/60">{getSignupModeDescription('open')}</div>
+                <div class="flex-1">
+                  <div class="font-medium flex items-center gap-2">
+                    {getSignupModeIcon('open')} Ouvert
+                    {#if signupMode === 'open'}
+                      <span class="badge badge-primary badge-xs">Sélectionné</span>
+                    {/if}
+                  </div>
+                  <div class="text-sm text-base-content/60 mt-1">{getSignupModeDescription('open')}</div>
                 </div>
               </label>
 
               <label 
-                class="flex items-start gap-3 p-3 rounded-lg border cursor-pointer hover:bg-base-200 transition-colors {signupMode === 'institutional' ? 'border-primary bg-primary/5' : 'border-base-300'}"
+                class="flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer hover:bg-base-200/50 transition-all {signupMode === 'institutional' ? 'border-primary bg-primary/5 shadow-sm' : 'border-base-300'}"
               >
                 <input type="radio" name="signup-mode" class="radio radio-primary mt-0.5" bind:group={signupMode} value="institutional" />
-                <div>
-                  <div class="font-medium">Institutionnel</div>
-                  <div class="text-sm text-base-content/60">{getSignupModeDescription('institutional')}</div>
+                <div class="flex-1">
+                  <div class="font-medium flex items-center gap-2">
+                    {getSignupModeIcon('institutional')} Institutionnel
+                    {#if signupMode === 'institutional'}
+                      <span class="badge badge-primary badge-xs">Sélectionné</span>
+                    {/if}
+                  </div>
+                  <div class="text-sm text-base-content/60 mt-1">{getSignupModeDescription('institutional')}</div>
                 </div>
               </label>
 
               <label 
-                class="flex items-start gap-3 p-3 rounded-lg border cursor-pointer hover:bg-base-200 transition-colors {signupMode === 'closed' ? 'border-primary bg-primary/5' : 'border-base-300'}"
+                class="flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer hover:bg-base-200/50 transition-all {signupMode === 'closed' ? 'border-primary bg-primary/5 shadow-sm' : 'border-base-300'}"
               >
                 <input type="radio" name="signup-mode" class="radio radio-primary mt-0.5" bind:group={signupMode} value="closed" />
-                <div>
-                  <div class="font-medium">Fermé</div>
-                  <div class="text-sm text-base-content/60">{getSignupModeDescription('closed')}</div>
+                <div class="flex-1">
+                  <div class="font-medium flex items-center gap-2">
+                    {getSignupModeIcon('closed')} Fermé
+                    {#if signupMode === 'closed'}
+                      <span class="badge badge-primary badge-xs">Sélectionné</span>
+                    {/if}
+                  </div>
+                  <div class="text-sm text-base-content/60 mt-1">{getSignupModeDescription('closed')}</div>
                 </div>
               </label>
             </div>
 
             {#if signupMode === 'institutional'}
-              <div class="form-control mt-4">
-                <label class="label"><span class="label-text">Domaines email autorisés</span></label>
+              <div class="form-control mt-4 p-4 bg-base-200/50 rounded-lg">
+                <label class="label"><span class="label-text font-medium">Domaines email autorisés <span class="text-error">*</span></span></label>
                 <input 
                   type="text" 
                   class="input input-bordered" 
@@ -325,53 +422,96 @@
         <!-- Step 3: SMTP (Optional) -->
         {#if currentStep === 3}
           <div class="space-y-4">
-            <h2 class="text-lg font-semibold">Configuration email (optionnel)</h2>
+            <h2 class="text-lg font-semibold flex items-center gap-2">
+              <span class="badge badge-primary badge-sm">3</span>
+              Configuration email
+              <span class="badge badge-ghost badge-sm">Optionnel</span>
+            </h2>
             <p class="text-sm text-base-content/60">Configurez SMTP pour les notifications et la vérification des emails.</p>
 
-            <div class="form-control">
-              <label class="label cursor-pointer justify-start gap-3">
+            <div class="p-4 rounded-lg bg-base-200/50 border border-base-300">
+              <label class="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" class="toggle toggle-primary" bind:checked={configureSmtp} />
-                <span class="label-text">Configurer SMTP maintenant</span>
+                <div>
+                  <span class="font-medium">Configurer SMTP maintenant</span>
+                  <p class="text-xs text-base-content/60">Vous pourrez le faire plus tard dans les paramètres</p>
+                </div>
               </label>
             </div>
 
             {#if configureSmtp}
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 animate-in fade-in duration-200">
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Serveur SMTP</span></label>
-                  <input type="text" class="input input-bordered" bind:value={smtpHost} placeholder="smtp.example.com" />
+                  <label class="label"><span class="label-text">Serveur SMTP <span class="text-error">*</span></span></label>
+                  <input type="text" class="input input-bordered" bind:value={smtpHost} placeholder="smtp.gmail.com" />
                 </div>
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Port</span></label>
+                  <label class="label"><span class="label-text">Port <span class="text-error">*</span></span></label>
                   <input type="number" class="input input-bordered" bind:value={smtpPort} placeholder="587" />
+                  <label class="label"><span class="label-text-alt text-base-content/50">587 (TLS) ou 465 (SSL)</span></label>
                 </div>
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Nom d'utilisateur</span></label>
-                  <input type="text" class="input input-bordered" bind:value={smtpUser} placeholder="user@example.com" />
+                  <label class="label"><span class="label-text">Nom d'utilisateur <span class="text-error">*</span></span></label>
+                  <input type="text" class="input input-bordered" bind:value={smtpUser} placeholder="user@gmail.com" />
                 </div>
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Mot de passe</span></label>
+                  <label class="label"><span class="label-text">Mot de passe <span class="text-error">*</span></span></label>
                   <input type="password" class="input input-bordered" bind:value={smtpPassword} placeholder="••••••••" />
                 </div>
                 <div class="form-control md:col-span-2">
-                  <label class="label"><span class="label-text">Email d'envoi</span></label>
-                  <input type="email" class="input input-bordered" bind:value={smtpFromEmail} placeholder="noreply@example.com" />
+                  <label class="label"><span class="label-text">Email d'envoi <span class="text-error">*</span></span></label>
+                  <input type="email" class="input input-bordered" bind:value={smtpFromEmail} placeholder="noreply@yourapp.com" />
+                  <label class="label"><span class="label-text-alt text-base-content/50">L'adresse qui apparaîtra comme expéditeur</span></label>
                 </div>
                 <div class="form-control md:col-span-2">
-                  <label class="label cursor-pointer justify-start gap-3">
+                  <label class="flex items-center gap-3 cursor-pointer p-3 bg-base-100 rounded-lg border border-base-300">
                     <input type="checkbox" class="checkbox checkbox-primary" bind:checked={smtpUseTls} />
-                    <span class="label-text">Utiliser TLS</span>
+                    <div>
+                      <span class="label-text font-medium">Utiliser TLS/STARTTLS</span>
+                      <p class="text-xs text-base-content/60">Recommandé pour la sécurité</p>
+                    </div>
                   </label>
                 </div>
               </div>
             {:else}
-              <div class="alert alert-info">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="alert bg-base-200 border border-base-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Vous pourrez configurer SMTP plus tard dans les paramètres d'administration.</span>
+                <div>
+                  <p class="font-medium">Configuration non requise pour démarrer</p>
+                  <p class="text-sm text-base-content/60">Vous pourrez configurer SMTP plus tard dans les paramètres d'administration pour activer les notifications email.</p>
+                </div>
               </div>
             {/if}
+
+            <!-- Summary -->
+            <div class="divider">Résumé de la configuration</div>
+            
+            <div class="bg-base-200/50 rounded-lg p-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-base-content/70">Administrateur</span>
+                <span class="font-medium">{adminEmail}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-base-content/70">Mode d'inscription</span>
+                <span class="badge {signupMode === 'open' ? 'badge-success' : signupMode === 'institutional' ? 'badge-warning' : 'badge-error'}">
+                  {getSignupModeIcon(signupMode)} {signupMode === 'open' ? 'Ouvert' : signupMode === 'institutional' ? 'Institutionnel' : 'Fermé'}
+                </span>
+              </div>
+              {#if signupMode === 'institutional' && allowedDomains}
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-base-content/70">Domaines</span>
+                  <span class="text-sm font-mono">{allowedDomains}</span>
+                </div>
+              {/if}
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-base-content/70">SMTP</span>
+                <span class="badge {configureSmtp ? 'badge-success' : 'badge-ghost'}">
+                  {configureSmtp ? '✓ Configuré' : 'Non configuré'}
+                </span>
+              </div>
+            </div>
           </div>
         {/if}
 

@@ -19,6 +19,8 @@
   let pageSize = 20;
   let filterRole: 'all' | 'admin' | 'user' = 'all';
   let filterActive: 'all' | 'active' | 'inactive' = 'all';
+  let searchQuery = '';
+  let searchTimeout: ReturnType<typeof setTimeout>;
 
   // Modal state
   let showCreateModal = false;
@@ -163,6 +165,29 @@
     });
   }
 
+  function handleSearch() {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      currentPage = 1;
+      loadUsers();
+    }, 300);
+  }
+
+  function clearSearch() {
+    searchQuery = '';
+    currentPage = 1;
+    loadUsers();
+  }
+
+  // Client-side filtering for search (since backend may not support search)
+  $: filteredUsers = searchQuery 
+    ? $adminUsers.filter(user => 
+        user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (user.full_name?.toLowerCase().includes(searchQuery.toLowerCase()))
+      )
+    : $adminUsers;
+
   $: totalPages = Math.ceil(totalUsers / pageSize);
 </script>
 
@@ -196,7 +221,33 @@
     <!-- Filters -->
     <div class="card bg-base-100 shadow-sm mb-4">
       <div class="card-body p-4">
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 items-end">
+          <!-- Search -->
+          <div class="form-control flex-1 min-w-[200px]">
+            <label class="label label-text text-xs">Rechercher</label>
+            <div class="relative">
+              <input 
+                type="text" 
+                class="input input-bordered input-sm w-full pr-8" 
+                placeholder="Email, nom d'utilisateur..."
+                bind:value={searchQuery}
+                on:input={handleSearch}
+              />
+              {#if searchQuery}
+                <button 
+                  class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs btn-circle"
+                  on:click={clearSearch}
+                >
+                  ✕
+                </button>
+              {:else}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 absolute right-3 top-1/2 -translate-y-1/2 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              {/if}
+            </div>
+          </div>
+          
           <div class="form-control">
             <label class="label label-text text-xs">Rôle</label>
             <select class="select select-bordered select-sm" bind:value={filterRole} on:change={loadUsers}>
@@ -213,6 +264,12 @@
               <option value="inactive">Inactif</option>
             </select>
           </div>
+          
+          <button class="btn btn-outline btn-sm" on:click={loadUsers}>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -242,8 +299,8 @@
                 </tr>
               </thead>
               <tbody>
-                {#each $adminUsers as user}
-                  <tr>
+                {#each filteredUsers as user}
+                  <tr class="hover:bg-base-200/30">
                     <td>
                       <div class="flex items-center gap-3">
                         <div class="avatar placeholder">

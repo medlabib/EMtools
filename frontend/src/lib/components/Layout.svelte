@@ -3,6 +3,7 @@
   import { Link, navigate } from 'svelte-routing';
   import { authStore, logout } from '../stores/auth';
   import LanguageSwitcher from './LanguageSwitcher.svelte';
+  import ThemeToggle from './ThemeToggle.svelte';
   
   let mobileMenuOpen = false;
   
@@ -72,6 +73,7 @@
         </Link>
       {/if}
       <div class="w-px h-6 bg-base-content/10 mx-1"></div>
+      <ThemeToggle />
       <LanguageSwitcher />
     </nav>
     
@@ -138,7 +140,8 @@
         {/if}
         
         <div class="divider my-2"></div>
-        <div class="px-2">
+        <div class="flex items-center justify-between px-2">
+          <ThemeToggle />
           <LanguageSwitcher />
         </div>
       </nav>
