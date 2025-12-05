@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.0-beta.2] - 2025-12-05
+
+### 🔧 Fixed
+- **DaisyUI 5.x Theme Compatibility** - Proper CSS variables for custom themes using oklch colors
+- **Button Contrast Issues** - WCAG AA compliant hover states for all buttons
+- **Ghost Button Visibility** - Enhanced hover states with proper backgrounds
+- **Theme Toggle Animation** - Smooth transitions between dark and light modes
+
+### ✨ Changed
+- Migrated to CSS-based theme definitions for DaisyUI 5.x compatibility
+- Improved button styling across all variants (ghost, outline, primary, secondary, etc.)
+- Theme now respects system preference on first load
+
+---
+
 ## [2.0.0-beta.1] - 2025-12-05
 
 ### ✨ Added
