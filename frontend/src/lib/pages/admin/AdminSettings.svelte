@@ -373,8 +373,8 @@
           
           <!-- SMTP Presets -->
           <div class="mb-4">
-            <label class="label"><span class="label-text font-medium">Préréglages rapides</span></label>
-            <div class="flex flex-wrap gap-2">
+            <span class="label-text font-medium">Préréglages rapides</span>
+            <div class="flex flex-wrap gap-2 mt-1">
               {#each smtpPresets as preset}
                 <button 
                   class="btn btn-sm btn-outline"
@@ -391,27 +391,25 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="form-control">
-              <label class="label"><span class="label-text">Serveur SMTP</span></label>
-              <input type="text" class="input input-bordered" bind:value={smtpHost} placeholder="smtp.example.com" />
+              <label class="label" for="smtp-host"><span class="label-text">Serveur SMTP</span></label>
+              <input id="smtp-host" type="text" class="input input-bordered" bind:value={smtpHost} placeholder="smtp.example.com" />
             </div>
             <div class="form-control">
-              <label class="label"><span class="label-text">Port</span></label>
-              <input type="number" class="input input-bordered" bind:value={smtpPort} placeholder="587" />
+              <label class="label" for="smtp-port"><span class="label-text">Port</span></label>
+              <input id="smtp-port" type="number" class="input input-bordered" bind:value={smtpPort} placeholder="587" />
             </div>
             <div class="form-control">
-              <label class="label"><span class="label-text">Nom d'utilisateur</span></label>
-              <input type="text" class="input input-bordered" bind:value={smtpUser} placeholder="user@example.com" />
+              <label class="label" for="smtp-user"><span class="label-text">Nom d'utilisateur</span></label>
+              <input id="smtp-user" type="text" class="input input-bordered" bind:value={smtpUser} placeholder="user@example.com" />
             </div>
             <div class="form-control">
-              <label class="label"><span class="label-text">Mot de passe</span></label>
-              <input type="password" class="input input-bordered" bind:value={smtpPassword} placeholder="••••••••" />
+              <label class="label" for="smtp-password"><span class="label-text">Mot de passe</span></label>
+              <input id="smtp-password" type="password" class="input input-bordered" bind:value={smtpPassword} placeholder="••••••••" />
             </div>
             <div class="form-control md:col-span-2">
-              <label class="label"><span class="label-text">Email d'envoi (From)</span></label>
-              <input type="email" class="input input-bordered" bind:value={smtpFromEmail} placeholder="noreply@example.com" />
-              <label class="label">
-                <span class="label-text-alt text-base-content/50">Cet email apparaîtra comme expéditeur</span>
-              </label>
+              <label class="label" for="smtp-from"><span class="label-text">Email d'envoi (From)</span></label>
+              <input id="smtp-from" type="email" class="input input-bordered" bind:value={smtpFromEmail} placeholder="noreply@example.com" />
+              <span class="label-text-alt text-base-content/50 mt-1">Cet email apparaîtra comme expéditeur</span>
             </div>
           </div>
 

@@ -224,9 +224,10 @@
         <div class="flex flex-wrap gap-4 items-end">
           <!-- Search -->
           <div class="form-control flex-1 min-w-[200px]">
-            <label class="label label-text text-xs">Rechercher</label>
+            <label class="label label-text text-xs" for="search-users">Rechercher</label>
             <div class="relative">
               <input 
+                id="search-users"
                 type="text" 
                 class="input input-bordered input-sm w-full pr-8" 
                 placeholder="Email, nom d'utilisateur..."
@@ -249,16 +250,16 @@
           </div>
           
           <div class="form-control">
-            <label class="label label-text text-xs">Rôle</label>
-            <select class="select select-bordered select-sm" bind:value={filterRole} on:change={loadUsers}>
+            <label class="label label-text text-xs" for="filter-role">Rôle</label>
+            <select id="filter-role" class="select select-bordered select-sm" bind:value={filterRole} on:change={loadUsers}>
               <option value="all">Tous</option>
               <option value="admin">Admin</option>
               <option value="user">Utilisateur</option>
             </select>
           </div>
           <div class="form-control">
-            <label class="label label-text text-xs">Statut</label>
-            <select class="select select-bordered select-sm" bind:value={filterActive} on:change={loadUsers}>
+            <label class="label label-text text-xs" for="filter-status">Statut</label>
+            <select id="filter-status" class="select select-bordered select-sm" bind:value={filterActive} on:change={loadUsers}>
               <option value="all">Tous</option>
               <option value="active">Actif</option>
               <option value="inactive">Inactif</option>
@@ -340,6 +341,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                           </svg>
                         </button>
+                        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40">
                           <li><button on:click={() => openEditModal(user)}>Modifier</button></li>
                           {#if user.id !== $authStore.user?.id}
@@ -394,20 +396,20 @@
 
       <form on:submit|preventDefault={handleCreate}>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Email *</span></label>
-          <input type="email" class="input input-bordered" bind:value={formData.email} required />
+          <label class="label" for="create-email"><span class="label-text">Email *</span></label>
+          <input id="create-email" type="email" class="input input-bordered" bind:value={formData.email} required />
         </div>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Nom d'utilisateur *</span></label>
-          <input type="text" class="input input-bordered" bind:value={formData.username} required minlength="3" />
+          <label class="label" for="create-username"><span class="label-text">Nom d'utilisateur *</span></label>
+          <input id="create-username" type="text" class="input input-bordered" bind:value={formData.username} required minlength="3" />
         </div>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Mot de passe *</span></label>
-          <input type="password" class="input input-bordered" bind:value={formData.password} required minlength="8" />
+          <label class="label" for="create-password"><span class="label-text">Mot de passe *</span></label>
+          <input id="create-password" type="password" class="input input-bordered" bind:value={formData.password} required minlength="8" />
         </div>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Rôle</span></label>
-          <select class="select select-bordered" bind:value={formData.role}>
+          <label class="label" for="create-role"><span class="label-text">Rôle</span></label>
+          <select id="create-role" class="select select-bordered" bind:value={formData.role}>
             <option value="user">Utilisateur</option>
             <option value="admin">Admin</option>
           </select>
@@ -434,7 +436,9 @@
         </div>
       </form>
     </div>
-    <div class="modal-backdrop" on:click={() => showCreateModal = false} on:keydown={() => {}}></div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="modal-backdrop" on:click={() => showCreateModal = false}></div>
   </div>
 {/if}
 
@@ -450,20 +454,20 @@
 
       <form on:submit|preventDefault={handleUpdate}>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Email</span></label>
-          <input type="email" class="input input-bordered" bind:value={formData.email} required />
+          <label class="label" for="edit-email"><span class="label-text">Email</span></label>
+          <input id="edit-email" type="email" class="input input-bordered" bind:value={formData.email} required />
         </div>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Nom d'utilisateur</span></label>
-          <input type="text" class="input input-bordered" bind:value={formData.username} required minlength="3" />
+          <label class="label" for="edit-username"><span class="label-text">Nom d'utilisateur</span></label>
+          <input id="edit-username" type="text" class="input input-bordered" bind:value={formData.username} required minlength="3" />
         </div>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Nouveau mot de passe (laisser vide pour ne pas modifier)</span></label>
-          <input type="password" class="input input-bordered" bind:value={formData.password} minlength="8" />
+          <label class="label" for="edit-password"><span class="label-text">Nouveau mot de passe (laisser vide pour ne pas modifier)</span></label>
+          <input id="edit-password" type="password" class="input input-bordered" bind:value={formData.password} minlength="8" />
         </div>
         <div class="form-control mb-3">
-          <label class="label"><span class="label-text">Rôle</span></label>
-          <select class="select select-bordered" bind:value={formData.role} disabled={selectedUser.id === $authStore.user?.id}>
+          <label class="label" for="edit-role"><span class="label-text">Rôle</span></label>
+          <select id="edit-role" class="select select-bordered" bind:value={formData.role} disabled={selectedUser.id === $authStore.user?.id}>
             <option value="user">Utilisateur</option>
             <option value="admin">Admin</option>
           </select>
@@ -490,7 +494,9 @@
         </div>
       </form>
     </div>
-    <div class="modal-backdrop" on:click={() => { showEditModal = false; selectedUser = null; }} on:keydown={() => {}}></div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="modal-backdrop" on:click={() => { showEditModal = false; selectedUser = null; }}></div>
   </div>
 {/if}
 
@@ -511,6 +517,8 @@
         </button>
       </div>
     </div>
-    <div class="modal-backdrop" on:click={() => { showDeleteModal = false; selectedUser = null; }} on:keydown={() => {}}></div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="modal-backdrop" on:click={() => { showDeleteModal = false; selectedUser = null; }}></div>
   </div>
 {/if}

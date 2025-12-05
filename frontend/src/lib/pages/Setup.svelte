@@ -241,38 +241,41 @@
             <p class="text-sm text-base-content/60">Ce compte aura tous les droits d'administration.</p>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Email <span class="text-error">*</span></span></label>
+              <label class="label" for="adminEmailInput"><span class="label-text">Email <span class="text-error">*</span></span></label>
               <input 
+                id="adminEmailInput"
                 type="email" 
                 class="input input-bordered {!emailValid ? 'input-error' : adminEmail ? 'input-success' : ''}" 
                 bind:value={adminEmail}
                 placeholder="admin@example.com"
               />
               {#if adminEmail && !emailValid}
-                <label class="label"><span class="label-text-alt text-error">Adresse email invalide</span></label>
+                <div class="label"><span class="label-text-alt text-error">Adresse email invalide</span></div>
               {/if}
             </div>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Nom d'utilisateur <span class="text-error">*</span></span></label>
+              <label class="label" for="adminUsernameInput"><span class="label-text">Nom d'utilisateur <span class="text-error">*</span></span></label>
               <input 
+                id="adminUsernameInput"
                 type="text" 
                 class="input input-bordered {!usernameValid ? 'input-error' : adminUsername ? 'input-success' : ''}" 
                 bind:value={adminUsername}
                 placeholder="admin"
               />
               {#if adminUsername && !usernameValid}
-                <label class="label"><span class="label-text-alt text-error">3-20 caractères alphanumériques uniquement</span></label>
+                <div class="label"><span class="label-text-alt text-error">3-20 caractères alphanumériques uniquement</span></div>
               {:else}
-                <label class="label"><span class="label-text-alt text-base-content/50">Lettres, chiffres et underscore (_) uniquement</span></label>
+                <div class="label"><span class="label-text-alt text-base-content/50">Lettres, chiffres et underscore (_) uniquement</span></div>
               {/if}
             </div>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Mot de passe <span class="text-error">*</span></span></label>
+              <label class="label" for="adminPasswordInput"><span class="label-text">Mot de passe <span class="text-error">*</span></span></label>
               <div class="relative">
                 {#if showPassword}
                   <input 
+                    id="adminPasswordInput"
                     type="text"
                     class="input input-bordered w-full pr-12" 
                     bind:value={adminPassword}
@@ -280,6 +283,7 @@
                   />
                 {:else}
                   <input 
+                    id="adminPasswordInput"
                     type="password"
                     class="input input-bordered w-full pr-12" 
                     bind:value={adminPassword}
@@ -321,9 +325,10 @@
             </div>
 
             <div class="form-control">
-              <label class="label"><span class="label-text">Confirmer le mot de passe <span class="text-error">*</span></span></label>
+              <label class="label" for="confirmPasswordInput"><span class="label-text">Confirmer le mot de passe <span class="text-error">*</span></span></label>
               {#if showPassword}
                 <input 
+                  id="confirmPasswordInput"
                   type="text"
                   class="input input-bordered {confirmPassword && !passwordsMatch ? 'input-error' : confirmPassword && passwordsMatch ? 'input-success' : ''}" 
                   bind:value={confirmPassword}
@@ -331,6 +336,7 @@
                 />
               {:else}
                 <input 
+                  id="confirmPasswordInput"
                   type="password"
                   class="input input-bordered {confirmPassword && !passwordsMatch ? 'input-error' : confirmPassword && passwordsMatch ? 'input-success' : ''}" 
                   bind:value={confirmPassword}
@@ -338,9 +344,9 @@
                 />
               {/if}
               {#if confirmPassword && !passwordsMatch}
-                <label class="label"><span class="label-text-alt text-error">Les mots de passe ne correspondent pas</span></label>
+                <div class="label"><span class="label-text-alt text-error">Les mots de passe ne correspondent pas</span></div>
               {:else if confirmPassword && passwordsMatch}
-                <label class="label"><span class="label-text-alt text-success">✓ Les mots de passe correspondent</span></label>
+                <div class="label"><span class="label-text-alt text-success">✓ Les mots de passe correspondent</span></div>
               {/if}
             </div>
           </div>
@@ -404,16 +410,17 @@
 
             {#if signupMode === 'institutional'}
               <div class="form-control mt-4 p-4 bg-base-200/50 rounded-lg">
-                <label class="label"><span class="label-text font-medium">Domaines email autorisés <span class="text-error">*</span></span></label>
+                <label class="label" for="allowedDomainsInput"><span class="label-text font-medium">Domaines email autorisés <span class="text-error">*</span></span></label>
                 <input 
+                  id="allowedDomainsInput"
                   type="text" 
                   class="input input-bordered" 
                   bind:value={allowedDomains}
                   placeholder="hospital.org, university.edu"
                 />
-                <label class="label">
+                <div class="label">
                   <span class="label-text-alt text-base-content/60">Séparez plusieurs domaines par des virgules</span>
-                </label>
+                </div>
               </div>
             {/if}
           </div>
@@ -442,26 +449,26 @@
             {#if configureSmtp}
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 animate-in fade-in duration-200">
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Serveur SMTP <span class="text-error">*</span></span></label>
-                  <input type="text" class="input input-bordered" bind:value={smtpHost} placeholder="smtp.gmail.com" />
+                  <label class="label" for="setupSmtpHost"><span class="label-text">Serveur SMTP <span class="text-error">*</span></span></label>
+                  <input id="setupSmtpHost" type="text" class="input input-bordered" bind:value={smtpHost} placeholder="smtp.gmail.com" />
                 </div>
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Port <span class="text-error">*</span></span></label>
-                  <input type="number" class="input input-bordered" bind:value={smtpPort} placeholder="587" />
-                  <label class="label"><span class="label-text-alt text-base-content/50">587 (TLS) ou 465 (SSL)</span></label>
+                  <label class="label" for="setupSmtpPort"><span class="label-text">Port <span class="text-error">*</span></span></label>
+                  <input id="setupSmtpPort" type="number" class="input input-bordered" bind:value={smtpPort} placeholder="587" />
+                  <div class="label"><span class="label-text-alt text-base-content/50">587 (TLS) ou 465 (SSL)</span></div>
                 </div>
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Nom d'utilisateur <span class="text-error">*</span></span></label>
-                  <input type="text" class="input input-bordered" bind:value={smtpUser} placeholder="user@gmail.com" />
+                  <label class="label" for="setupSmtpUser"><span class="label-text">Nom d'utilisateur <span class="text-error">*</span></span></label>
+                  <input id="setupSmtpUser" type="text" class="input input-bordered" bind:value={smtpUser} placeholder="user@gmail.com" />
                 </div>
                 <div class="form-control">
-                  <label class="label"><span class="label-text">Mot de passe <span class="text-error">*</span></span></label>
-                  <input type="password" class="input input-bordered" bind:value={smtpPassword} placeholder="••••••••" />
+                  <label class="label" for="setupSmtpPassword"><span class="label-text">Mot de passe <span class="text-error">*</span></span></label>
+                  <input id="setupSmtpPassword" type="password" class="input input-bordered" bind:value={smtpPassword} placeholder="••••••••" />
                 </div>
                 <div class="form-control md:col-span-2">
-                  <label class="label"><span class="label-text">Email d'envoi <span class="text-error">*</span></span></label>
-                  <input type="email" class="input input-bordered" bind:value={smtpFromEmail} placeholder="noreply@yourapp.com" />
-                  <label class="label"><span class="label-text-alt text-base-content/50">L'adresse qui apparaîtra comme expéditeur</span></label>
+                  <label class="label" for="setupSmtpFromEmail"><span class="label-text">Email d'envoi <span class="text-error">*</span></span></label>
+                  <input id="setupSmtpFromEmail" type="email" class="input input-bordered" bind:value={smtpFromEmail} placeholder="noreply@yourapp.com" />
+                  <div class="label"><span class="label-text-alt text-base-content/50">L'adresse qui apparaîtra comme expéditeur</span></div>
                 </div>
                 <div class="form-control md:col-span-2">
                   <label class="flex items-center gap-3 cursor-pointer p-3 bg-base-100 rounded-lg border border-base-300">

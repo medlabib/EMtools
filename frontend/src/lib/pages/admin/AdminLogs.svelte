@@ -420,6 +420,8 @@
         <button class="btn btn-ghost btn-ghost-contrast" on:click={closeDetailsModal}>Fermer</button>
       </div>
     </div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <form method="dialog" class="modal-backdrop" on:click={closeDetailsModal}>
       <button>close</button>
     </form>

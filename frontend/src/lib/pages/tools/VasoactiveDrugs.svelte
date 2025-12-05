@@ -372,7 +372,9 @@
   .info-section ul {
     list-style: disc;
     list-style-position: inside;
-    space-y: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .info-section li {

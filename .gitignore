@@ -22,7 +22,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
+e2e/
+frontend/e2e/
 # PyInstaller
 *.manifest
 *.spec
