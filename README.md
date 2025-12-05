@@ -1,13 +1,13 @@
 # EMTOOLS 🏥
 
-> **Version Beta 1.0.2** | *Beta 0.1.0 on Docker Hub*
+> **Version 2.0.0-beta.2** | *Emergency Medicine Digital Tools*
 
 **Outils numériques pour la médecine d'urgence**
 
 [![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
-[![Version](https://img.shields.io/badge/Version-Beta%201.0.2-orange)](https://github.com)
+[![Version](https://img.shields.io/badge/Version-2.0.0--beta.2-orange)](https://github.com)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com)
-[![Tests](https://img.shields.io/badge/Tests-323%20passed-brightgreen?logo=vitest)](https://vitest.dev)
+[![Tests](https://img.shields.io/badge/Tests-521%20passed-brightgreen?logo=vitest)](https://vitest.dev)
 [![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
 [![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-39%25-yellow)](https://vitest.dev)
 [![Security](https://img.shields.io/badge/Security-Hardened-blue?logo=shield)](SECURITY.md)
@@ -57,7 +57,67 @@ Application full-stack pour les urgentistes francophones : calculateurs médicau
 - **Admin**: Tableau de bord avec gestion utilisateurs
 - **Docker**: Conteneurisation complète
 
-## 📁 Structure du Projet
+## � Screenshots
+
+### Desktop Views
+
+<table>
+  <tr>
+    <td align="center"><b>🏠 Home</b></td>
+    <td align="center"><b>📊 Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/01-home.png" alt="Home Page" width="400"/></td>
+    <td><img src="screenshots/02-dashboard.png" alt="Dashboard" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>🔐 Login</b></td>
+    <td align="center"><b>📊 Blood Gas Analysis</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/03-login.png" alt="Login Page" width="400"/></td>
+    <td><img src="screenshots/04-bloodgas.png" alt="Blood Gas Analysis" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>💉 Vasoactive Drugs</b></td>
+    <td align="center"><b>🧮 Medical Calculator</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/05-vasoactive.png" alt="Vasoactive Drugs" width="400"/></td>
+    <td><img src="screenshots/06-calculator.png" alt="Medical Calculator" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>🏥 Medical Report</b></td>
+    <td align="center"><b>💊 Sedation Protocols</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/07-medicalreport.png" alt="Medical Report" width="400"/></td>
+    <td><img src="screenshots/08-sedation.png" alt="Sedation Protocols" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>🦠 Antibiotic Guide</b></td>
+    <td align="center"><b>⚗️ Metabolic Corrections</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/09-antibiotics.png" alt="Antibiotic Guide" width="400"/></td>
+    <td><img src="screenshots/10-metabolic.png" alt="Metabolic Corrections" width="400"/></td>
+  </tr>
+</table>
+
+### Mobile Views
+
+<table>
+  <tr>
+    <td align="center"><b>📱 Mobile Home</b></td>
+    <td align="center"><b>📱 Mobile Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/11-mobile-home.png" alt="Mobile Home" width="250"/></td>
+    <td><img src="screenshots/12-mobile-dashboard.png" alt="Mobile Dashboard" width="250"/></td>
+  </tr>
+</table>
+
+## �📁 Structure du Projet
 
 ```
 EMTOOLS/

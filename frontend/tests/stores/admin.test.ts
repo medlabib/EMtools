@@ -169,8 +169,7 @@ describe('Admin Store', () => {
       await fetch('/api/v1/admin/activity-logs?limit=10');
 
       expect(mockFetch).toHaveBeenCalledWith(
-        expect.stringContaining('limit=10'),
-        undefined
+        '/api/v1/admin/activity-logs?limit=10'
       );
     });
   });
