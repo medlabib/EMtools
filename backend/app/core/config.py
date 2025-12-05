@@ -6,7 +6,7 @@ import secrets
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "EMTOOLS"
-    VERSION: str = "1.0.0"
+    VERSION: str = "2.0.0-beta.2"
     API_V1_STR: str = "/api/v1"
     
     # Environment
