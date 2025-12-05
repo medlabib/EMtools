@@ -5,8 +5,9 @@
 **Outils numériques pour la médecine d'urgence**
 
 [![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
-[![Version](https://img.shields.io/badge/Version-2.0.0--beta.2-orange)](https://github.com)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://hub.docker.com)
+[![Version](https://img.shields.io/badge/Version-2.0.0--beta.2-orange)](https://github.com/medlabib/EMtools/releases)
+[![Docker Hub](https://img.shields.io/docker/v/medlabib/emtools-frontend?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/medlabib/emtools-frontend)
+[![Docker Pulls](https://img.shields.io/docker/pulls/medlabib/emtools-frontend?logo=docker)](https://hub.docker.com/r/medlabib/emtools-frontend)
 [![Tests](https://img.shields.io/badge/Tests-521%20passed-brightgreen?logo=vitest)](https://vitest.dev)
 [![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
 [![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-39%25-yellow)](https://vitest.dev)
@@ -18,6 +19,24 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Application full-stack pour les urgentistes francophones : calculateurs médicaux, protocoles de sédation, drogues vasoactives, corrections métaboliques et plus.
+
+## 🐳 Quick Start with Docker
+
+```bash
+# Pull and run with Docker Compose
+git clone https://github.com/medlabib/EMtools.git
+cd EMtools
+docker-compose up -d
+
+# Or pull images directly from Docker Hub
+docker pull medlabib/emtools-frontend:latest
+docker pull medlabib/emtools-backend:latest
+```
+
+**Access the application:**
+- 🌐 Frontend: http://localhost
+- 🔌 Backend API: http://localhost:8000
+- 📚 API Docs: http://localhost:8000/docs
 
 ## 🚀 Fonctionnalités
 
@@ -57,67 +76,31 @@ Application full-stack pour les urgentistes francophones : calculateurs médicau
 - **Admin**: Tableau de bord avec gestion utilisateurs
 - **Docker**: Conteneurisation complète
 
-## � Screenshots
+## 📸 Screenshots
 
 ### Desktop Views
 
-<table>
-  <tr>
-    <td align="center"><b>🏠 Home</b></td>
-    <td align="center"><b>📊 Dashboard</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/01-home.png" alt="Home Page" width="400"/></td>
-    <td><img src="screenshots/02-dashboard.png" alt="Dashboard" width="400"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>🔐 Login</b></td>
-    <td align="center"><b>📊 Blood Gas Analysis</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/03-login.png" alt="Login Page" width="400"/></td>
-    <td><img src="screenshots/04-bloodgas.png" alt="Blood Gas Analysis" width="400"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>💉 Vasoactive Drugs</b></td>
-    <td align="center"><b>🧮 Medical Calculator</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/05-vasoactive.png" alt="Vasoactive Drugs" width="400"/></td>
-    <td><img src="screenshots/06-calculator.png" alt="Medical Calculator" width="400"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>🏥 Medical Report</b></td>
-    <td align="center"><b>💊 Sedation Protocols</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/07-medicalreport.png" alt="Medical Report" width="400"/></td>
-    <td><img src="screenshots/08-sedation.png" alt="Sedation Protocols" width="400"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>🦠 Antibiotic Guide</b></td>
-    <td align="center"><b>⚗️ Metabolic Corrections</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/09-antibiotics.png" alt="Antibiotic Guide" width="400"/></td>
-    <td><img src="screenshots/10-metabolic.png" alt="Metabolic Corrections" width="400"/></td>
-  </tr>
-</table>
+| | |
+|:---:|:---:|
+| **🏠 Home** | **📊 Dashboard** |
+| ![Home Page](screenshots/01-home.png) | ![Dashboard](screenshots/02-dashboard.png) |
+| **🔐 Login** | **📊 Blood Gas Analysis** |
+| ![Login Page](screenshots/03-login.png) | ![Blood Gas Analysis](screenshots/04-bloodgas.png) |
+| **💉 Vasoactive Drugs** | **🧮 Medical Calculator** |
+| ![Vasoactive Drugs](screenshots/05-vasoactive.png) | ![Medical Calculator](screenshots/06-calculator.png) |
+| **🏥 Medical Report** | **💊 Sedation Protocols** |
+| ![Medical Report](screenshots/07-medicalreport.png) | ![Sedation Protocols](screenshots/08-sedation.png) |
+| **🦠 Antibiotic Guide** | **⚗️ Metabolic Corrections** |
+| ![Antibiotic Guide](screenshots/09-antibiotics.png) | ![Metabolic Corrections](screenshots/10-metabolic.png) |
 
 ### Mobile Views
 
-<table>
-  <tr>
-    <td align="center"><b>📱 Mobile Home</b></td>
-    <td align="center"><b>📱 Mobile Dashboard</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/11-mobile-home.png" alt="Mobile Home" width="250"/></td>
-    <td><img src="screenshots/12-mobile-dashboard.png" alt="Mobile Dashboard" width="250"/></td>
-  </tr>
-</table>
+| | |
+|:---:|:---:|
+| **📱 Mobile Home** | **📱 Mobile Dashboard** |
+| ![Mobile Home](screenshots/11-mobile-home.png) | ![Mobile Dashboard](screenshots/12-mobile-dashboard.png) |
 
-## �📁 Structure du Projet
+## 📁 Structure du Projet
 
 ```
 EMTOOLS/
