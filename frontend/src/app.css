@@ -109,6 +109,35 @@
     @apply transform -translate-y-0.5;
   }
   
+  /* Fix btn-ghost visibility on light backgrounds */
+  .btn-ghost {
+    @apply text-base-content;
+  }
+  
+  .btn-ghost:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Fix btn-outline visibility */
+  .btn-outline {
+    @apply text-base-content;
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-outline:hover {
+    @apply bg-base-content text-base-100 border-base-content;
+  }
+  
+  /* Ensure checkbox visibility */
+  .checkbox {
+    @apply bg-base-100;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .checkbox:checked {
+    @apply border-primary bg-primary;
+  }
+  
   /* Link styles */
   a {
     @apply transition-colors duration-200;

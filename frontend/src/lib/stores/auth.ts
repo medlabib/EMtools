@@ -4,8 +4,10 @@ import { api } from '../api';
 export interface User {
   id: string;
   email: string;
+  username: string;
   full_name: string | null;
   is_active: boolean;
+  is_verified: boolean;
   is_superuser: boolean;
   role: 'admin' | 'user';
   created_at: string;
@@ -73,9 +75,10 @@ export async function login(email: string, password: string) {
   return response;
 }
 
-export async function register(email: string, password: string, fullName?: string) {
+export async function register(email: string, username: string, password: string, fullName?: string) {
   const response = await api.post<User>('/auth/register', {
     email,
+    username,
     password,
     full_name: fullName
   });

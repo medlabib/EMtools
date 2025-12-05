@@ -190,10 +190,10 @@
         </p>
         
         <div class="card-actions justify-center mt-4">
-          <button class="btn btn-outline btn-primary" on:click={resetForm}>
+          <button class="btn btn-primary" on:click={resetForm}>
             ➕ Créer un nouveau paste
           </button>
-          <Link to={`/tools/pastebin/view/${createdPaste.paste_id}`} class="btn btn-ghost">
+          <Link to={`/tools/pastebin/view/${createdPaste.paste_id}`} class="btn btn-secondary">
             👁️ Voir le paste
           </Link>
         </div>

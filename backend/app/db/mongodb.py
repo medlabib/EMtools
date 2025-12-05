@@ -3,6 +3,7 @@ from beanie import init_beanie
 from app.core.config import settings
 from app.models.user import User
 from app.models.paste import Paste
+from app.models.settings import AppSettings, ActivityLog, EmailVerificationToken
 
 db_client: AsyncIOMotorClient = None
 
@@ -13,7 +14,7 @@ async def connect_to_mongo():
     
     await init_beanie(
         database=db_client[settings.MONGODB_DB_NAME],
-        document_models=[User, Paste]
+        document_models=[User, Paste, AppSettings, ActivityLog, EmailVerificationToken]
     )
     print(f"Connected to MongoDB: {settings.MONGODB_DB_NAME}")
 

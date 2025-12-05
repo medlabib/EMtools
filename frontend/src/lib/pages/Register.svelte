@@ -5,6 +5,7 @@
   import { onMount } from 'svelte';
   
   let email = '';
+  let username = '';
   let password = '';
   let confirmPassword = '';
   let fullName = '';
@@ -20,6 +21,11 @@
   async function handleSubmit() {
     error = '';
     
+    if (!username || username.length < 3) {
+      error = 'Le nom d\'utilisateur doit contenir au moins 3 caractères';
+      return;
+    }
+    
     if (password !== confirmPassword) {
       error = 'Passwords do not match';
       return;
@@ -28,7 +34,7 @@
     isLoading = true;
     
     try {
-      await register(email, password, fullName || undefined);
+      await register(email, username, password, fullName || undefined);
       navigate('/login');
     } catch (e) {
       error = e instanceof Error ? e.message : $_('auth.registerError');
@@ -76,6 +82,32 @@
               class="input input-bordered w-full pl-10"
               placeholder="Dr. Jean Dupont"
             />
+          </div>
+        </div>
+        
+        <div class="form-control w-full">
+          <label class="label" for="username">
+            <span class="label-text font-medium">Nom d'utilisateur</span>
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-base-content/40">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              id="username"
+              bind:value={username}
+              required
+              minlength="3"
+              disabled={isLoading}
+              class="input input-bordered w-full pl-10"
+              placeholder="jeandupont"
+            />
+          </div>
+          <div class="label">
+            <span class="label-text-alt text-base-content/50">Minimum 3 caractères, sans espaces</span>
           </div>
         </div>
         

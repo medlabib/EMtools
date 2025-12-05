@@ -116,7 +116,7 @@
 <div class="max-w-4xl mx-auto p-4 md:p-8">
   <!-- Header -->
   <div class="flex items-center gap-4 mb-6">
-    <Link to="/tools/pastebin" class="btn btn-ghost btn-sm gap-2">
+    <Link to="/tools/pastebin" class="btn btn-outline btn-sm gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
@@ -201,7 +201,7 @@
             <h2 class="card-title text-xl">{paste.title || 'Sans titre'}</h2>
             <div class="badge badge-primary">{paste.language}</div>
           </div>
-          <button class="btn btn-ghost btn-sm gap-2" on:click={copyContent}>
+          <button class="btn btn-outline btn-sm gap-2" on:click={copyContent}>
             📋 Copier
           </button>
         </div>

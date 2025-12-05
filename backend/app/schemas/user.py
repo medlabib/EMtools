@@ -7,6 +7,7 @@ import re
 
 class UserBase(BaseModel):
     email: EmailStr
+    username: str = Field(..., min_length=3, max_length=50)
     full_name: Optional[str] = Field(None, min_length=2, max_length=100)
 
 
@@ -27,15 +28,18 @@ class UserCreate(UserBase):
 
 class UserUpdate(BaseModel):
     email: Optional[EmailStr] = None
+    username: Optional[str] = Field(None, min_length=3, max_length=50)
     full_name: Optional[str] = None
     password: Optional[str] = None
     is_active: Optional[bool] = None
+    is_verified: Optional[bool] = None
     role: Optional[UserRole] = None
 
 
 class UserResponse(UserBase):
     id: str
     is_active: bool
+    is_verified: bool
     is_superuser: bool
     role: UserRole
     created_at: datetime

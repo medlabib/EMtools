@@ -12,9 +12,11 @@ class UserRole(str, Enum):
 
 class User(Document):
     email: EmailStr = Field(..., unique=True)
+    username: str = Field(..., min_length=3, max_length=50)
     hashed_password: str
     full_name: Optional[str] = None
     is_active: bool = True
+    is_verified: bool = False
     is_superuser: bool = False
     role: UserRole = UserRole.USER
     created_at: datetime = Field(default_factory=datetime.utcnow)
@@ -27,8 +29,10 @@ class User(Document):
         json_schema_extra = {
             "example": {
                 "email": "user@example.com",
+                "username": "johndoe",
                 "full_name": "John Doe",
                 "is_active": True,
+                "is_verified": True,
                 "role": "user"
             }
         }

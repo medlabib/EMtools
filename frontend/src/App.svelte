@@ -6,6 +6,7 @@
   
   import Layout from './lib/components/Layout.svelte';
   import ProtectedRoute from './lib/components/ProtectedRoute.svelte';
+  import AdminProtectedRoute from './lib/components/AdminProtectedRoute.svelte';
   import Home from './lib/pages/Home.svelte';
   import Login from './lib/pages/Login.svelte';
   import Register from './lib/pages/Register.svelte';
@@ -20,6 +21,13 @@
   import BloodGasVentilation from './lib/pages/tools/BloodGasVentilation.svelte';
   import AntibioticGuide from './lib/pages/tools/AntibioticGuide.svelte';
   import NotFound from './lib/pages/NotFound.svelte';
+  
+  // Admin pages
+  import Setup from './lib/pages/Setup.svelte';
+  import AdminDashboard from './lib/pages/admin/AdminDashboard.svelte';
+  import AdminUsers from './lib/pages/admin/AdminUsers.svelte';
+  import AdminSettings from './lib/pages/admin/AdminSettings.svelte';
+  import AdminLogs from './lib/pages/admin/AdminLogs.svelte';
   
   export let url = '';
   
@@ -38,6 +46,7 @@
       <Route path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+      <Route path="/setup" component={Setup} />
       <Route path="/dashboard"><ProtectedRoute component={Tools} /></Route>
       <Route path="/tools/medical-report"><ProtectedRoute component={MedicalReport} /></Route>
       <Route path="/tools/pastebin"><ProtectedRoute component={Pastebin} /></Route>
@@ -48,6 +57,13 @@
       <Route path="/tools/metabolic-disorders"><ProtectedRoute component={MetabolicDisorders} /></Route>
       <Route path="/tools/blood-gas"><ProtectedRoute component={BloodGasVentilation} /></Route>
       <Route path="/tools/antibiotic-guide"><ProtectedRoute component={AntibioticGuide} /></Route>
+      
+      <!-- Admin routes -->
+      <Route path="/admin"><AdminProtectedRoute component={AdminDashboard} /></Route>
+      <Route path="/admin/users"><AdminProtectedRoute component={AdminUsers} /></Route>
+      <Route path="/admin/settings"><AdminProtectedRoute component={AdminSettings} /></Route>
+      <Route path="/admin/logs"><AdminProtectedRoute component={AdminLogs} /></Route>
+      
       <Route path="*" component={NotFound} />
     </Layout>
   </Router>

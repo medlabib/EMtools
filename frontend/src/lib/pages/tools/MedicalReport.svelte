@@ -183,14 +183,19 @@
     const genderSuffix = isFemale ? 'e' : '';
     const nameStr = form.patientName ? ` ${form.patientName}` : '';
     const patientIntro = `${$_('medicalReport.report.intro')} ${isFemale ? $_('medicalReport.report.femalePatient') : $_('medicalReport.report.malePatient')}${nameStr}`;
-    const ageStr = form.age ? `${form.age} ${$_('medicalReport.report.years')}` : `... ${$_('medicalReport.report.years')}`;
+    
+    // For French: "âgé(e) de X ans", for English: "aged X years old"
+    const agedBase = $_('medicalReport.report.agedOf');
+    const agedWithSuffix = $locale === 'fr' ? `${agedBase}${genderSuffix}` : agedBase;
+    const ofAge = $_('medicalReport.report.ofAge');
+    const ageValue = form.age || '...';
+    const ageStr = ofAge ? `${agedWithSuffix} ${ofAge} ${ageValue} ${$_('medicalReport.report.years')}` : `${agedWithSuffix} ${ageValue} ${$_('medicalReport.report.years')}`;
     
     let r = `${patientIntro} ${ageStr} ${$_('medicalReport.report.presentsFor')} ${form.motif || '...'}.\n\n`;
 
-    // Context
-    if (form.isTrauma) {
-      r += `${$_('medicalReport.report.context')}: ${$_('medicalReport.report.traumatic')}\n`;
-      if (form.mecanisme) r += `${$_('medicalReport.report.mechanismOfInjury')}: ${form.mecanisme}\n`;
+    // Context - show mechanism only, without "Contexte: Traumatique" line
+    if (form.isTrauma && form.mecanisme) {
+      r += `${$_('medicalReport.report.mechanismOfInjury')}: ${form.mecanisme}\n`;
     }
     
     r += `\n${$_('medicalReport.report.severityAssessment')}:\n`;
@@ -214,7 +219,7 @@
       r += `, ${form.traumaEmphysema ? $_('medicalReport.report.subcutEmphysemaPresent') : $_('medicalReport.report.subcutEmphysemaAbsent')}`;
     }
     r += '\n';
-    r += `  AP: ${form.auscultation === 'clear' ? $_('medicalReport.report.lungClear') : `${$_('medicalReport.report.ralesPresent')} (${form.auscultationType})`}\n`;
+    r += `  ${$_('medicalReport.report.auscultationLabel')}: ${form.auscultation === 'clear' ? $_('medicalReport.report.lungClear') : `${$_('medicalReport.report.ralesPresent')} (${form.auscultationType})`}\n`;
     r += `  ${$_('medicalReport.report.o2')} = ${form.spo2 || '...'} %\n`;
     
     let bConduites = [];
