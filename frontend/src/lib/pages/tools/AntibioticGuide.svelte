@@ -104,21 +104,21 @@
 
   function getSeverityColor(severity: string): string {
     switch (severity) {
-      case 'major': return 'var(--color-danger)';
-      case 'moderate': return 'var(--color-warning)';
-      case 'minor': return 'var(--color-success)';
-      default: return 'var(--color-text-muted)';
+      case 'major': return 'oklch(var(--er))';
+      case 'moderate': return 'oklch(var(--wa))';
+      case 'minor': return 'oklch(var(--su))';
+      default: return 'oklch(var(--bc) / 0.5)';
     }
   }
 
   function getPregnancyLabel(cat: string): { label: string; color: string } {
     switch (cat) {
-      case 'A': return { label: 'A - Sûr', color: 'var(--color-success)' };
-      case 'B': return { label: 'B - Probablement sûr', color: 'var(--color-success-light)' };
-      case 'C': return { label: 'C - Risque possible', color: 'var(--color-warning)' };
-      case 'D': return { label: 'D - Risque avéré', color: 'var(--color-danger)' };
-      case 'X': return { label: 'X - Contre-indiqué', color: 'var(--color-danger)' };
-      default: return { label: 'Inconnu', color: 'var(--color-text-muted)' };
+      case 'A': return { label: 'A - Sûr', color: 'oklch(var(--su))' };
+      case 'B': return { label: 'B - Probablement sûr', color: 'oklch(var(--su) / 0.8)' };
+      case 'C': return { label: 'C - Risque possible', color: 'oklch(var(--wa))' };
+      case 'D': return { label: 'D - Risque avéré', color: 'oklch(var(--er))' };
+      case 'X': return { label: 'X - Contre-indiqué', color: 'oklch(var(--er))' };
+      default: return { label: 'Inconnu', color: 'oklch(var(--bc) / 0.5)' };
     }
   }
 </script>

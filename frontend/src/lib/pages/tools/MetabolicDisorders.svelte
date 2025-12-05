@@ -829,7 +829,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
-    background: #f8fafc;
+    background: oklch(var(--b2));
     min-height: 100vh;
   }
 
@@ -837,7 +837,7 @@
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    background: white;
+    background: oklch(var(--b1));
     padding: 0.5rem;
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -852,7 +852,7 @@
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -861,12 +861,12 @@
   }
 
   .tab-btn.active {
-    background: #1e293b;
-    color: white;
+    background: oklch(var(--p));
+    color: oklch(var(--pc));
   }
 
   .tab-btn:hover:not(.active) {
-    background: #f1f5f9;
+    background: oklch(var(--b2));
   }
 
   .tab-icon {
@@ -874,7 +874,7 @@
   }
 
   .card {
-    background: white;
+    background: oklch(var(--b1));
     border-radius: 12px;
     padding: 1.25rem;
     margin-bottom: 1rem;
@@ -904,7 +904,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.6);
     margin-bottom: 0.35rem;
   }
 
@@ -914,17 +914,17 @@
 
   input, select {
     padding: 0.5rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid oklch(var(--bc) / 0.2);
     border-radius: 6px;
     font-size: 0.875rem;
-    background: white;
-    color: #1e293b;
+    background: oklch(var(--b1));
+    color: oklch(var(--bc));
   }
 
   input:focus, select:focus {
     outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    border-color: oklch(var(--p));
+    box-shadow: 0 0 0 3px oklch(var(--p) / 0.1);
   }
 
   .tbw-display {
@@ -935,7 +935,7 @@
   .tbw-value {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #6366f1;
+    color: oklch(var(--p));
   }
 
   .toggle-row {
@@ -952,7 +952,7 @@
 
   .toggle-group {
     display: flex;
-    background: white;
+    background: oklch(var(--b1));
     padding: 0.25rem;
     border-radius: 9999px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -966,25 +966,25 @@
     font-weight: 600;
     cursor: pointer;
     background: transparent;
-    color: #94a3b8;
+    color: oklch(var(--bc) / 0.5);
     transition: all 0.2s;
   }
 
   .toggle-btn.active {
-    background: #1e293b;
-    color: white;
+    background: oklch(var(--p));
+    color: oklch(var(--pc));
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .safety-banner {
     padding: 0.75rem;
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
+    background: oklch(var(--su) / 0.1);
+    border: 1px solid oklch(var(--su) / 0.3);
     border-radius: 8px;
     text-align: center;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #047857;
+    color: oklch(var(--su));
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -993,9 +993,9 @@
   }
 
   .safety-banner.warning {
-    background: #fef2f2;
-    border-color: #fecaca;
-    color: #b91c1c;
+    background: oklch(var(--er) / 0.1);
+    border-color: oklch(var(--er) / 0.3);
+    color: oklch(var(--er));
     animation: pulse-warning 2s infinite;
   }
 
@@ -1049,7 +1049,7 @@
     align-items: center;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid oklch(var(--bc) / 0.1);
   }
 
   .day-header h3 {
@@ -1058,13 +1058,14 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: oklch(var(--bc));
   }
 
   .day-badge {
     width: 24px;
     height: 24px;
-    background: #3b82f6;
-    color: white;
+    background: oklch(var(--p));
+    color: oklch(var(--pc));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1073,7 +1074,7 @@
   }
 
   .day-badge.secondary {
-    background: #64748b;
+    background: oklch(var(--bc) / 0.4);
   }
 
   .time-badge {
@@ -1081,9 +1082,9 @@
     font-weight: 700;
     text-transform: uppercase;
     padding: 0.25rem 0.5rem;
-    background: #f1f5f9;
+    background: oklch(var(--b2));
     border-radius: 4px;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.6);
   }
 
   .target-row {
@@ -1101,12 +1102,12 @@
 
   .delta-display {
     font-size: 0.8rem;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.6);
   }
 
   .delta-value {
     font-weight: 700;
-    color: #1e293b;
+    color: oklch(var(--bc));
   }
 
   .arrow {
@@ -1116,17 +1117,17 @@
   .rate {
     font-family: monospace;
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: oklch(var(--bc) / 0.5);
   }
 
   .safety-warning {
-    background: #fef2f2;
-    border: 1px solid #fecaca;
+    background: oklch(var(--er) / 0.1);
+    border: 1px solid oklch(var(--er) / 0.3);
     border-radius: 6px;
     padding: 0.5rem;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #b91c1c;
+    color: oklch(var(--er));
     margin-top: 0.5rem;
   }
 
@@ -1135,7 +1136,7 @@
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.6);
     margin-bottom: 0.5rem;
   }
 
@@ -1150,8 +1151,8 @@
   }
 
   .pump-result {
-    background: #1e293b;
-    color: white;
+    background: oklch(var(--n));
+    color: oklch(var(--nc));
     padding: 1rem;
     border-radius: 8px;
     margin-top: 1rem;
@@ -1162,11 +1163,11 @@
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #94a3b8;
+    color: oklch(var(--nc) / 0.6);
   }
 
   .day2-result {
-    background: #475569;
+    background: oklch(var(--n) / 0.8);
   }
 
   .rates-display {
@@ -1178,18 +1179,18 @@
 
   .rate-box {
     text-align: center;
-    background: rgba(255,255,255,0.05);
+    background: oklch(var(--nc) / 0.05);
     padding: 0.5rem;
     border-radius: 6px;
     flex: 1;
   }
 
   .rate-box.primary .rate-value {
-    color: #60a5fa;
+    color: oklch(var(--in));
   }
 
   .rate-box.secondary .rate-value {
-    color: #34d399;
+    color: oklch(var(--su));
   }
 
   .rate-value {
@@ -1201,37 +1202,37 @@
 
   .rate-label {
     font-size: 0.65rem;
-    color: #94a3b8;
+    color: oklch(var(--nc) / 0.6);
   }
 
   .plus {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.5);
     padding: 0 0.5rem;
   }
 
   .totals-row {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #475569;
+    border-top: 1px solid oklch(var(--nc) / 0.3);
     padding-top: 0.5rem;
     font-size: 0.8rem;
     font-family: monospace;
-    color: #cbd5e1;
+    color: oklch(var(--nc) / 0.8);
   }
 
   .inherited-na {
-    background: #f1f5f9;
+    background: oklch(var(--b2));
     padding: 0.5rem;
     border-radius: 6px;
     font-size: 0.85rem;
     margin-bottom: 1rem;
-    color: #475569;
+    color: oklch(var(--bc) / 0.7);
   }
 
   .inherited-na strong {
-    color: #1e293b;
+    color: oklch(var(--bc));
     margin-left: 0.25rem;
   }
 
@@ -1244,13 +1245,13 @@
   }
 
   .k-input.hyper {
-    border-color: #ef4444;
-    color: #b91c1c;
+    border-color: oklch(var(--er));
+    color: oklch(var(--er));
   }
 
   .k-input.hypo {
-    border-color: #22c55e;
-    color: #15803d;
+    border-color: oklch(var(--su));
+    color: oklch(var(--su));
   }
 
   .severity-badge {
@@ -1265,15 +1266,16 @@
   .deficit-info {
     margin-top: 1rem;
     padding: 0.75rem;
-    background: #fef3c7;
+    background: oklch(var(--wa) / 0.2);
     border-radius: 6px;
     font-size: 0.85rem;
+    color: oklch(var(--bc));
   }
 
   .deficit-info .note {
     display: block;
     font-size: 0.75rem;
-    color: #92400e;
+    color: oklch(var(--wa));
     margin-top: 0.25rem;
   }
 
@@ -1285,31 +1287,31 @@
 
   .ecg-btn, .symptom-btn {
     padding: 0.5rem 0.75rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid oklch(var(--bc) / 0.2);
     border-radius: 9999px;
-    background: #f8fafc;
+    background: oklch(var(--b2));
     font-size: 0.75rem;
     cursor: pointer;
     transition: all 0.2s;
-    color: #475569;
+    color: oklch(var(--bc) / 0.7);
   }
 
   .ecg-btn:hover, .symptom-btn:hover {
-    background: #f1f5f9;
+    background: oklch(var(--b3));
   }
 
   .ecg-btn.selected, .symptom-btn.selected {
-    background: #ef4444;
-    color: white;
-    border-color: #ef4444;
+    background: oklch(var(--er));
+    color: oklch(var(--erc));
+    border-color: oklch(var(--er));
   }
 
   .symptom-btn.severe {
-    border-color: #fca5a5;
+    border-color: oklch(var(--er) / 0.5);
   }
 
   .symptom-btn.severe.selected {
-    background: #b91c1c;
+    background: oklch(var(--er) / 0.8);
   }
 
   .risk-grid {
@@ -1325,6 +1327,7 @@
     gap: 0.5rem;
     cursor: pointer;
     font-size: 0.875rem;
+    color: oklch(var(--bc));
   }
 
   .checkbox-label input {
@@ -1333,8 +1336,8 @@
   }
 
   .warnings-box {
-    background: #fef3c7;
-    border: 1px solid #fcd34d;
+    background: oklch(var(--wa) / 0.15);
+    border: 1px solid oklch(var(--wa) / 0.4);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -1343,7 +1346,7 @@
   .warnings-box p {
     margin: 0 0 0.5rem 0;
     font-size: 0.85rem;
-    color: #92400e;
+    color: oklch(var(--wa));
   }
 
   .warnings-box p:last-child {
@@ -1353,12 +1356,13 @@
   .treatments-card h3 {
     margin: 0 0 1rem 0;
     font-size: 1rem;
+    color: oklch(var(--bc));
   }
 
   .monitoring-badge {
     display: inline-block;
-    background: #dbeafe;
-    color: #1e40af;
+    background: oklch(var(--in) / 0.2);
+    color: oklch(var(--in));
     padding: 0.35rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.75rem;
@@ -1373,20 +1377,21 @@
   }
 
   .treatment-item {
-    border: 1px solid #e2e8f0;
+    border: 1px solid oklch(var(--bc) / 0.15);
     border-radius: 8px;
     padding: 1rem;
     transition: all 0.2s;
+    background: oklch(var(--b1));
   }
 
   .treatment-item.immediate {
-    border-left: 4px solid #ef4444;
-    background: #fef2f2;
+    border-left: 4px solid oklch(var(--er));
+    background: oklch(var(--er) / 0.05);
   }
 
   .treatment-item.urgent {
-    border-left: 4px solid #f59e0b;
-    background: #fffbeb;
+    border-left: 4px solid oklch(var(--wa));
+    background: oklch(var(--wa) / 0.05);
   }
 
   .treatment-header {
@@ -1398,23 +1403,23 @@
 
   .treatment-name {
     font-weight: 700;
-    color: #1e293b;
+    color: oklch(var(--bc));
   }
 
   .treatment-route {
     font-size: 0.7rem;
     font-weight: 600;
     padding: 0.2rem 0.5rem;
-    background: #e2e8f0;
+    background: oklch(var(--bc) / 0.1);
     border-radius: 4px;
-    color: #475569;
+    color: oklch(var(--bc) / 0.7);
   }
 
   .treatment-dose {
     font-family: monospace;
     font-size: 0.9rem;
-    color: #1e293b;
-    background: #f1f5f9;
+    color: oklch(var(--bc));
+    background: oklch(var(--b2));
     padding: 0.5rem;
     border-radius: 4px;
     margin-bottom: 0.5rem;
@@ -1424,28 +1429,28 @@
     display: flex;
     gap: 1rem;
     font-size: 0.75rem;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.6);
     margin-bottom: 0.5rem;
   }
 
   .treatment-indication {
     font-size: 0.8rem;
-    color: #3b82f6;
+    color: oklch(var(--in));
     margin: 0.5rem 0;
     font-style: italic;
   }
 
   .treatment-notes {
     font-size: 0.8rem;
-    color: #475569;
+    color: oklch(var(--bc) / 0.7);
     margin: 0 0 0.5rem 0;
     line-height: 1.4;
   }
 
   .contraindications {
     font-size: 0.75rem;
-    color: #b91c1c;
-    background: #fef2f2;
+    color: oklch(var(--er));
+    background: oklch(var(--er) / 0.1);
     padding: 0.35rem 0.5rem;
     border-radius: 4px;
   }
@@ -1472,27 +1477,27 @@
   .corrected-value {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1e293b;
+    color: oklch(var(--bc));
   }
 
   .corrected-value.hyper {
-    color: #b91c1c;
+    color: oklch(var(--er));
   }
 
   .corrected-value.hypo {
-    color: #1d4ed8;
+    color: oklch(var(--in));
   }
 
   .formula-note {
     margin-top: 0.75rem;
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: oklch(var(--bc) / 0.5);
     font-family: monospace;
     text-align: center;
   }
 
   .references {
-    background: #f8fafc;
+    background: oklch(var(--b2));
     padding: 1rem;
     border-radius: 8px;
     margin-top: 1rem;
@@ -1501,14 +1506,14 @@
   .references h4 {
     margin: 0 0 0.5rem 0;
     font-size: 0.85rem;
-    color: #475569;
+    color: oklch(var(--bc) / 0.7);
   }
 
   .references ul {
     margin: 0;
     padding-left: 1.25rem;
     font-size: 0.75rem;
-    color: #64748b;
+    color: oklch(var(--bc) / 0.6);
     line-height: 1.6;
   }
 
@@ -1516,8 +1521,8 @@
     text-align: center;
     padding: 1.5rem;
     font-size: 0.8rem;
-    color: #64748b;
-    border-top: 1px solid #e2e8f0;
+    color: oklch(var(--bc) / 0.6);
+    border-top: 1px solid oklch(var(--bc) / 0.1);
     margin-top: 2rem;
   }
 
