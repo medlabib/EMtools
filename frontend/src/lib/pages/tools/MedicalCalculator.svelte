@@ -155,16 +155,19 @@
     </div>
 
     <!-- Calculator Grid -->
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {#each filteredCalculators as calc}
-        <button class="card bg-base-100 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all text-left overflow-hidden" on:click={() => selectCalculator(calc)}>
-          <div class="card-body p-4">
-            <div class="flex justify-between items-start gap-2 mb-2 flex-wrap">
-              <span class="badge badge-primary badge-outline">{calc.shortName}</span>
-              <span class="badge badge-ghost text-xs">{categoryLabels[calc.category]}</span>
+        <button 
+          class="card bg-base-100 shadow-md border border-primary/20 hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-left overflow-hidden group" 
+          on:click={() => selectCalculator(calc)}
+        >
+          <div class="card-body p-4 gap-3">
+            <div class="flex justify-between items-start gap-2 flex-wrap">
+              <span class="badge badge-primary text-xs font-bold">{calc.shortName}</span>
+              <span class="badge badge-outline text-xs">{categoryLabels[calc.category]}</span>
             </div>
-            <h3 class="font-semibold text-sm">{calc.name}</h3>
-            <p class="text-xs text-base-content/60">{calc.description}</p>
+            <h3 class="font-semibold text-sm text-base-content group-hover:text-primary transition-colors">{calc.name}</h3>
+            <p class="text-xs text-base-content/70 line-clamp-2">{calc.description}</p>
           </div>
         </button>
       {/each}

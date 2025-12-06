@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { Router, Route } from 'svelte-routing';
+  import { Router, Route, navigate } from 'svelte-routing';
   import { isLoading } from 'svelte-i18n';
   import { authStore, checkAuth } from './lib/stores/auth';
+  import { checkSetupStatus } from './lib/stores/admin';
   import { onMount } from 'svelte';
   
   import Layout from './lib/components/Layout.svelte';
@@ -31,12 +32,26 @@
   
   export let url = '';
   
-  onMount(() => {
+  let setupChecked = false;
+  let needsSetup = false;
+  
+  onMount(async () => {
+    // Check if initial setup is required
+    try {
+      const status = await checkSetupStatus();
+      needsSetup = !status.is_setup_complete;
+      if (needsSetup && !window.location.pathname.startsWith('/setup')) {
+        navigate('/setup', { replace: true });
+      }
+    } catch (e) {
+      // API might be down or setup endpoint doesn't exist, continue normally
+    }
+    setupChecked = true;
     checkAuth();
   });
 </script>
 
-{#if $isLoading}
+{#if $isLoading || !setupChecked}
   <div class="flex justify-center items-center h-screen">
     <span class="loading loading-spinner loading-lg text-primary"></span>
   </div>

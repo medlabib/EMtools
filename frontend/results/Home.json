@@ -1,0 +1,1728 @@
+{
+    "results": [
+        {
+            "ruleId": "style_color_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/link[2]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 6,
+            "reasonId": "Potential_1",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<link href=\"/assets/index-B3T9jAeo.css\" crossorigin=\"\" rel=\"stylesheet\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_color_misuse.html#%7B%22message%22%3A%22Verify%20color%20is%20not%20used%20as%20the%20only%20visual%20means%20of%20conveying%20information%22%2C%22snippet%22%3A%22%3Clink%20href%3D%5C%22%2Fassets%2Findex-B3T9jAeo.css%5C%22%20crossorigin%3D%5C%22%5C%22%20rel%3D%5C%22stylesheet%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_color_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_viewport_resizable",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/link[2]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "Potential_1",
+            "message": "Verify that text sized using viewport units can be resized up to 200%",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<link href=\"/assets/index-B3T9jAeo.css\" crossorigin=\"\" rel=\"stylesheet\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_viewport_resizable.html#%7B%22message%22%3A%22Verify%20that%20text%20sized%20using%20viewport%20units%20can%20be%20resized%20up%20to%20200%25%22%2C%22snippet%22%3A%22%3Clink%20href%3D%5C%22%2Fassets%2Findex-B3T9jAeo.css%5C%22%20crossorigin%3D%5C%22%5C%22%20rel%3D%5C%22stylesheet%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_viewport_resizable%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/banner[1]/link[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 24px and weight of 700",
+            "messageArgs": [
+                "1.00",
+                24,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 79,
+                "top": 16,
+                "height": 32,
+                "width": 112
+            },
+            "snippet": "<span class=\"text-xl md:text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:from-secondary group-hover:to-primary transition-all duration-500\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2024px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22text-xl%20md%3Atext-2xl%20font-bold%20bg-gradient-to-r%20from-primary%20via-secondary%20to-accent%20bg-clip-text%20text-transparent%20group-hover%3Afrom-secondary%20group-hover%3Ato-primary%20transition-all%20duration-500%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C24%2C700%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/a[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/link[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 437,
+                "top": 16,
+                "height": 32,
+                "width": 73
+            },
+            "snippet": "<a class=\"btn btn-ghost btn-ghost-contrast btn-sm gap-2 hover:bg-primary/10 hover:text-primary\" href=\"/login\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-ghost%20btn-ghost-contrast%20btn-sm%20gap-2%20hover%3Abg-primary%2F10%20hover%3Atext-primary%5C%22%20href%3D%5C%22%2Flogin%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/a[1]/svg[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/link[1]/graphics-document[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 450,
+                "top": 24,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg stroke=\"currentColor\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20stroke%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20fill%3D%5C%22none%5C%22%20class%3D%5C%22h-4%20w-4%5C%22%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/a[2]",
+                "aria": "/document[1]/banner[1]/navigation[1]/link[2]"
+            },
+            "ruleTime": 3,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 521,
+                "top": 16,
+                "height": 32,
+                "width": 87
+            },
+            "snippet": "<a class=\"btn btn-primary btn-sm gap-2 shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all\" href=\"/register\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-primary%20btn-sm%20gap-2%20shadow-md%20shadow-primary%2F25%20hover%3Ashadow-lg%20hover%3Ashadow-primary%2F30%20hover%3A-translate-y-0.5%20transition-all%5C%22%20href%3D%5C%22%2Fregister%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/a[2]",
+                "aria": "/document[1]/banner[1]/navigation[1]/link[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_text_shadow",
+            "message": "Verify the contrast ratio of the text with shadow meets the WCAG AA minimum requirements for text of size 12px and weight of 500",
+            "messageArgs": [
+                "1.00",
+                12,
+                500
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 521,
+                "top": 16,
+                "height": 32,
+                "width": 87
+            },
+            "snippet": "<a class=\"btn btn-primary btn-sm gap-2 shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all\" href=\"/register\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20with%20shadow%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012px%20and%20weight%20of%20500%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-primary%20btn-sm%20gap-2%20shadow-md%20shadow-primary%2F25%20hover%3Ashadow-lg%20hover%3Ashadow-primary%2F30%20hover%3A-translate-y-0.5%20transition-all%5C%22%20href%3D%5C%22%2Fregister%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_text_shadow%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C12%2C500%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/a[2]/svg[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/link[2]/graphics-document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 534,
+                "top": 24,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg stroke=\"currentColor\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20stroke%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20fill%3D%5C%22none%5C%22%20class%3D%5C%22h-4%20w-4%5C%22%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/button[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 640,
+                "top": 16,
+                "height": 32,
+                "width": 64
+            },
+            "snippet": "<button title=\"Mode sombre\" aria-label=\"Switch to dark mode\" class=\"theme-toggle svelte-19t8nz5\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20title%3D%5C%22Mode%20sombre%5C%22%20aria-label%3D%5C%22Switch%20to%20dark%20mode%5C%22%20class%3D%5C%22theme-toggle%20svelte-19t8nz5%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/div[2]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[2]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 716,
+                "top": 16,
+                "height": 32,
+                "width": 61
+            },
+            "snippet": "<div class=\"btn btn-ghost btn-ghost-contrast btn-sm gap-1\" role=\"button\" tabindex=\"0\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22btn%20btn-ghost%20btn-ghost-contrast%20btn-sm%20gap-1%5C%22%20role%3D%5C%22button%5C%22%20tabindex%3D%5C%220%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/div[2]/div[1]/svg[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 747,
+                "top": 24,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg stroke=\"currentColor\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20stroke%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20fill%3D%5C%22none%5C%22%20class%3D%5C%22h-4%20w-4%5C%22%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/h1[1]/span[1]",
+                "aria": "/document[1]/main[1]/heading[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 72px and weight of 700",
+            "messageArgs": [
+                "1.00",
+                72,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 234,
+                "top": 139,
+                "height": 96,
+                "width": 334
+            },
+            "snippet": "<span class=\"bg-gradient-to-r from-primary via-error to-warning bg-clip-text text-transparent\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2072px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22bg-gradient-to-r%20from-primary%20via-error%20to-warning%20bg-clip-text%20text-transparent%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C72%2C700%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/p[1]",
+                "aria": "/document[1]/main[1]/paragraph[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text 'Outils numériques pour la médecine d'urgence' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "Outils numériques pour la médecine d'urgence"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 64,
+                "top": 239,
+                "height": 32,
+                "width": 672
+            },
+            "snippet": "<p style=\"animation-delay: 300ms;\" class=\"text-xl md:text-2xl text-base-content/70 mb-4 animate-fade-in\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'Outils%20num%C3%A9riques%20pour%20la%20m%C3%A9decine%20d'urgence'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cp%20style%3D%5C%22animation-delay%3A%20300ms%3B%5C%22%20class%3D%5C%22text-xl%20md%3Atext-2xl%20text-base-content%2F70%20mb-4%20animate-fade-in%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22Outils%20num%C3%A9riques%20pour%20la%20m%C3%A9decine%20d'urgence%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/link[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 178,
+                "top": 378,
+                "height": 48,
+                "width": 255
+            },
+            "snippet": "<a class=\"btn btn-primary btn-lg gap-2 shadow-lg shadow-primary/30 hover:-translate-y-1 transition-transform\" href=\"/register\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-primary%20btn-lg%20gap-2%20shadow-lg%20shadow-primary%2F30%20hover%3A-translate-y-1%20transition-transform%5C%22%20href%3D%5C%22%2Fregister%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/link[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 16px and weight of 500",
+            "messageArgs": [
+                "1.00",
+                16,
+                500
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 178,
+                "top": 378,
+                "height": 48,
+                "width": 255
+            },
+            "snippet": "<a class=\"btn btn-primary btn-lg gap-2 shadow-lg shadow-primary/30 hover:-translate-y-1 transition-transform\" href=\"/register\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2016px%20and%20weight%20of%20500%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-primary%20btn-lg%20gap-2%20shadow-lg%20shadow-primary%2F30%20hover%3A-translate-y-1%20transition-transform%5C%22%20href%3D%5C%22%2Fregister%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C16%2C500%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[2]/a[2]",
+                "aria": "/document[1]/main[1]/link[2]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 449,
+                "top": 378,
+                "height": 48,
+                "width": 174
+            },
+            "snippet": "<a class=\"btn btn-outline btn-lg gap-2 hover:-translate-y-1 transition-all\" href=\"/login\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-outline%20btn-lg%20gap-2%20hover%3A-translate-y-1%20transition-all%5C%22%20href%3D%5C%22%2Flogin%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[3]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '8' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "8"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 207,
+                "top": 475,
+                "height": 98,
+                "width": 129
+            },
+            "snippet": "<div class=\"stat place-items-center\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'8'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat%20place-items-center%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%228%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[3]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '8' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "8"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 262,
+                "top": 491,
+                "height": 48,
+                "width": 20
+            },
+            "snippet": "<div class=\"stat-value text-primary\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'8'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-primary%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%228%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[3]/div[2]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '41+' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "41+"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 336,
+                "top": 475,
+                "height": 98,
+                "width": 137
+            },
+            "snippet": "<div class=\"stat place-items-center\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'41%2B'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat%20place-items-center%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%2241%2B%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[3]/div[2]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '41+' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "41+"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 375,
+                "top": 491,
+                "height": 48,
+                "width": 59
+            },
+            "snippet": "<div class=\"stat-value text-primary\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'41%2B'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-primary%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%2241%2B%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[3]/div[3]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '24/7' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "24/7"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 472,
+                "top": 475,
+                "height": 98,
+                "width": 122
+            },
+            "snippet": "<div class=\"stat place-items-center\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'24%2F7'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat%20place-items-center%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%2224%2F7%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[4]/div[1]/div[3]/div[3]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '24/7' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "24/7"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 496,
+                "top": 491,
+                "height": 48,
+                "width": 74
+            },
+            "snippet": "<div class=\"stat-value text-primary\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'24%2F7'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-primary%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%2224%2F7%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]/main[1]/paragraph[3]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text 'Une suite complète d'applications conçues pour le quotidien aux urgences' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "Une suite complète d'applications conçues pour le quotidien aux urgences"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 740,
+                "height": 28,
+                "width": 736
+            },
+            "snippet": "<p class=\"text-base-content/60 text-lg\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'Une%20suite%20compl%C3%A8te%20d'applications%20con%C3%A7ues%20pour%20le%20quotidien%20aux%20urgences'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cp%20class%3D%5C%22text-base-content%2F60%20text-lg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22Une%20suite%20compl%C3%A8te%20d'applications%20con%C3%A7ues%20pour%20le%20quotidien%20aux%20urgences%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🏥' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🏥"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 816,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%8F%A5'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%8F%A5%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🏥' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🏥"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 48,
+                "top": 832,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%8F%A5'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%8F%A5%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[2]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📋' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📋"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 412,
+                "top": 816,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%8B'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%8B%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[2]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📋' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📋"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 428,
+                "top": 832,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%8B'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%8B%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[3]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🧮' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🧮"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 996,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%A7%AE'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%A7%AE%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[3]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🧮' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🧮"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 48,
+                "top": 1012,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%A7%AE'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%A7%AE%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[4]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '💉' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "💉"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 412,
+                "top": 996,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%92%89'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%92%89%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[4]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '💉' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "💉"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 428,
+                "top": 1012,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%92%89'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%92%89%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[5]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '💊' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "💊"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 1176,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%92%8A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%92%8A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[5]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '💊' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "💊"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 48,
+                "top": 1192,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%92%8A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%92%8A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[6]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '⚗️' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "⚗️"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 412,
+                "top": 1176,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%E2%9A%97%EF%B8%8F'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%E2%9A%97%EF%B8%8F%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[6]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '⚗️' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "⚗️"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 428,
+                "top": 1192,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%E2%9A%97%EF%B8%8F'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%E2%9A%97%EF%B8%8F%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[7]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📊' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📊"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 1356,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%8A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%8A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[7]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📊' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📊"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 48,
+                "top": 1372,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%8A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%8A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[8]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🦠' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🦠"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 412,
+                "top": 1356,
+                "height": 156,
+                "width": 356
+            },
+            "snippet": "<div class=\"card-body p-4\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%A6%A0'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22card-body%20p-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%A6%A0%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[2]/div[1]/div[2]/div[8]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🦠' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🦠"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 428,
+                "top": 1372,
+                "height": 36,
+                "width": 324
+            },
+            "snippet": "<div class=\"text-3xl mb-2 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%A6%A0'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-2%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%A6%A0%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]/main[1]/paragraph[12]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text 'Conçu pour les situations d'urgence' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "Conçu pour les situations d'urgence"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 1728,
+                "height": 28,
+                "width": 736
+            },
+            "snippet": "<p class=\"text-base-content/60 text-lg\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'Con%C3%A7u%20pour%20les%20situations%20d'urgence'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cp%20class%3D%5C%22text-base-content%2F60%20text-lg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22Con%C3%A7u%20pour%20les%20situations%20d'urgence%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📱' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📱"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 1804,
+                "height": 217,
+                "width": 166
+            },
+            "snippet": "<div style=\"animation: 0.4s ease-out 0s 1 normal both running fadeInUp;\" class=\"text-center p-6 rounded-2xl bg-base-100/50 hover:bg-base-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%B1'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20style%3D%5C%22animation%3A%200.4s%20ease-out%200s%201%20normal%20both%20running%20fadeInUp%3B%5C%22%20class%3D%5C%22text-center%20p-6%20rounded-2xl%20bg-base-100%2F50%20hover%3Abg-base-100%20hover%3Ashadow-lg%20transition-all%20duration-300%20hover%3A-translate-y-1%20group%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%B1%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📱' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📱"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 56,
+                "top": 1828,
+                "height": 36,
+                "width": 118
+            },
+            "snippet": "<div class=\"text-3xl mb-3 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%B1'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-3%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%B1%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[2]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🔒' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🔒"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 222,
+                "top": 1804,
+                "height": 217,
+                "width": 166
+            },
+            "snippet": "<div style=\"animation: 0.4s ease-out 0.1s 1 normal both running fadeInUp;\" class=\"text-center p-6 rounded-2xl bg-base-100/50 hover:bg-base-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%94%92'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20style%3D%5C%22animation%3A%200.4s%20ease-out%200.1s%201%20normal%20both%20running%20fadeInUp%3B%5C%22%20class%3D%5C%22text-center%20p-6%20rounded-2xl%20bg-base-100%2F50%20hover%3Abg-base-100%20hover%3Ashadow-lg%20transition-all%20duration-300%20hover%3A-translate-y-1%20group%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%94%92%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[2]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🔒' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🔒"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 246,
+                "top": 1828,
+                "height": 36,
+                "width": 118
+            },
+            "snippet": "<div class=\"text-3xl mb-3 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%94%92'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-3%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%94%92%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[3]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📚' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📚"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 412,
+                "top": 1804,
+                "height": 217,
+                "width": 166
+            },
+            "snippet": "<div style=\"animation: 0.4s ease-out 0.2s 1 normal both running fadeInUp;\" class=\"text-center p-6 rounded-2xl bg-base-100/50 hover:bg-base-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%9A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20style%3D%5C%22animation%3A%200.4s%20ease-out%200.2s%201%20normal%20both%20running%20fadeInUp%3B%5C%22%20class%3D%5C%22text-center%20p-6%20rounded-2xl%20bg-base-100%2F50%20hover%3Abg-base-100%20hover%3Ashadow-lg%20transition-all%20duration-300%20hover%3A-translate-y-1%20group%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%9A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[3]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📚' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📚"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 436,
+                "top": 1828,
+                "height": 36,
+                "width": 118
+            },
+            "snippet": "<div class=\"text-3xl mb-3 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%9A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-3%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%9A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[4]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🇫🇷' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🇫🇷"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 602,
+                "top": 1804,
+                "height": 217,
+                "width": 166
+            },
+            "snippet": "<div style=\"animation: 0.4s ease-out 0.3s 1 normal both running fadeInUp;\" class=\"text-center p-6 rounded-2xl bg-base-100/50 hover:bg-base-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%87%AB%F0%9F%87%B7'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20style%3D%5C%22animation%3A%200.4s%20ease-out%200.3s%201%20normal%20both%20running%20fadeInUp%3B%5C%22%20class%3D%5C%22text-center%20p-6%20rounded-2xl%20bg-base-100%2F50%20hover%3Abg-base-100%20hover%3Ashadow-lg%20transition-all%20duration-300%20hover%3A-translate-y-1%20group%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%87%AB%F0%9F%87%B7%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[3]/div[1]/div[2]/div[4]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '🇫🇷' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "🇫🇷"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 626,
+                "top": 1828,
+                "height": 36,
+                "width": 118
+            },
+            "snippet": "<div class=\"text-3xl mb-3 group-hover:scale-110 transition-transform duration-300\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%87%AB%F0%9F%87%B7'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%20mb-3%20group-hover%3Ascale-110%20transition-transform%20duration-300%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%87%AB%F0%9F%87%B7%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[4]/div[2]/p[1]",
+                "aria": "/document[1]/main[1]/paragraph[17]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text 'Rejoignez les professionnels de santé qui utilisent EMTOOLS' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "Rejoignez les professionnels de santé qui utilisent EMTOOLS"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 64,
+                "top": 2237,
+                "height": 28,
+                "width": 672
+            },
+            "snippet": "<p class=\"text-base-content/70 text-lg mb-8\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'Rejoignez%20les%20professionnels%20de%20sant%C3%A9%20qui%20utilisent%20EMTOOLS'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cp%20class%3D%5C%22text-base-content%2F70%20text-lg%20mb-8%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22Rejoignez%20les%20professionnels%20de%20sant%C3%A9%20qui%20utilisent%20EMTOOLS%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[4]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/link[3]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 274,
+                "top": 2297,
+                "height": 48,
+                "width": 253
+            },
+            "snippet": "<a class=\"btn btn-primary btn-lg gap-2 shadow-lg shadow-primary/30 hover:-translate-y-1 transition-transform\" href=\"/register\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-primary%20btn-lg%20gap-2%20shadow-lg%20shadow-primary%2F30%20hover%3A-translate-y-1%20transition-transform%5C%22%20href%3D%5C%22%2Fregister%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[4]/div[2]/a[1]",
+                "aria": "/document[1]/main[1]/link[3]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 16px and weight of 500",
+            "messageArgs": [
+                "1.10",
+                16,
+                500
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 274,
+                "top": 2297,
+                "height": 48,
+                "width": 253
+            },
+            "snippet": "<a class=\"btn btn-primary btn-lg gap-2 shadow-lg shadow-primary/30 hover:-translate-y-1 transition-transform\" href=\"/register\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2016px%20and%20weight%20of%20500%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-primary%20btn-lg%20gap-2%20shadow-lg%20shadow-primary%2F30%20hover%3A-translate-y-1%20transition-transform%5C%22%20href%3D%5C%22%2Fregister%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.10%22%2C16%2C500%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[4]/div[2]/a[1]/svg[1]",
+                "aria": "/document[1]/main[1]/link[3]/graphics-document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 478,
+                "top": 2311,
+                "height": 20,
+                "width": 20
+            },
+            "snippet": "<svg stroke=\"currentColor\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"h-5 w-5\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20stroke%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20fill%3D%5C%22none%5C%22%20class%3D%5C%22h-5%20w-5%5C%22%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/p[2]",
+                "aria": "/document[1]/main[1]/paragraph[19]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.76 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "messageArgs": [
+                "3.76",
+                14,
+                400,
+                "#ef4444",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 16,
+                "top": 2490,
+                "height": 20,
+                "width": 768
+            },
+            "snippet": "<p class=\"text-error text-sm\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.76%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2014px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cp%20class%3D%5C%22text-error%20text-sm%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.76%22%2C14%2C400%2C%22%23ef4444%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/contentinfo[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 16px and weight of 600",
+            "messageArgs": [
+                "1.00",
+                16,
+                600
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 16,
+                "top": 2567,
+                "height": 24,
+                "width": 72
+            },
+            "snippet": "<span class=\"font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2016px%20and%20weight%20of%20600%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22font-semibold%20bg-gradient-to-r%20from-primary%20to-secondary%20bg-clip-text%20text-transparent%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C16%2C600%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 562,
+                "top": 2567,
+                "height": 24,
+                "width": 103
+            },
+            "snippet": "<a aria-label=\"Docker Hub\" class=\"btn btn-ghost btn-xs gap-1 text-base-content/60 hover:text-primary\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://hub.docker.com/r/medlabib/emtools-frontend\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20aria-label%3D%5C%22Docker%20Hub%5C%22%20class%3D%5C%22btn%20btn-ghost%20btn-xs%20gap-1%20text-base-content%2F60%20hover%3Atext-primary%5C%22%20rel%3D%5C%22noopener%20noreferrer%5C%22%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22https%3A%2F%2Fhub.docker.com%2Fr%2Fmedlabib%2Femtools-frontend%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[1]/svg[1]",
+                "aria": "/document[1]/contentinfo[1]/link[1]/graphics-document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 583,
+                "top": 2571,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg fill=\"currentColor\" viewBox=\"0 0 24 24\" class=\"w-4 h-4\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20fill%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20class%3D%5C%22w-4%20h-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[2]",
+                "aria": "/document[1]/contentinfo[1]/link[2]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 681,
+                "top": 2567,
+                "height": 24,
+                "width": 104
+            },
+            "snippet": "<a aria-label=\"GitHub\" class=\"btn btn-ghost btn-xs gap-1 text-base-content/60 hover:text-primary\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://github.com/medlabib/EMtools\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20aria-label%3D%5C%22GitHub%5C%22%20class%3D%5C%22btn%20btn-ghost%20btn-xs%20gap-1%20text-base-content%2F60%20hover%3Atext-primary%5C%22%20rel%3D%5C%22noopener%20noreferrer%5C%22%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22https%3A%2F%2Fgithub.com%2Fmedlabib%2FEMtools%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[2]/svg[1]",
+                "aria": "/document[1]/contentinfo[1]/link[2]/graphics-document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 702,
+                "top": 2571,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg fill=\"currentColor\" viewBox=\"0 0 24 24\" class=\"w-4 h-4\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20fill%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20class%3D%5C%22w-4%20h-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        }
+    ],
+    "numExecuted": 1002,
+    "ruleTime": 61,
+    "nls": {
+        "style_color_misuse": {
+            "0": "Combine color and descriptive markup to convey information",
+            "Potential_1": "Verify color is not used as the only visual means of conveying information"
+        },
+        "style_viewport_resizable": {
+            "0": "Text must scale up to 200% without loss of content or functionality",
+            "Potential_1": "Verify that text sized using viewport units can be resized up to 200%"
+        },
+        "style_focus_visible": {
+            "0": "The keyboard focus indicator should be visible when default border or outline is modified by CSS",
+            "potential_focus_not_visible": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+        },
+        "text_contrast_sufficient": {
+            "0": "The contrast ratio of text with its background must meet WCAG AA requirements",
+            "potential_graphic_background": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size {1}px and weight of {2}",
+            "potential_text_shadow": "Verify the contrast ratio of the text with shadow meets the WCAG AA minimum requirements for text of size {1}px and weight of {2}",
+            "fail_contrast": "Text contrast of {0} with its background is less than the WCAG AA minimum requirements for text of size {1}px and weight of {2}"
+        },
+        "svg_graphics_labelled": {
+            "0": "A non-decorative SVG element must have an accessible name",
+            "fail_acc_name": "The SVG element has no accessible name"
+        },
+        "text_block_heading": {
+            "0": "Heading text should use a heading element or role",
+            "potential_heading": "Confirm this text '{0}' is used as a heading and if so, modify to use a heading element or role"
+        }
+    },
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 58,
+            "elementsViolation": 7,
+            "elementsViolationReview": 58,
+            "violation": 7,
+            "potentialviolation": 51,
+            "recommendation": 0,
+            "potentialrecommendation": 2,
+            "manual": 8,
+            "pass": 934
+        },
+        "scanTime": 277,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation"
+        ],
+        "startScan": 1765045465250,
+        "URL": "http://localhost/"
+    },
+    "scanID": "81f68c6f-b305-456e-844e-17872d4c24f3",
+    "toolID": "accessibility-checker-v4.0.9",
+    "label": "Home"
+}

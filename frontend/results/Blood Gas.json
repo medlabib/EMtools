@@ -1,0 +1,2340 @@
+{
+    "results": [
+        {
+            "ruleId": "style_color_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/link[2]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 6,
+            "reasonId": "Potential_1",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<link href=\"/assets/index-B3T9jAeo.css\" crossorigin=\"\" rel=\"stylesheet\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_color_misuse.html#%7B%22message%22%3A%22Verify%20color%20is%20not%20used%20as%20the%20only%20visual%20means%20of%20conveying%20information%22%2C%22snippet%22%3A%22%3Clink%20href%3D%5C%22%2Fassets%2Findex-B3T9jAeo.css%5C%22%20crossorigin%3D%5C%22%5C%22%20rel%3D%5C%22stylesheet%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_color_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_viewport_resizable",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/link[2]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "Potential_1",
+            "message": "Verify that text sized using viewport units can be resized up to 200%",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<link href=\"/assets/index-B3T9jAeo.css\" crossorigin=\"\" rel=\"stylesheet\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_viewport_resizable.html#%7B%22message%22%3A%22Verify%20that%20text%20sized%20using%20viewport%20units%20can%20be%20resized%20up%20to%20200%25%22%2C%22snippet%22%3A%22%3Clink%20href%3D%5C%22%2Fassets%2Findex-B3T9jAeo.css%5C%22%20crossorigin%3D%5C%22%5C%22%20rel%3D%5C%22stylesheet%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_viewport_resizable%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]",
+                "aria": "/document[1]/banner[1]/link[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 24px and weight of 700",
+            "messageArgs": [
+                "1.00",
+                24,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 79,
+                "top": 16,
+                "height": 32,
+                "width": 112
+            },
+            "snippet": "<span class=\"text-xl md:text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:from-secondary group-hover:to-primary transition-all duration-500\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2024px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22text-xl%20md%3Atext-2xl%20font-bold%20bg-gradient-to-r%20from-primary%20via-secondary%20to-accent%20bg-clip-text%20text-transparent%20group-hover%3Afrom-secondary%20group-hover%3Ato-primary%20transition-all%20duration-500%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C24%2C700%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/a[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/link[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 311,
+                "top": 16,
+                "height": 32,
+                "width": 71
+            },
+            "snippet": "<a class=\"btn btn-ghost btn-ghost-contrast btn-sm gap-2 hover:bg-primary/10 hover:text-primary transition-colors\" href=\"/dashboard\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20class%3D%5C%22btn%20btn-ghost%20btn-ghost-contrast%20btn-sm%20gap-2%20hover%3Abg-primary%2F10%20hover%3Atext-primary%20transition-colors%5C%22%20href%3D%5C%22%2Fdashboard%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/a[1]/svg[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/link[1]/graphics-document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 324,
+                "top": 24,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg stroke=\"currentColor\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20stroke%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20fill%3D%5C%22none%5C%22%20class%3D%5C%22h-4%20w-4%5C%22%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text 'A' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "A"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 393,
+                "top": 14,
+                "height": 36,
+                "width": 161
+            },
+            "snippet": "<div class=\"flex items-center gap-2 px-3 py-1.5 rounded-full bg-base-200/80 text-sm\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22flex%20items-center%20gap-2%20px-3%20py-1.5%20rounded-full%20bg-base-200%2F80%20text-sm%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text 'A' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "A"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 405,
+                "top": 20,
+                "height": 24,
+                "width": 24
+            },
+            "snippet": "<div class=\"w-6 h-6 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-xs text-white font-bold\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22w-6%20h-6%20rounded-full%20bg-gradient-to-br%20from-primary%20to-secondary%20flex%20items-center%20justify-center%20text-xs%20text-white%20font-bold%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/div[1]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 12px and weight of 700",
+            "messageArgs": [
+                "3.68",
+                12,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 405,
+                "top": 20,
+                "height": 24,
+                "width": 24
+            },
+            "snippet": "<div class=\"w-6 h-6 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-xs text-white font-bold\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22w-6%20h-6%20rounded-full%20bg-gradient-to-br%20from-primary%20to-secondary%20flex%20items-center%20justify-center%20text-xs%20text-white%20font-bold%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.68%22%2C12%2C700%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/button[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 565,
+                "top": 16,
+                "height": 32,
+                "width": 42
+            },
+            "snippet": "<button aria-label=\"Log out of your account\" class=\"btn btn-ghost btn-ghost-contrast btn-sm text-base-content/60 hover:text-error hover:bg-error/10\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20aria-label%3D%5C%22Log%20out%20of%20your%20account%5C%22%20class%3D%5C%22btn%20btn-ghost%20btn-ghost-contrast%20btn-sm%20text-base-content%2F60%20hover%3Atext-error%20hover%3Abg-error%2F10%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "input_label_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/button[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_no_label",
+            "message": "The input element does not have an associated visible label",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 565,
+                "top": 16,
+                "height": 32,
+                "width": 42
+            },
+            "snippet": "<button aria-label=\"Log out of your account\" class=\"btn btn-ghost btn-ghost-contrast btn-sm text-base-content/60 hover:text-error hover:bg-error/10\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/input_label_visible.html#%7B%22message%22%3A%22The%20input%20element%20does%20not%20have%20an%20associated%20visible%20label%22%2C%22snippet%22%3A%22%3Cbutton%20aria-label%3D%5C%22Log%20out%20of%20your%20account%5C%22%20class%3D%5C%22btn%20btn-ghost%20btn-ghost-contrast%20btn-sm%20text-base-content%2F60%20hover%3Atext-error%20hover%3Abg-error%2F10%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_no_label%22%2C%22ruleId%22%3A%22input_label_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/button[2]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[2]"
+            },
+            "ruleTime": 3,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 640,
+                "top": 16,
+                "height": 32,
+                "width": 64
+            },
+            "snippet": "<button title=\"Mode sombre\" aria-label=\"Switch to dark mode\" class=\"theme-toggle svelte-19t8nz5\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20title%3D%5C%22Mode%20sombre%5C%22%20aria-label%3D%5C%22Switch%20to%20dark%20mode%5C%22%20class%3D%5C%22theme-toggle%20svelte-19t8nz5%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/div[3]/div[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[3]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 716,
+                "top": 16,
+                "height": 32,
+                "width": 61
+            },
+            "snippet": "<div class=\"btn btn-ghost btn-ghost-contrast btn-sm gap-1\" role=\"button\" tabindex=\"0\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22btn%20btn-ghost%20btn-ghost-contrast%20btn-sm%20gap-1%5C%22%20role%3D%5C%22button%5C%22%20tabindex%3D%5C%220%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/header[1]/nav[1]/div[3]/div[1]/svg[1]",
+                "aria": "/document[1]/banner[1]/navigation[1]/button[3]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 747,
+                "top": 24,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg stroke=\"currentColor\" viewBox=\"0 0 24 24\" fill=\"none\" class=\"h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20stroke%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20fill%3D%5C%22none%5C%22%20class%3D%5C%22h-4%20w-4%5C%22%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_main_label_unique",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Multiple elements with \"main\" role do not have unique labels",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 64,
+                "height": 1958,
+                "width": 800
+            },
+            "snippet": "<main class=\"flex-1\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/aria_main_label_unique.html#%7B%22message%22%3A%22Multiple%20elements%20with%20%5C%22main%5C%22%20role%20do%20not%20have%20unique%20labels%22%2C%22snippet%22%3A%22%3Cmain%20class%3D%5C%22flex-1%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_main_label_unique%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/header[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📊' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📊"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 96,
+                "height": 48,
+                "width": 466
+            },
+            "snippet": "<div class=\"flex items-center gap-3\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%8A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22flex%20items-center%20gap-3%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%8A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/header[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '📊' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "📊"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 32,
+                "top": 102,
+                "height": 36,
+                "width": 42
+            },
+            "snippet": "<div class=\"text-3xl\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%F0%9F%93%8A'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-3xl%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%F0%9F%93%8A%22%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/header[1]/div[1]/div[2]/p[1]",
+                "aria": "/document[1]/main[1]/paragraph[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "messageArgs": [
+                "4.50",
+                14,
+                400
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 86,
+                "top": 124,
+                "height": 20,
+                "width": 413
+            },
+            "snippet": "<p class=\"text-sm opacity-90\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2014px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cp%20class%3D%5C%22text-sm%20opacity-90%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.50%22%2C14%2C400%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/header[1]/div[2]/span[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 16px and weight of 700",
+            "messageArgs": [
+                "3.62",
+                16,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 667,
+                "top": 108,
+                "height": 24,
+                "width": 27
+            },
+            "snippet": "<span class=\"font-bold\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2016px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22font-bold%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.62%22%2C16%2C700%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/header[1]/div[2]/span[2]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "messageArgs": [
+                "2.89",
+                16,
+                400
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 705,
+                "top": 108,
+                "height": 24,
+                "width": 51
+            },
+            "snippet": "<span class=\"ml-1 opacity-80\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2016px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22ml-1%20opacity-80%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.89%22%2C16%2C400%5D%7D"
+        },
+        {
+            "ruleId": "aria_main_label_unique",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Multiple elements with \"main\" role do not have unique labels",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 16,
+                "top": 184,
+                "height": 1822,
+                "width": 768
+            },
+            "snippet": "<main class=\"grid gap-6 lg:grid-cols-2\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/aria_main_label_unique.html#%7B%22message%22%3A%22Multiple%20elements%20with%20%5C%22main%5C%22%20role%20do%20not%20have%20unique%20labels%22%2C%22snippet%22%3A%22%3Cmain%20class%3D%5C%22grid%20gap-6%20lg%3Agrid-cols-2%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_main_label_unique%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 735,
+                "top": 201,
+                "height": 32,
+                "width": 32
+            },
+            "snippet": "<button class=\"btn btn-circle btn-ghost btn-sm\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22btn%20btn-circle%20btn-ghost%20btn-sm%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[2]"
+            },
+            "ruleTime": 3,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 282,
+                "height": 32,
+                "width": 181
+            },
+            "snippet": "<button class=\"join-item btn btn-sm flex-1 btn-primary\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22join-item%20btn%20btn-sm%20flex-1%20btn-primary%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_text_shadow",
+            "message": "Verify the contrast ratio of the text with shadow meets the WCAG AA minimum requirements for text of size 12px and weight of 500",
+            "messageArgs": [
+                "1.00",
+                12,
+                500
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 282,
+                "height": 32,
+                "width": 181
+            },
+            "snippet": "<button class=\"join-item btn btn-sm flex-1 btn-primary\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20with%20shadow%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012px%20and%20weight%20of%20500%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22join-item%20btn%20btn-sm%20flex-1%20btn-primary%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_text_shadow%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C12%2C500%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/button[2]",
+                "aria": "/document[1]/main[1]/main[1]/button[3]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 213,
+                "top": 282,
+                "height": 32,
+                "width": 181
+            },
+            "snippet": "<button class=\"join-item btn btn-sm flex-1\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22join-item%20btn%20btn-sm%20flex-1%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[2]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 406,
+                "top": 282,
+                "height": 32,
+                "width": 361
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"height\" id=\"height\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22height%5C%22%20id%3D%5C%22height%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[3]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[2]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 359,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"age\" id=\"age\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22age%5C%22%20id%3D%5C%22age%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[3]/div[2]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[3]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 282,
+                "top": 359,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" step=\"0.1\" name=\"temp\" id=\"temp\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20step%3D%5C%220.1%5C%22%20name%3D%5C%22temp%5C%22%20id%3D%5C%22temp%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[3]/div[3]/label[1]/span[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.76 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 400",
+            "messageArgs": [
+                "3.76",
+                14,
+                400,
+                "#ef4444",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 531,
+                "top": 334,
+                "height": 21,
+                "width": 59
+            },
+            "snippet": "<span class=\"label-text text-error\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.76%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2014px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22label-text%20text-error%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.76%22%2C14%2C400%2C%22%23ef4444%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[3]/div[3]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[4]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 531,
+                "top": 359,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm border-error\" step=\"0.1\" name=\"hb\" id=\"hb\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%20border-error%5C%22%20step%3D%5C%220.1%5C%22%20name%3D%5C%22hb%5C%22%20id%3D%5C%22hb%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[4]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 735,
+                "top": 441,
+                "height": 32,
+                "width": 32
+            },
+            "snippet": "<button class=\"btn btn-circle btn-ghost btn-sm\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22btn%20btn-circle%20btn-ghost%20btn-sm%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[5]"
+            },
+            "ruleTime": 8,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 522,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm border-primary\" max=\"7.8\" min=\"6.8\" step=\"0.01\" name=\"ph\" id=\"ph\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%20border-primary%5C%22%20max%3D%5C%227.8%5C%22%20min%3D%5C%226.8%5C%22%20step%3D%5C%220.01%5C%22%20name%3D%5C%22ph%5C%22%20id%3D%5C%22ph%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/div[2]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[6]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 282,
+                "top": 522,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"paco2\" id=\"paco2\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22paco2%5C%22%20id%3D%5C%22paco2%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/div[3]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[7]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 531,
+                "top": 522,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"pao2\" id=\"pao2\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22pao2%5C%22%20id%3D%5C%22pao2%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[3]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[8]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 599,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"hco3\" id=\"hco3\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22hco3%5C%22%20id%3D%5C%22hco3%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[3]/div[2]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[9]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 282,
+                "top": 599,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" max=\"100\" name=\"sao2\" id=\"sao2\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20max%3D%5C%22100%5C%22%20name%3D%5C%22sao2%5C%22%20id%3D%5C%22sao2%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[3]/div[3]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[10]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 531,
+                "top": 599,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm border-warning\" step=\"0.1\" name=\"lactate\" id=\"lactate\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%20border-warning%5C%22%20step%3D%5C%220.1%5C%22%20name%3D%5C%22lactate%5C%22%20id%3D%5C%22lactate%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[3]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[5]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 735,
+                "top": 681,
+                "height": 32,
+                "width": 32
+            },
+            "snippet": "<button class=\"btn btn-circle btn-ghost btn-sm\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22btn%20btn-circle%20btn-ghost%20btn-sm%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[3]/div[1]/div[2]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[11]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 762,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"na\" id=\"na\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22na%5C%22%20id%3D%5C%22na%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[3]/div[1]/div[2]/div[2]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[12]"
+            },
+            "ruleTime": 3,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 282,
+                "top": 762,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"cl\" id=\"cl\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22cl%5C%22%20id%3D%5C%22cl%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[3]/div[1]/div[2]/div[3]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[13]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 531,
+                "top": 762,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm border-warning\" step=\"0.1\" name=\"alb\" id=\"alb\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%20border-warning%5C%22%20step%3D%5C%220.1%5C%22%20name%3D%5C%22alb%5C%22%20id%3D%5C%22alb%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[4]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[6]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 735,
+                "top": 844,
+                "height": 32,
+                "width": 32
+            },
+            "snippet": "<button class=\"btn btn-circle btn-ghost btn-sm\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22btn%20btn-circle%20btn-ghost%20btn-sm%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[4]/div[1]/div[2]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[14]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 925,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" max=\"1.0\" min=\"0.21\" step=\"0.05\" name=\"fio2\" id=\"fio2\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20max%3D%5C%221.0%5C%22%20min%3D%5C%220.21%5C%22%20step%3D%5C%220.05%5C%22%20name%3D%5C%22fio2%5C%22%20id%3D%5C%22fio2%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[4]/div[1]/div[2]/div[2]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[15]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 282,
+                "top": 925,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" step=\"10\" name=\"vt\" id=\"vt\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20step%3D%5C%2210%5C%22%20name%3D%5C%22vt%5C%22%20id%3D%5C%22vt%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[4]/div[1]/div[2]/div[3]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[16]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 531,
+                "top": 925,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"rr\" id=\"rr\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22rr%5C%22%20id%3D%5C%22rr%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[4]/div[1]/div[3]/div[1]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[17]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 1002,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"peep\" id=\"peep\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22peep%5C%22%20id%3D%5C%22peep%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[4]/div[1]/div[3]/div[2]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[18]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 282,
+                "top": 1002,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm\" name=\"pplat\" id=\"pplat\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%5C%22%20name%3D%5C%22pplat%5C%22%20id%3D%5C%22pplat%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[1]/div[4]/div[1]/div[3]/div[3]/input[1]",
+                "aria": "/document[1]/main[1]/main[1]/spinbutton[19]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 531,
+                "top": 1002,
+                "height": 32,
+                "width": 237
+            },
+            "snippet": "<input class=\"input input-bordered input-sm border-primary\" name=\"ppeak\" id=\"ppeak\" type=\"number\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cinput%20class%3D%5C%22input%20input-bordered%20input-sm%20border-primary%5C%22%20name%3D%5C%22ppeak%5C%22%20id%3D%5C%22ppeak%5C%22%20type%3D%5C%22number%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_same_color",
+            "message": "The foreground text and its background color are both detected as #ffffff. Verify the text meets the WCAG AA requirements for minimum contrast",
+            "messageArgs": [
+                "1.00",
+                12,
+                400,
+                "#ffffff",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 1095,
+                "height": 16,
+                "width": 84
+            },
+            "snippet": "<span class=\"text-xs uppercase tracking-wide opacity-70\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22The%20foreground%20text%20and%20its%20background%20color%20are%20both%20detected%20as%20%23ffffff.%20Verify%20the%20text%20meets%20the%20WCAG%20AA%20requirements%20for%20minimum%20contrast%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22text-xs%20uppercase%20tracking-wide%20opacity-70%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_same_color%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C12%2C400%2C%22%23ffffff%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text 'Acidose Métabolique' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "Acidose Métabolique"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 1113,
+                "height": 28,
+                "width": 180
+            },
+            "snippet": "<div class=\"text-lg font-bold\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'Acidose%20M%C3%A9tabolique'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-lg%20font-bold%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22Acidose%20M%C3%A9tabolique%22%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_same_color",
+            "message": "The foreground text and its background color are both detected as #ffffff. Verify the text meets the WCAG AA requirements for minimum contrast",
+            "messageArgs": [
+                "1.00",
+                18,
+                700,
+                "#ffffff",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 1113,
+                "height": 28,
+                "width": 180
+            },
+            "snippet": "<div class=\"text-lg font-bold\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22The%20foreground%20text%20and%20its%20background%20color%20are%20both%20detected%20as%20%23ffffff.%20Verify%20the%20text%20meets%20the%20WCAG%20AA%20requirements%20for%20minimum%20contrast%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22text-lg%20font-bold%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_same_color%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C18%2C700%2C%22%23ffffff%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 1.81 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 700",
+            "messageArgs": [
+                "1.81",
+                18,
+                700,
+                "#22d3ee",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 105,
+                "top": 1115,
+                "height": 24,
+                "width": 108
+            },
+            "snippet": "<span class=\"text-cyan-400\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%201.81%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2018px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22text-cyan-400%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.81%22%2C18%2C700%2C%22%2322d3ee%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/span[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_same_color",
+            "message": "The foreground text and its background color are both detected as #ffffff. Verify the text meets the WCAG AA requirements for minimum contrast",
+            "messageArgs": [
+                "1.00",
+                14,
+                400,
+                "#ffffff",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 33,
+                "top": 1161,
+                "height": 24,
+                "width": 136
+            },
+            "snippet": "<span class=\"badge badge-outline\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22The%20foreground%20text%20and%20its%20background%20color%20are%20both%20detected%20as%20%23ffffff.%20Verify%20the%20text%20meets%20the%20WCAG%20AA%20requirements%20for%20minimum%20contrast%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22badge%20badge-outline%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_same_color%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C14%2C400%2C%22%23ffffff%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '150' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "150"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 41,
+                "top": 1229,
+                "height": 28,
+                "width": 173
+            },
+            "snippet": "<div class=\"stat-value text-lg text-error\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'150'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-lg%20text-error%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22150%22%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.76 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 800",
+            "messageArgs": [
+                "3.76",
+                18,
+                800,
+                "#ef4444",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 41,
+                "top": 1229,
+                "height": 28,
+                "width": 173
+            },
+            "snippet": "<div class=\"stat-value text-lg text-error\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.76%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2018px%20and%20weight%20of%20800%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-lg%20text-error%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.76%22%2C18%2C800%2C%22%23ef4444%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '11.9 ml/dL' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "11.9 ml/dL"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 230,
+                "top": 1229,
+                "height": 28,
+                "width": 172
+            },
+            "snippet": "<div class=\"stat-value text-lg text-error\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'11.9%20ml%2FdL'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-lg%20text-error%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%2211.9%20ml%2FdL%22%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.76 with its background is less than the WCAG AA minimum requirements for text of size 18px and weight of 800",
+            "messageArgs": [
+                "3.76",
+                18,
+                800,
+                "#ef4444",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 230,
+                "top": 1229,
+                "height": 28,
+                "width": 172
+            },
+            "snippet": "<div class=\"stat-value text-lg text-error\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.76%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2018px%20and%20weight%20of%20800%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-lg%20text-error%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.76%22%2C18%2C800%2C%22%23ef4444%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[2]/div[2]/span[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.76 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 800",
+            "messageArgs": [
+                "3.76",
+                12,
+                800,
+                "#ef4444",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 269,
+                "top": 1237,
+                "height": 16,
+                "width": 36
+            },
+            "snippet": "<span class=\"text-xs\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.76%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012px%20and%20weight%20of%20800%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22text-xs%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.76%22%2C12%2C800%2C%22%23ef4444%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[3]/div[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '18 cmH2O' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "18 cmH2O"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 418,
+                "top": 1229,
+                "height": 28,
+                "width": 166
+            },
+            "snippet": "<div class=\"stat-value text-lg text-warning\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'18%20cmH2O'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-lg%20text-warning%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%2218%20cmH2O%22%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[3]/div[4]/div[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '9 cmH2O' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "9 cmH2O"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 600,
+                "top": 1229,
+                "height": 28,
+                "width": 160
+            },
+            "snippet": "<div class=\"stat-value text-lg text-warning\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'9%20cmH2O'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22stat-value%20text-lg%20text-warning%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%229%20cmH2O%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[7]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 316,
+                "top": 1327,
+                "height": 41,
+                "width": 60
+            },
+            "snippet": "<button class=\"info-btn svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22info-btn%20svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/strong[1]",
+                "aria": "/document[1]/main[1]/main[1]/strong[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 4.35 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 700",
+            "messageArgs": [
+                "4.35",
+                14,
+                700,
+                "#64748b",
+                "#fef2f2",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 46,
+                "top": 1411,
+                "height": 19,
+                "width": 159
+            },
+            "snippet": "<strong class=\"svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%204.35%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2014px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cstrong%20class%3D%5C%22svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.35%22%2C14%2C700%2C%22%2364748b%22%2C%22%23fef2f2%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/small[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 4.35 with its background is less than the WCAG AA minimum requirements for text of size 11.2px and weight of 400",
+            "messageArgs": [
+                "4.35",
+                11.2,
+                400,
+                "#64748b",
+                "#fef2f2",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 46,
+                "top": 1414,
+                "height": 36,
+                "width": 248
+            },
+            "snippet": "<small class=\"svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%204.35%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2011.2px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Csmall%20class%3D%5C%22svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.35%22%2C11.2%2C400%2C%22%2364748b%22%2C%22%23fef2f2%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/small[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.34 with its background is less than the WCAG AA minimum requirements for text of size 11.2px and weight of 400",
+            "messageArgs": [
+                "2.34",
+                11.2,
+                400,
+                "#94a3b8",
+                "#fef2f2",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 302,
+                "top": 1436,
+                "height": 13,
+                "width": 31
+            },
+            "snippet": "<small class=\"svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.34%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2011.2px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Csmall%20class%3D%5C%22svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.34%22%2C11.2%2C400%2C%22%2394a3b8%22%2C%22%23fef2f2%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[3]/span[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.76 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 700",
+            "messageArgs": [
+                "3.76",
+                14,
+                700,
+                "#ef4444",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 295,
+                "top": 1571,
+                "height": 21,
+                "width": 81
+            },
+            "snippet": "<span class=\"result-value svelte-1o5poes danger\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.76%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2014px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22result-value%20svelte-1o5poes%20danger%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.76%22%2C14%2C700%2C%22%23ef4444%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[3]/span[2]/small[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.56 with its background is less than the WCAG AA minimum requirements for text of size 11.2px and weight of 400",
+            "messageArgs": [
+                "2.56",
+                11.2,
+                400,
+                "#94a3b8",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 326,
+                "top": 1576,
+                "height": 13,
+                "width": 50
+            },
+            "snippet": "<small class=\"svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.56%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2011.2px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Csmall%20class%3D%5C%22svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.56%22%2C11.2%2C400%2C%22%2394a3b8%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[2]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[8]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 708,
+                "top": 1327,
+                "height": 41,
+                "width": 60
+            },
+            "snippet": "<button class=\"info-btn svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22info-btn%20svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.45 with its background is less than the WCAG AA minimum requirements for text of size 9.6px and weight of 700",
+            "messageArgs": [
+                "2.45",
+                9.6,
+                700,
+                "#94a3b8",
+                "#f8fafc",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 438,
+                "top": 1410,
+                "height": 15,
+                "width": 141
+            },
+            "snippet": "<span class=\"mini-label svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.45%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%209.6px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22mini-label%20svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.45%22%2C9.6%2C700%2C%22%2394a3b8%22%2C%22%23f8fafc%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[1]/span[2]/small[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.45 with its background is less than the WCAG AA minimum requirements for text of size 9.6px and weight of 400",
+            "messageArgs": [
+                "2.45",
+                9.6,
+                400,
+                "#94a3b8",
+                "#f8fafc",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 499,
+                "top": 1435,
+                "height": 12,
+                "width": 47
+            },
+            "snippet": "<small class=\"svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.45%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%209.6px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Csmall%20class%3D%5C%22svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.45%22%2C9.6%2C400%2C%22%2394a3b8%22%2C%22%23f8fafc%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[2]/span[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.30 with its background is less than the WCAG AA minimum requirements for text of size 9.6px and weight of 700",
+            "messageArgs": [
+                "2.30",
+                9.6,
+                700,
+                "#94a3b8",
+                "#fef3c7",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 613,
+                "top": 1410,
+                "height": 15,
+                "width": 141
+            },
+            "snippet": "<span class=\"mini-label svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.30%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%209.6px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22mini-label%20svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.30%22%2C9.6%2C700%2C%22%2394a3b8%22%2C%22%23fef3c7%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[2]/span[2]/small[1]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.30 with its background is less than the WCAG AA minimum requirements for text of size 9.6px and weight of 400",
+            "messageArgs": [
+                "2.30",
+                9.6,
+                400,
+                "#94a3b8",
+                "#fef3c7",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 676,
+                "top": 1435,
+                "height": 12,
+                "width": 32
+            },
+            "snippet": "<small class=\"svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.30%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%209.6px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Csmall%20class%3D%5C%22svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.30%22%2C9.6%2C400%2C%22%2394a3b8%22%2C%22%23fef3c7%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/main[1]/button[9]"
+            },
+            "ruleTime": 3,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 316,
+                "top": 1646,
+                "height": 41,
+                "width": 60
+            },
+            "snippet": "<button class=\"info-btn svelte-1o5poes\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20class%3D%5C%22info-btn%20svelte-1o5poes%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/main[1]/div[2]/div[2]/div[3]/div[2]/div[1]/span[2]",
+                "aria": "/document[1]/main[1]/main[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.76 with its background is less than the WCAG AA minimum requirements for text of size 14px and weight of 700",
+            "messageArgs": [
+                "3.76",
+                14,
+                700,
+                "#ef4444",
+                "#ffffff",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 345,
+                "top": 1724,
+                "height": 21,
+                "width": 31
+            },
+            "snippet": "<span class=\"result-value svelte-1o5poes danger\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.76%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2014px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22result-value%20svelte-1o5poes%20danger%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.76%22%2C14%2C700%2C%22%23ef4444%22%2C%22%23ffffff%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/contentinfo[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 16px and weight of 600",
+            "messageArgs": [
+                "1.00",
+                16,
+                600
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 16,
+                "top": 2047,
+                "height": 24,
+                "width": 72
+            },
+            "snippet": "<span class=\"font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2016px%20and%20weight%20of%20600%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22font-semibold%20bg-gradient-to-r%20from-primary%20to-secondary%20bg-clip-text%20text-transparent%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%221.00%22%2C16%2C600%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[1]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 562,
+                "top": 2047,
+                "height": 24,
+                "width": 103
+            },
+            "snippet": "<a aria-label=\"Docker Hub\" class=\"btn btn-ghost btn-xs gap-1 text-base-content/60 hover:text-primary\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://hub.docker.com/r/medlabib/emtools-frontend\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20aria-label%3D%5C%22Docker%20Hub%5C%22%20class%3D%5C%22btn%20btn-ghost%20btn-xs%20gap-1%20text-base-content%2F60%20hover%3Atext-primary%5C%22%20rel%3D%5C%22noopener%20noreferrer%5C%22%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22https%3A%2F%2Fhub.docker.com%2Fr%2Fmedlabib%2Femtools-frontend%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[1]/svg[1]",
+                "aria": "/document[1]/contentinfo[1]/link[1]/graphics-document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 583,
+                "top": 2051,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg fill=\"currentColor\" viewBox=\"0 0 24 24\" class=\"w-4 h-4\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20fill%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20class%3D%5C%22w-4%20h-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[2]",
+                "aria": "/document[1]/contentinfo[1]/link[2]"
+            },
+            "ruleTime": 2,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 681,
+                "top": 2047,
+                "height": 24,
+                "width": 104
+            },
+            "snippet": "<a aria-label=\"GitHub\" class=\"btn btn-ghost btn-xs gap-1 text-base-content/60 hover:text-primary\" rel=\"noopener noreferrer\" target=\"_blank\" href=\"https://github.com/medlabib/EMtools\">",
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20aria-label%3D%5C%22GitHub%5C%22%20class%3D%5C%22btn%20btn-ghost%20btn-xs%20gap-1%20text-base-content%2F60%20hover%3Atext-primary%5C%22%20rel%3D%5C%22noopener%20noreferrer%5C%22%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22https%3A%2F%2Fgithub.com%2Fmedlabib%2FEMtools%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "svg_graphics_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]/div[1]/div[2]/a[2]/svg[1]",
+                "aria": "/document[1]/contentinfo[1]/link[2]/graphics-document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_acc_name",
+            "message": "The SVG element has no accessible name",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 702,
+                "top": 2051,
+                "height": 16,
+                "width": 16
+            },
+            "snippet": "<svg fill=\"currentColor\" viewBox=\"0 0 24 24\" class=\"w-4 h-4\">",
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2025.09.03/doc/en-US/svg_graphics_labelled.html#%7B%22message%22%3A%22The%20SVG%20element%20has%20no%20accessible%20name%22%2C%22snippet%22%3A%22%3Csvg%20fill%3D%5C%22currentColor%5C%22%20viewBox%3D%5C%220%200%2024%2024%5C%22%20class%3D%5C%22w-4%20h-4%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_acc_name%22%2C%22ruleId%22%3A%22svg_graphics_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        }
+    ],
+    "numExecuted": 1583,
+    "ruleTime": 162,
+    "nls": {
+        "style_color_misuse": {
+            "0": "Combine color and descriptive markup to convey information",
+            "Potential_1": "Verify color is not used as the only visual means of conveying information"
+        },
+        "style_viewport_resizable": {
+            "0": "Text must scale up to 200% without loss of content or functionality",
+            "Potential_1": "Verify that text sized using viewport units can be resized up to 200%"
+        },
+        "style_focus_visible": {
+            "0": "The keyboard focus indicator should be visible when default border or outline is modified by CSS",
+            "potential_focus_not_visible": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+        },
+        "text_contrast_sufficient": {
+            "0": "The contrast ratio of text with its background must meet WCAG AA requirements",
+            "potential_graphic_background": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size {1}px and weight of {2}",
+            "potential_text_shadow": "Verify the contrast ratio of the text with shadow meets the WCAG AA minimum requirements for text of size {1}px and weight of {2}",
+            "fail_contrast": "Text contrast of {0} with its background is less than the WCAG AA minimum requirements for text of size {1}px and weight of {2}",
+            "potential_same_color": "The foreground text and its background color are both detected as {3}. Verify the text meets the WCAG AA requirements for minimum contrast"
+        },
+        "svg_graphics_labelled": {
+            "0": "A non-decorative SVG element must have an accessible name",
+            "fail_acc_name": "The SVG element has no accessible name"
+        },
+        "text_block_heading": {
+            "0": "Heading text should use a heading element or role",
+            "potential_heading": "Confirm this text '{0}' is used as a heading and if so, modify to use a heading element or role"
+        },
+        "input_label_visible": {
+            "0": "An input element must have an associated visible label",
+            "potential_no_label": "The input element does not have an associated visible label"
+        },
+        "aria_main_label_unique": {
+            "0": "Each element with \"main\" role must have unique label that describes its purposes",
+            "Fail_1": "Multiple elements with \"main\" role do not have unique labels"
+        }
+    },
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 82,
+            "elementsViolation": 21,
+            "elementsViolationReview": 81,
+            "violation": 21,
+            "potentialviolation": 56,
+            "recommendation": 1,
+            "potentialrecommendation": 2,
+            "manual": 15,
+            "pass": 1488
+        },
+        "scanTime": 502,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation"
+        ],
+        "startScan": 1765045475059,
+        "URL": "http://localhost/tools/blood-gas"
+    },
+    "scanID": "81f68c6f-b305-456e-844e-17872d4c24f3",
+    "toolID": "accessibility-checker-v4.0.9",
+    "label": "Blood Gas"
+}

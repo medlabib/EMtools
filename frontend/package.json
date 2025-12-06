@@ -19,6 +19,7 @@
     "@testing-library/svelte": "^4.0.5",
     "@tsconfig/svelte": "^5.0.6",
     "@vitest/coverage-v8": "^1.1.0",
+    "accessibility-checker": "^4.0.9",
     "autoprefixer": "^10.4.22",
     "daisyui": "^5.5.5",
     "jsdom": "^23.0.1",
