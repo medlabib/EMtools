@@ -159,7 +159,7 @@
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-2 text-base-content/60">
           <span class="font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">EMTOOLS</span>
-          <span class="badge badge-ghost badge-sm">v2.0.0-beta.2</span>
+          <span class="badge badge-ghost badge-sm">v2.0.0-beta.4</span>
           <span>•</span>
           <span>&copy; 2025</span>
         </div>

@@ -1,8 +1,11 @@
 <script lang="ts">
   import { navigate } from 'svelte-routing';
   import { authStore } from '../stores/auth';
+  import Lazy from './Lazy.svelte';
+  import type { ComponentType, SvelteComponent } from 'svelte';
 
-  export let component: any;
+  export let component: ComponentType<SvelteComponent> | null = null;
+  export let loader: (() => Promise<{ default: ComponentType<SvelteComponent> }>) | null = null;
 
   // Only redirect when auth check is complete (not loading) and user is not authenticated
   $: if (!$authStore.isLoading && !$authStore.isAuthenticated && typeof window !== 'undefined') {
@@ -16,7 +19,11 @@
     <p>Checking authentication...</p>
   </div>
 {:else if $authStore.isAuthenticated}
-  <svelte:component this={component} />
+  {#if component}
+    <svelte:component this={component} />
+  {:else if loader}
+    <Lazy {loader} />
+  {/if}
 {:else}
   <div class="loading-auth">
     <p>Redirecting to login...</p>

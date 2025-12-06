@@ -740,7 +740,7 @@
               {#if form.ecgQRS === 'wide'}
                 <input type="text" bind:value={form.ecgQRSDetails} placeholder={$_('medicalReport.circulation.ecg.qrsDetails')} class="input input-bordered input-sm mt-2" />
                 <label class="flex items-center gap-3 cursor-pointer mt-2">
-                  <input type="checkbox" bind:checked={form.ecgScarbossa} class="toggle toggle-sm toggle-primary" />
+                  <input type="checkbox" bind:checked={form.ecgScarbossa} class="checkbox checkbox-sm checkbox-primary" />
                   <span class="text-sm">{$_('medicalReport.circulation.ecg.sgarbossa')}</span>
                 </label>
               {/if}
@@ -839,7 +839,7 @@
               <option value="quad">{$_('medicalReport.disability.deficitQuad')}</option>
             </select>
             <label class="flex items-center gap-3 cursor-pointer mt-2">
-              <input type="checkbox" bind:checked={form.aphasia} class="toggle toggle-primary" />
+              <input type="checkbox" bind:checked={form.aphasia} class="checkbox checkbox-primary" />
               <span>{$_('medicalReport.disability.aphasia')}</span>
             </label>
           </div>
@@ -853,11 +853,11 @@
             </div>
             <div class="flex flex-col gap-2 justify-end">
               <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" bind:checked={form.meningealSigns} class="toggle toggle-primary" />
+                <input type="checkbox" bind:checked={form.meningealSigns} class="checkbox checkbox-primary" />
                 <span>{$_('medicalReport.disability.meningealSigns')}</span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" bind:checked={form.purpura} class="toggle toggle-primary" />
+                <input type="checkbox" bind:checked={form.purpura} class="checkbox checkbox-primary" />
                 <span>{$_('medicalReport.disability.purpura')}</span>
               </label>
             </div>
@@ -885,7 +885,7 @@
           
           <div class="flex flex-wrap items-center gap-4">
             <label class="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" bind:checked={form.tabac} class="toggle toggle-primary" />
+              <input type="checkbox" bind:checked={form.tabac} class="checkbox checkbox-primary" />
               <span>{$_('medicalReport.exposure.tobacco')}</span>
             </label>
             {#if form.tabac}
@@ -893,7 +893,7 @@
             {/if}
             
             <label class="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" bind:checked={form.alcool} class="toggle toggle-primary" />
+              <input type="checkbox" bind:checked={form.alcool} class="checkbox checkbox-primary" />
               <span>{$_('medicalReport.exposure.alcohol')}</span>
             </label>
           </div>

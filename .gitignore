@@ -187,3 +187,9 @@ temp/
 # package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
+
+# Test artifacts
+frontend/results/
+frontend/a11y-results.txt
+screenshots/
+UI_REVIEW_REPORT.md

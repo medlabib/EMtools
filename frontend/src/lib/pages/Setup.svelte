@@ -472,7 +472,7 @@
                 </div>
                 <div class="form-control md:col-span-2">
                   <label class="flex items-center gap-3 cursor-pointer p-3 bg-base-100 rounded-lg border border-base-300">
-                    <input type="checkbox" class="checkbox checkbox-primary" bind:checked={smtpUseTls} />
+                    <input type="checkbox" class="toggle toggle-primary" bind:checked={smtpUseTls} />
                     <div>
                       <span class="label-text font-medium">Utiliser TLS/STARTTLS</span>
                       <p class="text-xs text-base-content/60">Recommandé pour la sécurité</p>

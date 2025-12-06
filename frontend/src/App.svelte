@@ -12,23 +12,9 @@
   import Login from './lib/pages/Login.svelte';
   import Register from './lib/pages/Register.svelte';
   import Tools from './lib/pages/Tools.svelte';
-  import MedicalReport from './lib/pages/tools/MedicalReport.svelte';
-  import Pastebin from './lib/pages/tools/Pastebin.svelte';
   import PasteView from './lib/pages/tools/PasteView.svelte';
-  import MedicalCalculator from './lib/pages/tools/MedicalCalculator.svelte';
-  import VasoactiveDrugs from './lib/pages/tools/VasoactiveDrugs.svelte';
-  import Sedation from './lib/pages/tools/Sedation.svelte';
-  import MetabolicDisorders from './lib/pages/tools/MetabolicDisorders.svelte';
-  import BloodGasVentilation from './lib/pages/tools/BloodGasVentilation.svelte';
-  import AntibioticGuide from './lib/pages/tools/AntibioticGuide.svelte';
   import NotFound from './lib/pages/NotFound.svelte';
-  
-  // Admin pages
   import Setup from './lib/pages/Setup.svelte';
-  import AdminDashboard from './lib/pages/admin/AdminDashboard.svelte';
-  import AdminUsers from './lib/pages/admin/AdminUsers.svelte';
-  import AdminSettings from './lib/pages/admin/AdminSettings.svelte';
-  import AdminLogs from './lib/pages/admin/AdminLogs.svelte';
   
   export let url = '';
   
@@ -63,21 +49,21 @@
       <Route path="/register" component={Register} />
       <Route path="/setup" component={Setup} />
       <Route path="/dashboard"><ProtectedRoute component={Tools} /></Route>
-      <Route path="/tools/medical-report"><ProtectedRoute component={MedicalReport} /></Route>
-      <Route path="/tools/pastebin"><ProtectedRoute component={Pastebin} /></Route>
+      <Route path="/tools/medical-report"><ProtectedRoute loader={() => import('./lib/pages/tools/MedicalReport.svelte')} /></Route>
+      <Route path="/tools/pastebin"><ProtectedRoute loader={() => import('./lib/pages/tools/Pastebin.svelte')} /></Route>
       <Route path="/tools/pastebin/view/:id" let:params><PasteView pasteId={params.id} /></Route>
-      <Route path="/tools/medical-calculator"><ProtectedRoute component={MedicalCalculator} /></Route>
-      <Route path="/tools/vasoactive-drugs"><ProtectedRoute component={VasoactiveDrugs} /></Route>
-      <Route path="/tools/sedation"><ProtectedRoute component={Sedation} /></Route>
-      <Route path="/tools/metabolic-disorders"><ProtectedRoute component={MetabolicDisorders} /></Route>
-      <Route path="/tools/blood-gas"><ProtectedRoute component={BloodGasVentilation} /></Route>
-      <Route path="/tools/antibiotic-guide"><ProtectedRoute component={AntibioticGuide} /></Route>
+      <Route path="/tools/medical-calculator"><ProtectedRoute loader={() => import('./lib/pages/tools/MedicalCalculator.svelte')} /></Route>
+      <Route path="/tools/vasoactive-drugs"><ProtectedRoute loader={() => import('./lib/pages/tools/VasoactiveDrugs.svelte')} /></Route>
+      <Route path="/tools/sedation"><ProtectedRoute loader={() => import('./lib/pages/tools/Sedation.svelte')} /></Route>
+      <Route path="/tools/metabolic-disorders"><ProtectedRoute loader={() => import('./lib/pages/tools/MetabolicDisorders.svelte')} /></Route>
+      <Route path="/tools/blood-gas"><ProtectedRoute loader={() => import('./lib/pages/tools/BloodGasVentilation.svelte')} /></Route>
+      <Route path="/tools/antibiotic-guide"><ProtectedRoute loader={() => import('./lib/pages/tools/AntibioticGuide.svelte')} /></Route>
       
       <!-- Admin routes -->
-      <Route path="/admin"><AdminProtectedRoute component={AdminDashboard} /></Route>
-      <Route path="/admin/users"><AdminProtectedRoute component={AdminUsers} /></Route>
-      <Route path="/admin/settings"><AdminProtectedRoute component={AdminSettings} /></Route>
-      <Route path="/admin/logs"><AdminProtectedRoute component={AdminLogs} /></Route>
+      <Route path="/admin"><AdminProtectedRoute loader={() => import('./lib/pages/admin/AdminDashboard.svelte')} /></Route>
+      <Route path="/admin/users"><AdminProtectedRoute loader={() => import('./lib/pages/admin/AdminUsers.svelte')} /></Route>
+      <Route path="/admin/settings"><AdminProtectedRoute loader={() => import('./lib/pages/admin/AdminSettings.svelte')} /></Route>
+      <Route path="/admin/logs"><AdminProtectedRoute loader={() => import('./lib/pages/admin/AdminLogs.svelte')} /></Route>
       
       <Route path="*" component={NotFound} />
     </Layout>
