@@ -154,44 +154,44 @@
       </div>
     </div>
 
-    <!-- Calculator Grid -->
-    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Calculator Grid - Responsive -->
+    <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {#each filteredCalculators as calc}
         <button 
-          class="card bg-base-100 shadow-md border border-primary/20 hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-left overflow-hidden group" 
+          class="card bg-base-100 shadow-md border border-primary/20 hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-left overflow-hidden group active:scale-95" 
           on:click={() => selectCalculator(calc)}
         >
-          <div class="card-body p-4 gap-3">
+          <div class="card-body p-3 sm:p-4 gap-2 sm:gap-3">
             <div class="flex justify-between items-start gap-2 flex-wrap">
               <span class="badge badge-primary text-xs font-bold">{calc.shortName}</span>
               <span class="badge badge-outline text-xs">{categoryLabels[calc.category]}</span>
             </div>
-            <h3 class="font-semibold text-sm text-base-content group-hover:text-primary transition-colors">{calc.name}</h3>
+            <h3 class="font-semibold text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors line-clamp-2">{calc.name}</h3>
             <p class="text-xs text-base-content/70 line-clamp-2">{calc.description}</p>
           </div>
         </button>
       {/each}
       
       {#if filteredCalculators.length === 0}
-        <div class="col-span-full text-center py-12 text-base-content/50">
+        <div class="col-span-full text-center py-8 sm:py-12 text-base-content/50">
           <p>Aucun calculateur trouvé</p>
         </div>
       {/if}
     </div>
 
   {:else}
-    <!-- Calculator Detail View -->
-    <div class="space-y-6">
-      <button class="btn btn-outline btn-sm" on:click={goBack}>
+    <!-- Calculator Detail View - Mobile Responsive -->
+    <div class="space-y-3 sm:space-y-6">
+      <button class="btn btn-outline btn-sm w-full sm:w-auto" on:click={goBack}>
         ← Retour
       </button>
 
       <div class="card bg-base-100 shadow-lg">
-        <div class="card-body">
-          <h1 class="card-title text-xl">{selectedCalculator.name}</h1>
-          <p class="text-base-content/70">{selectedCalculator.description}</p>
+        <div class="card-body p-3 sm:p-6">
+          <h1 class="card-title text-lg sm:text-xl">{selectedCalculator.name}</h1>
+          <p class="text-sm sm:text-base text-base-content/70">{selectedCalculator.description}</p>
           {#if selectedCalculator.source}
-            <p class="text-sm text-base-content/50">
+            <p class="text-xs sm:text-sm text-base-content/50 mt-2">
               Source: 
               {#if selectedCalculator.sourceUrl}
                 <a href={selectedCalculator.sourceUrl} target="_blank" rel="noopener noreferrer" class="link link-primary">
@@ -203,32 +203,32 @@
             </p>
           {/if}
 
-          <div class="divider"></div>
+          <div class="divider my-2 sm:my-4"></div>
 
-          <div class="space-y-4">
+          <div class="space-y-3 sm:space-y-4">
             {#each selectedCalculator.fields as field}
               <div class="form-control">
-                <label for={field.id} class="label">
-                  <span class="label-text">{field.label}</span>
+                <label for={field.id} class="label p-1 sm:p-3">
+                  <span class="label-text text-xs sm:text-sm font-medium">{field.label}</span>
                 </label>
                 
                 {#if field.type === 'checkbox'}
-                  <label class="cursor-pointer label justify-start gap-3 bg-base-200 rounded-lg p-3">
+                  <label class="cursor-pointer label justify-start gap-2 sm:gap-3 bg-base-200 rounded-lg p-2 sm:p-3">
                     <input 
                       type="checkbox" 
                       id={field.id}
                       checked={!!values[field.id]}
                       on:change={(e) => { values[field.id] = e.currentTarget.checked; calculate(); }}
-                      class="checkbox checkbox-primary"
+                      class="checkbox checkbox-primary checkbox-sm sm:checkbox-md"
                     />
-                    <span class="label-text">{field.label}</span>
+                    <span class="label-text text-xs sm:text-sm">{field.label}</span>
                   </label>
                 {:else if field.type === 'select' && field.options}
                   <select 
                     id={field.id}
                     bind:value={values[field.id]}
                     on:change={calculate}
-                    class="select select-bordered w-full"
+                    class="select select-bordered select-sm sm:select-md w-full text-xs sm:text-base"
                   >
                     {#each field.options as option}
                       <option value={option.value}>{option.label}</option>
@@ -243,10 +243,10 @@
                       min={field.min}
                       max={field.max}
                       on:input={calculate}
-                      class="input input-bordered join-item flex-1"
+                      class="input input-bordered input-sm sm:input-md join-item flex-1 text-xs sm:text-base"
                     />
                     {#if field.unit}
-                      <span class="btn no-animation join-item">{field.unit}</span>
+                      <span class="btn btn-sm sm:btn-md no-animation join-item text-xs sm:text-base">{field.unit}</span>
                     {/if}
                   </div>
                 {/if}
@@ -254,25 +254,25 @@
             {/each}
           </div>
 
-          <div class="flex gap-2 mt-6">
-            <button class="btn btn-primary flex-1" on:click={calculate}>Calculer</button>
-            <button class="btn btn-outline" on:click={resetCalculator}>Réinitialiser</button>
+          <div class="flex gap-2 mt-4 sm:mt-6">
+            <button class="btn btn-primary btn-sm sm:btn-md flex-1" on:click={calculate}>Calculer</button>
+            <button class="btn btn-outline btn-sm sm:btn-md flex-1" on:click={resetCalculator}>Réinitialiser</button>
           </div>
 
           {#if result !== null}
-            <div class="mt-6">
+            <div class="mt-4 sm:mt-6">
               <div class="stats shadow w-full">
                 <div class="stat place-items-center">
-                  <div class="stat-title">Score</div>
-                  <div class="stat-value text-primary">{result}</div>
+                  <div class="stat-title text-xs sm:text-sm">Score</div>
+                  <div class="stat-value text-primary text-2xl sm:text-4xl">{result}</div>
                 </div>
               </div>
               
               {#if interpretation}
-                <div class="alert mt-4" class:alert-success={interpretation.color === 'green'} class:alert-warning={interpretation.color === 'yellow' || interpretation.color === 'orange'} class:alert-error={interpretation.color === 'red'}>
+                <div class="alert alert-sm sm:alert mt-3 sm:mt-4 p-2 sm:p-4" class:alert-success={interpretation.color === 'green'} class:alert-warning={interpretation.color === 'yellow' || interpretation.color === 'orange'} class:alert-error={interpretation.color === 'red'}>
                   <div>
-                    <h3 class="font-bold">{interpretation.label}</h3>
-                    <p class="text-sm">{interpretation.description}</p>
+                    <h3 class="font-bold text-xs sm:text-sm">{interpretation.label}</h3>
+                    <p class="text-xs">{interpretation.description}</p>
                   </div>
                 </div>
               {/if}
@@ -281,20 +281,22 @@
         </div>
       </div>
 
-      <!-- Interpretation Scale -->
-      <div class="card bg-base-200">
-        <div class="card-body">
-          <h4 class="font-semibold mb-3">Échelle d'interprétation</h4>
+      <!-- Interpretation Scale - Collapsible on Mobile -->
+      <details class="card bg-base-200" open>
+        <summary class="card-title p-3 sm:p-6 cursor-pointer hover:bg-base-300 transition-colors text-sm sm:text-base">
+          Échelle d'interprétation
+        </summary>
+        <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
           <div class="space-y-2">
             {#each selectedCalculator.interpretations as interp}
-              <div class="p-3 rounded-lg {interp.color === 'green' ? 'bg-success/20' : interp.color === 'yellow' || interp.color === 'orange' ? 'bg-warning/20' : interp.color === 'red' ? 'bg-error/20' : 'bg-base-100'}">
-                <strong class="text-sm">{interp.range[0]}-{interp.range[1]}: {interp.label}</strong>
-                <p class="text-xs opacity-70">{interp.description}</p>
+              <div class="p-2 sm:p-3 rounded-lg text-xs sm:text-sm {interp.color === 'green' ? 'bg-success/20' : interp.color === 'yellow' || interp.color === 'orange' ? 'bg-warning/20' : interp.color === 'red' ? 'bg-error/20' : 'bg-base-100'}">
+                <strong>{interp.range[0]}-{interp.range[1]}: {interp.label}</strong>
+                <p class="opacity-70 text-xs">{interp.description}</p>
               </div>
             {/each}
           </div>
         </div>
-      </div>
+      </details>
     </div>
   {/if}
 </div>

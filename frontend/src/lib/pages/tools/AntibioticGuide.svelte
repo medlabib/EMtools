@@ -131,19 +131,19 @@
       <p class="opacity-90">Posologies, ajustements rénaux et interactions médicamenteuses</p>
     </div>
 
-    <!-- Tabs -->
-    <div role="tablist" class="tabs tabs-boxed mb-6 p-1">
-      <button role="tab" class="tab gap-1" class:tab-active={selectedTab === 'search'} on:click={() => selectedTab = 'search'}>
-        <span class="hidden sm:inline">🔍</span> Recherche
+    <!-- Tabs - Responsive -->
+    <div role="tablist" class="tabs tabs-boxed mb-6 p-1 overflow-x-auto">
+      <button role="tab" class="tab gap-1 whitespace-nowrap text-sm sm:text-base" class:tab-active={selectedTab === 'search'} on:click={() => selectedTab = 'search'}>
+        <span class="hidden sm:inline">🔍</span> <span class="inline sm:hidden">Rech.</span><span class="hidden sm:inline">Recherche</span>
       </button>
-      <button role="tab" class="tab gap-1" class:tab-active={selectedTab === 'classes'} on:click={() => selectedTab = 'classes'}>
-        <span class="hidden sm:inline">📂</span> Classes
+      <button role="tab" class="tab gap-1 whitespace-nowrap text-sm sm:text-base" class:tab-active={selectedTab === 'classes'} on:click={() => selectedTab = 'classes'}>
+        <span class="hidden sm:inline">📂</span> <span class="inline sm:hidden">Class.</span><span class="hidden sm:inline">Classes</span>
       </button>
-      <button role="tab" class="tab gap-1" class:tab-active={selectedTab === 'renal'} on:click={() => selectedTab = 'renal'}>
-        <span class="hidden sm:inline">🩺</span> Rénal
+      <button role="tab" class="tab gap-1 whitespace-nowrap text-sm sm:text-base" class:tab-active={selectedTab === 'renal'} on:click={() => selectedTab = 'renal'}>
+        <span class="hidden sm:inline">🩺</span> <span class="inline sm:hidden">Rén.</span><span class="hidden sm:inline">Rénal</span>
       </button>
-      <button role="tab" class="tab gap-1" class:tab-active={selectedTab === 'interactions'} on:click={() => selectedTab = 'interactions'}>
-        <span class="hidden sm:inline">⚠️</span> Interactions
+      <button role="tab" class="tab gap-1 whitespace-nowrap text-sm sm:text-base" class:tab-active={selectedTab === 'interactions'} on:click={() => selectedTab = 'interactions'}>
+        <span class="hidden sm:inline">⚠️</span> <span class="inline sm:hidden">Inter.</span><span class="hidden sm:inline">Interactions</span>
       </button>
     </div>
 
@@ -171,20 +171,20 @@
         </div>
       </div>
 
-      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {#each filteredAntibiotics as antibiotic}
           <button 
-            class="card bg-base-100 shadow-md border border-primary/20 hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-left overflow-hidden group" 
+            class="card bg-base-100 shadow-md border border-primary/20 hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-left overflow-hidden group active:scale-95" 
             on:click={() => selectAntibiotic(antibiotic)}
           >
-            <div class="card-body p-4 gap-3">
+            <div class="card-body p-3 sm:p-4 gap-2 sm:gap-3">
               <div>
-                <h3 class="font-bold text-base text-base-content group-hover:text-primary transition-colors">{antibiotic.name}</h3>
-                <span class="text-sm text-base-content/70 italic block">{antibiotic.genericName}</span>
+                <h3 class="font-bold text-sm sm:text-base text-base-content group-hover:text-primary transition-colors line-clamp-2">{antibiotic.name}</h3>
+                <span class="text-xs sm:text-sm text-base-content/70 italic block">{antibiotic.genericName}</span>
               </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-primary badge-sm">{classLabels[antibiotic.class]}</span>
-                <span class="badge badge-outline badge-sm">{antibiotic.route.join(' / ')}</span>
+              <div class="flex flex-wrap gap-1 sm:gap-2">
+                <span class="badge badge-primary badge-xs sm:badge-sm text-xs">{classLabels[antibiotic.class]}</span>
+                <span class="badge badge-outline badge-xs sm:badge-sm text-xs">{antibiotic.route.join(' / ')}</span>
               </div>
               <p class="text-xs text-base-content/60 line-clamp-2">{antibiotic.indications.slice(0, 2).join(', ')}</p>
             </div>
@@ -361,179 +361,195 @@
     {/if}
 
   {:else}
-    <!-- Detail View -->
-    <button class="btn btn-ghost btn-ghost-contrast gap-2 mb-4" on:click={goBack}>
+    <!-- Detail View - Mobile Friendly -->
+    <button class="btn btn-ghost btn-ghost-contrast gap-2 mb-4 w-full sm:w-auto" on:click={goBack}>
       <span>←</span> Retour
     </button>
 
-    <div class="space-y-6">
+    <div class="space-y-3 sm:space-y-6">
       <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h1 class="text-2xl font-bold">{selectedAntibiotic.name}</h1>
-          <p class="text-lg opacity-70">{selectedAntibiotic.genericName}</p>
-          <div class="flex flex-wrap gap-2 mt-3">
-            <span class="badge badge-primary badge-lg">{classLabels[selectedAntibiotic.class]}</span>
-            <span class="badge badge-secondary badge-lg">{spectrumLabels[selectedAntibiotic.spectrum]}</span>
-            <span class="badge badge-accent badge-lg">{selectedAntibiotic.route.join(' / ')}</span>
+        <div class="card-body p-3 sm:p-6">
+          <h1 class="text-xl sm:text-2xl font-bold">{selectedAntibiotic.name}</h1>
+          <p class="text-base sm:text-lg opacity-70">{selectedAntibiotic.genericName}</p>
+          <div class="flex flex-wrap gap-1 sm:gap-2 mt-2 sm:mt-3">
+            <span class="badge badge-primary badge-sm sm:badge-lg">{classLabels[selectedAntibiotic.class]}</span>
+            <span class="badge badge-secondary badge-sm sm:badge-lg">{spectrumLabels[selectedAntibiotic.spectrum]}</span>
+            <span class="badge badge-accent badge-sm sm:badge-lg text-xs sm:text-sm">{selectedAntibiotic.route.join(' / ')}</span>
             {#if selectedAntibiotic.availableInTunisia}
-              <span class="badge badge-success badge-lg">🇹🇳 Disponible</span>
+              <span class="badge badge-success badge-sm sm:badge-lg">🇹🇳 Disponible</span>
             {/if}
           </div>
         </div>
       </div>
 
-      <!-- Dosing Section -->
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h2 class="card-title">📋 Posologie</h2>
-          <div class="grid gap-3 mt-2">
-            <div class="flex justify-between py-2 border-b border-base-300">
+      <!-- Dosing Section - Collapsible on Mobile -->
+      <details class="card bg-base-100 shadow-md" open>
+        <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-base-200 transition-colors">
+          📋 Posologie
+        </summary>
+        <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
+          <div class="grid gap-2 sm:gap-3 mt-2">
+            <div class="flex justify-between py-2 border-b border-base-300 text-sm sm:text-base">
               <span class="font-medium">Dose adulte:</span>
-              <span>{selectedAntibiotic.standardDose.adult}</span>
+              <span class="text-right">{selectedAntibiotic.standardDose.adult}</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-base-300">
+            <div class="flex justify-between py-2 border-b border-base-300 text-sm sm:text-base">
               <span class="font-medium">Fréquence:</span>
-              <span>{selectedAntibiotic.standardDose.frequency}</span>
+              <span class="text-right">{selectedAntibiotic.standardDose.frequency}</span>
             </div>
             {#if selectedAntibiotic.standardDose.duration}
-              <div class="flex justify-between py-2 border-b border-base-300">
+              <div class="flex justify-between py-2 border-b border-base-300 text-sm sm:text-base">
                 <span class="font-medium">Durée:</span>
-                <span>{selectedAntibiotic.standardDose.duration}</span>
+                <span class="text-right">{selectedAntibiotic.standardDose.duration}</span>
               </div>
             {/if}
             {#if selectedAntibiotic.standardDose.maxDose}
-              <div class="flex justify-between py-2 border-b border-base-300">
+              <div class="flex justify-between py-2 border-b border-base-300 text-sm sm:text-base">
                 <span class="font-medium">Dose max:</span>
-                <span>{selectedAntibiotic.standardDose.maxDose}</span>
+                <span class="text-right">{selectedAntibiotic.standardDose.maxDose}</span>
               </div>
             {/if}
           </div>
         </div>
-      </div>
+      </details>
 
-      <!-- Renal Adjustment -->
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h2 class="card-title">🩺 Ajustement rénal</h2>
+      <!-- Renal Adjustment - Collapsible -->
+      <details class="card bg-base-100 shadow-md">
+        <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-base-200 transition-colors">
+          🩺 Ajustement rénal
+        </summary>
+        <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
           <div class="grid gap-2 mt-2">
             {#each selectedAntibiotic.renalAdjustment as adj}
-              <div class="flex flex-wrap items-center gap-3 py-2 border-b border-base-300">
-                <span class="badge badge-primary">DFG {adj.gfr}</span>
-                <span class="font-medium">{adj.dose}</span>
+              <div class="flex flex-wrap items-center gap-2 sm:gap-3 py-2 border-b border-base-300">
+                <span class="badge badge-primary text-xs">{adj.gfr}</span>
+                <span class="font-medium text-sm sm:text-base">{adj.dose}</span>
                 {#if adj.notes}
-                  <span class="text-sm opacity-70 italic">{adj.notes}</span>
+                  <span class="text-xs opacity-70 italic">{adj.notes}</span>
                 {/if}
               </div>
             {/each}
           </div>
           {#if selectedAntibiotic.hepaticAdjustment}
-            <div class="alert alert-warning mt-4">
-              <span><strong>Insuffisance hépatique:</strong> {selectedAntibiotic.hepaticAdjustment}</span>
+            <div class="alert alert-warning mt-3 sm:mt-4 py-2 sm:py-3">
+              <span class="text-xs sm:text-sm"><strong>Insuffisance hépatique:</strong> {selectedAntibiotic.hepaticAdjustment}</span>
             </div>
           {/if}
         </div>
-      </div>
+      </details>
 
-      <!-- Indications -->
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h2 class="card-title">✅ Indications</h2>
-          <ul class="list-disc list-inside space-y-1 mt-2">
+      <!-- Indications - Collapsible -->
+      <details class="card bg-base-100 shadow-md">
+        <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-base-200 transition-colors">
+          ✅ Indications
+        </summary>
+        <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
+          <ul class="list-disc list-inside space-y-1 mt-2 text-sm sm:text-base">
             {#each selectedAntibiotic.indications as indication}
               <li>{indication}</li>
             {/each}
           </ul>
         </div>
-      </div>
+      </details>
 
-      <!-- Contraindications -->
-      <div class="card bg-error/10 border border-error/30">
-        <div class="card-body">
-          <h2 class="card-title text-error">⛔ Contre-indications</h2>
-          <ul class="list-disc list-inside space-y-1 mt-2">
+      <!-- Contraindications - Collapsible -->
+      <details class="card bg-error/10 border border-error/30">
+        <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-error/5 transition-colors text-error">
+          ⛔ Contre-indications
+        </summary>
+        <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
+          <ul class="list-disc list-inside space-y-1 mt-2 text-sm sm:text-base">
             {#each selectedAntibiotic.contraindications as ci}
               <li>{ci}</li>
             {/each}
           </ul>
         </div>
-      </div>
+      </details>
 
-      <!-- Side Effects -->
-      <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h2 class="card-title">⚡ Effets indésirables</h2>
-          <div class="flex flex-wrap gap-2 mt-2">
+      <!-- Side Effects - Collapsible -->
+      <details class="card bg-base-100 shadow-md">
+        <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-base-200 transition-colors">
+          ⚡ Effets indésirables
+        </summary>
+        <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
+          <div class="flex flex-wrap gap-1 sm:gap-2 mt-2">
             {#each selectedAntibiotic.sideEffects as effect}
-              <span class="badge badge-outline">{effect}</span>
+              <span class="badge badge-outline text-xs sm:text-sm">{effect}</span>
             {/each}
           </div>
         </div>
-      </div>
+      </details>
 
-      <!-- Interactions -->
-      <div class="card bg-warning/10 border border-warning/30">
-        <div class="card-body">
-          <h2 class="card-title text-warning">⚠️ Interactions médicamenteuses</h2>
-          <div class="space-y-3 mt-2">
+      <!-- Interactions - Collapsible -->
+      <details class="card bg-warning/10 border border-warning/30">
+        <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-warning/5 transition-colors text-warning">
+          ⚠️ Interactions médicamenteuses
+        </summary>
+        <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
+          <div class="space-y-2 sm:space-y-3 mt-2">
             {#each selectedAntibiotic.interactions as interaction}
-              <div class="border-l-4 pl-3 py-2" style="border-color: {getSeverityColor(interaction.severity)}">
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="font-bold">{interaction.drug}</span>
-                  <span class="badge text-white text-xs" style="background: {getSeverityColor(interaction.severity)}">
-                    {interaction.severity === 'major' ? 'Majeure' : interaction.severity === 'moderate' ? 'Modérée' : 'Mineure'}
+              <div class="border-l-4 pl-2 sm:pl-3 py-2 text-sm" style="border-color: {getSeverityColor(interaction.severity)}">
+                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                  <span class="font-bold text-sm">{interaction.drug}</span>
+                  <span class="badge badge-xs text-white text-xs" style="background: {getSeverityColor(interaction.severity)}">
+                    {interaction.severity === 'major' ? 'Maj.' : interaction.severity === 'moderate' ? 'Mod.' : 'Min.'}
                   </span>
                 </div>
-                <p class="text-sm opacity-80">{interaction.effect}</p>
-                <p class="text-sm text-info mt-1">→ {interaction.recommendation}</p>
+                <p class="text-xs opacity-80">{interaction.effect}</p>
+                <p class="text-xs text-info mt-1">→ {interaction.recommendation}</p>
               </div>
             {/each}
           </div>
         </div>
-      </div>
+      </details>
 
-      <!-- Monitoring -->
+      <!-- Monitoring - Collapsible -->
       {#if selectedAntibiotic.monitoring}
-        <div class="card bg-base-100 shadow-md">
-          <div class="card-body">
-            <h2 class="card-title">📊 Surveillance</h2>
-            <ul class="list-disc list-inside space-y-1 mt-2">
+        <details class="card bg-base-100 shadow-md">
+          <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-base-200 transition-colors">
+            📊 Surveillance
+          </summary>
+          <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
+            <ul class="list-disc list-inside space-y-1 mt-2 text-sm sm:text-base">
               {#each selectedAntibiotic.monitoring as item}
                 <li>{item}</li>
               {/each}
             </ul>
           </div>
-        </div>
+        </details>
       {/if}
 
       <!-- Pregnancy -->
       <div class="card bg-base-100 shadow-md">
-        <div class="card-body">
-          <h2 class="card-title">🤰 Grossesse</h2>
+        <div class="card-body p-3 sm:p-6">
+          <h2 class="card-title text-base sm:text-lg">🤰 Grossesse</h2>
           {#if selectedAntibiotic.pregnancyCategory}
             {@const preg = getPregnancyLabel(selectedAntibiotic.pregnancyCategory)}
-            <span class="badge badge-lg py-3 text-white mt-2" style="background: {preg.color}">{preg.label}</span>
+            <span class="badge badge-lg py-2 sm:py-3 text-white text-xs sm:text-sm mt-2" style="background: {preg.color}">{preg.label}</span>
           {:else}
-            <span class="badge badge-lg py-3 badge-ghost mt-2">Non classé</span>
+            <span class="badge badge-lg py-2 sm:py-3 badge-ghost text-xs sm:text-sm mt-2">Non classé</span>
           {/if}
         </div>
       </div>
 
       <!-- Notes -->
       {#if selectedAntibiotic.notes}
-        <div class="card bg-info/10 border border-info/30">
-          <div class="card-body">
-            <h2 class="card-title">📝 Notes</h2>
-            <p class="mt-2">{selectedAntibiotic.notes}</p>
+        <details class="card bg-info/10 border border-info/30">
+          <summary class="card-title p-4 sm:p-6 cursor-pointer hover:bg-info/5 transition-colors">
+            📝 Notes
+          </summary>
+          <div class="card-body p-3 sm:p-6 pt-0 sm:pt-6">
+            <p class="mt-2 text-sm sm:text-base">{selectedAntibiotic.notes}</p>
           </div>
-        </div>
+        </details>
       {/if}
 
       <!-- Price -->
       {#if selectedAntibiotic.tunisiaPrice}
         <div class="card bg-base-100 shadow-md">
-          <div class="card-body">
-            <h2 class="card-title">💰 Prix indicatif (Tunisie)</h2>
-            <p class="text-lg font-bold text-success mt-2">{selectedAntibiotic.tunisiaPrice}</p>
+          <div class="card-body p-3 sm:p-6">
+            <h2 class="card-title text-base sm:text-lg">💰 Prix indicatif (Tunisie)</h2>
+            <p class="text-lg sm:text-2xl font-bold text-success mt-2">{selectedAntibiotic.tunisiaPrice}</p>
           </div>
         </div>
       {/if}
