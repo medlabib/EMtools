@@ -1000,8 +1000,8 @@
   }
 
   @keyframes pulse-warning {
-    0%, 100% { background: #fef2f2; }
-    50% { background: #fee2e2; }
+    0%, 100% { background: oklch(var(--er) / 0.1); }
+    50% { background: oklch(var(--er) / 0.15); }
   }
 
   .big-input {
@@ -1013,13 +1013,13 @@
   }
 
   .big-input.hyper {
-    border-color: #3b82f6;
-    color: #1d4ed8;
+    border-color: oklch(var(--in));
+    color: oklch(var(--in));
   }
 
   .big-input.hypo {
-    border-color: #f59e0b;
-    color: #b45309;
+    border-color: oklch(var(--wa));
+    color: oklch(var(--wa));
   }
 
   .two-day-grid {
@@ -1035,11 +1035,11 @@
   }
 
   .day-card {
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid oklch(var(--in));
   }
 
   .day-card.day2 {
-    border-left-color: #64748b;
+    border-left-color: oklch(var(--bc) / 0.4);
     opacity: 0.9;
   }
 
