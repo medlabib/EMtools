@@ -1,173 +1,344 @@
-# Installation Guide
+# Guide d'Installation# Installation Guide
 
-## System Requirements
 
-### Minimum Requirements
-- **CPU**: 2 cores
-- **RAM**: 4 GB
-- **Storage**: 10 GB
+
+## Configuration Requise## System Requirements
+
+
+
+### Prérequis### Minimum Requirements
+
+- **Flutter SDK**: 3.x ou supérieur- **CPU**: 2 cores
+
+- **Dart**: 3.x ou supérieur- **RAM**: 4 GB
+
+- **IDE**: VS Code ou Android Studio (recommandé)- **Storage**: 10 GB
+
 - **OS**: Windows 10+, macOS 10.15+, Ubuntu 20.04+
 
-### Recommended
-- **CPU**: 4+ cores
+### Pour le Développement Mobile
+
+- **Android**: Android Studio avec SDK Android### Recommended
+
+- **iOS**: Xcode 14+ (macOS uniquement)- **CPU**: 4+ cores
+
 - **RAM**: 8 GB
-- **Storage**: 20 GB SSD
+
+### Pour le Développement Web- **Storage**: 20 GB SSD
+
+- Chrome ou tout navigateur moderne
 
 ## Installation Methods
 
+## Installation
+
 ### Method 1: Docker (Recommended)
 
+### Étape 1: Installer Flutter
+
 #### Prerequisites
-- Docker Engine 20.10+
-- Docker Compose 2.0+
 
-#### Steps
+Suivez le guide officiel Flutter pour votre système d'exploitation:- Docker Engine 20.10+
 
-```bash
-# Clone repository
-git clone https://github.com/medlabib/EMtools.git
-cd EMtools
+- [Windows](https://docs.flutter.dev/get-started/install/windows)- Docker Compose 2.0+
 
-# Start all services
+- [macOS](https://docs.flutter.dev/get-started/install/macos)
+
+- [Linux](https://docs.flutter.dev/get-started/install/linux)#### Steps
+
+
+
+Vérifiez l'installation:```bash
+
+```bash# Clone repository
+
+flutter doctorgit clone https://github.com/medlabib/EMtools.git
+
+```cd EMtools
+
+
+
+### Étape 2: Cloner le Repository# Start all services
+
 docker compose up -d
 
-# View logs
-docker compose logs -f
-```
-
-#### Verify Installation
-
 ```bash
-# Check running containers
-docker ps
 
-# Expected output:
+git clone https://github.com/medlabib/EMtools.git# View logs
+
+cd EMtools/frontenddocker compose logs -f
+
+``````
+
+
+
+### Étape 3: Installer les Dépendances#### Verify Installation
+
+
+
+```bash```bash
+
+flutter pub get# Check running containers
+
+```docker ps
+
+
+
+### Étape 4: Lancer l'Application# Expected output:
+
 # emtools-frontend  - Port 80
-# emtools-backend   - Port 8000
-# emtools-mongodb   - Port 27017
+
+#### Web (Chrome)# emtools-backend   - Port 8000
+
+```bash# emtools-mongodb   - Port 27017
+
+flutter run -d chrome```
+
 ```
 
 ### Method 2: Manual Installation
 
-#### Backend Setup
+#### Android
 
-```bash
-cd backend
+```bash#### Backend Setup
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# or
-.\venv\Scripts\activate   # Windows
+# Connectez un appareil Android ou démarrez un émulateur
 
-# Install dependencies
+flutter run -d android```bash
+
+```cd backend
+
+
+
+#### iOS (macOS uniquement)# Create virtual environment
+
+```bashpython -m venv venv
+
+# Ouvrez un simulateur ou connectez un iPhonesource venv/bin/activate  # Linux/macOS
+
+flutter run -d ios# or
+
+```.\venv\Scripts\activate   # Windows
+
+
+
+## Build pour Production# Install dependencies
+
 pip install -r requirements.txt
 
-# Start server
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+### Web
+
+```bash# Start server
+
+flutter build web --releaseuvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
 ```
 
-#### Frontend Setup
+# Les fichiers sont dans build/web/
+
+# Déployez sur n'importe quel serveur statique#### Frontend Setup
+
+```
 
 ```bash
-cd frontend
 
-# Install dependencies
+### Android APKcd frontend
+
+```bash
+
+flutter build apk --release# Install dependencies
+
 npm install
 
-# Development server
+# APK disponible dans build/app/outputs/flutter-apk/
+
+```# Development server
+
 npm run dev
 
-# Production build
-npm run build
-```
+### Android App Bundle (Play Store)
 
-#### MongoDB Setup
+```bash# Production build
+
+flutter build appbundle --releasenpm run build
+
+``````
+
+
+
+### iOS (macOS uniquement)#### MongoDB Setup
 
 ```bash
+
+flutter build ios --release```bash
+
 # Using Docker
-docker run -d --name mongodb -p 27017:27017 mongo:7
 
-# Or install locally
+# Ouvrez le projet Xcode pour l'archivagedocker run -d --name mongodb -p 27017:27017 mongo:7
+
+open ios/Runner.xcworkspace
+
+```# Or install locally
+
 # See: https://docs.mongodb.com/manual/installation/
-```
 
-## Production Deployment
+## Tests```
 
-### Using Docker Compose (Production)
+
+
+Lancez tous les tests:## Production Deployment
 
 ```bash
-docker compose -f docker-compose.prod.yml up -d
+
+flutter test### Using Docker Compose (Production)
+
 ```
 
-### Environment Configuration
+```bash
 
-Create `.env` file:
+Lancez avec couverture:docker compose -f docker-compose.prod.yml up -d
 
-```env
-# Required
-SECRET_KEY=generate-a-secure-64-char-key
-MONGODB_URL=mongodb://mongodb:27017
-MONGODB_DB_NAME=emtools
+```bash```
 
-# Optional - SMTP
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASSWORD=app-specific-password
-SMTP_FROM_EMAIL=noreply@yourdomain.com
+flutter test --coverage
 
-# Optional - CORS
-BACKEND_CORS_ORIGINS=["https://yourdomain.com"]
-```
+```### Environment Configuration
 
-### SSL/TLS Setup
 
-For production, use a reverse proxy with SSL:
 
-#### Nginx Configuration
+## Structure des FichiersCreate `.env` file:
 
-```nginx
-server {
+
+
+``````env
+
+frontend/# Required
+
+├── lib/SECRET_KEY=generate-a-secure-64-char-key
+
+│   ├── main.dart              # Point d'entréeMONGODB_URL=mongodb://mongodb:27017
+
+│   ├── core/MONGODB_DB_NAME=emtools
+
+│   │   ├── config/            # Configuration
+
+│   │   ├── theme/             # Thèmes (clair/sombre)# Optional - SMTP
+
+│   │   ├── utils/             # UtilitairesSMTP_HOST=smtp.gmail.com
+
+│   │   └── widgets/           # Widgets partagésSMTP_PORT=587
+
+│   ├── data/SMTP_USER=your-email@gmail.com
+
+│   │   ├── datasources/       # Données (calculateurs, médicaments...)SMTP_PASSWORD=app-specific-password
+
+│   │   ├── models/            # Modèles de donnéesSMTP_FROM_EMAIL=noreply@yourdomain.com
+
+│   │   └── repositories/      # Repositories
+
+│   ├── domain/# Optional - CORS
+
+│   │   └── entities/          # Entités métierBACKEND_CORS_ORIGINS=["https://yourdomain.com"]
+
+│   └── presentation/```
+
+│       ├── providers/         # State management (Riverpod)
+
+│       ├── screens/           # Écrans### SSL/TLS Setup
+
+│       └── widgets/           # Widgets spécifiques
+
+├── test/                      # Tests unitairesFor production, use a reverse proxy with SSL:
+
+├── web/                       # Configuration web
+
+├── android/                   # Configuration Android#### Nginx Configuration
+
+├── ios/                       # Configuration iOS
+
+└── pubspec.yaml               # Dépendances```nginx
+
+```server {
+
     listen 443 ssl http2;
-    server_name yourdomain.com;
 
-    ssl_certificate /path/to/cert.pem;
-    ssl_certificate_key /path/to/key.pem;
+## Résolution de Problèmes    server_name yourdomain.com;
 
-    location / {
-        proxy_pass http://localhost:80;
+
+
+### Flutter Doctor échoue    ssl_certificate /path/to/cert.pem;
+
+```bash    ssl_certificate_key /path/to/key.pem;
+
+flutter doctor -v
+
+```    location / {
+
+Suivez les recommandations affichées.        proxy_pass http://localhost:80;
+
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
 
-    location /api {
-        proxy_pass http://localhost:8000;
+### Erreurs de dépendances        proxy_set_header X-Real-IP $remote_addr;
+
+```bash    }
+
+flutter clean
+
+flutter pub get    location /api {
+
+```        proxy_pass http://localhost:8000;
+
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-```
 
-## Troubleshooting
+### Problèmes Android        proxy_set_header X-Real-IP $remote_addr;
 
-### Common Issues
+```bash    }
 
-#### Port Already in Use
+flutter clean}
+
+cd android```
+
+./gradlew clean
+
+cd ..## Troubleshooting
+
+flutter run
+
+```### Common Issues
+
+
+
+### Problèmes iOS#### Port Already in Use
 
 ```bash
-# Find process using port
-lsof -i :8000  # Linux/macOS
-netstat -ano | findstr :8000  # Windows
+
+cd ios```bash
+
+pod install --repo-update# Find process using port
+
+cd ..lsof -i :8000  # Linux/macOS
+
+flutter runnetstat -ano | findstr :8000  # Windows
+
+```
 
 # Kill process or change port in docker-compose.yml
-```
 
-#### MongoDB Connection Failed
+## Support```
+
+
+
+- [Issues GitHub](https://github.com/medlabib/EMtools/issues)#### MongoDB Connection Failed
+
+- [Documentation Flutter](https://docs.flutter.dev/)
 
 ```bash
-# Check MongoDB is running
+
+---# Check MongoDB is running
+
 docker logs emtools-mongodb
+
+*Version 0.1.0 - Application Flutter autonome*
 
 # Verify connection string
 docker exec -it emtools-mongodb mongosh --eval "db.adminCommand('ping')"

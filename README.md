@@ -1,449 +1,409 @@
-# EMTOOLS 🏥
+﻿# EMTOOLS# EMTOOLS 
 
-> **Version 2.0.0-beta.2** | *Emergency Medicine Digital Tools*
 
-**Outils numériques pour la médecine d'urgence**
 
-[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
-[![Version](https://img.shields.io/badge/Version-2.0.0--beta.2-orange)](https://github.com/medlabib/EMtools/releases)
-[![Docker Hub](https://img.shields.io/docker/v/medlabib/emtools-frontend?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/medlabib/emtools-frontend)
-[![Docker Pulls](https://img.shields.io/docker/pulls/medlabib/emtools-frontend?logo=docker)](https://hub.docker.com/r/medlabib/emtools-frontend)
-[![Tests](https://img.shields.io/badge/Tests-521%20passed-brightgreen?logo=vitest)](https://vitest.dev)
-[![Backend Coverage](https://img.shields.io/badge/Backend%20Coverage-75%25-green)](https://pytest.org)
-[![Frontend Coverage](https://img.shields.io/badge/Frontend%20Coverage-39%25-yellow)](https://vitest.dev)
-[![Security](https://img.shields.io/badge/Security-Hardened-blue?logo=shield)](SECURITY.md)
+> **Version 0.1.0** | *Outils Numériques pour la Médecine d'Urgence*> **Version 2.0.0-beta.4** | *Emergency Medicine Digital Tools*
+
+
+
+**Application mobile et web pour les urgentistes francophones****Outils numériques pour la médecine d'urgence**
+
+
+
+[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
+
+[![Version](https://img.shields.io/badge/Version-0.1.0-orange)](https://github.com/medlabib/EMtools/releases)[![Version](https://img.shields.io/badge/Version-2.0.0--beta.4-orange)](https://github.com/medlabib/EMtools/releases)
+
+[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)[![Docker Hub](https://img.shields.io/docker/v/medlabib/emtools-frontend?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/medlabib/emtools-frontend)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
+
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com)
-[![Svelte](https://img.shields.io/badge/Svelte-4.2.8-FF3E00?logo=svelte)](https://svelte.dev)
-[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?logo=mongodb)](https://www.mongodb.com)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?logo=typescript)](https://www.typescriptlang.org)
+
+Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?logo=mongodb)](https://www.mongodb.com)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## 🆕 Nouveautés v0.1.0
 
 Application full-stack pour les urgentistes francophones : calculateurs médicaux, protocoles de sédation, drogues vasoactives, corrections métaboliques et plus.
 
-## 🐳 Quick Start with Docker
+- **Application autonome**: Fonctionne entièrement hors ligne, sans backend
 
-```bash
-# Pull and run with Docker Compose
-git clone https://github.com/medlabib/EMtools.git
-cd EMtools
-docker-compose up -d
+- **Interface française**: Entièrement traduite en français##  What's New in Beta 4
 
-# Or pull images directly from Docker Hub
-docker pull medlabib/emtools-frontend:latest
-docker pull medlabib/emtools-backend:latest
-```
+- **Mode sombre accessible**: Thème sombre avec contraste amélioré
 
-**Access the application:**
-- 🌐 Frontend: http://localhost
-- 🔌 Backend API: http://localhost:8000
-- 📚 API Docs: http://localhost:8000/docs
+- **Favoris personnalisés**: Accès rapide aux outils les plus utilisés- **Flutter Frontend**: Native mobile experience (iOS/Android) + Web
 
-## 🚀 Fonctionnalités
+- **41+ calculateurs médicaux**: Scores cliniques validés- **Tool Favorites**: Star your most-used tools for quick access
 
-### 🛠️ Outils Cliniques
+- **Évaluation ABCDE**: Rapport médical structuré- **QR Code Sharing**: Share pastes via QR code
 
-| Outil | Description |
-|-------|-------------|
-| 🏥 **Dossier Médical** | Génération rapide avec évaluation ABCDE structurée |
-| 📋 **Pastebin Sécurisé** | Partage temporaire (max 24h), images auto-compressées (5MB→2MB) |
-| 🧮 **Calculateurs Médicaux** | 41 scores cliniques (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |
-| 💉 **Drogues Vasoactives** | Calcul de débit PSE (Noradrénaline, Adrénaline, Dobutamine, Dopamine, Isoprénaline, Milrinone) |
-| 💊 **Sédation & Analgésie** | Protocoles ISR (Étomidate, Kétamine, Propofol, Succinylcholine, Rocuronium, Fentanyl, Midazolam, Morphine) |
-| ⚗️ **Troubles Métaboliques** | Dysnatrémie (Adrogué-Madias), Dyskaliémie, Dyscalcémie |
-| 📊 **Gaz du Sang & Ventilation** | Analyse GDS de réanimation, ratio P/F, mécanique ventilatoire, transport O2 |
-| 🦠 **Guide Antibiotiques** | Posologies, ajustements rénaux, interactions médicamenteuses |
+- **Expiration Countdown**: Visual countdown for paste expiration
 
-### 📊 Calculateurs Médicaux (41 scores)
+## 🚀 Démarrage rapide- **Reference Sources**: Scientific references in Blood Gas analysis
 
-- **Trauma**: GCS, RTS, SI (Shock Index), FOUR Score
-- **Cardiologie**: HEART, CHA₂DS₂-VASc, HAS-BLED, CSRS, QTc
-- **Neurologie**: NIHSS, ABCD², ICH Score, Hunt-Hess
-- **EP-TVP**: Wells EP, Wells TVP, PERC, Geneva révisé, sPESI
-- **Sepsis**: qSOFA, NEWS2, CURB-65, LRINEC, Centor
-- **Pédiatrie**: PECARN, Westley (Croup), PAS (Appendicite), CDS
-- **Toxicologie**: CIWA-Ar (Sevrage alcool), COWS (Sevrage opioïdes)
-- **Gastro**: Alvarado, BISAP, Glasgow-Blatchford, Rockall, MELD
-- **MSK**: Ottawa (cheville, genou), NEXUS, Canadian C-Spine
-- **Laboratoire**: ClCr (Cockcroft-Gault), Calcium corrigé, A-a Gradient
-
-### 🔧 Fonctionnalités Techniques
-
-- **Backend**: FastAPI avec async MongoDB (Motor + Beanie ODM)
-- **Frontend**: Svelte avec TypeScript
-- **Base de données**: MongoDB (NoSQL)
-- **Authentification**: JWT avec tokens access/refresh
-- **i18n**: Support multilingue (Français, Anglais)
-- **Admin**: Tableau de bord avec gestion utilisateurs
-- **Docker**: Conteneurisation complète
-
-## 📸 Screenshots
-
-### Desktop Views
-
-| | |
-|:---:|:---:|
-| **🏠 Home** | **📊 Dashboard** |
-| ![Home Page](screenshots/01-home.png) | ![Dashboard](screenshots/02-dashboard.png) |
-| **🔐 Login** | **📊 Blood Gas Analysis** |
-| ![Login Page](screenshots/03-login.png) | ![Blood Gas Analysis](screenshots/04-bloodgas.png) |
-| **💉 Vasoactive Drugs** | **🧮 Medical Calculator** |
-| ![Vasoactive Drugs](screenshots/05-vasoactive.png) | ![Medical Calculator](screenshots/06-calculator.png) |
-| **🏥 Medical Report** | **💊 Sedation Protocols** |
-| ![Medical Report](screenshots/07-medicalreport.png) | ![Sedation Protocols](screenshots/08-sedation.png) |
-| **🦠 Antibiotic Guide** | **⚗️ Metabolic Corrections** |
-| ![Antibiotic Guide](screenshots/09-antibiotics.png) | ![Metabolic Corrections](screenshots/10-metabolic.png) |
-
-### Mobile Views
-
-| | |
-|:---:|:---:|
-| **📱 Mobile Home** | **📱 Mobile Dashboard** |
-| ![Mobile Home](screenshots/11-mobile-home.png) | ![Mobile Dashboard](screenshots/12-mobile-dashboard.png) |
-
-## 📁 Structure du Projet
-
-```
-EMTOOLS/
-├── backend/
-│   ├── app/
-│   │   ├── api/v1/endpoints/    # Auth, Users, Admin, Paste
-│   │   ├── core/                # Config, Security
-│   │   ├── db/                  # MongoDB connection
-│   │   ├── models/              # Beanie ODM models
-│   │   └── schemas/             # Pydantic schemas
-│   ├── tests/                   # Backend tests
-│   ├── Dockerfile
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── lib/
-│   │   │   ├── components/      # Layout, ProtectedRoute
-│   │   │   ├── pages/           # Home, Login, Tools...
-│   │   │   │   └── tools/       # 7 clinical tools
-│   │   │   │       ├── calculators/   # 33 scoring systems
-│   │   │   │       ├── vasoactive/    # Drug calculations
-│   │   │   │       ├── sedation/      # RSI protocols
-│   │   │   │       ├── metabolic/     # Electrolyte corrections
-│   │   │   │       └── bloodgas/      # ABG analysis & ventilation
-│   │   │   ├── stores/          # Auth store
-│   │   │   └── locales/         # i18n (en, fr)
-│   │   └── App.svelte
-│   ├── tests/                   # Frontend tests
-│   ├── Dockerfile
-│   └── package.json
-├── docker-compose.yml
-├── docker-compose.dev.yml
-└── README.md
-```
-
-## 🛠️ Installation
+- **Correction Rates**: Display correction rate recommendations in Metabolic disorders
 
 ### Prérequis
 
-- Docker & Docker Compose
-- Node.js 18+ (développement frontend)
-- Python 3.11+ (développement backend)
+##  Quick Start with Docker
 
-### Démarrage Rapide avec Docker
+- Flutter SDK 3.x
 
-```bash
-# Cloner le dépôt
-git clone <repository-url>
-cd EMTOOLS
+- Android Studio / Xcode (pour mobile)`ash
 
-# Démarrer tous les services
+- Chrome (pour le web)# Pull and run with Docker Compose
+
+git clone https://github.com/medlabib/EMtools.git
+
+### Installationcd EMtools
+
 docker-compose up -d
 
-# Accéder à l'application
-# Frontend: http://localhost
-# Backend API: http://localhost:8000
-# API Docs: http://localhost:8000/docs
+```bash
+
+# Cloner le repository# Or pull images directly from Docker Hub
+
+git clone https://github.com/medlabib/EMtools.gitdocker pull medlabib/emtools-frontend:2.0.0-beta.4
+
+cd EMtools/frontenddocker pull medlabib/emtools-backend:2.0.0-beta.4
+
+`
+
+# Installer les dépendances
+
+flutter pub get**Access the application:**
+
+-  Frontend: http://localhost
+
+# Lancer en mode développement-  Backend API: http://localhost:8000
+
+flutter run -d chrome          # Web-  API Docs: http://localhost:8000/docs
+
+flutter run -d android          # Android
+
+flutter run -d ios              # iOS##  Features
+
+
+
+# Build pour production###  Clinical Tools
+
+flutter build web --release     # Web
+
+flutter build apk --release     # Android| Tool | Description |
+
+flutter build ios --release     # iOS|------|-------------|
+
+```|  **Medical Report** | ABCDE structured assessment with severity detection |
+
+|  **Secure Pastebin** | Temporary sharing (max 24h) with QR codes |
+
+## 📱 Fonctionnalités|  **Medical Calculators** | 41+ clinical scores (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |
+
+|  **Vasoactive Drugs** | PSE flow rate calculator (Noradrenaline, Adrenaline, Dobutamine...) |
+
+### Outils Cliniques|  **Sedation & Analgesia** | RSI protocols (Etomidate, Ketamine, Propofol, Rocuronium...) |
+
+|  **Metabolic Disorders** | Dysnatremia (Adrogué-Madias), Dyskalemia, Dyscalcemia |
+
+| Outil | Description ||  **Blood Gas & Ventilation** | ABG analysis, P/F ratio, ventilator mechanics |
+
+|-------|-------------||  **Antibiotic Guide** | Dosing, renal adjustments, drug interactions |
+
+| 📋 **Rapport Médical** | Évaluation structurée ABCDE avec détection de gravité |
+
+| 🧮 **Calculateurs Médicaux** | 41+ scores cliniques (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |###  Medical Calculators (41+ scores)
+
+| 💊 **Drogues Vasoactives** | Calculateur de débit PSE (Noradrénaline, Adrénaline, Dobutamine...) |
+
+| 💉 **Sédation & Analgésie** | Protocoles ISR (Étomidate, Kétamine, Propofol, Rocuronium...) |- **Trauma**: GCS, RTS, Shock Index, FOUR Score
+
+| ⚗️ **Troubles Métaboliques** | Dysnatrémie (Adrogué-Madias), Dyskaliémie, Dyscalcémie |- **Cardiology**: HEART, CHADS-VASc, HAS-BLED, QTc
+
+| 🫁 **Gaz du Sang** | Analyse des GDS, ratio P/F, mécanique ventilatoire |- **Neurology**: NIHSS, ABCD², ICH Score, Hunt-Hess
+
+| 💊 **Guide Antibiotique** | Posologies, ajustements rénaux, interactions |- **PE/DVT**: Wells PE, Wells DVT, PERC, Geneva, sPESI
+
+- **Sepsis**: qSOFA, NEWS2, CURB-65, LRINEC, Centor
+
+### Calculateurs Médicaux (41+ scores)- **Pediatrics**: PECARN, Westley (Croup), PAS
+
+- **Toxicology**: CIWA-Ar, COWS
+
+- **Trauma**: GCS, RTS, Indice de Choc, FOUR Score- **Gastro**: Alvarado, BISAP, Glasgow-Blatchford, MELD
+
+- **Cardiologie**: HEART, CHADS-VASc, HAS-BLED, QTc- **MSK**: Ottawa (ankle, knee), NEXUS, Canadian C-Spine
+
+- **Neurologie**: NIHSS, ABCD², ICH Score, Hunt-Hess- **Lab**: ClCr (Cockcroft-Gault), Corrected Calcium, A-a Gradient
+
+- **EP/TVP**: Wells EP, Wells TVP, PERC, Genève, sPESI
+
+- **Sepsis**: qSOFA, NEWS2, CURB-65, LRINEC, Centor##  Project Structure
+
+- **Pédiatrie**: PECARN, Westley (Croup), PAS
+
+- **Toxicologie**: CIWA-Ar, COWS`
+
+- **Gastro**: Alvarado, BISAP, Glasgow-Blatchford, MELDEMTOOLS/
+
+- **MSK**: Ottawa (cheville, genou), NEXUS, Canadian C-Spine backend/
+
+- **Biologie**: ClCr (Cockcroft-Gault), Calcium Corrigé, Gradient A-a    app/
+
+       api/v1/endpoints/    # Auth, Users, Admin, Paste
+
+## 📁 Structure du Projet       core/                # Config, Security
+
+       db/                  # MongoDB connection
+
+```       models/              # Beanie ODM models
+
+EMTOOLS/       schemas/             # Pydantic schemas
+
+├── frontend/                    # Application Flutter    tests/                   # Backend tests
+
+│   ├── lib/    Dockerfile
+
+│   │   ├── core/                # Thème, Config, Widgets partagés    requirements.txt
+
+│   │   ├── data/                # Sources de données frontend/                    # Flutter App
+
+│   │   ├── domain/              # Entités, Logique métier    lib/
+
+│   │   └── presentation/        # Écrans, Widgets       core/                # Theme, Config, Localization
+
+│   ├── test/                    # Tests unitaires (256 tests)       data/                # Data sources, API
+
+│   ├── web/                     # Fichiers spécifiques web       domain/              # Entities, Business logic
+
+│   ├── android/                 # Build Android       presentation/        # Screens, Widgets
+
+│   ├── ios/                     # Build iOS    web/                     # Web-specific files
+
+│   └── pubspec.yaml    android/                 # Android build
+
+├── wiki/                        # Documentation    ios/                     # iOS build (coming soon)
+
+└── README.md    Dockerfile               # Web production build
+
+```    pubspec.yaml
+
+ docker-compose.yml           # Production
+
+## 🧪 Tests docker-compose.dev.yml       # Development
+
+ README.md
+
+```bash`
+
+cd frontend
+
+##  Installation
+
+# Lancer tous les tests
+
+flutter test### Prerequisites
+
+
+
+# Lancer avec couverture- Docker & Docker Compose
+
+flutter test --coverage- Flutter SDK 3.x (for development)
+
+- Python 3.11+ (for backend development)
+
+# Lancer un fichier spécifique
+
+flutter test test/unit/blood_gas_calculator_test.dart### Quick Start with Docker
+
 ```
 
-### Développement Local
+`ash
+
+**État actuel**: 256 tests passent ✅# Clone the repository
+
+git clone <repository-url>
+
+## 📚 Références Médicalescd EMTOOLS
+
+
+
+Les protocoles et calculs sont basés sur :# Start all services
+
+- **Dysnatrémie**: Adrogué HJ, Madias NE. NEJM 2000docker-compose up -d
+
+- **Dyskaliémie**: Guidelines AHA 2020, KDIGO
+
+- **Dyscalcémie**: Shane E. J Clin Endocrinol Metab 2017# Access the application
+
+- **Scores Cliniques**: MDCalc, UpToDate, publications originales# Frontend: http://localhost
+
+# Backend API: http://localhost:8000
+
+⚠️ **Avertissement**: Outil d'aide à la décision uniquement. Ne remplace pas le jugement clinique.# API Docs: http://localhost:8000/docs
+
+`
+
+## 🤖 Généré par IA
+
+### Local Development
+
+Ce projet a été entièrement généré par **Claude Sonnet 4** (Anthropic) via GitHub Copilot.
 
 #### Backend
 
-```bash
-cd backend
+- **Version**: 0.1.0
 
-# Créer l'environnement virtuel
-python -m venv venv
+- **Date**: Janvier 2025`ash
 
-# Activer (Windows)
-.\venv\Scripts\activate
-# Activer (Linux/Mac)
-source venv/bin/activate
+- **Modèle**: Claude Sonnet 4cd backend
 
-# Installer les dépendances
-pip install -r requirements.txt
+- **IDE**: Visual Studio Code avec GitHub Copilot
 
-# Lancer le serveur
+# Create virtual environment
+
+L'IA a généré :python -m venv venv
+
+- Architecture frontend (Flutter - iOS/Android/Web)
+
+- 41+ calculateurs médicaux# Activate (Windows)
+
+- Protocoles de sédation et drogues vasoactives.\venv\Scripts\activate
+
+- Corrections métaboliques (Adrogué-Madias)# Activate (Linux/Mac)
+
+- Analyse des gaz du sangsource venv/bin/activate
+
+- Documentation complète
+
+# Install dependencies
+
+## 📄 Licencepip install -r requirements.txt
+
+
+
+MIT License - Voir [LICENSE](LICENSE) pour les détails.# Run server
+
 uvicorn app.main:app --reload --port 8000
-```
 
-#### Frontend
+---`
 
-```bash
+
+
+Développé avec ❤️ pour les professionnels de santé | Propulsé par 🤖 Claude Sonnet 4#### Frontend (Flutter)
+
+
+`ash
 cd frontend
 
-# Installer les dépendances
-npm install
+# Get dependencies
+flutter pub get
 
-# Lancer en développement
-npm run dev
-```
+# Run in development (Chrome)
+flutter run -d chrome
 
-## 🧪 Tests
+# Build for web
+flutter build web --release
+`
 
-### Backend (pytest + coverage)
-
-```bash
-cd backend
-
-# Installer les dépendances de test
-pip install pytest pytest-asyncio pytest-cov httpx
-
-# Lancer les tests avec couverture
-pytest --cov=app --cov-report=html --cov-report=term-missing
-
-# Voir le rapport HTML
-start htmlcov/index.html  # Windows
-open htmlcov/index.html   # Mac
-```
-
-### Frontend (Vitest + coverage)
-
-```bash
-cd frontend
-
-# Installer les dépendances de test
-npm install -D vitest @testing-library/svelte jsdom @vitest/coverage-v8
-
-# Lancer les tests
-npm run test
-
-# Lancer les tests avec couverture
-npm run test:coverage
-
-# Mode watch
-npm run test:watch
-```
-
-## 🔐 Compte Admin par Défaut
+##  Default Admin Account
 
 - **Email**: admin@emtools.com
-- **Mot de passe**: admin123
+- **Password**: admin123
 
-⚠️ **Important**: Changer les identifiants en production !
+ **Important**: Change credentials in production!
 
-## 🌐 Endpoints API
+##  API Endpoints
 
-### Authentification
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| POST | `/api/v1/auth/register` | Inscription |
-| POST | `/api/v1/auth/login` | Connexion (OAuth2) |
-| POST | `/api/v1/auth/refresh` | Rafraîchir le token |
+### Authentication
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/v1/auth/register | Register |
+| POST | /api/v1/auth/login | Login (OAuth2) |
+| POST | /api/v1/auth/refresh | Refresh token |
 
-### Utilisateurs
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/v1/users/me` | Profil utilisateur |
-| PUT | `/api/v1/users/me` | Modifier profil |
+### Users
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/v1/users/me | User profile |
+| PUT | /api/v1/users/me | Update profile |
 
 ### Admin
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/v1/admin/users` | Lister utilisateurs |
-| GET | `/api/v1/admin/users/{id}` | Détail utilisateur |
-| PUT | `/api/v1/admin/users/{id}` | Modifier utilisateur |
-| DELETE | `/api/v1/admin/users/{id}` | Supprimer utilisateur |
-| GET | `/api/v1/admin/dashboard/stats` | Statistiques |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/v1/admin/users | List users |
+| GET | /api/v1/admin/users/{id} | User details |
+| PUT | /api/v1/admin/users/{id} | Update user |
+| DELETE | /api/v1/admin/users/{id} | Delete user |
+| GET | /api/v1/admin/dashboard/stats | Statistics |
 
 ### Pastebin
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| POST | `/api/v1/paste` | Créer un paste |
-| GET | `/api/v1/paste/{id}` | Récupérer un paste |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/v1/paste | Create paste |
+| GET | /api/v1/paste/{id} | Get paste |
 
-## 🌍 Internationalisation
-
-Langues supportées :
-- 🇫🇷 Français (fr) - par défaut
-- 🇬🇧 Anglais (en)
-
-Ajouter des traductions dans `frontend/src/lib/locales/`.
-
-## 📝 Variables d'Environnement
+##  Environment Variables
 
 ### Backend (.env)
-```env
+`env
 MONGODB_URL=mongodb://localhost:27017
 MONGODB_DB_NAME=emtools
 SECRET_KEY=your-secret-key-change-in-production
 FIRST_SUPERUSER_EMAIL=admin@emtools.com
 FIRST_SUPERUSER_PASSWORD=admin123
-```
+`
 
-## 🧪 Tests
+##  Docker Commands
 
-### Frontend Tests (Vitest)
-
-```bash
-cd frontend
-npm run test          # Exécuter les tests
-npm run test:coverage # Avec couverture
-```
-
-**Résultats des tests Frontend :**
-
-| Fichier de Test | Tests | Statut |
-|-----------------|-------|--------|
-| `stores/auth.test.ts` | 5 | ✅ Passé |
-| `lib/api.test.ts` | 3 | ✅ Passé |
-| `lib/imageCompressor.test.ts` | 20 | ✅ Passé |
-| `components/components.test.ts` | 24 | ✅ Passé |
-| `pages/pages.test.ts` | 53 | ✅ Passé |
-| `tools/tools-pages.test.ts` | 60 | ✅ Passé |
-| `calculators/calculators.test.ts` | 10 | ✅ Passé |
-| `vasoactive/drugs.test.ts` | 9 | ✅ Passé |
-| `metabolic/metabolic.test.ts` | 17 | ✅ Passé |
-| `sedation/sedation.test.ts` | 52 | ✅ Passé |
-| `i18n/i18n.test.ts` | 8 | ✅ Passé |
-| **Total Frontend** | **261** | **✅ 100% passés** |
-
-**Couverture Frontend :**
-
-| Module | Coverage |
-|--------|----------|
-| `vasoactive/drugs.ts` | 98.32% |
-| `sedation/drugs.ts` | 99.03% |
-| `calculators/*` | 89.46% |
-| `lib/api.ts` | 82.14% |
-| `metabolic/*` | 68.13% |
-| `stores/auth.ts` | 55.43% |
-| **Global** | **~34%** |
-
-### Backend Tests (pytest)
-
-```bash
-cd backend
-pytest                      # Exécuter les tests
-pytest --cov=app --cov-report=html  # Avec couverture
-```
-
-**Résultats des tests Backend :**
-
-| Fichier de Test | Tests | Statut |
-|-----------------|-------|--------|
-| `test_auth.py` | 10 | ✅ Passé |
-| `test_paste.py` | 13 | ✅ Passé |
-| `test_security.py` | 19 | ✅ Passé |
-| `test_users.py` | 10 | ✅ Passé |
-| **Total Backend** | **52** | **✅ 100% passés** |
-
-**Couverture Backend :**
-
-| Module | Coverage |
-|--------|----------|
-| `core/security.py` | 100% |
-| `core/config.py` | 100% |
-| `models/*` | 100% |
-| `schemas/*` | 100% |
-| `api/deps.py` | 87% |
-| `main.py` | 85% |
-| `api/v1/endpoints/auth.py` | 73% |
-| `db/mongodb.py` | 56% |
-| `api/v1/endpoints/paste.py` | 55% |
-| `api/v1/endpoints/users.py` | 48% |
-| `api/v1/endpoints/admin.py` | 40% |
-| **Global** | **75%** |
-
-### Résumé Total
-
-| Suite | Tests | Passés | Coverage |
-|-------|-------|--------|----------|
-| Frontend (Vitest) | 261 | ✅ 261 | ~34% |
-| Backend (pytest) | 52 | ✅ 52 | 75% |
-| **Total** | **313** | **✅ 313** | - |
-
-## 🐳 Commandes Docker
-
-```bash
-# Build et démarrer
+`ash
+# Build and start
 docker-compose up -d --build
 
-# Voir les logs
+# View logs
 docker-compose logs -f
 
-# Arrêter les services
+# Stop services
 docker-compose down
 
-# Arrêter et supprimer les volumes
+# Stop and remove volumes
 docker-compose down -v
-```
+`
 
-## 📚 Références Médicales
+##  Medical References
 
-Les protocoles et calculs sont basés sur :
-- **Dysnatrémie**: Adrogué HJ, Madias NE. NEJM 2000
-- **Dyskaliémie**: AHA Guidelines 2020, KDIGO
-- **Dyscalcémie**: Shane E. J Clin Endocrinol Metab 2017
-- **Scores cliniques**: MDCalc, UpToDate, publications originales
+Protocols and calculations are based on:
+- **Dysnatremia**: Adrogué HJ, Madias NE. NEJM 2000
+- **Dyskalemia**: AHA Guidelines 2020, KDIGO
+- **Dyscalcemia**: Shane E. J Clin Endocrinol Metab 2017
+- **Clinical Scores**: MDCalc, UpToDate, original publications
 
-⚠️ **Avertissement**: Outil d'aide à la décision uniquement. Ne remplace pas le jugement clinique.
+ **Disclaimer**: Decision support tool only. Does not replace clinical judgment.
 
-## 🐳 Déploiement Docker
+##  Generated by AI
 
-### Production
+This project was entirely generated by **Claude Sonnet 4** (Anthropic) via GitHub Copilot.
 
-```bash
-# Configurer les variables d'environnement
-cp backend/.env.example .env
-# Éditer .env avec vos valeurs de production
+- **Version**: 2.0.0-beta.4
+- **Date**: December 2025
+- **Model**: Claude Sonnet 4
+- **IDE**: Visual Studio Code with GitHub Copilot
 
-# Démarrer en production
-docker-compose -f docker-compose.prod.yml up -d
+The AI generated:
+- Backend architecture (FastAPI + MongoDB)
+- Frontend interface (Flutter - iOS/Android/Web)
+- 41+ medical calculators
+- Sedation protocols and vasoactive drugs
+- Metabolic corrections (Adrogué-Madias)
+- Docker production-ready configuration
+- Complete documentation
 
-# Vérifier le statut
-docker-compose -f docker-compose.prod.yml ps
-```
+##  License
 
-### Variables d'environnement requises
-
-| Variable | Description | Obligatoire |
-|----------|-------------|-------------|
-| `SECRET_KEY` | Clé JWT (générer avec `python -c "import secrets; print(secrets.token_urlsafe(64))"`) | ✅ |
-| `ADMIN_PASSWORD` | Mot de passe admin (12+ caractères) | ✅ |
-| `MONGO_ROOT_PASSWORD` | Mot de passe MongoDB | ✅ |
-| `CORS_ORIGINS` | Domaines autorisés | Production |
-
-## 🤖 Généré par IA
-
-Ce projet a été entièrement généré par **Claude Sonnet 4** (Anthropic) via GitHub Copilot.
-
-- **Version**: Alpha 1.0.0 (Beta 0.1.0 on Docker Hub)
-- **Date**: Décembre 2025
-- **Modèle**: Claude Sonnet 4
-- **IDE**: Visual Studio Code avec GitHub Copilot
-
-L'IA a généré :
-- Architecture backend (FastAPI + MongoDB)
-- Interface frontend (Svelte + TypeScript)
-- 33 calculateurs médicaux
-- Protocoles de sédation et drogues vasoactives
-- Corrections métaboliques (Adrogué-Madias)
-- Tests unitaires (313 tests: 261 frontend + 52 backend)
-- Compresseur d'images automatique (>2MB → compression JPEG)
-- Configuration Docker production-ready
-- Documentation complète
-- Politique de sécurité (SECURITY.md)
-
-## 📄 Licence
-
-MIT License - Voir [LICENSE](LICENSE) pour plus de détails.
+MIT License - See [LICENSE](LICENSE) for details.
 
 ---
 
-Développé avec ❤️ pour les professionnels de santé | Propulsé par 🤖 Claude Sonnet 4
+Developed with  for healthcare professionals | Powered by  Claude Sonnet 4

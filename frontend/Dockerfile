@@ -1,48 +1,50 @@
+﻿# ================================
+# EMTOOLS Frontend (Flutter) - Production Dockerfile
 # ================================
-# EMTOOLS Frontend - Production Dockerfile
+# Builds Flutter web application and serves with nginx
+# Version: 2.0.0-beta.4
 # ================================
 
-# Build stage
-FROM node:22-alpine3.20 AS build
+# Build stage - Flutter SDK
+FROM ghcr.io/cirruslabs/flutter:stable AS build
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy pubspec files first for better caching
+COPY pubspec.yaml pubspec.lock ./
 
-# Install dependencies
-RUN npm ci --only=production=false
+# Get dependencies
+RUN flutter pub get
 
 # Copy source code
 COPY . .
 
-# Build for production
-RUN npm run build
+# Build for web production
+RUN flutter build web --release --web-renderer html
 
 # ================================
-# Production stage
+# Production stage - Nginx
 # ================================
 FROM nginx:1.27-alpine3.20 AS production
 
 # Add labels
 LABEL org.opencontainers.image.title="EMTOOLS Frontend"
-LABEL org.opencontainers.image.description="Emergency Medicine Tools - Frontend"
-LABEL org.opencontainers.image.version="1.0.0-alpha"
+LABEL org.opencontainers.image.description="Emergency Medicine Tools - Flutter Web App"
+LABEL org.opencontainers.image.version="2.0.0-beta.4"
+LABEL org.opencontainers.image.authors="medlabib"
 
-# Copy built assets from build stage
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copy built Flutter web assets
+COPY --from=build /app/build/web /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Create non-root user and fix permissions for nginx
+# Create non-root user and fix permissions
 RUN addgroup -g 1001 -S emtools && \
     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G emtools emtools && \
     chown -R emtools:emtools /var/cache/nginx /var/log/nginx /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html && \
-    # Fix nginx.pid location - move to /tmp which is writable
     sed -i 's|/var/run/nginx.pid|/tmp/nginx.pid|g' /etc/nginx/nginx.conf && \
-    # Remove user directive (not needed when running as non-root)
     sed -i '/^user/d' /etc/nginx/nginx.conf
 
 # Use non-root user
@@ -51,8 +53,8 @@ USER emtools
 # Expose port
 EXPOSE 80
 
-# Health check using curl (available in alpine)
+# Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:80/ || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]

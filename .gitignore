@@ -193,3 +193,8 @@ frontend/results/
 frontend/a11y-results.txt
 screenshots/
 UI_REVIEW_REPORT.md
+
+
+# Serena AI files
+.serena/
+

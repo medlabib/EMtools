@@ -1,18 +1,34 @@
-## 📚 Documentation
+## 📚 Documentation## 📚 Documentation
 
-* [Home](Home)
 
-### Getting Started
-* [Quick Start](Getting-Started)
-* [Installation](Installation)
 
-### User Guide
-* [Features Overview](Features)
+* [Accueil](Home)* [Home](Home)
+
+
+
+### Démarrage### Getting Started
+
+* [Guide de Démarrage](Getting-Started)* [Quick Start](Getting-Started)
+
+* [Installation](Installation)* [Installation](Installation)
+
+
+
+### Guide Utilisateur### User Guide
+
+* [Fonctionnalités](Features)* [Features Overview](Features)
+
 * [Admin Guide](Admin-Guide)
 
-### Development
+### Développement
+
+* [Contribuer](Contributing)### Development
+
 * [API Documentation](API-Documentation)
-* [Contributing](Contributing)
+
+### Référence* [Contributing](Contributing)
+
+* [Changelog](Changelog)
 
 ### Reference
 * [Changelog](Changelog)

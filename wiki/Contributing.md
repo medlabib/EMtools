@@ -1,210 +1,417 @@
-# Contributing to EMTOOLS
+# Contribuer à EMTOOLS# Contributing to EMTOOLS
 
-Thank you for your interest in contributing to EMTOOLS! This guide will help you get started.
 
-## 🤝 Code of Conduct
 
-Please be respectful and inclusive. We welcome contributions from everyone.
+Merci de votre intérêt pour contribuer à EMTOOLS ! Ce guide vous aidera à démarrer.Thank you for your interest in contributing to EMTOOLS! This guide will help you get started.
 
-## 🚀 Getting Started
 
-### Prerequisites
 
-- Node.js 18+
-- Python 3.11+
-- Docker and Docker Compose
-- Git
+## 🤝 Code de Conduite## 🤝 Code of Conduct
 
-### Development Setup
 
-1. **Fork the repository** on GitHub
 
-2. **Clone your fork**
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/EMtools.git
-   cd EMtools
-   ```
+Soyez respectueux et inclusif. Nous accueillons les contributions de tous.Please be respectful and inclusive. We welcome contributions from everyone.
 
-3. **Start development environment**
-   ```bash
-   docker compose -f docker-compose.dev.yml up
-   ```
 
-4. **Frontend development**
-   ```bash
-   cd frontend
-   npm install
+
+## 🚀 Démarrage## 🚀 Getting Started
+
+
+
+### Prérequis### Prerequisites
+
+
+
+- Flutter SDK 3.19+- Node.js 18+
+
+- Dart SDK 3.3+- Python 3.11+
+
+- Git- Docker and Docker Compose
+
+- Un IDE (VS Code recommandé avec l'extension Flutter)- Git
+
+
+
+### Configuration de l'Environnement### Development Setup
+
+
+
+1. **Forkez le dépôt** sur GitHub1. **Fork the repository** on GitHub
+
+
+
+2. **Clonez votre fork**2. **Clone your fork**
+
+   ```bash   ```bash
+
+   git clone https://github.com/VOTRE-USERNAME/EMtools.git   git clone https://github.com/YOUR-USERNAME/EMtools.git
+
+   cd EMtools/frontend   cd EMtools
+
+   ```   ```
+
+
+
+3. **Installez les dépendances**3. **Start development environment**
+
+   ```bash   ```bash
+
+   flutter pub get   docker compose -f docker-compose.dev.yml up
+
+   ```   ```
+
+
+
+4. **Lancez l'application en mode développement**4. **Frontend development**
+
+   ```bash   ```bash
+
+   flutter run   cd frontend
+
+   ```   npm install
+
    npm run dev
-   ```
 
-5. **Backend development**
+5. **Exécutez les tests**   ```
+
    ```bash
+
+   flutter test5. **Backend development**
+
+   ```   ```bash
+
    cd backend
-   python -m venv venv
+
+## 📝 Effectuer des Modifications   python -m venv venv
+
    source venv/bin/activate
-   pip install -r requirements.txt
+
+### Structure du Projet   pip install -r requirements.txt
+
    uvicorn app.main:app --reload
-   ```
 
-## 📝 Making Changes
+```   ```
 
-### Branch Naming
+frontend/
 
-Use descriptive branch names:
-- `feature/add-calculator-xyz`
-- `fix/button-contrast-issue`
-- `docs/update-api-documentation`
+├── lib/## 📝 Making Changes
 
-### Commit Messages
+│   ├── main.dart              # Point d'entrée
 
-Follow [Conventional Commits](https://www.conventionalcommits.org/):
+│   ├── core/                  # Configuration, thèmes, utilitaires### Branch Naming
 
-```
-feat: add new medical calculator
-fix: resolve button contrast issue
-docs: update API documentation
+│   ├── data/                  # Sources de données, modèles
+
+│   ├── domain/                # Entités, interfaces repositoriesUse descriptive branch names:
+
+│   └── presentation/          # Écrans, widgets, providers- `feature/add-calculator-xyz`
+
+├── test/                      # Tests unitaires- `fix/button-contrast-issue`
+
+├── assets/                    # Ressources (icônes, images)- `docs/update-api-documentation`
+
+└── pubspec.yaml              # Dépendances
+
+```### Commit Messages
+
+
+
+### Conventions de CodeFollow [Conventional Commits](https://www.conventionalcommits.org/):
+
+
+
+- **Style**: Suivez les [conventions Dart](https://dart.dev/guides/language/effective-dart/style)```
+
+- **Formatage**: Utilisez `dart format` avant chaque commitfeat: add new medical calculator
+
+- **Analyse**: Assurez-vous que `flutter analyze` ne retourne aucune erreurfix: resolve button contrast issue
+
+- **Tests**: Ajoutez des tests pour toute nouvelle fonctionnalitédocs: update API documentation
+
 style: improve code formatting
-refactor: restructure auth module
+
+### Workflow de Développementrefactor: restructure auth module
+
 test: add unit tests for calculators
-chore: update dependencies
-```
 
-### Code Style
+1. Créez une branche pour votre fonctionnalitéchore: update dependencies
 
-#### TypeScript/Svelte
+   ```bash```
+
+   git checkout -b feature/ma-fonctionnalite
+
+   ```### Code Style
+
+
+
+2. Effectuez vos modifications#### TypeScript/Svelte
+
 - Use TypeScript for all new code
-- Follow existing component structure
-- Use DaisyUI classes for styling
-- Ensure accessibility (WCAG AA)
 
-#### Python
+3. Formatez et analysez le code- Follow existing component structure
+
+   ```bash- Use DaisyUI classes for styling
+
+   dart format .- Ensure accessibility (WCAG AA)
+
+   flutter analyze
+
+   ```#### Python
+
 - Follow PEP 8 style guide
-- Use type hints
-- Write docstrings for functions
-- Use async where appropriate
+
+4. Exécutez les tests- Use type hints
+
+   ```bash- Write docstrings for functions
+
+   flutter test- Use async where appropriate
+
+   ```
 
 ### Testing
 
-#### Frontend Tests
-```bash
-cd frontend
+5. Commitez avec un message descriptif
+
+   ```bash#### Frontend Tests
+
+   git commit -m "feat: ajouter calculateur X"```bash
+
+   ```cd frontend
+
 npm run test          # Run once
-npm run test:watch    # Watch mode
-npm run test:coverage # With coverage
-```
+
+6. Poussez votre branchenpm run test:watch    # Watch mode
+
+   ```bashnpm run test:coverage # With coverage
+
+   git push origin feature/ma-fonctionnalite```
+
+   ```
 
 #### Backend Tests
-```bash
+
+7. Créez une Pull Request```bash
+
 cd backend
-pytest
+
+## 🎯 Types de Contributionspytest
+
 pytest --cov=app      # With coverage
-```
 
-## 🔄 Pull Request Process
+### 🔧 Nouveaux Calculateurs```
 
-1. **Create a feature branch**
-   ```bash
-   git checkout -b feature/your-feature
-   ```
 
-2. **Make your changes**
+
+Pour ajouter un nouveau calculateur médical :## 🔄 Pull Request Process
+
+
+
+1. Ajoutez la définition dans `lib/data/datasources/calculators_data.dart`1. **Create a feature branch**
+
+2. Suivez le format des calculateurs existants   ```bash
+
+3. Incluez les références scientifiques   git checkout -b feature/your-feature
+
+4. Ajoutez des tests unitaires dans `test/unit/`   ```
+
+
+
+### 🐛 Corrections de Bugs2. **Make your changes**
+
    - Write clean, documented code
-   - Add tests for new features
-   - Update documentation as needed
+
+1. Vérifiez si le bug n'a pas déjà été signalé   - Add tests for new features
+
+2. Créez une issue décrivant le problème   - Update documentation as needed
+
+3. Soumettez un fix avec les tests correspondants
 
 3. **Test your changes**
-   ```bash
+
+### 📚 Documentation   ```bash
+
    # Frontend
-   npm run check    # Type checking
-   npm run test     # Unit tests
-   npm run build    # Build test
+
+- Améliorations du README   npm run check    # Type checking
+
+- Corrections de fautes   npm run test     # Unit tests
+
+- Ajout d'exemples   npm run build    # Build test
+
+- Mise à jour du wiki
 
    # Backend
-   pytest           # Unit tests
+
+### 🎨 Améliorations UI/UX   pytest           # Unit tests
+
    ```
 
-4. **Commit your changes**
-   ```bash
+- Améliorations de l'accessibilité
+
+- Corrections du thème sombre4. **Commit your changes**
+
+- Optimisations de l'expérience utilisateur   ```bash
+
    git add .
-   git commit -m "feat: add your feature description"
+
+## 📋 Guidelines pour les Pull Requests   git commit -m "feat: add your feature description"
+
    ```
+
+### Checklist
 
 5. **Push to your fork**
-   ```bash
-   git push origin feature/your-feature
-   ```
 
-6. **Open a Pull Request**
-   - Provide a clear title and description
+- [ ] Le code suit les conventions du projet   ```bash
+
+- [ ] Les tests passent (`flutter test`)   git push origin feature/your-feature
+
+- [ ] L'analyse statique passe (`flutter analyze`)   ```
+
+- [ ] Le code est formaté (`dart format`)
+
+- [ ] La documentation est mise à jour si nécessaire6. **Open a Pull Request**
+
+- [ ] Le message de commit est descriptif   - Provide a clear title and description
+
    - Reference any related issues
-   - Request review from maintainers
 
-## 📋 What to Contribute
+### Convention de Commit   - Request review from maintainers
 
-### Good First Issues
-Look for issues labeled `good first issue` on GitHub.
 
-### Ideas for Contributions
 
-#### Features
-- New medical calculators
+Utilisez le format [Conventional Commits](https://www.conventionalcommits.org/) :## 📋 What to Contribute
+
+
+
+- `feat:` nouvelle fonctionnalité### Good First Issues
+
+- `fix:` correction de bugLook for issues labeled `good first issue` on GitHub.
+
+- `docs:` documentation
+
+- `style:` formatage (pas de changement de code)### Ideas for Contributions
+
+- `refactor:` refactorisation du code
+
+- `test:` ajout/modification de tests#### Features
+
+- `chore:` maintenance- New medical calculators
+
 - Additional language translations
-- Accessibility improvements
+
+### Exemples- Accessibility improvements
+
 - Mobile optimizations
 
-#### Documentation
-- Code documentation
-- Wiki improvements
-- Tutorial videos
-- Usage examples
+```
 
-#### Testing
+feat: ajouter score SOFA pour sepsis#### Documentation
+
+fix: corriger calcul IMC avec virgule- Code documentation
+
+docs: mettre à jour guide d'installation- Wiki improvements
+
+test: ajouter tests pour score HAS-BLED- Tutorial videos
+
+```- Usage examples
+
+
+
+## 🧪 Tests#### Testing
+
 - Unit tests
-- Integration tests
-- E2E tests
-- Accessibility testing
 
-#### Bug Fixes
+### Exécuter Tous les Tests- Integration tests
+
+- E2E tests
+
+```bash- Accessibility testing
+
+flutter test
+
+```#### Bug Fixes
+
 - UI/UX issues
-- Performance improvements
+
+### Exécuter un Fichier de Test Spécifique- Performance improvements
+
 - Security fixes
 
-## 🏗️ Project Structure
+```bash
+
+flutter test test/unit/calculators_data_test.dart## 🏗️ Project Structure
 
 ```
-EMtools/
+
+```
+
+### Structure des TestsEMtools/
+
 ├── frontend/
-│   ├── src/
-│   │   ├── lib/
-│   │   │   ├── components/   # Reusable components
-│   │   │   ├── pages/        # Page components
-│   │   │   ├── stores/       # Svelte stores
-│   │   │   └── locales/      # i18n translations
-│   │   ├── app.css           # Global styles
-│   │   └── main.ts           # Entry point
-│   └── tests/                # Test files
-│
-├── backend/
-│   ├── app/
-│   │   ├── api/              # API endpoints
-│   │   ├── core/             # Core config
-│   │   ├── db/               # Database
-│   │   ├── models/           # Beanie models
+
+```dart│   ├── src/
+
+void main() {│   │   ├── lib/
+
+  group('NomCalculateur', () {│   │   │   ├── components/   # Reusable components
+
+    test('devrait calculer correctement avec valeurs normales', () {│   │   │   ├── pages/        # Page components
+
+      // Arrange│   │   │   ├── stores/       # Svelte stores
+
+      final input = {'variable': valeur};│   │   │   └── locales/      # i18n translations
+
+      │   │   ├── app.css           # Global styles
+
+      // Act│   │   └── main.ts           # Entry point
+
+      final result = calculer(input);│   └── tests/                # Test files
+
+      │
+
+      // Assert├── backend/
+
+      expect(result, expectedValue);│   ├── app/
+
+    });│   │   ├── api/              # API endpoints
+
+  });│   │   ├── core/             # Core config
+
+}│   │   ├── db/               # Database
+
+```│   │   ├── models/           # Beanie models
+
 │   │   └── schemas/          # Pydantic schemas
-│   └── tests/                # Test files
+
+## 📞 Aide et Support│   └── tests/                # Test files
+
 │
-└── wiki/                     # Documentation
-```
 
-## 🐛 Reporting Bugs
+- **Issues GitHub**: Pour signaler des bugs ou demander des fonctionnalités└── wiki/                     # Documentation
 
-Use the GitHub issue template:
+- **Discussions**: Pour questions et échanges```
 
-1. **Description** - Clear description of the bug
+
+
+## 🙏 Remerciements## 🐛 Reporting Bugs
+
+
+
+Merci à tous les contributeurs qui aident à améliorer EMTOOLS !Use the GitHub issue template:
+
+
+
+---1. **Description** - Clear description of the bug
+
 2. **Steps to Reproduce** - How to trigger the bug
-3. **Expected Behavior** - What should happen
+
+## Licence3. **Expected Behavior** - What should happen
+
 4. **Actual Behavior** - What actually happens
-5. **Screenshots** - If applicable
+
+En contribuant, vous acceptez que vos contributions soient sous la même licence que le projet (MIT).5. **Screenshots** - If applicable
+
 6. **Environment** - Browser, OS, version
 
 ## 💡 Feature Requests

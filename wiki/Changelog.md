@@ -1,61 +1,119 @@
-# Changelog
+# Changelog# Changelog
 
-All notable changes to EMTOOLS will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
----
+Toutes les modifications notables de EMTOOLS seront documentées dans ce fichier.All notable changes to EMTOOLS will be documented in this file.
 
-## [2.0.0-beta.2] - 2025-12-05
 
-### 🔧 Fixed
+
+Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+
+et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+
+**Convention de versionnement**: Chaque mise à jour incrémente la version de 0.0.1---
+
+
+
+---## [2.0.0-beta.2] - 2025-12-05
+
+
+
+## [0.1.0] - 2025-01-XX### 🔧 Fixed
+
 - **DaisyUI 5.x Theme Compatibility** - Proper CSS variables for custom themes using oklch colors
-- **Button Contrast Issues** - WCAG AA compliant hover states for all buttons
+
+### 🆕 Première Version Publique- **Button Contrast Issues** - WCAG AA compliant hover states for all buttons
+
 - **Ghost Button Visibility** - Enhanced hover states with proper backgrounds
-- **Theme Toggle Animation** - Smooth transitions between dark and light modes
 
-### ✨ Changed
-- Migrated to CSS-based theme definitions for DaisyUI 5.x compatibility
-- Improved button styling across all variants (ghost, outline, primary, secondary, etc.)
-- Theme now respects system preference on first load
+Cette version marque le lancement de EMTOOLS en tant qu'application Flutter autonome.- **Theme Toggle Animation** - Smooth transitions between dark and light modes
 
----
 
-## [2.0.0-beta.1] - 2025-12-05
 
-### ✨ Added
-- **Dark/Light Theme Toggle** - Beautiful animated sun/moon toggle switch
-- **Admin Dashboard Enhancements**
-  - Verified users count statistic
-  - System health indicators
-  - Quick actions section
-  - Visual progress bars
-- **Admin Settings Improvements**
-  - Tabbed interface (General, SMTP, System)
-  - SMTP presets for popular providers (Gmail, Outlook, SendGrid)
+### ✨ Ajouté### ✨ Changed
+
+- **Application autonome**: Fonctionne entièrement hors ligne, sans backend- Migrated to CSS-based theme definitions for DaisyUI 5.x compatibility
+
+- **Interface française**: Application entièrement traduite en français- Improved button styling across all variants (ghost, outline, primary, secondary, etc.)
+
+- **Mode sombre accessible**: Thème sombre avec contraste amélioré pour l'accessibilité- Theme now respects system preference on first load
+
+- **Tableau de bord des favoris**: Accès rapide aux outils les plus utilisés
+
+- **41+ calculateurs médicaux**: ---
+
+  - Trauma: GCS, RTS, Indice de Choc, FOUR Score
+
+  - Cardiologie: HEART, CHADS-VASc, HAS-BLED, QTc## [2.0.0-beta.1] - 2025-12-05
+
+  - Neurologie: NIHSS, ABCD², ICH Score, Hunt-Hess
+
+  - EP/TVP: Wells EP, Wells TVP, PERC, Genève, sPESI### ✨ Added
+
+  - Sepsis: qSOFA, NEWS2, CURB-65, LRINEC, Centor- **Dark/Light Theme Toggle** - Beautiful animated sun/moon toggle switch
+
+  - Pédiatrie: PECARN, Westley, PAS- **Admin Dashboard Enhancements**
+
+  - Et plus...  - Verified users count statistic
+
+- **Évaluation ABCDE**: Rapport médical structuré avec détection de gravité  - System health indicators
+
+- **Drogues vasoactives**: Calculateur de débit PSE  - Quick actions section
+
+- **Sédation et analgésie**: Protocoles ISR  - Visual progress bars
+
+- **Troubles métaboliques**: Corrections de dysnatrémie, dyskaliémie, dyscalcémie- **Admin Settings Improvements**
+
+- **Analyse des gaz du sang**: Interprétation complète avec ratio P/F  - Tabbed interface (General, SMTP, System)
+
+- **Guide antibiotique**: Posologies avec ajustements rénaux  - SMTP presets for popular providers (Gmail, Outlook, SendGrid)
+
   - Domain management with visual badges
-  - Security checklist
-- **Admin Logs Improvements**
-  - Search functionality
-  - CSV export
+
+### 🔧 Changements Techniques  - Security checklist
+
+- Migration vers Flutter pur (suppression du backend FastAPI/MongoDB)- **Admin Logs Improvements**
+
+- 256 tests unitaires passent  - Search functionality
+
+- Support multi-plateformes: Android, iOS, Web  - CSV export
+
   - Detailed event modal
-  - Relative timestamps
-- **Admin Users Improvements**
-  - User search with debounce
-  - Export functionality
-- **Setup Wizard Enhancements**
+
+### 🗑️ Supprimé  - Relative timestamps
+
+- Backend FastAPI et MongoDB (l'application est maintenant autonome)- **Admin Users Improvements**
+
+- Système d'authentification (plus nécessaire sans backend)  - User search with debounce
+
+- Pastebin sécurisé (nécessitait un backend)  - Export functionality
+
+- Panneau d'administration (nécessitait un backend)- **Setup Wizard Enhancements**
+
   - Password strength indicator
-  - Real-time validation
+
+---  - Real-time validation
+
   - Security recommendations
 
+## Versions Antérieures (Bêta avec Backend)
+
 ### 🐛 Fixed
-- **Button Contrast** - Fixed grey-on-white hover states for WCAG AA compliance
-- **Card Truncation** - Removed unwanted text truncation in calculator and antibiotic cards
+
+Les versions 1.x et 2.0.0-beta.x utilisaient une architecture full-stack avec FastAPI et MongoDB.- **Button Contrast** - Fixed grey-on-white hover states for WCAG AA compliance
+
+Ces versions ne sont plus maintenues. L'application a été simplifiée pour fonctionner de manière autonome.- **Card Truncation** - Removed unwanted text truncation in calculator and antibiotic cards
+
 - **Medical Report**
-  - Removed redundant "Contexte: Traumatique" line
+
+---  - Removed redundant "Contexte: Traumatique" line
+
   - Fixed patient intro format to "âgé(e) de X ans"
-  - Removed B section prefix letters (F:, T:, etc.)
+
+*Pour toute question, consultez le [README](../README.md) ou ouvrez une issue sur GitHub.*  - Removed B section prefix letters (F:, T:, etc.)
+
   - Fixed ECG text duplication
 - **Checkbox Visibility** - Added visible borders for better contrast
 - **Svelte Build Error** - Fixed dynamic type attribute with bind:value
