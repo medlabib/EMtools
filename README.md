@@ -1,62 +1,122 @@
-﻿<p align="center"><p align="center"><p align="center">
-
-  <img src="logo.png" alt="EMtools Logo" width="120" height="120">
-
-</p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
+﻿# EMtools<p align="center"><p align="center"><p align="center">
 
 
 
-<h1 align="center">EMtools</h1></p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
+**Outils numériques pour la médecine d'urgence**  <img src="logo.png" alt="EMtools Logo" width="120" height="120">
 
 
 
-<p align="center">
+[![Web Demo](https://img.shields.io/badge/Web-Demo-00d4aa?style=flat-square&logo=flutter)](https://medlabib.github.io/EMtools/)</p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
-  <strong>Outils numériques pour la médecine d'urgence</strong>
+[![Android](https://img.shields.io/badge/Android-APK-3DDC84?style=flat-square&logo=android)](https://github.com/medlabib/EMtools/releases)
 
-</p><h1 align="center">EMTOOLS</h1></p>
-
-
-
-<p align="center">
-
-  <a href="https://medlabib.github.io/EMtools/">
-
-    <img src="https://img.shields.io/badge/Web-Live%20Demo-00d4aa?style=for-the-badge&logo=flutter" alt="Web Demo"><p align="center">
-
-  </a>
-
-  <a href="https://github.com/medlabib/EMtools/releases">  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
-
-    <img src="https://img.shields.io/badge/Android-APK-3DDC84?style=for-the-badge&logo=android" alt="Android APK">
-
-  </a></p><h1 align="center">EMTOOLS</h1>> **Version 0.1.0** | *Outils Numériques pour la Médecine d'Urgence*> **Version 2.0.0-beta.4** | *Emergency Medicine Digital Tools*
-
-  <a href="LICENSE">
-
-    <img src="https://img.shields.io/badge/License-BSD--3-blue?style=for-the-badge" alt="License">
-
-  </a>
-
-</p><p align="center">
+[![License](https://img.shields.io/badge/License-BSD--3-blue?style=flat-square)](LICENSE)
 
 
 
----  <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
+---<h1 align="center">EMtools</h1></p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
 
+
+## À propos
+
+
+
+EMtools est une application Flutter pour les professionnels de la médecine d'urgence. Elle regroupe des calculateurs médicaux, des outils d'aide à la prescription et des références cliniques.<p align="center">
+
+
+
+## Fonctionnalités  <strong>Outils numériques pour la médecine d'urgence</strong>
+
+
+
+- **Évaluation ABCDE** — Rapports médicaux structurés avec détection des signes de détresse</p><h1 align="center">EMTOOLS</h1></p>
+
+- **Drogues Vasoactives** — Calcul des doses (noradrénaline, adrénaline, dobutamine, dopamine)
+
+- **Sédation** — Protocoles de sédation-analgésie (Midazolam, Propofol, Kétamine, Fentanyl)
+
+- **Gazométrie** — Interprétation automatique des gaz du sang
+
+- **Métabolique** — Correction des troubles hydro-électrolytiques (Na⁺, K⁺, Ca²⁺, Mg²⁺)<p align="center">
+
+- **Antibiotiques** — Guide de prescription par pathologie
+
+- **Calculateurs** — Scores cliniques (Glasgow, SOFA, qSOFA, Wells, CHA₂DS₂-VASc)  <a href="https://medlabib.github.io/EMtools/">
+
+
+
+## Installation    <img src="https://img.shields.io/badge/Web-Live%20Demo-00d4aa?style=for-the-badge&logo=flutter" alt="Web Demo"><p align="center">
+
+
+
+**Web:** https://medlabib.github.io/EMtools/  </a>
+
+
+
+**Android:** [Télécharger l'APK](https://github.com/medlabib/EMtools/releases)  <a href="https://github.com/medlabib/EMtools/releases">  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
+
+
+
+**Build:**    <img src="https://img.shields.io/badge/Android-APK-3DDC84?style=for-the-badge&logo=android" alt="Android APK">
+
+```bash
+
+git clone https://github.com/medlabib/EMtools.git  </a></p><h1 align="center">EMTOOLS</h1>> **Version 0.1.0** | *Outils Numériques pour la Médecine d'Urgence*> **Version 2.0.0-beta.4** | *Emergency Medicine Digital Tools*
+
+cd EMtools
+
+flutter pub get  <a href="LICENSE">
+
+flutter run
+
+```    <img src="https://img.shields.io/badge/License-BSD--3-blue?style=for-the-badge" alt="License">
+
+
+
+## Architecture  </a>
+
+
+
+```</p><p align="center">
+
+lib/
+
+├── core/           # Config, thème, routing
+
+├── domain/         # Entités, logique métier
+
+└── presentation/   # UI, screens, providers---  <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
+
+```
+
+
+
+## Tests
 
 ## 📱 À propos  <a href="https://github.com/medlabib/EMtools/releases"><img src="https://img.shields.io/badge/Version-0.1.0-orange" alt="Version"></a><p align="center">
 
+```bash
 
+flutter test
+
+```
 
 **EMtools** est une application Flutter conçue pour les professionnels de la médecine d'urgence. Elle regroupe des calculateurs médicaux, des outils d'aide à la prescription et des références cliniques essentielles.  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter" alt="Flutter"></a>
 
+## Avertissement
 
+
+
+Cet outil est une **aide à la décision** et ne remplace pas le jugement clinique. Vérifiez toujours les posologies.
 
 ### ✨ Fonctionnalités  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
 
+## License
 
+
+
+[BSD-3-Clause](LICENSE) © 2024-2025 medlabib
 
 | Module | Description |</p>
 
