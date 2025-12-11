@@ -1,4 +1,4 @@
-﻿# EMtools
+# EMtools
 
 Outils numeriques pour la medecine d'urgence
 
@@ -26,4 +26,4 @@ flutter run
 
 ## License
 
-BSD-3-Clause - medlabib
+MIT - medlabib

@@ -1,34 +1,11 @@
-## 📚 Documentation## 📚 Documentation
+# EMtools Wiki
 
+Outils numériques pour la médecine d'urgence.
 
+## Navigation
 
-* [Accueil](Home)* [Home](Home)
-
-
-
-### Démarrage### Getting Started
-
-* [Guide de Démarrage](Getting-Started)* [Quick Start](Getting-Started)
-
-* [Installation](Installation)* [Installation](Installation)
-
-
-
-### Guide Utilisateur### User Guide
-
-* [Fonctionnalités](Features)* [Features Overview](Features)
-
-* [Admin Guide](Admin-Guide)
-
-### Développement
-
-* [Contribuer](Contributing)### Development
-
-* [API Documentation](API-Documentation)
-
-### Référence* [Contributing](Contributing)
-
-* [Changelog](Changelog)
-
-### Reference
-* [Changelog](Changelog)
+- [Accueil](Home.md)
+- [Installation](Installation.md)
+- [Fonctionnalités](Features.md)
+- [Changelog](Changelog.md)
+- [Contribuer](Contributing.md)

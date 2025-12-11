@@ -1,20 +1,38 @@
-<p align="center"># Bienvenue sur le Wiki EMTOOLS# Welcome to EMTOOLS Wiki
-
-  <img src="https://raw.githubusercontent.com/medlabib/EMtools/master/logo.svg" alt="EMTOOLS Logo" width="350">
-
-</p>
+# EMtools<p align="center"># Bienvenue sur le Wiki EMTOOLS# Welcome to EMTOOLS Wiki
 
 
 
-# Bienvenue sur le Wiki EMTOOLS**EMTOOLS** est une suite complète d'outils numériques conçue pour les praticiens de médecine d'urgence. Construite avec Flutter, elle fournit des calculateurs cliniques, des outils de dosage de médicaments et des utilitaires de documentation.**EMTOOLS** is a comprehensive suite of digital tools designed for emergency medicine practitioners. Built with modern web technologies, it provides clinical calculators, drug dosing tools, and documentation utilities.
+Application Flutter pour la médecine d'urgence.  <img src="https://raw.githubusercontent.com/medlabib/EMtools/master/logo.svg" alt="EMTOOLS Logo" width="350">
 
 
 
-**EMTOOLS** est une suite complète d'outils numériques conçue pour les praticiens de médecine d'urgence. Construite avec Flutter, elle fournit des calculateurs cliniques, des outils de dosage de médicaments et des utilitaires de documentation.
+## Modules</p>
 
 
 
-## 🚀 Liens Rapides## 🚀 Liens Rapides## 🚀 Quick Links
+- **Évaluation ABCDE** - Rapports médicaux structurés
+
+- **Drogues Vasoactives** - Calcul des doses
+
+- **Sédation** - Protocoles de sédation-analgésie# Bienvenue sur le Wiki EMTOOLS**EMTOOLS** est une suite complète d'outils numériques conçue pour les praticiens de médecine d'urgence. Construite avec Flutter, elle fournit des calculateurs cliniques, des outils de dosage de médicaments et des utilitaires de documentation.**EMTOOLS** is a comprehensive suite of digital tools designed for emergency medicine practitioners. Built with modern web technologies, it provides clinical calculators, drug dosing tools, and documentation utilities.
+
+- **Gazométrie** - Interprétation des gaz du sang
+
+- **Métabolique** - Correction des troubles électrolytiques
+
+- **Antibiotiques** - Guide de prescription
+
+- **Calculateurs** - Scores cliniques**EMTOOLS** est une suite complète d'outils numériques conçue pour les praticiens de médecine d'urgence. Construite avec Flutter, elle fournit des calculateurs cliniques, des outils de dosage de médicaments et des utilitaires de documentation.
+
+
+
+## Liens
+
+
+
+- [Installation](Installation.md)## 🚀 Liens Rapides## 🚀 Liens Rapides## 🚀 Quick Links
+
+- [Fonctionnalités](Features.md)
 
 
 

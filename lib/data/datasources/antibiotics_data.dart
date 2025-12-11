@@ -1,5 +1,14 @@
 import '../../domain/entities/antibiotic.dart';
 
+/// Antibiotics database for EMtools
+/// 
+/// TRADEMARK NOTICE: Brand names (e.g., Augmentin®, Rocephine®) are registered
+/// trademarks of their respective pharmaceutical companies. Their use here is
+/// purely informational and does not imply endorsement or affiliation.
+/// 
+/// MEDICAL DISCLAIMER: This data is for educational purposes only. Always verify
+/// dosages with official references before clinical use.
+
 final List<Antibiotic> allAntibiotics = [
   // ============ PENICILLINS ============
   const Antibiotic(
