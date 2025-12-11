@@ -1,116 +1,229 @@
-﻿<p align="center"><p align="center">
+﻿<p align="center"><p align="center"><p align="center">
 
-  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
+  <img src="logo.png" alt="EMtools Logo" width="120" height="120">
 
 </p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
 
 
-<h1 align="center">EMTOOLS</h1></p>
+<h1 align="center">EMtools</h1></p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
 
 
 <p align="center">
 
-  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
+  <strong>Outils numériques pour la médecine d'urgence</strong>
 
-</p><h1 align="center">EMTOOLS</h1>> **Version 0.1.0** | *Outils Numériques pour la Médecine d'Urgence*> **Version 2.0.0-beta.4** | *Emergency Medicine Digital Tools*
+</p><h1 align="center">EMTOOLS</h1></p>
 
 
-
-<p align="center">
-
-  <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
-
-  <a href="https://github.com/medlabib/EMtools/releases"><img src="https://img.shields.io/badge/Version-0.1.0-orange" alt="Version"></a><p align="center">
-
-  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter" alt="Flutter"></a>
-
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
-
-</p>
-
-</p>**Application mobile et web pour les urgentistes francophones****Outils numériques pour la médecine d'urgence**
 
 <p align="center">
 
-  Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.
+  <a href="https://medlabib.github.io/EMtools/">
 
-</p>
+    <img src="https://img.shields.io/badge/Web-Live%20Demo-00d4aa?style=for-the-badge&logo=flutter" alt="Web Demo"><p align="center">
 
-<p align="center">
+  </a>
 
----
+  <a href="https://github.com/medlabib/EMtools/releases">  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
 
-  <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
+    <img src="https://img.shields.io/badge/Android-APK-3DDC84?style=for-the-badge&logo=android" alt="Android APK">
 
-## 🆕 Nouveautés v0.1.0
+  </a></p><h1 align="center">EMTOOLS</h1>> **Version 0.1.0** | *Outils Numériques pour la Médecine d'Urgence*> **Version 2.0.0-beta.4** | *Emergency Medicine Digital Tools*
+
+  <a href="LICENSE">
+
+    <img src="https://img.shields.io/badge/License-BSD--3-blue?style=for-the-badge" alt="License">
+
+  </a>
+
+</p><p align="center">
+
+
+
+---  <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
+
+
+
+## 📱 À propos  <a href="https://github.com/medlabib/EMtools/releases"><img src="https://img.shields.io/badge/Version-0.1.0-orange" alt="Version"></a><p align="center">
+
+
+
+**EMtools** est une application Flutter conçue pour les professionnels de la médecine d'urgence. Elle regroupe des calculateurs médicaux, des outils d'aide à la prescription et des références cliniques essentielles.  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter" alt="Flutter"></a>
+
+
+
+### ✨ Fonctionnalités  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
+
+
+
+| Module | Description |</p>
+
+|--------|-------------|
+
+| 🩺 **Évaluation ABCDE** | Génération de rapports médicaux structurés avec détection automatique des signes de détresse |</p>**Application mobile et web pour les urgentistes francophones****Outils numériques pour la médecine d'urgence**
+
+| 💉 **Drogues Vasoactives** | Calcul des doses de noradrénaline, adrénaline, dobutamine, dopamine |
+
+| 😴 **Sédation** | Protocoles de sédation-analgésie (Midazolam, Propofol, Kétamine, Fentanyl...) |<p align="center">
+
+| 🧪 **Gazométrie** | Interprétation automatique des gaz du sang avec compensation attendue |
+
+| ⚗️ **Métabolique** | Correction des troubles hydro-électrolytiques (Na⁺, K⁺, Ca²⁺, Mg²⁺) |  Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.
+
+| 💊 **Antibiotiques** | Guide de prescription antibiotique par pathologie |
+
+| 🔢 **Calculateurs** | Scores cliniques (Glasgow, SOFA, qSOFA, Wells, CHA₂DS₂-VASc...) |</p>
+
+
+
+## 🚀 Démo<p align="center">
+
+
+
+**Web :** [https://medlabib.github.io/EMtools/](https://medlabib.github.io/EMtools/)---
+
+
+
+## 📥 Installation  <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
+
+
+
+### Web (PWA)## 🆕 Nouveautés v0.1.0
+
+Visitez le lien ci-dessus et installez l'application depuis votre navigateur.
 
   <a href="https://github.com/medlabib/EMtools/releases"><img src="https://img.shields.io/badge/Version-0.1.0-orange" alt="Version"></a>[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
 
-- ✅ Migration complète vers Flutter (application autonome)
+### Android
 
-- ✅ Interface entièrement en français  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter" alt="Flutter"></a>
+Téléchargez l'APK depuis la [page Releases](https://github.com/medlabib/EMtools/releases).- ✅ Migration complète vers Flutter (application autonome)
 
-- ✅ 41+ calculateurs médicaux validés
 
-- ✅ Thème sombre avec accessibilité améliorée  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>[![Version](https://img.shields.io/badge/Version-0.1.0-orange)](https://github.com/medlabib/EMtools/releases)[![Version](https://img.shields.io/badge/Version-2.0.0--beta.4-orange)](https://github.com/medlabib/EMtools/releases)
+
+### Build depuis les sources- ✅ Interface entièrement en français  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter" alt="Flutter"></a>
+
+
+
+```bash- ✅ 41+ calculateurs médicaux validés
+
+# Cloner le repo
+
+git clone https://github.com/medlabib/EMtools.git- ✅ Thème sombre avec accessibilité améliorée  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>[![Version](https://img.shields.io/badge/Version-0.1.0-orange)](https://github.com/medlabib/EMtools/releases)[![Version](https://img.shields.io/badge/Version-2.0.0--beta.4-orange)](https://github.com/medlabib/EMtools/releases)
+
+cd EMtools
 
 - ✅ Fonctionne hors ligne
 
-</p>
+# Installer les dépendances
 
-## 📋 Table des Matières
+flutter pub get</p>
+
+
+
+# Lancer en mode debug## 📋 Table des Matières
+
+flutter run
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)[![Docker Hub](https://img.shields.io/docker/v/medlabib/emtools-frontend?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/medlabib/emtools-frontend)
 
-- [Fonctionnalités](#-fonctionnalités)
+# Build release
 
-- [Installation](#-installation)<p align="center">
+flutter build apk --release        # Android APK- [Fonctionnalités](#-fonctionnalités)
+
+flutter build appbundle --release  # Android App Bundle
+
+flutter build web --release        # Web- [Installation](#-installation)<p align="center">
+
+```
 
 - [Utilisation](#-utilisation)
 
+## 🏗️ Architecture
+
 - [Développement](#-développement)  Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
 
-- [Tests](#-tests)
+```
 
-- [Contribution](#-contribution)</p>
+EMtools/- [Tests](#-tests)
 
-- [Licence](#-licence)
+├── lib/
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com)
+│   ├── core/           # Configuration, thème, routing- [Contribution](#-contribution)</p>
 
-## ✨ Fonctionnalités
+│   ├── domain/         # Entités et logique métier
+
+│   └── presentation/   # UI (screens, widgets, providers)- [Licence](#-licence)
+
+├── test/               # Tests unitaires
+
+├── android/            # Configuration Android[![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com)
+
+├── web/                # Configuration Web
+
+└── windows/            # Configuration Windows## ✨ Fonctionnalités
+
+```
 
 ---
 
+## 🧪 Tests
+
 ### 🧮 Calculateurs Médicaux (41+)
 
-Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?logo=mongodb)](https://www.mongodb.com)
+```bash
+
+flutter testApplication Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?logo=mongodb)](https://www.mongodb.com)
+
+```
 
 | Catégorie | Exemples |
 
+## 🛠️ Technologies
+
 |-----------|----------|## 🆕 Nouveautés v0.1.0
 
-| **Cardiovasculaire** | HEART, TIMI, GRACE, Wells EP/TVP, CHA₂DS₂-VASc, HAS-BLED |
+- **Framework:** Flutter 3.29+
 
-| **Neurologie** | NIHSS, Glasgow, ABCD², Hunt & Hess, Fisher |[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+- **State Management:** Riverpod| **Cardiovasculaire** | HEART, TIMI, GRACE, Wells EP/TVP, CHA₂DS₂-VASc, HAS-BLED |
 
-| **Trauma** | ISS, RTS, TRISS, Canadian C-Spine, NEXUS |
+- **Navigation:** GoRouter
 
-| **Sepsis** | qSOFA, SOFA, SIRS, NEWS |- ✅ Migration complète vers Flutter (application autonome)
+- **Architecture:** Clean Architecture| **Neurologie** | NIHSS, Glasgow, ABCD², Hunt & Hess, Fisher |[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-| **Pédiatrie** | APGAR, Score de Yale, PECARN |
 
-| **Rénal** | CKD-EPI, MDRD, Cockroft-Gault |- ✅ Interface entièrement en français## 🆕 Nouveautés v0.1.0
 
-| **Toxicologie** | Nomogramme Rumack-Matthew |
+## 📋 Changelog| **Trauma** | ISS, RTS, TRISS, Canadian C-Spine, NEXUS |
 
-- ✅ 41+ calculateurs médicaux validés
 
-### 🫁 Analyse des Gaz du Sang
 
-- ✅ Thème sombre avec accessibilité amélioréeApplication full-stack pour les urgentistes francophones : calculateurs médicaux, protocoles de sédation, drogues vasoactives, corrections métaboliques et plus.
+Voir [docs/wiki/Changelog.md](docs/wiki/Changelog.md)| **Sepsis** | qSOFA, SOFA, SIRS, NEWS |- ✅ Migration complète vers Flutter (application autonome)
+
+
+
+## 🤝 Contribution| **Pédiatrie** | APGAR, Score de Yale, PECARN |
+
+
+
+Les contributions sont les bienvenues ! Voir [docs/wiki/Contributing.md](docs/wiki/Contributing.md)| **Rénal** | CKD-EPI, MDRD, Cockroft-Gault |- ✅ Interface entièrement en français## 🆕 Nouveautés v0.1.0
+
+
+
+## ⚠️ Avertissement| **Toxicologie** | Nomogramme Rumack-Matthew |
+
+
+
+Cette application est un **outil d'aide à la décision** et ne remplace en aucun cas le jugement clinique du praticien. Vérifiez toujours les posologies avec les références officielles.- ✅ 41+ calculateurs médicaux validés
+
+
+
+## 📄 License### 🫁 Analyse des Gaz du Sang
+
+
+
+[BSD-3-Clause](LICENSE) © 2024-2025 medlabib- ✅ Thème sombre avec accessibilité amélioréeApplication full-stack pour les urgentistes francophones : calculateurs médicaux, protocoles de sédation, drogues vasoactives, corrections métaboliques et plus.
+
 
 - Interprétation automatique pH, PaCO₂, HCO₃⁻
 

@@ -1,4 +1,4 @@
-package com.medlabib.emtools.frontend
+package com.medlabib.emtools
 
 import io.flutter.embedding.android.FlutterActivity
 
