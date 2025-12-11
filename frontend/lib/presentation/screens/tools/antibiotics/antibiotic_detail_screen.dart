@@ -136,9 +136,10 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
   @override
   Widget build(BuildContext context) {
     final color = _getClassColor(_antibiotic.antibioticClass);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
+      backgroundColor: isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           _buildSliverAppBar(color),

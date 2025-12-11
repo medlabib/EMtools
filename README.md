@@ -1,12 +1,12 @@
-﻿<p align="center"># EMTOOLS# EMTOOLS 
+﻿<p align="center"><p align="center">
 
   <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
-</p>
+</p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
 
 
-<h1 align="center">EMTOOLS</h1>> **Version 0.1.0** | *Outils Numériques pour la Médecine d'Urgence*> **Version 2.0.0-beta.4** | *Emergency Medicine Digital Tools*
+<h1 align="center">EMTOOLS</h1></p>
 
 
 
@@ -14,7 +14,7 @@
 
   <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
 
-</p>**Application mobile et web pour les urgentistes francophones****Outils numériques pour la médecine d'urgence**
+</p><h1 align="center">EMTOOLS</h1>> **Version 0.1.0** | *Outils Numériques pour la Médecine d'Urgence*> **Version 2.0.0-beta.4** | *Emergency Medicine Digital Tools*
 
 
 
@@ -22,228 +22,475 @@
 
   <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
 
-  <a href="https://github.com/medlabib/EMtools/releases"><img src="https://img.shields.io/badge/Version-0.1.0-orange" alt="Version"></a>[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
+  <a href="https://github.com/medlabib/EMtools/releases"><img src="https://img.shields.io/badge/Version-0.1.0-orange" alt="Version"></a><p align="center">
 
   <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter" alt="Flutter"></a>
 
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>[![Version](https://img.shields.io/badge/Version-0.1.0-orange)](https://github.com/medlabib/EMtools/releases)[![Version](https://img.shields.io/badge/Version-2.0.0--beta.4-orange)](https://github.com/medlabib/EMtools/releases)
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
 
 </p>
 
-[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)[![Docker Hub](https://img.shields.io/docker/v/medlabib/emtools-frontend?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/medlabib/emtools-frontend)
+</p>**Application mobile et web pour les urgentistes francophones****Outils numériques pour la médecine d'urgence**
 
 <p align="center">
 
-  Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
+  Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.
 
 </p>
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com)
+<p align="center">
 
 ---
 
-Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?logo=mongodb)](https://www.mongodb.com)
+  <a href="https://www.anthropic.com"><img src="https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic" alt="AI Generated"></a>
 
 ## 🆕 Nouveautés v0.1.0
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+  <a href="https://github.com/medlabib/EMtools/releases"><img src="https://img.shields.io/badge/Version-0.1.0-orange" alt="Version"></a>[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)[![AI Generated](https://img.shields.io/badge/AI%20Generated-Claude%20Sonnet%204-blueviolet?logo=anthropic)](https://www.anthropic.com)
 
 - ✅ Migration complète vers Flutter (application autonome)
 
-- ✅ Interface entièrement en français## 🆕 Nouveautés v0.1.0
+- ✅ Interface entièrement en français  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter" alt="Flutter"></a>
 
 - ✅ 41+ calculateurs médicaux validés
 
-- ✅ Thème sombre avec accessibilité amélioréeApplication full-stack pour les urgentistes francophones : calculateurs médicaux, protocoles de sédation, drogues vasoactives, corrections métaboliques et plus.
+- ✅ Thème sombre avec accessibilité améliorée  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>[![Version](https://img.shields.io/badge/Version-0.1.0-orange)](https://github.com/medlabib/EMtools/releases)[![Version](https://img.shields.io/badge/Version-2.0.0--beta.4-orange)](https://github.com/medlabib/EMtools/releases)
 
 - ✅ Fonctionne hors ligne
 
-- **Application autonome**: Fonctionne entièrement hors ligne, sans backend
+</p>
 
 ## 📋 Table des Matières
 
-- **Interface française**: Entièrement traduite en français##  What's New in Beta 4
+[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)[![Docker Hub](https://img.shields.io/docker/v/medlabib/emtools-frontend?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/medlabib/emtools-frontend)
 
 - [Fonctionnalités](#-fonctionnalités)
 
-- [Captures d'écran](#-captures-décran)- **Mode sombre accessible**: Thème sombre avec contraste amélioré
+- [Installation](#-installation)<p align="center">
 
-- [Installation](#-installation)
+- [Utilisation](#-utilisation)
 
-- [Utilisation](#-utilisation)- **Favoris personnalisés**: Accès rapide aux outils les plus utilisés- **Flutter Frontend**: Native mobile experience (iOS/Android) + Web
-
-- [Outils Disponibles](#-outils-disponibles)
-
-- [Développement](#-développement)- **41+ calculateurs médicaux**: Scores cliniques validés- **Tool Favorites**: Star your most-used tools for quick access
+- [Développement](#-développement)  Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)](https://flutter.dev)
 
 - [Tests](#-tests)
 
-- [Contribution](#-contribution)- **Évaluation ABCDE**: Rapport médical structuré- **QR Code Sharing**: Share pastes via QR code
+- [Contribution](#-contribution)</p>
 
 - [Licence](#-licence)
 
-- **Expiration Countdown**: Visual countdown for paste expiration
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com)
 
 ## ✨ Fonctionnalités
 
-## 🚀 Démarrage rapide- **Reference Sources**: Scientific references in Blood Gas analysis
+---
 
 ### 🧮 Calculateurs Médicaux (41+)
 
-- **Correction Rates**: Display correction rate recommendations in Metabolic disorders
+Application Flutter autonome pour les urgentistes francophones : calculateurs médicaux, évaluation ABCDE, drogues vasoactives, corrections métaboliques, analyse des gaz du sang et plus.[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?logo=mongodb)](https://www.mongodb.com)
 
 | Catégorie | Exemples |
 
-|-----------|----------|### Prérequis
+|-----------|----------|## 🆕 Nouveautés v0.1.0
 
 | **Cardiovasculaire** | HEART, TIMI, GRACE, Wells EP/TVP, CHA₂DS₂-VASc, HAS-BLED |
 
-| **Neurologie** | NIHSS, Glasgow, ABCD², Hunt & Hess, Fisher |##  Quick Start with Docker
+| **Neurologie** | NIHSS, Glasgow, ABCD², Hunt & Hess, Fisher |[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 | **Trauma** | ISS, RTS, TRISS, Canadian C-Spine, NEXUS |
 
-| **Sepsis** | qSOFA, SOFA, SIRS, NEWS |- Flutter SDK 3.x
+| **Sepsis** | qSOFA, SOFA, SIRS, NEWS |- ✅ Migration complète vers Flutter (application autonome)
 
 | **Pédiatrie** | APGAR, Score de Yale, PECARN |
 
-| **Rénal** | CKD-EPI, MDRD, Cockroft-Gault |- Android Studio / Xcode (pour mobile)`ash
+| **Rénal** | CKD-EPI, MDRD, Cockroft-Gault |- ✅ Interface entièrement en français## 🆕 Nouveautés v0.1.0
 
 | **Toxicologie** | Nomogramme Rumack-Matthew |
 
-- Chrome (pour le web)# Pull and run with Docker Compose
+- ✅ 41+ calculateurs médicaux validés
 
 ### 🫁 Analyse des Gaz du Sang
 
-git clone https://github.com/medlabib/EMtools.git
+- ✅ Thème sombre avec accessibilité amélioréeApplication full-stack pour les urgentistes francophones : calculateurs médicaux, protocoles de sédation, drogues vasoactives, corrections métaboliques et plus.
 
 - Interprétation automatique pH, PaCO₂, HCO₃⁻
 
-- Classification des troubles acido-basiques### Installationcd EMtools
+- Classification des troubles acido-basiques- ✅ Fonctionne hors ligne
 
 - Calcul du trou anionique et compensations attendues
 
-- Diagnostic différentiel guidédocker-compose up -d
+- Diagnostic différentiel guidé- **Application autonome**: Fonctionne entièrement hors ligne, sans backend
 
 
 
-### 💊 Drogues Vasoactives```bash
+### 💊 Drogues Vasoactives## 📋 Table des Matières
 
 
 
-- **Catécholamines** : Noradrénaline, Adrénaline, Dopamine, Dobutamine# Cloner le repository# Or pull images directly from Docker Hub
+- **Catécholamines** : Noradrénaline, Adrénaline, Dopamine, Dobutamine- **Interface française**: Entièrement traduite en français##  What's New in Beta 4
 
 - **Autres** : Vasopressine, Milrinone
 
-- Calculateur de débit selon le poidsgit clone https://github.com/medlabib/EMtools.gitdocker pull medlabib/emtools-frontend:2.0.0-beta.4
+- Calculateur de débit selon le poids- [Fonctionnalités](#-fonctionnalités)
 
 - Protocoles de titration
 
-cd EMtools/frontenddocker pull medlabib/emtools-backend:2.0.0-beta.4
+- [Captures d'écran](#-captures-décran)- **Mode sombre accessible**: Thème sombre avec contraste amélioré
 
 ### 😴 Sédation et Analgésie
 
-`
+- [Installation](#-installation)
 
 - **Sédatifs** : Propofol, Midazolam, Kétamine, Dexmédétomidine
 
-- **Analgésiques** : Fentanyl, Morphine, Rémifentanil# Installer les dépendances
+- **Analgésiques** : Fentanyl, Morphine, Rémifentanil- [Utilisation](#-utilisation)- **Favoris personnalisés**: Accès rapide aux outils les plus utilisés- **Flutter Frontend**: Native mobile experience (iOS/Android) + Web
 
 - **Curares** : Rocuronium, Cisatracurium
 
-- Doses pour ISR et sédation continueflutter pub get**Access the application:**
+- Doses pour ISR et sédation continue- [Outils Disponibles](#-outils-disponibles)
 
 
 
-### ⚗️ Corrections Métaboliques-  Frontend: http://localhost
+### ⚗️ Corrections Métaboliques- [Développement](#-développement)- **41+ calculateurs médicaux**: Scores cliniques validés- **Tool Favorites**: Star your most-used tools for quick access
 
 
 
-| Désordre | Fonctionnalités |# Lancer en mode développement-  Backend API: http://localhost:8000
+| Désordre | Fonctionnalités |- [Tests](#-tests)
 
 |----------|-----------------|
 
-| **Dyskaliémie** | Protocoles hyperkaliémie sévère, supplémentation |flutter run -d chrome          # Web-  API Docs: http://localhost:8000/docs
+| **Dyskaliémie** | Protocoles hyperkaliémie sévère, supplémentation |- [Contribution](#-contribution)- **Évaluation ABCDE**: Rapport médical structuré- **QR Code Sharing**: Share pastes via QR code
 
 | **Dysnatrémie** | Correction hypo/hypernatrémie, calcul vitesse |
 
-| **Dyscalcémie** | Calcium corrigé, protocoles de correction |flutter run -d android          # Android
+| **Dyscalcémie** | Calcium corrigé, protocoles de correction |- [Licence](#-licence)
 
 
 
-### 💉 Guide Antibiotiquesflutter run -d ios              # iOS##  Features
+### 💉 Guide Antibiotiques- **Expiration Countdown**: Visual countdown for paste expiration
 
 
 
-- Antibiotiques par classe et spectre
+- Antibiotiques par classe et spectre## ✨ Fonctionnalités
 
 - Indications par pathologie
 
-- Posologies adulte/pédiatrique# Build pour production###  Clinical Tools
+- Posologies adulte/pédiatrique## 🚀 Démarrage rapide- **Reference Sources**: Scientific references in Blood Gas analysis
 
 - Ajustements insuffisance rénale
 
-flutter build web --release     # Web
+### 🧮 Calculateurs Médicaux (41+)
 
 ### 📋 Évaluation ABCDE
 
-flutter build apk --release     # Android| Tool | Description |
+- **Correction Rates**: Display correction rate recommendations in Metabolic disorders
 
 - Approche structurée des urgences vitales
 
-- Check-lists interactivesflutter build ios --release     # iOS|------|-------------|
+- Check-lists interactives| Catégorie | Exemples |
 
 - Aide à la décision clinique
 
-```|  **Medical Report** | ABCDE structured assessment with severity detection |
-
-## 🖼️ Captures d'écran
-
-|  **Secure Pastebin** | Temporary sharing (max 24h) with QR codes |
-
-*À venir*
-
-## 📱 Fonctionnalités|  **Medical Calculators** | 41+ clinical scores (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |
+|-----------|----------|### Prérequis
 
 ## 🚀 Installation
 
-|  **Vasoactive Drugs** | PSE flow rate calculator (Noradrenaline, Adrenaline, Dobutamine...) |
+| **Cardiovasculaire** | HEART, TIMI, GRACE, Wells EP/TVP, CHA₂DS₂-VASc, HAS-BLED |
 
 ### Prérequis
 
-### Outils Cliniques|  **Sedation & Analgesia** | RSI protocols (Etomidate, Ketamine, Propofol, Rocuronium...) |
+| **Neurologie** | NIHSS, Glasgow, ABCD², Hunt & Hess, Fisher |##  Quick Start with Docker
 
 - [Flutter SDK](https://flutter.dev/docs/get-started/install) 3.19+
 
-- [Dart SDK](https://dart.dev/get-dart) 3.3+|  **Metabolic Disorders** | Dysnatremia (Adrogué-Madias), Dyskalemia, Dyscalcemia |
+- [Dart SDK](https://dart.dev/get-dart) 3.3+| **Trauma** | ISS, RTS, TRISS, Canadian C-Spine, NEXUS |
 
 
 
-### Installation| Outil | Description ||  **Blood Gas & Ventilation** | ABG analysis, P/F ratio, ventilator mechanics |
+### Installation| **Sepsis** | qSOFA, SOFA, SIRS, NEWS |- Flutter SDK 3.x
 
 
 
-```bash|-------|-------------||  **Antibiotic Guide** | Dosing, renal adjustments, drug interactions |
+```bash| **Pédiatrie** | APGAR, Score de Yale, PECARN |
 
 # Cloner le dépôt
 
-git clone https://github.com/medlabib/EMtools.git| 📋 **Rapport Médical** | Évaluation structurée ABCDE avec détection de gravité |
+git clone https://github.com/medlabib/EMtools.git| **Rénal** | CKD-EPI, MDRD, Cockroft-Gault |- Android Studio / Xcode (pour mobile)`ash
 
 cd EMtools/frontend
 
-| 🧮 **Calculateurs Médicaux** | 41+ scores cliniques (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |###  Medical Calculators (41+ scores)
+| **Toxicologie** | Nomogramme Rumack-Matthew |
 
 # Installer les dépendances
 
-flutter pub get| 💊 **Drogues Vasoactives** | Calculateur de débit PSE (Noradrénaline, Adrénaline, Dobutamine...) |
+flutter pub get- Chrome (pour le web)# Pull and run with Docker Compose
 
 
 
-# Lancer l'application| 💉 **Sédation & Analgésie** | Protocoles ISR (Étomidate, Kétamine, Propofol, Rocuronium...) |- **Trauma**: GCS, RTS, Shock Index, FOUR Score
+# Lancer l'application### 🫁 Analyse des Gaz du Sang
 
 flutter run
 
-```| ⚗️ **Troubles Métaboliques** | Dysnatrémie (Adrogué-Madias), Dyskaliémie, Dyscalcémie |- **Cardiology**: HEART, CHADS-VASc, HAS-BLED, QTc
+```git clone https://github.com/medlabib/EMtools.git
 
+
+
+### Plateformes Supportées- Interprétation automatique pH, PaCO₂, HCO₃⁻
+
+
+
+| Plateforme | Statut |- Classification des troubles acido-basiques### Installationcd EMtools
+
+|------------|--------|
+
+| Android | ✅ Supporté |- Calcul du trou anionique et compensations attendues
+
+| iOS | ✅ Supporté |
+
+| Web | ✅ Supporté |- Diagnostic différentiel guidédocker-compose up -d
+
+| Windows | ✅ Supporté |
+
+| macOS | ✅ Supporté |
+
+| Linux | ✅ Supporté |
+
+### 💊 Drogues Vasoactives```bash
+
+## 📖 Utilisation
+
+
+
+### Navigation
+
+- **Catécholamines** : Noradrénaline, Adrénaline, Dopamine, Dobutamine# Cloner le repository# Or pull images directly from Docker Hub
+
+L'application utilise une navigation à 3 onglets :
+
+- **Autres** : Vasopressine, Milrinone
+
+1. **Tableau de bord** - Accès rapide aux outils favoris
+
+2. **Outils** - Liste complète des outils médicaux- Calculateur de débit selon le poidsgit clone https://github.com/medlabib/EMtools.gitdocker pull medlabib/emtools-frontend:2.0.0-beta.4
+
+3. **Paramètres** - Thème, préférences, à propos
+
+- Protocoles de titration
+
+### Exemple : Calculateur HEART
+
+cd EMtools/frontenddocker pull medlabib/emtools-backend:2.0.0-beta.4
+
+1. Naviguer vers **Outils** → **Calculateurs**
+
+2. Sélectionner **Score HEART**### 😴 Sédation et Analgésie
+
+3. Remplir les critères cliniques
+
+4. Le score et l'interprétation s'affichent automatiquement`
+
+
+
+## 🛠️ Développement- **Sédatifs** : Propofol, Midazolam, Kétamine, Dexmédétomidine
+
+
+
+### Structure du Projet- **Analgésiques** : Fentanyl, Morphine, Rémifentanil# Installer les dépendances
+
+
+
+```- **Curares** : Rocuronium, Cisatracurium
+
+frontend/
+
+├── lib/- Doses pour ISR et sédation continueflutter pub get**Access the application:**
+
+│   ├── main.dart              # Point d'entrée
+
+│   ├── core/
+
+│   │   ├── config/            # Routage, configuration
+
+│   │   ├── l10n/              # Chaînes de caractères### ⚗️ Corrections Métaboliques-  Frontend: http://localhost
+
+│   │   ├── theme/             # Thèmes clair/sombre
+
+│   │   └── widgets/           # Widgets réutilisables
+
+│   ├── data/
+
+│   │   ├── datasources/       # Données (calculateurs, médicaments)| Désordre | Fonctionnalités |# Lancer en mode développement-  Backend API: http://localhost:8000
+
+│   │   └── models/            # Modèles de données
+
+│   ├── domain/|----------|-----------------|
+
+│   │   └── entities/          # Entités métier
+
+│   └── presentation/| **Dyskaliémie** | Protocoles hyperkaliémie sévère, supplémentation |flutter run -d chrome          # Web-  API Docs: http://localhost:8000/docs
+
+│       ├── providers/         # State management (Riverpod)
+
+│       ├── screens/           # Écrans de l'application| **Dysnatrémie** | Correction hypo/hypernatrémie, calcul vitesse |
+
+│       └── widgets/           # Widgets spécifiques
+
+├── test/                      # Tests unitaires| **Dyscalcémie** | Calcium corrigé, protocoles de correction |flutter run -d android          # Android
+
+└── pubspec.yaml              # Dépendances
+
+```
+
+
+
+### Commandes Utiles### 💉 Guide Antibiotiquesflutter run -d ios              # iOS##  Features
+
+
+
+```bash
+
+# Lancer les tests
+
+flutter test- Antibiotiques par classe et spectre
+
+
+
+# Analyser le code- Indications par pathologie
+
+flutter analyze
+
+- Posologies adulte/pédiatrique# Build pour production###  Clinical Tools
+
+# Formater le code
+
+dart format .- Ajustements insuffisance rénale
+
+
+
+# Build Androidflutter build web --release     # Web
+
+flutter build apk
+
+### 📋 Évaluation ABCDE
+
+# Build Web
+
+flutter build webflutter build apk --release     # Android| Tool | Description |
+
+
+
+# Build Windows- Approche structurée des urgences vitales
+
+flutter build windows
+
+```- Check-lists interactivesflutter build ios --release     # iOS|------|-------------|
+
+
+
+## 🧪 Tests- Aide à la décision clinique
+
+
+
+Le projet inclut 256 tests unitaires couvrant :```|  **Medical Report** | ABCDE structured assessment with severity detection |
+
+
+
+- Calculs des scores médicaux## 🖼️ Captures d'écran
+
+- Interprétation des gaz du sang
+
+- Posologies des médicaments|  **Secure Pastebin** | Temporary sharing (max 24h) with QR codes |
+
+- Corrections métaboliques
+
+*À venir*
+
+```bash
+
+# Exécuter tous les tests## 📱 Fonctionnalités|  **Medical Calculators** | 41+ clinical scores (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |
+
+flutter test
+
+## 🚀 Installation
+
+# Tests avec couverture
+
+flutter test --coverage|  **Vasoactive Drugs** | PSE flow rate calculator (Noradrenaline, Adrenaline, Dobutamine...) |
+
+```
+
+### Prérequis
+
+## 🤝 Contribution
+
+### Outils Cliniques|  **Sedation & Analgesia** | RSI protocols (Etomidate, Ketamine, Propofol, Rocuronium...) |
+
+Les contributions sont les bienvenues ! Voir [CONTRIBUTING.md](wiki/Contributing.md) pour les détails.
+
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) 3.19+
+
+### Comment Contribuer
+
+- [Dart SDK](https://dart.dev/get-dart) 3.3+|  **Metabolic Disorders** | Dysnatremia (Adrogué-Madias), Dyskalemia, Dyscalcemia |
+
+1. Fork le projet
+
+2. Créer une branche (`git checkout -b feature/AmazingFeature`)
+
+3. Commit les changements (`git commit -m 'feat: add AmazingFeature'`)
+
+4. Push sur la branche (`git push origin feature/AmazingFeature`)### Installation| Outil | Description ||  **Blood Gas & Ventilation** | ABG analysis, P/F ratio, ventilator mechanics |
+
+5. Ouvrir une Pull Request
+
+
+
+## ⚠️ Avertissement Médical
+
+```bash|-------|-------------||  **Antibiotic Guide** | Dosing, renal adjustments, drug interactions |
+
+**Cette application est un outil d'aide à la décision et ne remplace pas le jugement clinique.**
+
+# Cloner le dépôt
+
+- Les scores et calculateurs sont fournis à titre indicatif
+
+- Toujours vérifier les calculs critiquesgit clone https://github.com/medlabib/EMtools.git| 📋 **Rapport Médical** | Évaluation structurée ABCDE avec détection de gravité |
+
+- Se référer aux protocoles locaux de votre établissement
+
+- En cas de doute, consulter un seniorcd EMtools/frontend
+
+
+
+## 📄 Licence| 🧮 **Calculateurs Médicaux** | 41+ scores cliniques (NIHSS, Wells, SOFA, Glasgow, HEART, PERC...) |###  Medical Calculators (41+ scores)
+
+
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.# Installer les dépendances
+
+
+
+## 🙏 Remerciementsflutter pub get| 💊 **Drogues Vasoactives** | Calculateur de débit PSE (Noradrénaline, Adrénaline, Dobutamine...) |
+
+
+
+- Généré avec l'aide de [Claude Sonnet 4](https://www.anthropic.com) (Anthropic)
+
+- Construit avec [Flutter](https://flutter.dev) et [Riverpod](https://riverpod.dev)
+
+- Icônes par [Material Design Icons](https://materialdesignicons.com)# Lancer l'application| 💉 **Sédation & Analgésie** | Protocoles ISR (Étomidate, Kétamine, Propofol, Rocuronium...) |- **Trauma**: GCS, RTS, Shock Index, FOUR Score
+
+
+
+---flutter run
+
+
+
+<p align="center">```| ⚗️ **Troubles Métaboliques** | Dysnatrémie (Adrogué-Madias), Dyskaliémie, Dyscalcémie |- **Cardiology**: HEART, CHADS-VASc, HAS-BLED, QTc
+
+  Fait avec ❤️ pour les urgentistes francophones
+
+</p>
 
 
 ### Plateformes Supportées| 🫁 **Gaz du Sang** | Analyse des GDS, ratio P/F, mécanique ventilatoire |- **Neurology**: NIHSS, ABCD², ICH Score, Hunt-Hess

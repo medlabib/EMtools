@@ -94,8 +94,9 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
+      backgroundColor: isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           _buildSliverAppBar(),
@@ -194,6 +195,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   }
 
   Widget _buildPatientInputs() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(0, -0.2),
@@ -208,11 +210,11 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
           margin: const EdgeInsets.all(16),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: isDark ? AppColors.cardDark : Colors.white,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withOpacity(isDark ? 0.2 : 0.05),
                 blurRadius: 20,
                 offset: const Offset(0, 4),
               ),
@@ -228,10 +230,10 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                   const SizedBox(width: 8),
                   Text(
                     AppStrings.patientParameters,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.textPrimary,
+                      color: isDark ? Colors.white : AppColors.textPrimary,
                     ),
                   ),
                 ],
@@ -305,30 +307,31 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
     required IconData icon,
     required ValueChanged<String> onChanged,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.backgroundLight,
+        color: isDark ? AppColors.cardDark : AppColors.backgroundLight,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade200),
+        border: Border.all(color: isDark ? Colors.grey.shade700 : Colors.grey.shade200),
       ),
       child: TextField(
         controller: controller,
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
         onChanged: onChanged,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
-          color: AppColors.textPrimary,
+          color: isDark ? Colors.white : AppColors.textPrimary,
         ),
         decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(
-            color: AppColors.textSecondary,
+            color: isDark ? Colors.grey[400] : AppColors.textSecondary,
             fontSize: 14,
           ),
           suffixText: suffix,
           suffixStyle: TextStyle(
-            color: AppColors.textSecondary,
+            color: isDark ? Colors.grey[400] : AppColors.textSecondary,
             fontSize: 14,
           ),
           prefixIcon: Icon(icon, color: AppColors.primary, size: 20),
@@ -340,14 +343,15 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   }
 
   Widget _buildTabBar() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? AppColors.cardDark : Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withOpacity(isDark ? 0.2 : 0.03),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -356,7 +360,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
       child: TabBar(
         controller: _tabController,
         labelColor: Colors.white,
-        unselectedLabelColor: AppColors.textSecondary,
+        unselectedLabelColor: isDark ? Colors.grey[400] : AppColors.textSecondary,
         indicator: BoxDecoration(
           gradient: const LinearGradient(
             colors: [AppColors.primary, AppColors.primaryDark],

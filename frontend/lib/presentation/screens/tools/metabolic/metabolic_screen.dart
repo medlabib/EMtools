@@ -57,8 +57,9 @@ class _MetabolicScreenState extends State<MetabolicScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
+      backgroundColor: isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           _buildSliverAppBar(),
@@ -156,12 +157,13 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   Widget _buildTabBar() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color: Colors.white,
+      color: isDark ? AppColors.cardDark : Colors.white,
       child: TabBar(
         controller: _tabController,
         labelColor: AppColors.accentPurple,
-        unselectedLabelColor: AppColors.textSecondary,
+        unselectedLabelColor: isDark ? Colors.grey[400] : AppColors.textSecondary,
         indicatorColor: AppColors.accentPurple,
         indicatorWeight: 3,
         tabs: const [

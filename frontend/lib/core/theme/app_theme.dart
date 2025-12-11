@@ -31,10 +31,22 @@ class AppColors {
   static const Color cardLight = Color(0xFFFFFFFF);
   static const Color cardDark = Color(0xFF1E293B);
   
-  // Text colors
+  // Text colors - Light theme
   static const Color textPrimary = Color(0xFF1E293B);
   static const Color textSecondary = Color(0xFF64748B);
   static const Color textHint = Color(0xFF94A3B8);
+  
+  // Text colors - Dark theme
+  static const Color textPrimaryDark = Color(0xFFFFFFFF);
+  static const Color textSecondaryDark = Color(0xFFCBD5E1);
+  static const Color textHintDark = Color(0xFF94A3B8);
+  
+  // Adaptive text color helpers
+  static Color getTextPrimary(bool isDark) => isDark ? textPrimaryDark : textPrimary;
+  static Color getTextSecondary(bool isDark) => isDark ? textSecondaryDark : textSecondary;
+  static Color getTextHint(bool isDark) => isDark ? textHintDark : textHint;
+  static Color getCardColor(bool isDark) => isDark ? cardDark : cardLight;
+  static Color getBackgroundColor(bool isDark) => isDark ? backgroundDark : backgroundLight;
   
   // Gradients
   static const LinearGradient primaryGradient = LinearGradient(

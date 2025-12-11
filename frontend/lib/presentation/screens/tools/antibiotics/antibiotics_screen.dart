@@ -98,8 +98,9 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
       return matchesSearch && matchesClass;
     }).toList();
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
+      backgroundColor: isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           _buildSliverAppBar(),
