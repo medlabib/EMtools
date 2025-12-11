@@ -1,0 +1,543 @@
+import '../../domain/entities/sedation.dart';
+
+class SedationData {
+  static final List<SedationDrug> allDrugs = [
+    // =====================
+    // INDUCTION AGENTS
+    // =====================
+    SedationDrug(
+      id: 'propofol',
+      name: 'Propofol',
+      genericName: 'Propofol',
+      drugClass: 'Hypnotique',
+      role: [DrugRole.induction, DrugRole.sedative],
+      sedationTypes: [SedationType.rsi, SedationType.procedural, SedationType.maintenance],
+      standardDose: 1.5,
+      doseUnit: 'mg/kg',
+      route: ['IV'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18-65 ans', dose: 1.5, notes: '1.5-2.5 mg/kg'),
+        DoseByAge(ageGroup: AgeGroup.elderly, ageRange: '> 65 ans', dose: 1.0, notes: 'Réduire dose (1 mg/kg)'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '3-17 ans', dose: 2.5, notes: '2.5-3.5 mg/kg'),
+        DoseByAge(ageGroup: AgeGroup.infant, ageRange: '< 3 ans', dose: 3.0, notes: '3-4 mg/kg'),
+      ],
+      onsetSeconds: 30,
+      durationMinutes: 8,
+      mechanism: 'Agoniste GABA',
+      indications: [
+        'Induction anesthésie',
+        'Sédation procédurale',
+        'État de mal épileptique réfractaire',
+      ],
+      advantages: [
+        'Début et fin d\'action rapides',
+        'Propriétés antiémétiques',
+        'Diminue la PIC',
+        'Bronchodilatateur léger',
+      ],
+      sideEffects: [
+        'Hypotension (vasodilatation + inotrope négatif)',
+        'Dépression respiratoire / Apnée',
+        'Douleur à l\'injection',
+        'Syndrome de perfusion du propofol (long cours)',
+      ],
+      contraindications: [
+        'Allergie œuf/soja (théorique, rare)',
+        'Instabilité hémodynamique sévère',
+      ],
+      precautions: [
+        'Hypotension: réduire dose ou choisir autre agent',
+        'Personnes âgées: réduire dose de 50%',
+        'Injection lente pour sédation procédurale',
+      ],
+      concentrations: ['10 mg/mL (1%)'],
+      notes: [
+        'Réduire dose si choc ou âge avancé',
+        'Peut causer myoclonies (non épileptiques)',
+        'Ne fournit aucune analgésie',
+      ],
+    ),
+
+    SedationDrug(
+      id: 'etomidate',
+      name: 'Étomidate',
+      genericName: 'Etomidate',
+      drugClass: 'Hypnotique',
+      role: [DrugRole.induction],
+      sedationTypes: [SedationType.rsi, SedationType.procedural],
+      standardDose: 0.3,
+      doseUnit: 'mg/kg',
+      route: ['IV'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18+ ans', dose: 0.3, notes: '0.2-0.4 mg/kg'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '< 18 ans', dose: 0.3),
+        DoseByAge(ageGroup: AgeGroup.elderly, ageRange: '> 65 ans', dose: 0.2, notes: '0.15-0.2 mg/kg'),
+      ],
+      onsetSeconds: 30,
+      durationMinutes: 8,
+      mechanism: 'Agoniste GABA',
+      indications: [
+        'Induction ISR (surtout si instabilité hémodynamique)',
+        'Sédation procédurale brève (réduction luxation)',
+      ],
+      advantages: [
+        'Stabilité hémodynamique (neutre)',
+        'Maintien pression perfusion cérébrale',
+        'Début d\'action rapide',
+      ],
+      sideEffects: [
+        'Suppression surrénalienne (transitoire)',
+        'Myoclonies (30-50%)',
+        'Nausées/vomissements (fréquent)',
+        'Douleur à l\'injection',
+      ],
+      contraindications: [
+        'Sepsis sévère (controverse suppression surrénale)',
+        'Porphyrie',
+      ],
+      precautions: [
+        'Prémédication opioïde réduit myoclonies',
+        'Non recommandé pour sédation continue (maintien)',
+      ],
+      concentrations: ['2 mg/mL'],
+      notes: [
+        'Agent de choix pour trauma/choc',
+        'Ne fournit aucune analgésie',
+        'Myoclonies peuvent gêner l\'examen',
+      ],
+    ),
+
+    SedationDrug(
+      id: 'ketamine',
+      name: 'Kétamine',
+      genericName: 'Ketamine',
+      drugClass: 'Anesthésique dissociatif',
+      role: [DrugRole.induction, DrugRole.analgesic, DrugRole.sedative],
+      sedationTypes: [SedationType.rsi, SedationType.procedural],
+      standardDose: 1.5,
+      doseUnit: 'mg/kg',
+      route: ['IV', 'IM'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18+ ans', dose: 1.5, notes: 'ISR: 1.5-2 mg/kg. Sédation: 1 mg/kg'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '< 18 ans', dose: 1.5, notes: 'ISR: 1.5-2 mg/kg. Sédation: 1 mg/kg'),
+      ],
+      onsetSeconds: 45,
+      durationMinutes: 15,
+      mechanism: 'Antagoniste NMDA',
+      indications: [
+        'Induction ISR (asthme, choc)',
+        'Sédation procédurale (enfants)',
+        'Analgésie sévère',
+      ],
+      advantages: [
+        'Bronchodilatateur (choix pour asthme)',
+        'Maintien réflexes voies aériennes',
+        'Maintien drive respiratoire',
+        'Stabilité hémodynamique (catécholamines)',
+        'Analgésie puissante',
+      ],
+      sideEffects: [
+        'Hypertension, Tachycardie',
+        'Augmentation sécrétions salivaires',
+        'Laryngospasme (rare)',
+        'Réactions d\'émergence (hallucinations)',
+        'Augmentation PIC (controverse - probablement sûr)',
+      ],
+      contraindications: [
+        'Hypertension sévère non contrôlée',
+        'Psychose sévère',
+        'Pathologie oculaire (globe ouvert)',
+      ],
+      precautions: [
+        'Atropine si hypersalivation',
+        'Injection lente (1 min) pour sédation procédurale',
+        'Risque laryngospasme',
+      ],
+      concentrations: ['10 mg/mL', '50 mg/mL'],
+      notes: [
+        'Dose IM: 4-5 mg/kg (délai 3-5 min)',
+        'Phénomènes d\'émergence: traiter avec midazolam',
+        'Dissociation: yeux ouverts, nystagmus',
+      ],
+    ),
+
+    SedationDrug(
+      id: 'midazolam',
+      name: 'Midazolam',
+      genericName: 'Midazolam',
+      drugClass: 'Benzodiazépine',
+      role: [DrugRole.induction, DrugRole.sedative],
+      sedationTypes: [SedationType.procedural, SedationType.maintenance, SedationType.rsi],
+      standardDose: 0.1,
+      doseUnit: 'mg/kg',
+      route: ['IV', 'IM', 'IN'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18-60 ans', dose: 0.1, notes: 'Max 5 mg initial'),
+        DoseByAge(ageGroup: AgeGroup.elderly, ageRange: '> 60 ans', dose: 0.05, notes: 'Max 2.5 mg initial'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '< 18 ans', dose: 0.1, notes: 'Max 5 mg'),
+      ],
+      onsetSeconds: 120,
+      durationMinutes: 45,
+      mechanism: 'Agoniste GABA',
+      indications: [
+        'Sédation procédurale',
+        'Anxiolyse',
+        'Amnésie',
+        'Convulsions',
+        'Induction ISR (si choc et autres non dispo)',
+      ],
+      advantages: [
+        'Amnésie antérograde puissante',
+        'Anxiolyse',
+        'Anticonvulsivant',
+        'Réversible (flumazénil)',
+      ],
+      sideEffects: [
+        'Dépression respiratoire',
+        'Hypotension',
+        'Réaction paradoxale (agitation)',
+      ],
+      contraindications: [
+        'Glaucome à angle fermé',
+        'Choc (dose-dépendant)',
+      ],
+      precautions: [
+        'Effet synergique avec opioïdes (dépression respi)',
+        'Réduire dose chez insuffisant rénal/hépatique',
+        'Surveillance cardio-respiratoire continue',
+      ],
+      concentrations: ['1 mg/mL', '5 mg/mL'],
+      notes: [
+        'Début d\'action plus lent que propofol/étomidate',
+        'Voie IN: 0.2-0.3 mg/kg (max 10 mg)',
+        'Antidote: Flumazénil',
+        'ISR: 0.2-0.3 mg/kg',
+      ],
+    ),
+
+    // =====================
+    // PARALYTICS
+    // =====================
+    SedationDrug(
+      id: 'succinylcholine',
+      name: 'Succinylcholine',
+      genericName: 'Succinylcholine',
+      drugClass: 'Curare dépolarisant',
+      role: [DrugRole.paralytic],
+      sedationTypes: [SedationType.rsi],
+      standardDose: 1.5,
+      doseUnit: 'mg/kg',
+      route: ['IV', 'IM'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18+ ans', dose: 1.5, notes: '1.0-1.5 mg/kg'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '1-17 ans', dose: 1.5, notes: '1.5-2.0 mg/kg'),
+        DoseByAge(ageGroup: AgeGroup.infant, ageRange: '< 1 an', dose: 2.0, notes: '2.0 mg/kg (plus grand Vd)'),
+      ],
+      onsetSeconds: 45,
+      durationMinutes: 8,
+      mechanism: 'Agoniste récepteurs nicotiniques (dépolarisant)',
+      indications: [
+        'ISR (gold standard pour délai)',
+        'Laryngospasme',
+      ],
+      advantages: [
+        'Début d\'action très rapide',
+        'Durée d\'action très courte',
+        'Conditions d\'intubation excellentes',
+      ],
+      sideEffects: [
+        'Hyperkaliémie transitoire',
+        'Fasciculations',
+        'Bradycardie (surtout enfants)',
+        'Hyperthermie maligne',
+        'Augmentation pression intra-oculaire/gastrique',
+      ],
+      contraindications: [
+        'Hyperkaliémie connue ou suspectée',
+        'Antécédents hyperthermie maligne',
+        'Grands brûlés > 24h',
+        'Trauma musculaire massif / Crush > 24h',
+        'Dénervation musculaire (AVC, moelle) > 72h',
+        'Déficit en pseudocholinestérase',
+      ],
+      precautions: [
+        'Atropine préventive chez enfants < 1 an',
+        'Vérifier K+ chez insuffisants rénaux',
+      ],
+      concentrations: ['20 mg/mL', '50 mg/mL'],
+      notes: [
+        'Dose IM: 3-4 mg/kg (max 150 mg)',
+        'Alternative: rocuronium si contre-indication',
+      ],
+    ),
+
+    SedationDrug(
+      id: 'rocuronium',
+      name: 'Rocuronium',
+      genericName: 'Rocuronium',
+      drugClass: 'Curare non-dépolarisant',
+      role: [DrugRole.paralytic],
+      sedationTypes: [SedationType.rsi, SedationType.maintenance],
+      standardDose: 1.2,
+      doseUnit: 'mg/kg',
+      route: ['IV'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18+ ans', dose: 1.2, notes: 'ISR: 1.2 mg/kg'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '1-17 ans', dose: 1.2),
+        DoseByAge(ageGroup: AgeGroup.infant, ageRange: '< 1 an', dose: 1.2),
+      ],
+      onsetSeconds: 60,
+      durationMinutes: 45,
+      mechanism: 'Antagoniste compétitif récepteurs nicotiniques',
+      indications: [
+        'ISR (alternative à succinylcholine)',
+        'Curarisation peropératoire',
+        'Contre-indication à succinylcholine',
+      ],
+      advantages: [
+        'Pas d\'hyperkaliémie',
+        'Pas de fasciculations',
+        'Réversible par sugammadex',
+        'Pas de risque d\'hyperthermie maligne',
+      ],
+      sideEffects: [
+        'Curarisation prolongée',
+        'Tachycardie légère',
+        'Réaction allergique (rare)',
+      ],
+      contraindications: [
+        'Allergie connue',
+      ],
+      precautions: [
+        'Conditions intubation difficile (durée prolongée)',
+        'Insuffisance hépatique: durée prolongée',
+        'Myasthénie: réduire dose',
+      ],
+      concentrations: ['10 mg/mL'],
+      notes: [
+        'Sugammadex 16 mg/kg pour antagonisation immédiate',
+        'Dose entretien: 0.1-0.2 mg/kg',
+        'Dose ISR élevée = conditions similaires à succinylcholine',
+        'Stocker au réfrigérateur',
+      ],
+    ),
+
+    // =====================
+    // OPIOID ANALGESICS
+    // =====================
+    SedationDrug(
+      id: 'fentanyl',
+      name: 'Fentanyl',
+      genericName: 'Fentanyl',
+      drugClass: 'Opioïde',
+      role: [DrugRole.analgesic],
+      sedationTypes: [SedationType.rsi, SedationType.procedural, SedationType.maintenance],
+      standardDose: 2.0,
+      doseUnit: 'mcg/kg',
+      route: ['IV', 'IN'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18-65 ans', dose: 1.0, notes: 'Titrer par 25-50 mcg'),
+        DoseByAge(ageGroup: AgeGroup.elderly, ageRange: '> 65 ans', dose: 0.5, notes: 'Réduire de 50%'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '1-17 ans', dose: 1.0, notes: 'Max 50 mcg'),
+        DoseByAge(ageGroup: AgeGroup.infant, ageRange: '< 1 an', dose: 1.0),
+      ],
+      maxSingleDose: 100,
+      maxSingleDoseUnit: 'mcg',
+      onsetSeconds: 90,
+      durationMinutes: 45,
+      mechanism: 'Agoniste récepteurs mu opioïdes',
+      indications: [
+        'Analgésie ISR',
+        'Sédation procédurale (avec hypnotique)',
+        'Analgésie procédurale',
+        'Atténuation réponse sympathique à l\'intubation',
+      ],
+      advantages: [
+        'Stabilité hémodynamique',
+        'Début d\'action rapide',
+        'Pas de libération d\'histamine',
+        'Réversible (naloxone)',
+      ],
+      sideEffects: [
+        'Dépression respiratoire',
+        'Rigidité thoracique (dose élevée rapide)',
+        'Bradycardie',
+        'Nausées/vomissements',
+        'Prurit',
+        'Rétention urinaire',
+      ],
+      contraindications: [
+        'IMAO dans les 14 jours',
+      ],
+      precautions: [
+        'Insuffisance respiratoire',
+        'Injection lente pour éviter rigidité thoracique',
+        'Réduire dose si autre dépresseur SNC',
+      ],
+      concentrations: ['50 mcg/mL'],
+      notes: [
+        'Voie IN: 1.5-2 mcg/kg (douleur pédiatrique)',
+        'Rigidité thoracique: traiter avec curare',
+        'Antidote: Naloxone 0.4-2 mg IV',
+        'Pour ISR: administrer 3 min avant induction',
+      ],
+    ),
+
+    SedationDrug(
+      id: 'morphine',
+      name: 'Morphine',
+      genericName: 'Morphine',
+      drugClass: 'Opioïde',
+      role: [DrugRole.analgesic],
+      sedationTypes: [SedationType.procedural],
+      standardDose: 0.1,
+      doseUnit: 'mg/kg',
+      route: ['IV', 'SC', 'PO'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18-65 ans', dose: 0.1, notes: 'Titrer par 2-4 mg IV'),
+        DoseByAge(ageGroup: AgeGroup.elderly, ageRange: '> 65 ans', dose: 0.05, notes: 'Réduire de 50%'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '1-17 ans', dose: 0.1, notes: 'Max 5 mg'),
+        DoseByAge(ageGroup: AgeGroup.infant, ageRange: '3-12 mois', dose: 0.05),
+      ],
+      maxSingleDose: 10,
+      maxSingleDoseUnit: 'mg',
+      onsetSeconds: 300,
+      durationMinutes: 240,
+      mechanism: 'Agoniste récepteurs mu opioïdes',
+      indications: [
+        'Douleur modérée à sévère',
+        'OAP cardiogénique',
+        'Analgésie sédation procédurale',
+      ],
+      advantages: [
+        'Longue durée d\'action',
+        'Économique',
+        'Multiples voies d\'administration',
+      ],
+      sideEffects: [
+        'Dépression respiratoire',
+        'Hypotension (libération histamine)',
+        'Nausées/vomissements',
+        'Prurit',
+        'Rétention urinaire',
+        'Constipation',
+      ],
+      contraindications: [
+        'Asthme aigu sévère',
+        'Insuffisance respiratoire',
+      ],
+      precautions: [
+        'Insuffisance rénale: métabolites actifs accumulés',
+        'Insuffisance hépatique: réduire dose',
+      ],
+      concentrations: ['1 mg/mL', '10 mg/mL'],
+      notes: [
+        'Début plus lent que fentanyl - moins adapté ISR',
+        'Éviter en insuffisance rénale (M6G)',
+        'Antidote: Naloxone 0.4-2 mg IV',
+      ],
+    ),
+
+    // =====================
+    // ADJUNCTS
+    // =====================
+    SedationDrug(
+      id: 'atropine',
+      name: 'Atropine',
+      genericName: 'Atropine',
+      drugClass: 'Anticholinergique',
+      role: [DrugRole.adjunct],
+      sedationTypes: [SedationType.rsi],
+      standardDose: 0.02,
+      doseUnit: 'mg/kg',
+      route: ['IV'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18+ ans', dose: 0.02, notes: 'Min 0.5 mg, max 1 mg'),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '< 18 ans', dose: 0.02, notes: 'Min 0.1 mg, max 0.5 mg'),
+      ],
+      onsetSeconds: 60,
+      durationMinutes: 30,
+      mechanism: 'Antagoniste muscarinique',
+      indications: [
+        'Prévention bradycardie (succinylcholine)',
+        'Bradycardie symptomatique',
+        'Hypersalivation (kétamine)',
+      ],
+      advantages: [
+        'Prévient bradycardie réflexe',
+        'Réduit sécrétions',
+      ],
+      sideEffects: [
+        'Tachycardie',
+        'Sécheresse buccale',
+        'Mydriase',
+        'Rétention urinaire',
+        'Confusion (âgé)',
+      ],
+      contraindications: [
+        'Glaucome à angle fermé',
+      ],
+      precautions: [
+        'Dose < 0.1 mg peut causer bradycardie paradoxale',
+      ],
+      concentrations: ['0.25 mg/mL', '1 mg/mL'],
+      notes: [
+        'Systématique avant succinylcholine chez enfant < 1 an',
+        'Optionnel chez enfant 1-5 ans',
+        'Non nécessaire en routine chez adulte',
+      ],
+    ),
+
+    SedationDrug(
+      id: 'lidocaine',
+      name: 'Lidocaïne',
+      genericName: 'Lidocaine',
+      drugClass: 'Anesthésique local',
+      role: [DrugRole.adjunct],
+      sedationTypes: [SedationType.rsi],
+      standardDose: 1.5,
+      doseUnit: 'mg/kg',
+      route: ['IV'],
+      dosesByAge: [
+        DoseByAge(ageGroup: AgeGroup.adult, ageRange: '18+ ans', dose: 1.5),
+        DoseByAge(ageGroup: AgeGroup.child, ageRange: '< 18 ans', dose: 1.5),
+      ],
+      maxSingleDose: 100,
+      maxSingleDoseUnit: 'mg',
+      onsetSeconds: 90,
+      durationMinutes: 20,
+      mechanism: 'Blocage canaux sodiques, suppression toux',
+      indications: [
+        'Atténuation réflexe toux/laryngé',
+        'Réduction PIC lors intubation',
+        'Prévention augmentation PIO',
+        'Asthme/bronchospasme',
+      ],
+      advantages: [
+        'Réduit réponse hémodynamique à l\'intubation',
+        'Bronchodilatation',
+        'Réduit la PIC',
+      ],
+      sideEffects: [
+        'Hypotension (dose élevée)',
+        'Convulsions (surdosage)',
+        'Arythmies',
+      ],
+      contraindications: [
+        'Allergie aux anesthésiques locaux amides',
+        'BAV haut degré',
+        'Syndrome de Wolff-Parkinson-White',
+      ],
+      precautions: [
+        'Insuffisance cardiaque',
+        'Insuffisance hépatique',
+      ],
+      concentrations: ['10 mg/mL', '20 mg/mL'],
+      notes: [
+        'Administrer 3 min avant laryngoscopie',
+        'Bénéfice contesté dans la littérature récente',
+        'Utilisé principalement pour HTIC et asthme',
+      ],
+    ),
+  ];
+}

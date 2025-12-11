@@ -1,14 +1,68 @@
-# Byte-compiled / optimized / DLL files
+# ===========================================
+# EMtools - Flutter Medical App
+# ===========================================
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/.gradle/
+/android/local.properties
+
+# Windows build artifacts
+/windows/flutter/ephemeral/
+
+# Web build artifacts
+/web/favicon.png.bak
+
+# ===========================================
+# Python (legacy/tools)
+# ===========================================
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-.playwright-mcp/
-# Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -22,8 +76,10 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-e2e/
-frontend/e2e/
+.venv/
+venv/
+ENV/
+
 # PyInstaller
 *.manifest
 *.spec
@@ -44,157 +100,33 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Frontend test coverage
-frontend/coverage/
+# ===========================================
+# Testing tools
+# ===========================================
+.playwright-mcp/
+e2e/
+playwright-report/
+test-results/
 
-# Playwright test results - DO NOT COMMIT
-frontend/test-results/
-
-# Test screenshots (temporary) - only keep curated ones
-frontend/screenshots/test-*.png
-
-# Vitest
-*.lcov
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-
-# Node
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Frontend build
-frontend/dist/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Docker
-.docker/
-
-# Local env files
-.env.local
-.env.*.local
-.env.production
-.env.staging
-
-# Secrets - NEVER COMMIT!
-*.pem
-*.key
-secrets/
-.secrets
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# MongoDB data
-mongodb_data/
-data/
-
-# Backup files
-*.bak
-*.backup
-*.sql
-*.dump
-
-# OS files
-.DS_Store
-Thumbs.db
-Desktop.ini
-*.swp
-*.swo
-*~
-
-# Editor/IDE
-.idea/
-.vscode/
-*.sublime-*
-*.code-workspace
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# Lock files (uncomment if needed)
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
-
-# Test artifacts
-frontend/results/
-frontend/a11y-results.txt
-screenshots/
-UI_REVIEW_REPORT.md
-
-
-# Serena AI files
+# ===========================================
+# Serena/AI tools
+# ===========================================
 .serena/
 
+# ===========================================
+# Environment and secrets
+# ===========================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ===========================================
+# OS generated files
+# ===========================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk

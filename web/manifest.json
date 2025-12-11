@@ -1,11 +1,11 @@
 {
-    "name": "frontend",
-    "short_name": "frontend",
+    "name": "EMtools - Médecine d'Urgence",
+    "short_name": "EMtools",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#1a1a2e",
+    "theme_color": "#00d4aa",
+    "description": "Outils numériques pour la médecine d'urgence - Calculateurs, aide à la prescription, évaluation ABCDE",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

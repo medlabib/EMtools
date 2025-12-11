@@ -39,12 +39,12 @@ class SettingsScreen extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: const Text(AppStrings.about),
-            subtitle: const Text('EMTools v1.0.0'),
+            subtitle: const Text('EMTools v0.1.0'),
             onTap: () {
               showAboutDialog(
                 context: context,
                 applicationName: 'EMTools',
-                applicationVersion: '1.0.0',
+                applicationVersion: '0.1.0',
                 applicationLegalese: '© 2025 EMTools',
                 children: [
                   const SizedBox(height: 16),
