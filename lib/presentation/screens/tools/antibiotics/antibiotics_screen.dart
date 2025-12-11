@@ -149,7 +149,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: const Icon(
@@ -174,7 +174,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
                             Text(
                               AppStrings.antibioticsSubtitle,
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                                 fontSize: 14,
                               ),
                             ),
@@ -214,7 +214,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 10,
                       offset: const Offset(0, 2),
                     ),
@@ -378,7 +378,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -399,7 +399,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
                   height: 50,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [color, color.withOpacity(0.7)],
+                      colors: [color, color.withValues(alpha: 0.7)],
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -441,7 +441,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
                           horizontal: 8, vertical: 3,
                         ),
                         decoration: BoxDecoration(
-                          color: color.withOpacity(0.1),
+                          color: color.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(

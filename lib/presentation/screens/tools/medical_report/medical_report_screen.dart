@@ -35,7 +35,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
 
   // B - Breathing
   final _respiratoryRateController = TextEditingController();
-  List<String> _workOfBreathing =
+  final List<String> _workOfBreathing =
       []; // suprasternal, subcostal, intercostal, paradoxical, gasping
   String _chestExpansion = 'symmetric';
   final _traumaRibsController = TextEditingController();
@@ -49,8 +49,8 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
 
   // C - Circulation
   String _extremities = 'warm';
-  List<String> _shockSigns = []; // mottling, crt, weakPulse, asymmetric
-  List<String> _heartFailureSigns = []; // jvd, hjr, peripheralEdema
+  final List<String> _shockSigns = []; // mottling, crt, weakPulse, asymmetric
+  final List<String> _heartFailureSigns = []; // jvd, hjr, peripheralEdema
   final _bpRightController = TextEditingController();
   final _bpLeftController = TextEditingController();
   final _pulseController = TextEditingController();
@@ -240,8 +240,9 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       final unselected = <String>[];
       if (!_heartFailureSigns.contains('jvd')) unselected.add('TVJ');
       if (!_heartFailureSigns.contains('hjr')) unselected.add('RHJ');
-      if (!_heartFailureSigns.contains('peripheralEdema'))
+      if (!_heartFailureSigns.contains('peripheralEdema')) {
         unselected.add('OMI');
+      }
 
       if (unselected.isEmpty) {
         sb.writeln('  Signes droits : ${selected.join(', ')}.');
@@ -711,7 +712,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: const Icon(
@@ -736,7 +737,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                             Text(
                               'Évaluation ABCDE structurée',
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                                 fontSize: 14,
                               ),
                             ),
@@ -788,7 +789,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.2 : 0.03),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -891,7 +892,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(isDark ? 0.2 : 0.04),
+                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),
@@ -910,7 +911,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                       gradient: LinearGradient(
                         colors: [
                           _getStepColor(index),
-                          _getStepColor(index).withOpacity(0.7),
+                          _getStepColor(index).withValues(alpha: 0.7),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(12),
@@ -1096,10 +1097,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'suprasternal',
               _workOfBreathing,
               (v) => setState(() {
-                if (_workOfBreathing.contains(v))
+                if (_workOfBreathing.contains(v)) {
                   _workOfBreathing.remove(v);
-                else
+                } else {
                   _workOfBreathing.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1107,10 +1109,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'subcostal',
               _workOfBreathing,
               (v) => setState(() {
-                if (_workOfBreathing.contains(v))
+                if (_workOfBreathing.contains(v)) {
                   _workOfBreathing.remove(v);
-                else
+                } else {
                   _workOfBreathing.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1118,10 +1121,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'intercostal',
               _workOfBreathing,
               (v) => setState(() {
-                if (_workOfBreathing.contains(v))
+                if (_workOfBreathing.contains(v)) {
                   _workOfBreathing.remove(v);
-                else
+                } else {
                   _workOfBreathing.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1129,10 +1133,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'paradoxical',
               _workOfBreathing,
               (v) => setState(() {
-                if (_workOfBreathing.contains(v))
+                if (_workOfBreathing.contains(v)) {
                   _workOfBreathing.remove(v);
-                else
+                } else {
                   _workOfBreathing.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1140,10 +1145,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'gasping',
               _workOfBreathing,
               (v) => setState(() {
-                if (_workOfBreathing.contains(v))
+                if (_workOfBreathing.contains(v)) {
                   _workOfBreathing.remove(v);
-                else
+                } else {
                   _workOfBreathing.add(v);
+                }
               }),
             ),
           ],
@@ -1260,7 +1266,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.accentTeal.withOpacity(isDark ? 0.25 : 0.15)
+              ? AppColors.accentTeal.withValues(alpha: isDark ? 0.25 : 0.15)
               : (isDark ? AppColors.cardDark : AppColors.backgroundLight),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
@@ -1320,10 +1326,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'mottling',
               _shockSigns,
               (v) => setState(() {
-                if (_shockSigns.contains(v))
+                if (_shockSigns.contains(v)) {
                   _shockSigns.remove(v);
-                else
+                } else {
                   _shockSigns.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1331,10 +1338,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'crt',
               _shockSigns,
               (v) => setState(() {
-                if (_shockSigns.contains(v))
+                if (_shockSigns.contains(v)) {
                   _shockSigns.remove(v);
-                else
+                } else {
                   _shockSigns.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1342,10 +1350,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'weakPulse',
               _shockSigns,
               (v) => setState(() {
-                if (_shockSigns.contains(v))
+                if (_shockSigns.contains(v)) {
                   _shockSigns.remove(v);
-                else
+                } else {
                   _shockSigns.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1353,10 +1362,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'asymmetric',
               _shockSigns,
               (v) => setState(() {
-                if (_shockSigns.contains(v))
+                if (_shockSigns.contains(v)) {
                   _shockSigns.remove(v);
-                else
+                } else {
                   _shockSigns.add(v);
+                }
               }),
             ),
           ],
@@ -1382,10 +1392,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'jvd',
               _heartFailureSigns,
               (v) => setState(() {
-                if (_heartFailureSigns.contains(v))
+                if (_heartFailureSigns.contains(v)) {
                   _heartFailureSigns.remove(v);
-                else
+                } else {
                   _heartFailureSigns.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1393,10 +1404,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'hjr',
               _heartFailureSigns,
               (v) => setState(() {
-                if (_heartFailureSigns.contains(v))
+                if (_heartFailureSigns.contains(v)) {
                   _heartFailureSigns.remove(v);
-                else
+                } else {
                   _heartFailureSigns.add(v);
+                }
               }),
             ),
             _buildChip(
@@ -1404,10 +1416,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               'peripheralEdema',
               _heartFailureSigns,
               (v) => setState(() {
-                if (_heartFailureSigns.contains(v))
+                if (_heartFailureSigns.contains(v)) {
                   _heartFailureSigns.remove(v);
-                else
+                } else {
                   _heartFailureSigns.add(v);
+                }
               }),
             ),
           ],
@@ -1455,9 +1468,9 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.error.withOpacity(0.05),
+        color: AppColors.error.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.error.withOpacity(0.2)),
+        border: Border.all(color: AppColors.error.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1711,12 +1724,12 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: _aphasia
-            ? AppColors.accentPurple.withOpacity(isDark ? 0.2 : 0.1)
+            ? AppColors.accentPurple.withValues(alpha: isDark ? 0.2 : 0.1)
             : (isDark ? AppColors.cardDark : AppColors.backgroundLight),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: _aphasia
-              ? AppColors.accentPurple.withOpacity(0.3)
+              ? AppColors.accentPurple.withValues(alpha: 0.3)
               : (isDark ? Colors.grey.shade700 : Colors.grey.shade200),
         ),
       ),
@@ -1757,9 +1770,9 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.warning.withOpacity(0.1),
+        color: AppColors.warning.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.warning.withOpacity(0.3)),
+        border: Border.all(color: AppColors.warning.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1855,9 +1868,9 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.accentPurple.withOpacity(isDark ? 0.15 : 0.08),
+        color: AppColors.accentPurple.withValues(alpha: isDark ? 0.15 : 0.08),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.accentPurple.withOpacity(0.2)),
+        border: Border.all(color: AppColors.accentPurple.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -2078,7 +2091,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
         border: Border.all(color: isDark ? Colors.grey.shade700 : Colors.grey.shade200),
       ),
       child: DropdownButtonFormField<T>(
-        value: value,
+        initialValue: value,
         isExpanded: true,
         items: items,
         onChanged: onChanged,
@@ -2110,10 +2123,10 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: value ? color.withOpacity(isDark ? 0.2 : 0.1) : (isDark ? AppColors.cardDark : AppColors.backgroundLight),
+        color: value ? color.withValues(alpha: isDark ? 0.2 : 0.1) : (isDark ? AppColors.cardDark : AppColors.backgroundLight),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: value ? color.withOpacity(0.3) : (isDark ? Colors.grey.shade700 : Colors.grey.shade200),
+          color: value ? color.withValues(alpha: 0.3) : (isDark ? Colors.grey.shade700 : Colors.grey.shade200),
         ),
       ),
       child: Row(
@@ -2121,7 +2134,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: value ? color.withOpacity(0.2) : (isDark ? Colors.grey.shade800 : Colors.grey.shade100),
+              color: value ? color.withValues(alpha: 0.2) : (isDark ? Colors.grey.shade800 : Colors.grey.shade100),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(
@@ -2152,7 +2165,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               ],
             ),
           ),
-          Switch(value: value, onChanged: onChanged, activeColor: color),
+          Switch(value: value, onChanged: onChanged, activeThumbColor: color),
         ],
       ),
     );
@@ -2169,12 +2182,12 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: value
-            ? AppColors.warning.withOpacity(isDark ? 0.2 : 0.1)
+            ? AppColors.warning.withValues(alpha: isDark ? 0.2 : 0.1)
             : (isDark ? AppColors.cardDark : AppColors.backgroundLight),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: value
-              ? AppColors.warning.withOpacity(0.3)
+              ? AppColors.warning.withValues(alpha: 0.3)
               : (isDark ? Colors.grey.shade700 : Colors.grey.shade200),
         ),
       ),
@@ -2215,7 +2228,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppColors.accentTeal.withOpacity(0.3),
+            color: AppColors.accentTeal.withValues(alpha: 0.3),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),

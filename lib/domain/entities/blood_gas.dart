@@ -299,7 +299,9 @@ class BloodGasCalculator {
     String lactateStatus = "Normal";
     if (data.lactate >= 4) {
       lactateStatus = "Choc / Hypoperfusion";
-    } else if (data.lactate >= 2) lactateStatus = "Hyperlactatémie";
+    } else if (data.lactate >= 2) {
+      lactateStatus = "Hyperlactatémie";
+    }
 
     return BloodGasResults(
       pbw: pbw,

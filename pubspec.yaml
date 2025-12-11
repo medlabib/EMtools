@@ -65,13 +65,18 @@ flutter_launcher_icons:
   image_path: "logo.png"
   adaptive_icon_background: "#1a1a2e"
   adaptive_icon_foreground: "logo.png"
+  adaptive_icon_monochrome: "logo.png"
   min_sdk_android: 21
+  remove_alpha_ios: true
   web:
     generate: true
     image_path: "logo.png"
+    background_color: "#1a1a2e"
+    theme_color: "#00d4aa"
   windows:
     generate: true
     image_path: "logo.png"
+    icon_size: 256
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1059,7 +1059,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             borderRadius: BorderRadius.circular(12),
           ),
           child: DropdownButtonFormField<String>(
-            value: value,
+            initialValue: value,
             isExpanded: true,
             decoration: const InputDecoration(
               border: InputBorder.none,

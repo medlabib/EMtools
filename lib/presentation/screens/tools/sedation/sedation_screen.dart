@@ -151,7 +151,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: const Icon(
@@ -176,7 +176,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                             Text(
                               AppStrings.sedationDesc,
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                                 fontSize: 14,
                               ),
                             ),
@@ -214,7 +214,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(isDark ? 0.2 : 0.05),
+                color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
                 blurRadius: 20,
                 offset: const Offset(0, 4),
               ),
@@ -266,7 +266,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.1),
+                  color: AppColors.primary.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
@@ -351,7 +351,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.2 : 0.03),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -475,7 +475,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -544,17 +544,17 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [color.withOpacity(0.1), color.withOpacity(0.05)],
+          colors: [color.withValues(alpha: 0.1), color.withValues(alpha: 0.05)],
         ),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.2),
+              color: color.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: color, size: 24),
@@ -577,7 +577,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                     subtitle,
                     style: TextStyle(
                       fontSize: 13,
-                      color: color.withOpacity(0.8),
+                      color: color.withValues(alpha: 0.8),
                     ),
                   ),
               ],
@@ -596,7 +596,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(icon, size: 20, color: color),
@@ -648,7 +648,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -672,7 +672,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                       height: 48,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [cardColor, cardColor.withOpacity(0.7)],
+                          colors: [cardColor, cardColor.withValues(alpha: 0.7)],
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -713,7 +713,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: cardColor.withOpacity(0.1),
+                        color: cardColor.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -731,7 +731,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: AppColors.success.withOpacity(0.08),
+                    color: AppColors.success.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
@@ -804,7 +804,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: AppColors.warning.withOpacity(0.1),
+                      color: AppColors.warning.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
@@ -854,7 +854,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -1090,7 +1090,7 @@ class _DrugDetailsSheet extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.1),
+                  color: AppColors.primary.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
@@ -1115,12 +1115,12 @@ class _DrugDetailsSheet extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.success.withOpacity(0.1),
-            AppColors.accentEmerald.withOpacity(0.05),
+            AppColors.success.withValues(alpha: 0.1),
+            AppColors.accentEmerald.withValues(alpha: 0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.success.withOpacity(0.3)),
+        border: Border.all(color: AppColors.success.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1227,7 +1227,7 @@ class _DrugDetailsSheet extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: AppColors.warning.withOpacity(0.15),
+                color: AppColors.warning.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
@@ -1281,7 +1281,7 @@ class _DrugDetailsSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -1313,7 +1313,7 @@ class _DrugDetailsSheet extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
+                  color: color.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(icon, size: 18, color: color),

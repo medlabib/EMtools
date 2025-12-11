@@ -425,7 +425,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
         children: [
           _buildResultItem(
             'Débit PSE',
-            '${flowRate.toStringAsFixed(1)}',
+            flowRate.toStringAsFixed(1),
             'mL/h',
             Icons.speed_rounded,
           ),
@@ -625,7 +625,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
             borderRadius: BorderRadius.circular(12),
           ),
           child: DropdownButtonFormField<int>(
-            value: _selectedConcentrationIndex,
+            initialValue: _selectedConcentrationIndex,
             decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),

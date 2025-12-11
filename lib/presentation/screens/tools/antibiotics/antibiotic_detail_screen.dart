@@ -178,7 +178,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [color, color.withOpacity(0.7)],
+              colors: [color, color.withValues(alpha: 0.7)],
             ),
           ),
           child: SafeArea(
@@ -194,7 +194,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                         width: 60,
                         height: 60,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Center(
@@ -225,7 +225,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                             Text(
                               _antibiotic.genericName,
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.9),
+                                color: Colors.white.withValues(alpha: 0.9),
                                 fontSize: 14,
                               ),
                             ),
@@ -235,7 +235,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                 horizontal: 10, vertical: 4,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.2),
+                                color: Colors.white.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Text(
@@ -353,7 +353,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -365,7 +365,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
             ),
             child: Row(
@@ -469,7 +469,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
+                  color: Colors.black.withValues(alpha: 0.04),
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -480,7 +480,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
+                    color: color.withValues(alpha: 0.1),
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
                   ),
                   child: Row(
@@ -535,9 +535,9 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                       SliderTheme(
                         data: SliderTheme.of(context).copyWith(
                           activeTrackColor: color,
-                          inactiveTrackColor: color.withOpacity(0.2),
+                          inactiveTrackColor: color.withValues(alpha: 0.2),
                           thumbColor: color,
-                          overlayColor: color.withOpacity(0.2),
+                          overlayColor: color.withValues(alpha: 0.2),
                         ),
                         child: Slider(
                           value: _gfr,
@@ -565,12 +565,12 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [color, color.withOpacity(0.8)],
+                colors: [color, color.withValues(alpha: 0.8)],
               ),
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: color.withOpacity(0.3),
+                  color: color.withValues(alpha: 0.3),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -644,7 +644,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                               horizontal: 12, vertical: 6,
                             ),
                             decoration: BoxDecoration(
-                              color: color.withOpacity(0.1),
+                              color: color.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -695,7 +695,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
+                    color: Colors.black.withValues(alpha: 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),
@@ -741,9 +741,9 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                 children: _patientMedications.map((med) => Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.1),
+                    color: AppColors.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+                    border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -794,12 +794,12 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(16),
                                   border: Border.all(
-                                    color: cardColor.withOpacity(0.3),
+                                    color: cardColor.withValues(alpha: 0.3),
                                     width: 2,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: cardColor.withOpacity(0.1),
+                                      color: cardColor.withValues(alpha: 0.1),
                                       blurRadius: 10,
                                       offset: const Offset(0, 2),
                                     ),
@@ -811,7 +811,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                     Container(
                                       padding: const EdgeInsets.all(12),
                                       decoration: BoxDecoration(
-                                        color: cardColor.withOpacity(0.1),
+                                        color: cardColor.withValues(alpha: 0.1),
                                         borderRadius: const BorderRadius.vertical(
                                           top: Radius.circular(14),
                                         ),
@@ -875,7 +875,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                             Container(
                                               padding: const EdgeInsets.all(10),
                                               decoration: BoxDecoration(
-                                                color: AppColors.info.withOpacity(0.1),
+                                                color: AppColors.info.withValues(alpha: 0.1),
                                                 borderRadius: BorderRadius.circular(8),
                                               ),
                                               child: Row(
