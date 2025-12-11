@@ -1,12 +1,12 @@
-﻿# EMtools<p align="center"><p align="center"><p align="center">
+﻿# EMtools# EMtools<p align="center"><p align="center"><p align="center">
 
 
 
-**Outils numériques pour la médecine d'urgence**  <img src="logo.png" alt="EMtools Logo" width="120" height="120">
+**Outils numériques pour la médecine d'urgence**
 
 
 
-[![Web Demo](https://img.shields.io/badge/Web-Demo-00d4aa?style=flat-square&logo=flutter)](https://medlabib.github.io/EMtools/)</p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
+[![Web Demo](https://img.shields.io/badge/Web-Demo-00d4aa?style=flat-square&logo=flutter)](https://medlabib.github.io/EMtools/)**Outils numériques pour la médecine d'urgence**  <img src="logo.png" alt="EMtools Logo" width="120" height="120">
 
 [![Android](https://img.shields.io/badge/Android-APK-3DDC84?style=flat-square&logo=android)](https://github.com/medlabib/EMtools/releases)
 
@@ -14,23 +14,23 @@
 
 
 
----<h1 align="center">EMtools</h1></p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
+---[![Web Demo](https://img.shields.io/badge/Web-Demo-00d4aa?style=flat-square&logo=flutter)](https://medlabib.github.io/EMtools/)</p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
 
 
-## À propos
+## À propos[![Android](https://img.shields.io/badge/Android-APK-3DDC84?style=flat-square&logo=android)](https://github.com/medlabib/EMtools/releases)
 
 
 
-EMtools est une application Flutter pour les professionnels de la médecine d'urgence. Elle regroupe des calculateurs médicaux, des outils d'aide à la prescription et des références cliniques.<p align="center">
+EMtools est une application Flutter pour les professionnels de la médecine d'urgence. Elle regroupe des calculateurs médicaux, des outils d'aide à la prescription et des références cliniques.[![License](https://img.shields.io/badge/License-BSD--3-blue?style=flat-square)](LICENSE)
 
 
 
-## Fonctionnalités  <strong>Outils numériques pour la médecine d'urgence</strong>
+## Fonctionnalités
 
 
 
-- **Évaluation ABCDE** — Rapports médicaux structurés avec détection des signes de détresse</p><h1 align="center">EMTOOLS</h1></p>
+- **Évaluation ABCDE** — Rapports médicaux structurés avec détection des signes de détresse---<h1 align="center">EMtools</h1></p>  <img src="logo.svg" alt="EMTOOLS Logo" width="400">
 
 - **Drogues Vasoactives** — Calcul des doses (noradrénaline, adrénaline, dobutamine, dopamine)
 
@@ -38,25 +38,85 @@ EMtools est une application Flutter pour les professionnels de la médecine d'ur
 
 - **Gazométrie** — Interprétation automatique des gaz du sang
 
-- **Métabolique** — Correction des troubles hydro-électrolytiques (Na⁺, K⁺, Ca²⁺, Mg²⁺)<p align="center">
+- **Métabolique** — Correction des troubles hydro-électrolytiques (Na⁺, K⁺, Ca²⁺, Mg²⁺)## À propos
 
 - **Antibiotiques** — Guide de prescription par pathologie
 
-- **Calculateurs** — Scores cliniques (Glasgow, SOFA, qSOFA, Wells, CHA₂DS₂-VASc)  <a href="https://medlabib.github.io/EMtools/">
+- **Calculateurs** — Scores cliniques (Glasgow, SOFA, qSOFA, Wells, CHA₂DS₂-VASc)
 
 
+
+## InstallationEMtools est une application Flutter pour les professionnels de la médecine d'urgence. Elle regroupe des calculateurs médicaux, des outils d'aide à la prescription et des références cliniques.<p align="center">
+
+
+
+**Web:** https://medlabib.github.io/EMtools/
+
+
+
+**Android:** [Télécharger l'APK](https://github.com/medlabib/EMtools/releases)## Fonctionnalités  <strong>Outils numériques pour la médecine d'urgence</strong>
+
+
+
+**Build:**
+
+```bash
+
+git clone https://github.com/medlabib/EMtools.git- **Évaluation ABCDE** — Rapports médicaux structurés avec détection des signes de détresse</p><h1 align="center">EMTOOLS</h1></p>
+
+cd EMtools
+
+flutter pub get- **Drogues Vasoactives** — Calcul des doses (noradrénaline, adrénaline, dobutamine, dopamine)
+
+flutter run
+
+```- **Sédation** — Protocoles de sédation-analgésie (Midazolam, Propofol, Kétamine, Fentanyl)
+
+
+
+## Architecture- **Gazométrie** — Interprétation automatique des gaz du sang
+
+
+
+```- **Métabolique** — Correction des troubles hydro-électrolytiques (Na⁺, K⁺, Ca²⁺, Mg²⁺)<p align="center">
+
+lib/
+
+├── core/           # Config, thème, routing- **Antibiotiques** — Guide de prescription par pathologie
+
+├── domain/         # Entités, logique métier
+
+└── presentation/   # UI, screens, providers- **Calculateurs** — Scores cliniques (Glasgow, SOFA, qSOFA, Wells, CHA₂DS₂-VASc)  <a href="https://medlabib.github.io/EMtools/">
+
+```
+
+
+
+## Tests
 
 ## Installation    <img src="https://img.shields.io/badge/Web-Live%20Demo-00d4aa?style=for-the-badge&logo=flutter" alt="Web Demo"><p align="center">
 
+```bash
 
+flutter test
+
+```
 
 **Web:** https://medlabib.github.io/EMtools/  </a>
 
+## Avertissement
 
+
+
+Cet outil est une **aide à la décision** et ne remplace pas le jugement clinique. Vérifiez toujours les posologies.
 
 **Android:** [Télécharger l'APK](https://github.com/medlabib/EMtools/releases)  <a href="https://github.com/medlabib/EMtools/releases">  <strong>Version 0.1.0</strong> | <em>Outils Numériques pour la Médecine d'Urgence</em>
 
+## License
 
+
+
+[BSD-3-Clause](LICENSE) © 2024-2025 medlabib
 
 **Build:**    <img src="https://img.shields.io/badge/Android-APK-3DDC84?style=for-the-badge&logo=android" alt="Android APK">
 
