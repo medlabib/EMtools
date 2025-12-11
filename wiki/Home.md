@@ -1,86 +1,170 @@
-# Bienvenue sur le Wiki EMTOOLS# Welcome to EMTOOLS Wiki
+<p align="center"># Bienvenue sur le Wiki EMTOOLS# Welcome to EMTOOLS Wiki
+
+  <img src="https://raw.githubusercontent.com/medlabib/EMtools/master/logo.svg" alt="EMTOOLS Logo" width="350">
+
+</p>
 
 
 
-**EMTOOLS** est une suite complète d'outils numériques conçue pour les praticiens de médecine d'urgence. Construite avec Flutter, elle fournit des calculateurs cliniques, des outils de dosage de médicaments et des utilitaires de documentation.**EMTOOLS** is a comprehensive suite of digital tools designed for emergency medicine practitioners. Built with modern web technologies, it provides clinical calculators, drug dosing tools, and documentation utilities.
+# Bienvenue sur le Wiki EMTOOLS**EMTOOLS** est une suite complète d'outils numériques conçue pour les praticiens de médecine d'urgence. Construite avec Flutter, elle fournit des calculateurs cliniques, des outils de dosage de médicaments et des utilitaires de documentation.**EMTOOLS** is a comprehensive suite of digital tools designed for emergency medicine practitioners. Built with modern web technologies, it provides clinical calculators, drug dosing tools, and documentation utilities.
 
 
 
-## 🚀 Liens Rapides## 🚀 Quick Links
+**EMTOOLS** est une suite complète d'outils numériques conçue pour les praticiens de médecine d'urgence. Construite avec Flutter, elle fournit des calculateurs cliniques, des outils de dosage de médicaments et des utilitaires de documentation.
 
 
 
-- [Démarrage](Getting-Started)- [Getting Started](Getting-Started)
-
-- [Guide d'Installation](Installation)- [Installation Guide](Installation)
-
-- [Fonctionnalités](Features)- [Features Overview](Features)
-
-- [Contribuer](Contributing)- [API Documentation](API-Documentation)
-
-- [Changelog](Changelog)- [Contributing](Contributing)
-
-- [Changelog](Changelog)
-
-## 📋 Aperçu
-
-## 📋 Overview
-
-**Version actuelle**: 0.1.0
-
-EMTOOLS provides:
-
-EMTOOLS fournit :
-
-| Feature | Description |
-
-| Fonctionnalité | Description ||---------|-------------|
-
-|----------------|-------------|| 🏥 Medical Report | ABCDE-structured medical documentation generator |
-
-| 🏥 Rapport Médical | Générateur de documentation médicale structurée ABCDE || 📋 Secure Pastebin | Temporary text/image sharing with password protection |
-
-| 🧮 Calculateurs Médicaux | 41+ scores cliniques (NIHSS, Wells, SOFA, Glasgow, etc.) || 🧮 Medical Calculators | 41+ clinical scores (NIHSS, Wells, SOFA, Glasgow, etc.) |
-
-| 💉 Drogues Vasoactives | Calculs de débit PSE || 💉 Vasoactive Drugs | PSE flow rate calculations |
-
-| 💊 Sédation & Analgésie | Protocoles ISR || 💊 Sedation & Analgesia | RSI protocols |
-
-| ⚗️ Troubles Métaboliques | Corrections dysnatrémie, dyskaliémie || ⚗️ Metabolic Disorders | Dysnatremia, dyskalemia corrections |
-
-| 📊 Analyse Gaz du Sang | Interprétation complète des GDS avec ratio P/F || 📊 Blood Gas Analysis | Complete ABG interpretation with P/F ratio |
-
-| 🦠 Guide Antibiotique | Ajustements rénaux et interactions médicamenteuses || 🦠 Antibiotic Guide | Renal dosing and drug interactions |
+## 🚀 Liens Rapides## 🚀 Liens Rapides## 🚀 Quick Links
 
 
 
-## 🏗️ Architecture## 🏗️ Architecture
+- [Démarrage Rapide](Getting-Started)
+
+- [Guide d'Installation](Installation)
+
+- [Fonctionnalités](Features)- [Démarrage](Getting-Started)- [Getting Started](Getting-Started)
+
+- [Contribuer](Contributing)
+
+- [Changelog](Changelog)- [Guide d'Installation](Installation)- [Installation Guide](Installation)
 
 
+
+## 📋 Aperçu- [Fonctionnalités](Features)- [Features Overview](Features)
+
+
+
+**Version actuelle** : 0.1.0- [Contribuer](Contributing)- [API Documentation](API-Documentation)
+
+
+
+### Architecture- [Changelog](Changelog)- [Contributing](Contributing)
+
+
+
+```- [Changelog](Changelog)
+
+┌─────────────────────────────────────────────┐
+
+│              Application Flutter             │## 📋 Aperçu
+
+│  ┌─────────────────────────────────────────┐│
+
+│  │          Presentation Layer              ││## 📋 Overview
+
+│  │   (Screens, Widgets, Providers)          ││
+
+│  ├─────────────────────────────────────────┤│**Version actuelle**: 0.1.0
+
+│  │           Domain Layer                   ││
+
+│  │         (Entities, Logic)                ││EMTOOLS provides:
+
+│  ├─────────────────────────────────────────┤│
+
+│  │            Data Layer                    ││EMTOOLS fournit :
+
+│  │   (DataSources, Models, Repositories)    ││
+
+│  └─────────────────────────────────────────┘│| Feature | Description |
+
+│                                              │
+
+│  📱 Android | iOS | Web | Windows | macOS    │| Fonctionnalité | Description ||---------|-------------|
+
+└─────────────────────────────────────────────┘
+
+```|----------------|-------------|| 🏥 Medical Report | ABCDE-structured medical documentation generator |
+
+
+
+## ✨ Fonctionnalités Principales| 🏥 Rapport Médical | Générateur de documentation médicale structurée ABCDE || 📋 Secure Pastebin | Temporary text/image sharing with password protection |
+
+
+
+| Outil | Description || 🧮 Calculateurs Médicaux | 41+ scores cliniques (NIHSS, Wells, SOFA, Glasgow, etc.) || 🧮 Medical Calculators | 41+ clinical scores (NIHSS, Wells, SOFA, Glasgow, etc.) |
+
+|-------|-------------|
+
+| 🧮 **Calculateurs** | 41+ scores médicaux validés (HEART, NIHSS, qSOFA...) || 💉 Drogues Vasoactives | Calculs de débit PSE || 💉 Vasoactive Drugs | PSE flow rate calculations |
+
+| 🫁 **Gaz du Sang** | Interprétation automatique des troubles acido-basiques |
+
+| 💊 **Vasoactifs** | Calcul de débit des catécholamines || 💊 Sédation & Analgésie | Protocoles ISR || 💊 Sedation & Analgesia | RSI protocols |
+
+| 😴 **Sédation** | Doses pour ISR et sédation continue |
+
+| ⚗️ **Métabolique** | Corrections dyskaliémie, dysnatrémie, dyscalcémie || ⚗️ Troubles Métaboliques | Corrections dysnatrémie, dyskaliémie || ⚗️ Metabolic Disorders | Dysnatremia, dyskalemia corrections |
+
+| 💉 **Antibiotiques** | Guide par pathologie avec posologies |
+
+| 📋 **ABCDE** | Évaluation structurée des urgences vitales || 📊 Analyse Gaz du Sang | Interprétation complète des GDS avec ratio P/F || 📊 Blood Gas Analysis | Complete ABG interpretation with P/F ratio |
+
+
+
+## 🔧 Stack Technique| 🦠 Guide Antibiotique | Ajustements rénaux et interactions médicamenteuses || 🦠 Antibiotic Guide | Renal dosing and drug interactions |
+
+
+
+- **Frontend** : Flutter 3.x / Dart
+
+- **State Management** : Riverpod
+
+- **Architecture** : Clean Architecture## 🏗️ Architecture## 🏗️ Architecture
+
+- **Tests** : 256 tests unitaires
+
+
+
+## 📱 Plateformes
 
 ``````
 
-EMTOOLS/EMTOOLS/
+L'application fonctionne sur :
 
-├── frontend/          # Flutter (iOS/Android/Web)├── frontend/          # Svelte + Vite + DaisyUI
+- ✅ AndroidEMTOOLS/EMTOOLS/
 
-│   ├── lib/├── backend/           # FastAPI + MongoDB (Beanie ODM)
+- ✅ iOS
+
+- ✅ Web├── frontend/          # Flutter (iOS/Android/Web)├── frontend/          # Svelte + Vite + DaisyUI
+
+- ✅ Windows
+
+- ✅ macOS│   ├── lib/├── backend/           # FastAPI + MongoDB (Beanie ODM)
+
+- ✅ Linux
 
 │   │   ├── core/      # Thème, widgets partagés└── docker-compose.yml # Container orchestration
 
+## 🔗 Liens Utiles
+
 │   │   ├── data/      # Sources de données```
 
-│   │   ├── domain/    # Entités, logique métier
+- [Dépôt GitHub](https://github.com/medlabib/EMtools)
+
+- [Signaler un Bug](https://github.com/medlabib/EMtools/issues)│   │   ├── domain/    # Entités, logique métier
+
+- [Demander une Fonctionnalité](https://github.com/medlabib/EMtools/issues)
 
 │   │   └── presentation/ # Écrans, widgets## 🔐 Security
 
+## ⚠️ Avertissement
+
 │   └── test/          # 256 tests unitaires
+
+Cette application est un **outil d'aide à la décision** et ne remplace pas le jugement clinique. Toujours vérifier les calculs critiques et se référer aux protocoles locaux.
 
 └── wiki/              # Documentation- JWT-based authentication
 
+---
+
 ```- Password hashing with bcrypt
 
-- Role-based access control (RBAC)
+<p align="center">
+
+  <em>Fait avec ❤️ pour les urgentistes francophones</em>- Role-based access control (RBAC)
+
+</p>
 
 ## 📱 Plateformes Supportées- Configurable signup modes (Open/Institutional/Closed)
 
