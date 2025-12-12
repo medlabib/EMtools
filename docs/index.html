@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMtools - Outils Médicaux d'Urgence</title>
+    <meta name="description" content="EMtools - Application d'outils médicaux pour les urgentistes. Calculateurs, gazométrie, sédation, et plus.">
+    <meta name="keywords" content="médecine urgence, calculateur médical, gazométrie, sédation, ABCDE, urgentiste">
+    <meta name="author" content="Dr. Labib">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="EMtools - Outils Médicaux d'Urgence">
+    <meta property="og:description" content="Application d'outils médicaux pour les urgentistes">
+    <meta property="og:image" content="https://medlabib.github.io/EMtools/assets/logo.png">
+    <meta property="og:url" content="https://medlabib.github.io/EMtools/">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #2563eb 0%, #8b5cf6 50%, #10b981 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        
+        .logo span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .badge::before {
+            content: '●';
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(37, 99, 235, 0.5);
+        }
+        
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--surface-light);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--surface-light);
+            transform: translateY(-2px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--surface-light);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.2);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Tools Preview */
+        .tools-preview {
+            padding: 4rem 2rem;
+            background: var(--surface);
+        }
+        
+        .tools-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .tool-card {
+            background: var(--background);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid var(--surface-light);
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+        
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .tool-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tool-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* Download Section */
+        .download {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .download-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .download-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2.5rem;
+            min-width: 280px;
+            flex: 1;
+            max-width: 400px;
+            border: 1px solid var(--surface-light);
+            transition: all 0.3s;
+        }
+        
+        .download-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .download-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .download-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .download-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--surface-light);
+        }
+        
+        footer p {
+            color: var(--text-muted);
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 5rem 1rem 3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <nav>
+        <div class="logo">
+            <img src="./logo.png" alt="EMtools Logo">
+            <span>EMtools</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Fonctionnalités</a></li>
+            <li><a href="#tools">Outils</a></li>
+            <li><a href="#download">Télécharger</a></li>
+            <li><a href="https://github.com/medlabib/EMtools" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">Version 1.0 disponible</div>
+            <h1>
+                Outils Médicaux<br>
+                <span class="highlight">d'Urgence</span>
+            </h1>
+            <p class="hero-description">
+                EMtools est une application complète pour les urgentistes et réanimateurs. 
+                Calculateurs médicaux, interprétation de gazométrie, protocoles de sédation, 
+                et bien plus encore.
+            </p>
+            <div class="cta-buttons">
+                <a href="./app/" class="btn btn-primary">
+                    🚀 Lancer l'Application Web
+                </a>
+                <a href="#download" class="btn btn-secondary">
+                    📥 Télécharger
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Fonctionnalités Principales</h2>
+            <p>Tout ce dont vous avez besoin pour la médecine d'urgence</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(37, 99, 235, 0.2);">🩺</div>
+                <h3>Évaluation ABCDE</h3>
+                <p>Générez des rapports médicaux structurés avec détection automatique de la gravité et format narratif français.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(16, 185, 129, 0.2);">🧮</div>
+                <h3>40+ Calculateurs</h3>
+                <p>GCS, SOFA, APACHE II, Wells, CHA₂DS₂-VASc, et bien d'autres scores médicaux validés.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(239, 68, 68, 0.2);">🫁</div>
+                <h3>Gazométrie Artérielle</h3>
+                <p>Interprétation automatique avec calcul du gradient A-a, P/F ratio, et classification ARDS.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(245, 158, 11, 0.2);">💊</div>
+                <h3>Drogues Vasoactives</h3>
+                <p>Calcul des débits de noradrénaline, adrénaline, dobutamine avec conversions automatiques.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(139, 92, 246, 0.2);">😴</div>
+                <h3>Protocoles de Sédation</h3>
+                <p>ISR, sédation procédurale, et analgésie avec dosages adaptés au poids.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: rgba(6, 182, 212, 0.2);">💧</div>
+                <h3>Troubles Métaboliques</h3>
+                <p>Correction de dysnatrémie, dyskaliémie et dyscalcémie avec formules Adrogué-Madias.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="tools-preview" id="tools">
+        <div class="tools-container">
+            <div class="section-title">
+                <h2>Outils Disponibles</h2>
+                <p>Une suite complète d'outils pour votre pratique quotidienne</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #2563eb, #8b5cf6);">📋</div>
+                    <div class="tool-info">
+                        <h4>Évaluation ABCDE</h4>
+                        <p>Rapport médical structuré</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #10b981, #059669);">🧮</div>
+                    <div class="tool-info">
+                        <h4>Calculateurs</h4>
+                        <p>Scores médicaux validés</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🫁</div>
+                    <div class="tool-info">
+                        <h4>Gazométrie</h4>
+                        <p>Interprétation automatique</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">❤️</div>
+                    <div class="tool-info">
+                        <h4>Vasoactifs</h4>
+                        <p>Calcul des débits</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">😴</div>
+                    <div class="tool-info">
+                        <h4>Sédation</h4>
+                        <p>Protocoles ISR</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">💧</div>
+                    <div class="tool-info">
+                        <h4>Métabolique</h4>
+                        <p>Correction ionique</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">💊</div>
+                    <div class="tool-info">
+                        <h4>Antibiotiques</h4>
+                        <p>Guide avec ajustement rénal</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">📝</div>
+                    <div class="tool-info">
+                        <h4>Paste</h4>
+                        <p>Partage de notes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="download" id="download">
+        <div class="section-title">
+            <h2>Téléchargez EMtools</h2>
+            <p>Disponible sur plusieurs plateformes</p>
+        </div>
+        <div class="download-cards">
+            <div class="download-card">
+                <div class="icon">🌐</div>
+                <h3>Application Web</h3>
+                <p>Utilisez EMtools directement dans votre navigateur, sans installation.</p>
+                <a href="./app/" class="btn btn-primary">Ouvrir l'App Web</a>
+            </div>
+            <div class="download-card">
+                <div class="icon">🤖</div>
+                <h3>Android</h3>
+                <p>Téléchargez l'APK pour Android et installez-la sur votre appareil.</p>
+                <a href="https://github.com/medlabib/EMtools/releases" class="btn btn-secondary">Télécharger APK</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>
+            Développé par <a href="https://github.com/medlabib" target="_blank">Dr. Labib</a> | 
+            <a href="https://github.com/medlabib/EMtools" target="_blank">Code source sur GitHub</a> |
+            © 2024-2025 EMtools
+        </p>
+    </footer>
+</body>
+</html>
