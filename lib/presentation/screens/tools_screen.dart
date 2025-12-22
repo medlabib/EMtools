@@ -181,9 +181,13 @@ class _ToolsScreenState extends State<ToolsScreen> {
   }
 
   Widget _buildSearchHeader(bool isDark) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 800;
+    final topPadding = isDesktop ? 20.0 : MediaQuery.of(context).padding.top + 16;
+    
     return Container(
       padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top + 16,
+        top: topPadding,
         left: 16,
         right: 16,
         bottom: 16,

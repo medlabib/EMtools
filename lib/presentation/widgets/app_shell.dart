@@ -13,7 +13,9 @@ class AppShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = MediaQuery.of(context).size.width > 800;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 800;
+    final isWideDesktop = screenWidth > 1200;
 
     return Scaffold(
       body: Row(
@@ -23,6 +25,8 @@ class AppShell extends StatelessWidget {
               selectedIndex: _getSelectedIndex(location),
               onDestinationSelected: (index) => _onItemTapped(index, context),
               labelType: NavigationRailLabelType.all,
+              extended: isWideDesktop,
+              minExtendedWidth: 180,
               destinations: const [
                 NavigationRailDestination(
                   icon: Icon(Icons.dashboard_outlined),
@@ -42,7 +46,12 @@ class AppShell extends StatelessWidget {
               ],
             ),
           if (isDesktop) const VerticalDivider(thickness: 1, width: 1),
-          Expanded(child: child),
+          Expanded(
+            child: _DesktopContentWrapper(
+              isDesktop: isDesktop,
+              child: child,
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: isDesktop
@@ -84,11 +93,34 @@ class AppShell extends StatelessWidget {
         context.go('/dashboard');
         break;
       case 1:
-        context.go('/tools'); // We'll create this route later
+        context.go('/tools');
         break;
       case 2:
-        context.go('/settings'); // We'll create this route later
+        context.go('/settings');
         break;
     }
+  }
+}
+
+/// Widget that wraps content for desktop with max width constraint
+class _DesktopContentWrapper extends StatelessWidget {
+  final bool isDesktop;
+  final Widget child;
+
+  const _DesktopContentWrapper({
+    required this.isDesktop,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (!isDesktop) return child;
+
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 900),
+        child: child,
+      ),
+    );
   }
 }

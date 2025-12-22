@@ -221,10 +221,14 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen>
   }
 
   Widget _buildSimpleHeader(BuildContext context, bool isDark) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 800;
+    final topPadding = isDesktop ? 24.0 : MediaQuery.of(context).padding.top + 20;
+    
     return Container(
       padding: EdgeInsets.fromLTRB(
         20,
-        MediaQuery.of(context).padding.top + 20,
+        topPadding,
         20,
         20,
       ),
