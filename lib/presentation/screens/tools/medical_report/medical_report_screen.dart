@@ -84,6 +84,13 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   bool _alcool = false;
   final _hdmController = TextEditingController();
   final _antecedentsController = TextEditingController();
+  // Reste de l'examen physique
+  final _resteExamenController = TextEditingController();
+  final List<String> _resteExamenFindings = [];
+
+  // CAT - Conduite à Tenir
+  final _catController = TextEditingController();
+  final List<String> _catActions = [];
 
   String _generatedReport = '';
 
@@ -124,6 +131,8 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     _glucoseController.dispose();
     _hdmController.dispose();
     _antecedentsController.dispose();
+    _resteExamenController.dispose();
+    _catController.dispose();
     super.dispose();
   }
 
@@ -335,7 +344,25 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     if (_hdmController.text.isNotEmpty) {
       sb.writeln('  Histoire de la maladie : ${_hdmController.text}');
     }
+    // Reste de l'examen physique
+    if (_resteExamenController.text.isNotEmpty) {
+      sb.writeln('  Reste de l\'examen : ${_resteExamenController.text}');
+    }
     sb.writeln();
+
+    // CAT - CONDUITE À TENIR
+    if (_catController.text.isNotEmpty || _catActions.isNotEmpty) {
+      sb.writeln('Conduite à tenir :');
+      if (_catActions.isNotEmpty) {
+        for (final action in _catActions) {
+          sb.writeln('  - $action');
+        }
+      }
+      if (_catController.text.isNotEmpty && _catActions.isEmpty) {
+        sb.writeln('  ${_catController.text}');
+      }
+      sb.writeln();
+    }
 
     // AU TOTAL
     sb.writeln('Au total :');
@@ -863,6 +890,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       _StepData('C - Circulation', Icons.favorite, _buildCirculationContent()),
       _StepData('D - Neurologie', Icons.psychology, _buildDisabilityContent()),
       _StepData('E - Exposition', Icons.visibility, _buildExposureContent()),
+      _StepData('CAT', Icons.medical_services, _buildCATContent()),
     ];
 
     return Column(
@@ -1997,6 +2025,21 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   }
 
   Widget _buildExposureContent() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    
+    final resteExamenOptions = [
+      'Abdomen souple dépressible indolore',
+      'Mollets souples',
+      'Pas de signes de déshydratation',
+      'Pas de défense ni contracture',
+      'Bruits hydro-aériques présents',
+      'Pas de masse palpable',
+      'Pas d\'œdèmes des membres inférieurs',
+      'Pas de pli cutané',
+      'Aires ganglionnaires libres',
+      'Fosses lombaires libres',
+    ];
+    
     return Column(
       children: [
         _buildTextField(
@@ -2033,6 +2076,233 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               ),
             ),
           ],
+        ),
+        const SizedBox(height: 20),
+        // Reste de l'examen physique
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: isDark ? AppColors.cardDark : AppColors.backgroundLight,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: isDark ? Colors.grey.shade700 : Colors.grey.shade200),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.accessibility_new, color: AppColors.primary, size: 20),
+                  const SizedBox(width: 8),
+                  Text(
+                    'Reste de l\'examen physique',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: isDark ? Colors.white : AppColors.textPrimary,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              // Quick options chips
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: resteExamenOptions.map((option) {
+                  final isSelected = _resteExamenFindings.contains(option);
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if (isSelected) {
+                          _resteExamenFindings.remove(option);
+                        } else {
+                          _resteExamenFindings.add(option);
+                        }
+                        // Update text controller
+                        _resteExamenController.text = _resteExamenFindings.join('. ');
+                        if (_resteExamenController.text.isNotEmpty) {
+                          _resteExamenController.text += '.';
+                        }
+                      });
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: isSelected 
+                            ? AppColors.success.withValues(alpha: 0.2)
+                            : (isDark ? Colors.grey.shade800 : Colors.grey.shade100),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: isSelected 
+                              ? AppColors.success 
+                              : (isDark ? Colors.grey.shade600 : Colors.grey.shade300),
+                        ),
+                      ),
+                      child: Text(
+                        option,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isSelected 
+                              ? AppColors.success 
+                              : (isDark ? Colors.grey[300] : Colors.grey[700]),
+                          fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 12),
+              // Free text input
+              TextField(
+                controller: _resteExamenController,
+                maxLines: 2,
+                style: TextStyle(fontSize: 14, color: isDark ? Colors.white : AppColors.textPrimary),
+                decoration: InputDecoration(
+                  hintText: 'Autres constatations...',
+                  hintStyle: TextStyle(color: isDark ? Colors.grey[600] : AppColors.textHint),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: isDark ? Colors.grey.shade600 : Colors.grey.shade300),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: isDark ? Colors.grey.shade600 : Colors.grey.shade300),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: AppColors.primary),
+                  ),
+                  contentPadding: const EdgeInsets.all(12),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCATContent() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    
+    final catOptions = [
+      'Hospitalisation',
+      'Surveillance scopée',
+      'Conditionnement',
+      'Voie veineuse périphérique',
+      'Bilan biologique',
+      'TDM cérébrale',
+      'TDM thoraco-abdomino-pelvien',
+      'Radiographie thoracique',
+      'ECG 18 dérivations',
+      'Échographie',
+      'Avis spécialisé',
+      'Remplissage vasculaire',
+      'Oxygénothérapie',
+      'Intubation orotrachéale',
+      'Antibiothérapie',
+      'Antalgiques',
+      'Surveillance simple',
+      'Sortie avec ordonnance',
+    ];
+    
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: isDark ? AppColors.cardDark : AppColors.backgroundLight,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: isDark ? Colors.grey.shade700 : Colors.grey.shade200),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.assignment_turned_in, color: AppColors.warning, size: 20),
+                  const SizedBox(width: 8),
+                  Text(
+                    'Conduite à Tenir',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: isDark ? Colors.white : AppColors.textPrimary,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              // Quick options chips
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: catOptions.map((option) {
+                  final isSelected = _catActions.contains(option);
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if (isSelected) {
+                          _catActions.remove(option);
+                        } else {
+                          _catActions.add(option);
+                        }
+                        // Update text controller
+                        _catController.text = _catActions.join(', ');
+                      });
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: isSelected 
+                            ? AppColors.warning.withValues(alpha: 0.2)
+                            : (isDark ? Colors.grey.shade800 : Colors.grey.shade100),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: isSelected 
+                              ? AppColors.warning 
+                              : (isDark ? Colors.grey.shade600 : Colors.grey.shade300),
+                        ),
+                      ),
+                      child: Text(
+                        option,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isSelected 
+                              ? AppColors.warning 
+                              : (isDark ? Colors.grey[300] : Colors.grey[700]),
+                          fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 12),
+              // Free text input
+              TextField(
+                controller: _catController,
+                maxLines: 3,
+                style: TextStyle(fontSize: 14, color: isDark ? Colors.white : AppColors.textPrimary),
+                decoration: InputDecoration(
+                  hintText: 'Détails de la conduite à tenir...',
+                  hintStyle: TextStyle(color: isDark ? Colors.grey[600] : AppColors.textHint),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: isDark ? Colors.grey.shade600 : Colors.grey.shade300),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: isDark ? Colors.grey.shade600 : Colors.grey.shade300),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: AppColors.primary),
+                  ),
+                  contentPadding: const EdgeInsets.all(12),
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );

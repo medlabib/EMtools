@@ -365,7 +365,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
                 crossAxisCount: crossAxisCount,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
-                childAspectRatio: 0.95,
+                childAspectRatio: 1.1,
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
