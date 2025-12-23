@@ -9,9 +9,17 @@
 </p>
 
 <p align="center">
-  <a href="https://medlabib.github.io/EMtools/">🌐 Web App</a> •
-  <a href="https://github.com/medlabib/EMtools/releases">📱 Android APK</a> •
+  <a href="https://medlabib.github.io/EMtools/app/">🌐 Web App</a> •
+  <a href="https://github.com/medlabib/EMtools/releases">📱 Android</a> •
+  <a href="https://github.com/medlabib/EMtools/releases">🖥️ Windows</a> •
   <a href="#fonctionnalités">✨ Fonctionnalités</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.1.1-blue" alt="Version">
+  <img src="https://img.shields.io/badge/flutter-3.x-02569B?logo=flutter" alt="Flutter">
+  <img src="https://img.shields.io/badge/platforms-Web%20%7C%20Android%20%7C%20Windows-green" alt="Platforms">
+  <img src="https://img.shields.io/badge/license-MIT-yellow" alt="License">
 </p>
 
 ---
@@ -117,7 +125,14 @@ Téléchargez l'APK depuis les releases :
 https://github.com/medlabib/EMtools/releases
 ```
 
-### 🖥️ Build depuis les sources
+### 🖥️ Windows
+Téléchargez l'exécutable Windows depuis les releases :
+```
+https://github.com/medlabib/EMtools/releases
+```
+> Décompressez l'archive et lancez `EMtools.exe`
+
+### 🛠️ Build depuis les sources
 
 ```bash
 # Cloner le repository
@@ -144,12 +159,14 @@ flutter build windows --release
 
 ## 🛠️ Technologies
 
-- **Framework** : Flutter 3.x
-- **Langage** : Dart
-- **State Management** : Riverpod
-- **Navigation** : Go Router
-- **Stockage** : Shared Preferences
-- **Plateformes** : Web, Android, iOS, Windows
+| Technologie | Description |
+|-------------|-------------|
+| **Framework** | Flutter 3.x |
+| **Langage** | Dart |
+| **State Management** | Riverpod |
+| **Navigation** | Go Router |
+| **Stockage** | Shared Preferences |
+| **Plateformes** | Web, Android, Windows |
 
 ---
 
