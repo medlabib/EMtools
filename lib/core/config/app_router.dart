@@ -11,6 +11,9 @@ import '../../presentation/screens/tools/blood_gas/blood_gas_screen.dart';
 import '../../presentation/screens/tools/metabolic/metabolic_screen.dart';
 import '../../presentation/screens/tools/sedation/sedation_screen.dart';
 import '../../presentation/screens/tools/vasoactive/vasoactive_screen.dart';
+import '../../presentation/screens/tools/protocols/protocols_screen.dart';
+import '../../presentation/screens/tools/protocols/protocol_detail_screen.dart';
+import '../../presentation/screens/tools/rcp_timer/rcp_timer_screen.dart';
 import '../../presentation/screens/tools_screen.dart';
 import '../../presentation/screens/settings_screen.dart';
 import '../../presentation/widgets/app_shell.dart';
@@ -80,6 +83,22 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'vasoactive',
                 builder: (context, state) => const VasoactiveScreen(),
+              ),
+              GoRoute(
+                path: 'protocols',
+                builder: (context, state) => const ProtocolsScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) => ProtocolDetailScreen(
+                      protocolId: state.pathParameters['id']!,
+                    ),
+                  ),
+                ],
+              ),
+              GoRoute(
+                path: 'rcp-timer',
+                builder: (context, state) => const RcpTimerScreen(),
               ),
             ],
           ),

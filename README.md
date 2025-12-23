@@ -20,11 +20,20 @@
 
 **EMtools** est une application complète d'outils médicaux conçue pour les **urgentistes** et **réanimateurs**. Elle offre une suite d'outils cliniques pour faciliter la prise en charge des patients en situation d'urgence.
 
-> ⚠️ **Version de test (v0.1.0)** - Cette application est en développement actif. Les retours sont les bienvenus !
+> ⚠️ **Version Beta (v0.1.1)** - Cette application est en développement actif. Les retours sont les bienvenus !
 
 ---
 
 ## ✨ Fonctionnalités
+
+### ⏱️ Timer RCP (Réanimation Cardio-Pulmonaire)
+Timer interactif pour la gestion de l'arrêt cardiaque :
+- Chronomètre avec cycles de 2 minutes automatiques
+- Alertes visuelles et sonores pour les changements de relève
+- Suivi des doses d'adrénaline (intervalle 3-5 min)
+- Compteur de chocs électriques
+- Rapport RCP automatique avec timeline complète
+- Mode sombre optimisé pour les urgences
 
 ### 📝 Évaluation ABCDE
 Génération automatique de rapports médicaux structurés selon l'approche ABCDE :

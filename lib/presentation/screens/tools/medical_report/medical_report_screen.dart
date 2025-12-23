@@ -1079,6 +1079,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   }
 
   Widget _buildBreathingContent() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -1112,7 +1113,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: AppColors.textSecondary,
+            color: AppColors.getTextSecondary(isDark),
           ),
         ),
         const SizedBox(height: 8),
@@ -1315,6 +1316,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   }
 
   Widget _buildCirculationContent() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -1341,7 +1343,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: AppColors.textSecondary,
+            color: AppColors.getTextSecondary(isDark),
           ),
         ),
         const SizedBox(height: 8),
@@ -1407,7 +1409,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: AppColors.textSecondary,
+            color: AppColors.getTextSecondary(isDark),
           ),
         ),
         const SizedBox(height: 8),
@@ -1493,10 +1495,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   }
 
   Widget _buildECGSection() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.error.withValues(alpha: 0.05),
+        color: AppColors.error.withValues(alpha: isDark ? 0.15 : 0.05),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: AppColors.error.withValues(alpha: 0.2)),
       ),
@@ -1507,12 +1510,12 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
             children: [
               Icon(Icons.monitor_heart, color: AppColors.error, size: 20),
               const SizedBox(width: 8),
-              const Text(
+              Text(
                 'ECG',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
-                  color: AppColors.textPrimary,
+                  color: AppColors.getTextPrimary(isDark),
                 ),
               ),
             ],
@@ -1795,10 +1798,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   }
 
   Widget _buildWarningSigns() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.warning.withValues(alpha: 0.1),
+        color: AppColors.warning.withValues(alpha: isDark ? 0.2 : 0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.warning.withValues(alpha: 0.3)),
       ),
@@ -1837,7 +1841,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                     size: 20,
                     color: _meningealSigns
                         ? AppColors.warning
-                        : AppColors.textSecondary,
+                        : AppColors.getTextSecondary(isDark),
                   ),
                   const SizedBox(width: 8),
                   Text(
@@ -1845,7 +1849,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                     style: TextStyle(
                       color: _meningealSigns
                           ? AppColors.warning
-                          : AppColors.textPrimary,
+                          : AppColors.getTextPrimary(isDark),
                       fontWeight: _meningealSigns
                           ? FontWeight.w500
                           : FontWeight.normal,
@@ -1870,13 +1874,13 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                   Icon(
                     Icons.bubble_chart,
                     size: 20,
-                    color: _purpura ? Colors.red : AppColors.textSecondary,
+                    color: _purpura ? Colors.red : AppColors.getTextSecondary(isDark),
                   ),
                   const SizedBox(width: 8),
                   Text(
                     'Purpura',
                     style: TextStyle(
-                      color: _purpura ? Colors.red : AppColors.textPrimary,
+                      color: _purpura ? Colors.red : AppColors.getTextPrimary(isDark),
                       fontWeight: _purpura
                           ? FontWeight.w500
                           : FontWeight.normal,
@@ -1988,31 +1992,36 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     int max,
     ValueChanged<int?> onChanged,
   ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+          style: TextStyle(fontSize: 12, color: AppColors.getTextSecondary(isDark)),
         ),
         const SizedBox(height: 4),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: isDark ? AppColors.cardDark : Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<int>(
               value: value,
               isExpanded: true,
+              dropdownColor: isDark ? AppColors.cardDark : Colors.white,
               items: List.generate(
                 max,
                 (i) => DropdownMenuItem(
                   value: i + 1,
                   child: Text(
                     '${i + 1}',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.getTextPrimary(isDark),
+                    ),
                   ),
                 ),
               ),
@@ -2465,7 +2474,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
         children: [
           Icon(
             icon,
-            color: value ? AppColors.warning : AppColors.textSecondary,
+            color: value ? AppColors.warning : AppColors.getTextSecondary(isDark),
             size: 20,
           ),
           const SizedBox(width: 8),
@@ -2473,7 +2482,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
             title,
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              color: value ? AppColors.warning : AppColors.textPrimary,
+              color: value ? AppColors.warning : AppColors.getTextPrimary(isDark),
             ),
           ),
           const Spacer(),
@@ -2532,8 +2541,9 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   }
 
   Widget _buildPreviewSection() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color: AppColors.backgroundLight,
+      color: isDark ? AppColors.surfaceDark : AppColors.backgroundLight,
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2544,10 +2554,10 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
               const SizedBox(width: 8),
               Text(
                 'Aperçu du Rapport',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textPrimary,
+                  color: AppColors.getTextPrimary(isDark),
                 ),
               ),
               const Spacer(),
@@ -2571,9 +2581,9 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDark ? AppColors.cardDark : Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.grey.shade200),
+                border: Border.all(color: isDark ? Colors.grey.shade700 : Colors.grey.shade200),
               ),
               child: _generatedReport.isEmpty
                   ? Center(
@@ -2583,13 +2593,13 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                           Icon(
                             Icons.description_outlined,
                             size: 64,
-                            color: AppColors.textHint,
+                            color: AppColors.getTextHint(isDark),
                           ),
                           const SizedBox(height: 16),
                           Text(
                             'Le rapport apparaîtra ici',
                             style: TextStyle(
-                              color: AppColors.textSecondary,
+                              color: AppColors.getTextSecondary(isDark),
                               fontSize: 16,
                             ),
                           ),
@@ -2597,7 +2607,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                           Text(
                             'Remplissez le formulaire et cliquez sur "Générer"',
                             style: TextStyle(
-                              color: AppColors.textHint,
+                              color: AppColors.getTextHint(isDark),
                               fontSize: 14,
                             ),
                           ),
@@ -2607,11 +2617,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
                   : SingleChildScrollView(
                       child: SelectableText(
                         _generatedReport,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: 'monospace',
                           fontSize: 13,
                           height: 1.5,
-                          color: AppColors.textPrimary,
+                          color: AppColors.getTextPrimary(isDark),
                         ),
                       ),
                     ),

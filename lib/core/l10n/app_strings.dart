@@ -97,6 +97,10 @@ class AppStrings {
   static const String antibioticsDesc = 'Guide de prescription';
   static const String antibioticsGuide = 'Guide Antibiotiques';
   static const String antibioticsSubtitle = 'Spectre, posologie et ajustements';
+  static const String protocols = 'Protocoles';
+  static const String protocolsDesc = '55+ protocoles d\'urgence';
+  static const String rcpTimer = 'Chronomètre RCP';
+  static const String rcpTimerDesc = 'Timer, cycles, adrénaline';
   static const String searchAntibiotic = 'Rechercher un antibiotique...';
   static const String noAntibioticFound = 'Aucun antibiotique trouvé';
   static const String tryAnotherSearch = 'Essayez une autre recherche';

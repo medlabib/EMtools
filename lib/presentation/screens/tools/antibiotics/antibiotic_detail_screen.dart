@@ -262,12 +262,13 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
   }
 
   Widget _buildTabBar(Color color) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color: Colors.white,
+      color: isDark ? AppColors.surfaceDark : Colors.white,
       child: TabBar(
         controller: _tabController,
         labelColor: color,
-        unselectedLabelColor: AppColors.textSecondary,
+        unselectedLabelColor: AppColors.getTextSecondary(isDark),
         indicatorColor: color,
         indicatorWeight: 3,
         tabs: const [
@@ -396,6 +397,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
   }
 
   Widget _buildInfoRow(String label, String value) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
@@ -406,7 +408,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             child: Text(
               label,
               style: TextStyle(
-                color: AppColors.textSecondary,
+                color: AppColors.getTextSecondary(isDark),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -415,7 +417,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             child: Text(
               value,
               style: TextStyle(
-                color: AppColors.textPrimary,
+                color: AppColors.getTextPrimary(isDark),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -426,6 +428,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
   }
 
   Widget _buildBulletItem(String text, Color color) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),
       child: Row(
@@ -444,7 +447,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             child: Text(
               text,
               style: TextStyle(
-                color: AppColors.textPrimary,
+                color: AppColors.getTextPrimary(isDark),
                 height: 1.4,
               ),
             ),
@@ -455,6 +458,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
   }
 
   Widget _buildRenalTab(Color color) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final currentDose = _getRenalDose(_gfr);
     
     return FadeTransition(
@@ -465,11 +469,11 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
           // GFR Slider Card
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? AppColors.cardDark : Colors.white,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.04),
+                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -509,7 +513,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                             'DFG:',
                             style: TextStyle(
                               fontSize: 16,
-                              color: AppColors.textSecondary,
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -526,7 +530,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                             'mL/min',
                             style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.textSecondary,
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                           ),
                         ],
@@ -612,7 +616,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
+              color: AppColors.getTextPrimary(isDark),
             ),
           ),
           const SizedBox(height: 12),
@@ -661,7 +665,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                             child: Text(
                               '${adj.dose} ${adj.notes ?? ''}',
                               style: TextStyle(
-                                color: AppColors.textPrimary,
+                                color: isDark ? Colors.white : AppColors.textPrimary,
                               ),
                             ),
                           ),
@@ -680,6 +684,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
   }
 
   Widget _buildInteractionsTab() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final interactions = _checkInteractions();
 
     return FadeTransition(
@@ -691,7 +696,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             // Search Input
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDark ? const Color(0xFF2D2D2D) : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
@@ -791,7 +796,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                               child: Container(
                                 margin: const EdgeInsets.only(bottom: 12),
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: isDark ? const Color(0xFF2D2D2D) : Colors.white,
                                   borderRadius: BorderRadius.circular(16),
                                   border: Border.all(
                                     color: cardColor.withValues(alpha: 0.3),
@@ -860,14 +865,14 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                             'Effet:',
                                             style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              color: AppColors.textSecondary,
+                                              color: AppColors.getTextSecondary(isDark),
                                             ),
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
                                             interaction.effect,
                                             style: TextStyle(
-                                              color: AppColors.textPrimary,
+                                              color: isDark ? Colors.white : AppColors.textPrimary,
                                             ),
                                           ),
                                           if (interaction.recommendation != null) ...[
@@ -929,6 +934,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
   }
 
   Widget _buildNoInteractionsState() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -939,7 +945,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
               : Icons.check_circle_outline,
             size: 64,
             color: _patientMedications.isEmpty 
-              ? AppColors.textHint 
+              ? AppColors.getTextHint(isDark) 
               : AppColors.success,
           ),
           const SizedBox(height: 16),
@@ -950,7 +956,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             style: TextStyle(
               fontSize: 16,
               color: _patientMedications.isEmpty 
-                ? AppColors.textSecondary 
+                ? AppColors.getTextSecondary(isDark) 
                 : AppColors.success,
               fontWeight: FontWeight.w500,
             ),
@@ -961,7 +967,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
               ? 'pour vérifier les interactions'
               : 'avec les médicaments listés',
             style: TextStyle(
-              color: AppColors.textHint,
+              color: AppColors.getTextHint(isDark),
             ),
           ),
         ],

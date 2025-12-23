@@ -100,6 +100,28 @@ class _ToolsScreenState extends State<ToolsScreen> {
         category: 'tools',
         keywords: ['antibiotique', 'infection', 'amoxicilline', 'ceftriaxone', 'renal'],
       ),
+      _ToolData(
+        title: AppStrings.protocols,
+        subtitle: AppStrings.protocolsDesc,
+        icon: Icons.format_list_numbered,
+        color: AppColors.primaryPurple,
+        route: '/tools/protocols',
+        category: 'emergency',
+        keywords: ['protocole', 'acr', 'avc', 'sepsis', 'trauma', 'pediatrie', 'urgence', 'reanimation'],
+      ),
+      _ToolData(
+        title: AppStrings.rcpTimer,
+        subtitle: AppStrings.rcpTimerDesc,
+        icon: Icons.timer,
+        gradient: LinearGradient(
+          colors: [AppColors.error, AppColors.error.withValues(alpha: 0.7)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        route: '/tools/rcp-timer',
+        category: 'emergency',
+        keywords: ['rcp', 'reanimation', 'acr', 'massage', 'compression', 'adrenaline', 'chronometre', 'timer'],
+      ),
     ];
   }
 

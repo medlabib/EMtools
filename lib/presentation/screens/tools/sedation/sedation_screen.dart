@@ -278,7 +278,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                     Text(
                       '${AppStrings.ageGroup}: ',
                       style: TextStyle(
-                        color: AppColors.textSecondary,
+                        color: isDark ? Colors.grey[400] : AppColors.textSecondary,
                         fontSize: 14,
                       ),
                     ),
@@ -458,6 +458,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   }
 
   Widget _buildAllDrugsView() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final filteredDrugs = SedationData.allDrugs.where((drug) {
       if (_searchQuery.isEmpty) return true;
       return drug.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
@@ -471,7 +472,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
           padding: const EdgeInsets.all(16),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? const Color(0xFF2D2D2D) : Colors.white,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
@@ -486,11 +487,11 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
               onChanged: (value) => setState(() => _searchQuery = value),
               decoration: InputDecoration(
                 hintText: AppStrings.searchDrugs,
-                hintStyle: TextStyle(color: AppColors.textHint),
+                hintStyle: TextStyle(color: AppColors.getTextHint(isDark)),
                 prefixIcon: Icon(Icons.search, color: AppColors.primary),
                 suffixIcon: _searchQuery.isNotEmpty
                   ? IconButton(
-                      icon: Icon(Icons.clear, color: AppColors.textSecondary),
+                      icon: Icon(Icons.clear, color: AppColors.getTextSecondary(isDark)),
                       onPressed: () {
                         _searchController.clear();
                         setState(() => _searchQuery = '');
@@ -509,12 +510,12 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.search_off, size: 64, color: AppColors.textHint),
+                    Icon(Icons.search_off, size: 64, color: AppColors.getTextHint(isDark)),
                     const SizedBox(height: 16),
                     Text(
                       AppStrings.noDrugsFound,
                       style: TextStyle(
-                        color: AppColors.textSecondary,
+                        color: AppColors.getTextSecondary(isDark),
                         fontSize: 16,
                       ),
                     ),
@@ -633,6 +634,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   }
 
   Widget _buildDrugCard(String drugId) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final drug = SedationData.allDrugs.firstWhere(
       (d) => d.id == drugId,
       orElse: () => SedationData.allDrugs.first,
@@ -644,11 +646,11 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? AppColors.cardDark : Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -694,17 +696,17 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                         children: [
                           Text(
                             drug.name,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.textPrimary,
+                              color: AppColors.getTextPrimary(isDark),
                             ),
                           ),
                           Text(
                             drug.genericName,
                             style: TextStyle(
                               fontSize: 13,
-                              color: AppColors.textSecondary,
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                           ),
                         ],
@@ -744,7 +746,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                             AppStrings.totalDose,
                             style: TextStyle(
                               fontSize: 12,
-                              color: AppColors.textSecondary,
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                           ),
                           Row(
@@ -775,7 +777,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                             '${doseInfo.dosePerKg} ${drug.doseUnit}',
                             style: TextStyle(
                               fontSize: 12,
-                              color: AppColors.textSecondary,
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                           ),
                         ],
@@ -834,12 +836,12 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                       AppStrings.tapForDetails,
                       style: TextStyle(
                         fontSize: 11,
-                        color: AppColors.textHint,
+                        color: AppColors.getTextHint(isDark),
                       ),
                     ),
                     const SizedBox(width: 4),
                     Icon(Icons.arrow_forward_ios, 
-                      size: 12, color: AppColors.textHint),
+                      size: 12, color: AppColors.getTextHint(isDark)),
                   ],
                 ),
               ],
@@ -958,14 +960,15 @@ class _DrugDetailsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return DraggableScrollableSheet(
       initialChildSize: 0.75,
       minChildSize: 0.5,
       maxChildSize: 0.95,
       builder: (context, scrollController) => Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.surfaceDark : Colors.white,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         ),
         child: Column(
           children: [
@@ -974,7 +977,7 @@ class _DrugDetailsSheet extends StatelessWidget {
               height: 4,
               margin: const EdgeInsets.only(top: 12),
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: isDark ? Colors.grey[600] : Colors.grey[300],
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -985,9 +988,9 @@ class _DrugDetailsSheet extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildHeader(),
+                    _buildHeader(isDark),
                     const SizedBox(height: 24),
-                    _buildDoseCard(),
+                    _buildDoseCard(isDark),
                     const SizedBox(height: 20),
                     _buildDetailSection(
                       AppStrings.concentrations,
@@ -999,38 +1002,38 @@ class _DrugDetailsSheet extends StatelessWidget {
                       AppStrings.mechanism,
                       Icons.psychology_outlined,
                       AppColors.accentPurple,
-                      Text(drug.mechanism),
+                      Text(drug.mechanism, style: TextStyle(color: AppColors.getTextPrimary(isDark))),
                     ),
                     _buildDetailSection(
                       AppStrings.indications,
                       Icons.check_circle_outline,
                       AppColors.success,
-                      _buildBulletList(drug.indications, AppColors.success),
+                      _buildBulletList(drug.indications, AppColors.success, isDark),
                     ),
                     _buildDetailSection(
                       AppStrings.contraindications,
                       Icons.block,
                       AppColors.error,
-                      _buildBulletList(drug.contraindications, AppColors.error),
+                      _buildBulletList(drug.contraindications, AppColors.error, isDark),
                     ),
                     _buildDetailSection(
                       AppStrings.sideEffects,
                       Icons.warning_amber_outlined,
                       AppColors.warning,
-                      _buildBulletList(drug.sideEffects, AppColors.warning),
+                      _buildBulletList(drug.sideEffects, AppColors.warning, isDark),
                     ),
                     _buildDetailSection(
                       AppStrings.precautions,
                       Icons.info_outline,
                       AppColors.info,
-                      _buildBulletList(drug.precautions, AppColors.info),
+                      _buildBulletList(drug.precautions, AppColors.info, isDark),
                     ),
                     if (drug.notes.isNotEmpty)
                       _buildDetailSection(
                         AppStrings.notes,
                         Icons.note_alt_outlined,
-                        AppColors.textSecondary,
-                        _buildBulletList(drug.notes, AppColors.textSecondary),
+                        AppColors.getTextSecondary(isDark),
+                        _buildBulletList(drug.notes, AppColors.getTextSecondary(isDark), isDark),
                       ),
                     const SizedBox(height: 40),
                   ],
@@ -1043,7 +1046,7 @@ class _DrugDetailsSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(bool isDark) {
     return Row(
       children: [
         Container(
@@ -1073,17 +1076,17 @@ class _DrugDetailsSheet extends StatelessWidget {
             children: [
               Text(
                 drug.name,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textPrimary,
+                  color: AppColors.getTextPrimary(isDark),
                 ),
               ),
               Text(
                 drug.genericName,
                 style: TextStyle(
                   fontSize: 16,
-                  color: AppColors.textSecondary,
+                  color: AppColors.getTextSecondary(isDark),
                 ),
               ),
               const SizedBox(height: 4),
@@ -1109,14 +1112,14 @@ class _DrugDetailsSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildDoseCard() {
+  Widget _buildDoseCard(bool isDark) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.success.withValues(alpha: 0.1),
-            AppColors.accentEmerald.withValues(alpha: 0.05),
+            AppColors.success.withValues(alpha: isDark ? 0.2 : 0.1),
+            AppColors.accentEmerald.withValues(alpha: isDark ? 0.1 : 0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
@@ -1143,17 +1146,17 @@ class _DrugDetailsSheet extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? AppColors.cardDark : Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildPatientStat(AppStrings.weight, '$weight kg', Icons.monitor_weight_outlined),
-                Container(width: 1, height: 40, color: Colors.grey.shade200),
-                _buildPatientStat(AppStrings.age, '$age ${AppStrings.years}', Icons.cake_outlined),
-                Container(width: 1, height: 40, color: Colors.grey.shade200),
-                _buildPatientStat(AppStrings.ageGroup, ageGroupLabel, Icons.category_outlined),
+                _buildPatientStat(AppStrings.weight, '$weight kg', Icons.monitor_weight_outlined, isDark),
+                Container(width: 1, height: 40, color: isDark ? Colors.grey.shade700 : Colors.grey.shade200),
+                _buildPatientStat(AppStrings.age, '$age ${AppStrings.years}', Icons.cake_outlined, isDark),
+                Container(width: 1, height: 40, color: isDark ? Colors.grey.shade700 : Colors.grey.shade200),
+                _buildPatientStat(AppStrings.ageGroup, ageGroupLabel, Icons.category_outlined, isDark),
               ],
             ),
           ),
@@ -1168,7 +1171,7 @@ class _DrugDetailsSheet extends StatelessWidget {
                       AppStrings.totalDose,
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: AppColors.getTextSecondary(isDark),
                       ),
                     ),
                     Row(
@@ -1198,7 +1201,7 @@ class _DrugDetailsSheet extends StatelessWidget {
                       '${doseInfo.dosePerKg} ${drug.doseUnit}',
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: AppColors.getTextSecondary(isDark),
                       ),
                     ),
                   ],
@@ -1253,24 +1256,24 @@ class _DrugDetailsSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildPatientStat(String label, String value, IconData icon) {
+  Widget _buildPatientStat(String label, String value, IconData icon, bool isDark) {
     return Column(
       children: [
-        Icon(icon, size: 18, color: AppColors.textSecondary),
+        Icon(icon, size: 18, color: AppColors.getTextSecondary(isDark)),
         const SizedBox(height: 4),
         Text(
           value,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: AppColors.textPrimary,
+            color: AppColors.getTextPrimary(isDark),
           ),
         ),
         Text(
           label,
           style: TextStyle(
             fontSize: 11,
-            color: AppColors.textSecondary,
+            color: AppColors.getTextSecondary(isDark),
           ),
         ),
       ],
@@ -1339,7 +1342,7 @@ class _DrugDetailsSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildBulletList(List<String> items, Color color) {
+  Widget _buildBulletList(List<String> items, Color color, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: items.map((item) => Padding(
@@ -1359,9 +1362,9 @@ class _DrugDetailsSheet extends StatelessWidget {
             Expanded(
               child: Text(
                 item,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
-                  color: AppColors.textPrimary,
+                  color: AppColors.getTextPrimary(isDark),
                   height: 1.4,
                 ),
               ),

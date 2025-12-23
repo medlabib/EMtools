@@ -304,6 +304,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
     required List<DropdownMenuItem<T>> items,
     required ValueChanged<T?> onChanged,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -311,7 +312,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
           label,
           style: TextStyle(
             fontSize: 12,
-            color: AppColors.textSecondary,
+            color: AppColors.getTextSecondary(isDark),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -319,13 +320,15 @@ class _MetabolicScreenState extends State<MetabolicScreen>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
+            color: isDark ? AppColors.cardDark : null,
+            border: Border.all(color: isDark ? Colors.grey.shade700 : Colors.grey.shade300),
             borderRadius: BorderRadius.circular(10),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<T>(
               value: value,
               isExpanded: true,
+              dropdownColor: isDark ? AppColors.cardDark : null,
               items: items,
               onChanged: onChanged,
             ),
@@ -341,6 +344,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
     required ValueChanged<String> onChanged,
     String? suffix,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -348,7 +352,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
           label,
           style: TextStyle(
             fontSize: 12,
-            color: AppColors.textSecondary,
+            color: AppColors.getTextSecondary(isDark),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -356,17 +360,17 @@ class _MetabolicScreenState extends State<MetabolicScreen>
         TextFormField(
           initialValue: value,
           keyboardType: TextInputType.number,
-          style: TextStyle(color: AppColors.textPrimary),
+          style: TextStyle(color: AppColors.getTextPrimary(isDark)),
           decoration: InputDecoration(
             suffixText: suffix,
             contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: BorderSide(color: isDark ? Colors.grey.shade700 : Colors.grey.shade300),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: BorderSide(color: isDark ? Colors.grey.shade700 : Colors.grey.shade300),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -380,13 +384,14 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   Widget _buildSodiumInputs() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? AppColors.cardDark : Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -478,7 +483,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
+                    color: AppColors.getTextPrimary(isDark),
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -519,6 +524,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
     required Color color,
     required VoidCallback onTap,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
@@ -532,7 +538,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
           child: Text(
             label,
             style: TextStyle(
-              color: isSelected ? Colors.white : AppColors.textSecondary,
+              color: isSelected ? Colors.white : AppColors.getTextSecondary(isDark),
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             ),
           ),
@@ -770,6 +776,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   Widget _buildPotassiumTab() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return FadeTransition(
       opacity: _animationController,
       child: SingleChildScrollView(
@@ -780,11 +787,11 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             // Input Card
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDark ? AppColors.cardDark : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
+                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),
@@ -860,11 +867,11 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             // ECG Findings
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDark ? AppColors.cardDark : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
+                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),
@@ -875,7 +882,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: AppColors.error.withValues(alpha: 0.1),
+                      color: AppColors.error.withValues(alpha: isDark ? 0.2 : 0.1),
                       borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
                     ),
                     child: Row(
@@ -900,13 +907,13 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                         finding.name,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          color: AppColors.textPrimary,
+                          color: AppColors.getTextPrimary(isDark),
                         ),
                       ),
                       subtitle: finding.threshold != null 
                         ? Text(
                             'Typiquement vu si K > ${finding.threshold}',
-                            style: TextStyle(color: AppColors.textSecondary),
+                            style: TextStyle(color: AppColors.getTextSecondary(isDark)),
                           ) 
                         : null,
                       value: _selectedECG.contains(finding.id),
@@ -931,7 +938,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textPrimary,
+                  color: AppColors.getTextPrimary(isDark),
                 ),
               ),
               const SizedBox(height: 12),
@@ -988,12 +995,12 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                                 const SizedBox(height: 4),
                                 Text(
                                   'Dose: ${t.dose}',
-                                  style: TextStyle(color: AppColors.textSecondary),
+                                  style: TextStyle(color: AppColors.getTextSecondary(isDark)),
                                 ),
                                 Text(
                                   t.notes,
                                   style: TextStyle(
-                                    color: AppColors.textHint,
+                                    color: AppColors.getTextHint(isDark),
                                     fontSize: 12,
                                   ),
                                 ),
@@ -1048,6 +1055,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   Widget _buildCalciumTab() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final correctedCa = MetabolicCalculator.calculateCorrectedCalcium(_totalCalcium, _albumin);
     final caStatus = _getCalciumStatus(correctedCa);
     final caColor = _getCalciumColor(correctedCa);
@@ -1061,11 +1069,11 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             // Input Card
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDark ? AppColors.cardDark : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
+                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),
@@ -1211,14 +1219,14 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: AppColors.backgroundLight,
+                      color: isDark ? AppColors.cardDark : AppColors.backgroundLight,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       'Ca corrigé = Ca total + 0.8 × (4 - Albumine)',
                       style: TextStyle(
                         fontFamily: 'monospace',
-                        color: AppColors.textPrimary,
+                        color: AppColors.getTextPrimary(isDark),
                       ),
                     ),
                   ),
@@ -1226,7 +1234,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   Text(
                     'Valeurs normales: 8.5 - 10.5 mg/dL',
                     style: TextStyle(
-                      color: AppColors.textSecondary,
+                      color: AppColors.getTextSecondary(isDark),
                     ),
                   ),
                 ],

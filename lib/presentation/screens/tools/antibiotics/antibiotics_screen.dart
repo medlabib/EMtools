@@ -205,75 +205,80 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
         opacity: _animationController,
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              // Search bar
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
-                      blurRadius: 10,
-                      offset: const Offset(0, 2),
+          child: Builder(
+            builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Column(
+                children: [
+                  // Search bar
+                  Container(
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.cardDark : Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                child: TextField(
-                  controller: _searchController,
-                  onChanged: (value) => setState(() => _searchQuery = value),
-                  decoration: InputDecoration(
-                    hintText: AppStrings.searchAntibiotic,
-                    hintStyle: TextStyle(color: AppColors.textHint),
-                    prefixIcon: Icon(Icons.search, color: AppColors.success),
-                    suffixIcon: _searchQuery.isNotEmpty
-                      ? IconButton(
-                          icon: Icon(Icons.clear, color: AppColors.textSecondary),
-                          onPressed: () {
-                            _searchController.clear();
-                            setState(() => _searchQuery = '');
-                          },
-                        )
-                      : null,
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 16,
+                    child: TextField(
+                      controller: _searchController,
+                      onChanged: (value) => setState(() => _searchQuery = value),
+                      decoration: InputDecoration(
+                        hintText: AppStrings.searchAntibiotic,
+                        hintStyle: TextStyle(color: AppColors.getTextHint(isDark)),
+                        prefixIcon: Icon(Icons.search, color: AppColors.success),
+                        suffixIcon: _searchQuery.isNotEmpty
+                          ? IconButton(
+                              icon: Icon(Icons.clear, color: AppColors.getTextSecondary(isDark)),
+                              onPressed: () {
+                                _searchController.clear();
+                                setState(() => _searchQuery = '');
+                              },
+                            )
+                          : null,
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              // Filter chips
-              SizedBox(
-                height: 40,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    _buildFilterChip(
-                      label: AppStrings.all,
-                      isSelected: _selectedClass == null,
-                      color: AppColors.textSecondary,
-                      onSelected: () => setState(() => _selectedClass = null),
-                    ),
-                    const SizedBox(width: 8),
-                    ...AntibioticClass.values.map((cls) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: _buildFilterChip(
-                          label: _getClassLabel(cls),
-                          isSelected: _selectedClass == cls,
-                          color: _getClassColor(cls),
-                          onSelected: () => setState(() {
-                            _selectedClass = _selectedClass == cls ? null : cls;
-                          }),
+                  const SizedBox(height: 16),
+                  // Filter chips
+                  SizedBox(
+                    height: 40,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        _buildFilterChip(
+                          label: AppStrings.all,
+                          isSelected: _selectedClass == null,
+                          color: AppColors.getTextSecondary(isDark),
+                          onSelected: () => setState(() => _selectedClass = null),
                         ),
-                      );
-                    }),
-                  ],
-                ),
-              ),
-            ],
+                        const SizedBox(width: 8),
+                        ...AntibioticClass.values.map((cls) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: _buildFilterChip(
+                              label: _getClassLabel(cls),
+                              isSelected: _selectedClass == cls,
+                              color: _getClassColor(cls),
+                              onSelected: () => setState(() {
+                                _selectedClass = _selectedClass == cls ? null : cls;
+                              }),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),
@@ -286,8 +291,9 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
     required Color color,
     required VoidCallback onSelected,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Material(
-      color: isSelected ? color : Colors.white,
+      color: isSelected ? color : (isDark ? AppColors.cardDark : Colors.white),
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -297,13 +303,13 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: isSelected ? color : Colors.grey.shade300,
+              color: isSelected ? color : (isDark ? Colors.grey.shade700 : Colors.grey.shade300),
             ),
           ),
           child: Text(
             label,
             style: TextStyle(
-              color: isSelected ? Colors.white : AppColors.textSecondary,
+              color: isSelected ? Colors.white : AppColors.getTextSecondary(isDark),
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               fontSize: 13,
             ),
@@ -314,6 +320,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
   }
 
   Widget _buildEmptyState() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -321,13 +328,13 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
           Icon(
             Icons.search_off,
             size: 64,
-            color: AppColors.textHint,
+            color: AppColors.getTextHint(isDark),
           ),
           const SizedBox(height: 16),
           Text(
             AppStrings.noAntibioticFound,
             style: TextStyle(
-              color: AppColors.textSecondary,
+              color: AppColors.getTextSecondary(isDark),
               fontSize: 16,
             ),
           ),
@@ -335,7 +342,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
           Text(
             AppStrings.tryAnotherSearch,
             style: TextStyle(
-              color: AppColors.textHint,
+              color: AppColors.getTextHint(isDark),
               fontSize: 14,
             ),
           ),
@@ -369,16 +376,17 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
   }
 
   Widget _buildAntibioticCard(Antibiotic abx) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final color = _getClassColor(abx.antibioticClass);
     
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? AppColors.cardDark : Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -421,10 +429,10 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
                     children: [
                       Text(
                         abx.name,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
+                          color: AppColors.getTextPrimary(isDark),
                         ),
                       ),
                       const SizedBox(height: 2),
@@ -432,7 +440,7 @@ class _AntibioticsScreenState extends State<AntibioticsScreen>
                         abx.genericName,
                         style: TextStyle(
                           fontSize: 13,
-                          color: AppColors.textSecondary,
+                          color: AppColors.getTextSecondary(isDark),
                         ),
                       ),
                       const SizedBox(height: 8),
