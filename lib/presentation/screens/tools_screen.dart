@@ -391,46 +391,50 @@ class _ToolsScreenState extends State<ToolsScreen> {
                 crossAxisCount: crossAxisCount,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
-                childAspectRatio: 1.1,
+                childAspectRatio: 1.0,
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   final tool = tools[index];
                   final isFav = _isFavorite(tool.route);
-                  return Stack(
-                    children: [
-                      AnimatedToolCard(
-                        title: tool.title,
-                        subtitle: tool.subtitle,
-                        icon: tool.icon,
-                        iconColor: tool.color,
-                        gradient: tool.gradient,
-                        onTap: () => context.go(tool.route),
-                        animationDelay: 100 + (index * 50),
-                      ),
-                      // Favorite button
-                      Positioned(
-                        top: 8,
-                        right: 8,
-                        child: GestureDetector(
-                          onTap: () => _toggleFavorite(tool.route),
-                          child: Container(
-                            padding: const EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              color: (isDark ? Colors.black : Colors.white).withValues(alpha: 0.7),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              isFav ? Icons.star_rounded : Icons.star_border_rounded,
-                              size: 20,
-                              color: isFav 
-                                  ? Colors.amber 
-                                  : (isDark ? Colors.grey[400] : Colors.grey[600]),
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Stack(
+                      clipBehavior: Clip.hardEdge,
+                      children: [
+                        AnimatedToolCard(
+                          title: tool.title,
+                          subtitle: tool.subtitle,
+                          icon: tool.icon,
+                          iconColor: tool.color,
+                          gradient: tool.gradient,
+                          onTap: () => context.go(tool.route),
+                          animationDelay: 100 + (index * 50),
+                        ),
+                        // Favorite button
+                        Positioned(
+                          top: 6,
+                          right: 6,
+                          child: GestureDetector(
+                            onTap: () => _toggleFavorite(tool.route),
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: (isDark ? Colors.black : Colors.white).withValues(alpha: 0.8),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                isFav ? Icons.star_rounded : Icons.star_border_rounded,
+                                size: 18,
+                                color: isFav 
+                                    ? Colors.amber 
+                                    : (isDark ? Colors.grey[400] : Colors.grey[600]),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 },
                 childCount: tools.length,

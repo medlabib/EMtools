@@ -101,7 +101,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen>
                 crossAxisCount: isTablet ? 3 : 2,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
-                childAspectRatio: 1.1,
+                childAspectRatio: 1.0,
               ),
               delegate: SliverChildListDelegate([
                 AnimatedToolCard(
