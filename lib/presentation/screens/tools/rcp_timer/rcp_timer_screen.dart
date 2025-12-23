@@ -29,11 +29,11 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
   int _cycleCount = 0;
   static const int _cycleDurationSeconds = 120;
 
-  // Adrenaline timer (every 3-5 min, using 3 min as default)
+  // Adrenaline timer (configurable 3-5 min)
   Timer? _adrenalineTimer;
   Duration _timeSinceLastAdrenaline = Duration.zero;
   int _adrenalineCount = 0;
-  static const int _adrenalineIntervalSeconds = 180; // 3 minutes
+  int _adrenalineIntervalMinutes = 3; // Default 3 minutes, configurable
   bool _adrenalineAlertShown = false;
 
   // Metronome for compressions (110 BPM = target between 100-120)
@@ -43,6 +43,15 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
   bool _metronomeFlash = false;
   int _compressionCount = 0;
   late AnimationController _pulseController;
+  
+  // Settings
+  bool _soundEnabled = true;
+  bool _vibrationEnabled = true;
+  double _metronomeSize = 60.0; // Size of metronome visual indicator
+  int _shockCount = 0;
+  
+  // Computed adrenaline interval in seconds
+  int get _adrenalineIntervalSeconds => _adrenalineIntervalMinutes * 60;
 
   // Event log
   final List<_RcpEvent> _eventLog = [];
@@ -141,6 +150,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
       _adrenalineCount = 0;
       _adrenalineAlertShown = false;
       _compressionCount = 0;
+      _shockCount = 0;
       _rhythmType = 'Inconnu';
       _eventLog.clear();
     });
@@ -190,14 +200,20 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
       _adrenalineAlertShown = false;
     });
     _addEvent('Adrénaline administrée (${_adrenalineCount}mg total)');
+    if (_vibrationEnabled) HapticFeedback.mediumImpact();
   }
 
-  void _recordDefibrillation() {
-    _addEvent('Défibrillation effectuée');
+  void _recordShock() {
+    setState(() {
+      _shockCount++;
+    });
+    _addEvent('Choc électrique n°$_shockCount');
+    if (_vibrationEnabled) HapticFeedback.heavyImpact();
   }
 
   void _recordAmiodarone() {
     _addEvent('Amiodarone administrée');
+    if (_vibrationEnabled) HapticFeedback.lightImpact();
   }
 
   void _setRhythm(String rhythm) {
@@ -259,7 +275,163 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
         ),
       ),
     );
-    HapticFeedback.heavyImpact();
+    if (_vibrationEnabled) HapticFeedback.heavyImpact();
+  }
+
+  void _showSettings(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: isDark ? AppColors.surfaceDark : Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setModalState) => Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[400],
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Paramètres RCP',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 24),
+              
+              // Adrenaline Interval
+              Text(
+                'Intervalle Adrénaline',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [3, 4, 5].map((min) => Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: ChoiceChip(
+                      label: Text('$min min'),
+                      selected: _adrenalineIntervalMinutes == min,
+                      onSelected: (selected) {
+                        if (selected) {
+                          setModalState(() {});
+                          setState(() => _adrenalineIntervalMinutes = min);
+                        }
+                      },
+                      selectedColor: AppColors.primary,
+                      labelStyle: TextStyle(
+                        color: _adrenalineIntervalMinutes == min 
+                          ? Colors.white 
+                          : (isDark ? Colors.white70 : Colors.black87),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                )).toList(),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Recommandation: 3-5 min selon le rythme',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppColors.getTextSecondary(isDark),
+                ),
+              ),
+              
+              const SizedBox(height: 24),
+              
+              // Metronome Size
+              Text(
+                'Taille du Métronome',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  const Icon(Icons.circle, size: 20),
+                  Expanded(
+                    child: Slider(
+                      value: _metronomeSize,
+                      min: 40,
+                      max: 120,
+                      divisions: 4,
+                      label: '${_metronomeSize.toInt()}',
+                      onChanged: (value) {
+                        setModalState(() {});
+                        setState(() => _metronomeSize = value);
+                      },
+                    ),
+                  ),
+                  Icon(Icons.circle, size: 40, color: AppColors.error),
+                ],
+              ),
+              
+              const SizedBox(height: 24),
+              
+              // Sound & Vibration
+              SwitchListTile(
+                title: const Text('Vibration'),
+                subtitle: const Text('Retour haptique pour les alertes'),
+                value: _vibrationEnabled,
+                onChanged: (value) {
+                  setModalState(() {});
+                  setState(() => _vibrationEnabled = value);
+                },
+                secondary: const Icon(Icons.vibration),
+              ),
+              
+              SwitchListTile(
+                title: const Text('Son'),
+                subtitle: const Text('Alertes sonores (à venir)'),
+                value: _soundEnabled,
+                onChanged: (value) {
+                  setModalState(() {});
+                  setState(() => _soundEnabled = value);
+                },
+                secondary: const Icon(Icons.volume_up),
+              ),
+              
+              const SizedBox(height: 16),
+              
+              // Close button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text('Fermer'),
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   String _formatDuration(Duration duration) {
@@ -289,6 +461,11 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
       appBar: AppBar(
         title: const Text('Chronomètre RCP'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Paramètres',
+            onPressed: _isRunning ? null : () => _showSettings(context),
+          ),
           IconButton(
             icon: const Icon(Icons.history),
             tooltip: 'Historique',
@@ -518,33 +695,11 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    AnimatedBuilder(
-                      animation: _pulseController,
-                      builder: (context, child) {
-                        return Container(
-                          width: 24,
-                          height: 24,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _metronomeFlash
-                                ? AppColors.error
-                                : (_metronomeEnabled
-                                    ? AppColors.error.withValues(alpha: 0.3)
-                                    : Colors.grey.withValues(alpha: 0.3)),
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      'Métronome Compressions',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                Text(
+                  'Métronome Compressions',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Switch(
                   value: _metronomeEnabled,
@@ -560,12 +715,49 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               ],
             ),
             if (_metronomeEnabled) ...[
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
+              // Big metronome visual indicator
+              AnimatedBuilder(
+                animation: _pulseController,
+                builder: (context, child) {
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 50),
+                    width: _metronomeFlash ? _metronomeSize * 1.2 : _metronomeSize,
+                    height: _metronomeFlash ? _metronomeSize * 1.2 : _metronomeSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _metronomeFlash
+                          ? AppColors.error
+                          : AppColors.error.withValues(alpha: 0.3),
+                      boxShadow: _metronomeFlash
+                          ? [
+                              BoxShadow(
+                                color: AppColors.error.withValues(alpha: 0.5),
+                                blurRadius: 30,
+                                spreadRadius: 10,
+                              ),
+                            ]
+                          : null,
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.white,
+                        size: _metronomeSize * 0.5,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(
+                  IconButton.filled(
                     icon: const Icon(Icons.remove),
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.error.withValues(alpha: 0.2),
+                    ),
                     onPressed: () {
                       if (_compressionRate > 100) {
                         setState(() => _compressionRate -= 5);
@@ -573,19 +765,20 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                       }
                     },
                   ),
+                  const SizedBox(width: 16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                     decoration: BoxDecoration(
                       color: _isCompressionRateOk()
                           ? AppColors.success.withValues(alpha: 0.2)
                           : AppColors.warning.withValues(alpha: 0.2),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
                       children: [
                         Text(
                           '$_compressionRate',
-                          style: theme.textTheme.headlineMedium?.copyWith(
+                          style: theme.textTheme.headlineLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: _isCompressionRateOk()
                                 ? AppColors.success
@@ -594,15 +787,19 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                         ),
                         Text(
                           'BPM',
-                          style: theme.textTheme.bodySmall?.copyWith(
+                          style: theme.textTheme.bodyMedium?.copyWith(
                             color: theme.colorScheme.onSurfaceVariant,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  IconButton(
+                  const SizedBox(width: 16),
+                  IconButton.filled(
                     icon: const Icon(Icons.add),
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.error.withValues(alpha: 0.2),
+                    ),
                     onPressed: () {
                       if (_compressionRate < 120) {
                         setState(() => _compressionRate += 5);
@@ -612,7 +809,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
               Text(
                 'Objectif: 100-120/min',
                 style: theme.textTheme.bodySmall?.copyWith(
@@ -621,8 +818,9 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               ),
               Text(
                 'Compressions: $_compressionCount',
-                style: theme.textTheme.bodySmall?.copyWith(
+                style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
@@ -729,11 +927,38 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Actions rapides',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Actions rapides',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                if (_shockCount > 0)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColors.error.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.electric_bolt, size: 16, color: AppColors.error),
+                        const SizedBox(width: 4),
+                        Text(
+                          '$_shockCount chocs',
+                          style: TextStyle(
+                            color: AppColors.error,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -748,9 +973,9 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                 ),
                 _buildActionButton(
                   icon: Icons.electric_bolt,
-                  label: 'Défibrillation',
+                  label: 'Choc ($_shockCount)',
                   color: AppColors.error,
-                  onPressed: _recordDefibrillation,
+                  onPressed: _recordShock,
                 ),
                 _buildActionButton(
                   icon: Icons.science,
