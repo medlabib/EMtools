@@ -314,6 +314,20 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     );
     sb.writeln();
 
+    // CAT - CONDUITE À TENIR
+    if (_catController.text.isNotEmpty || _catActions.isNotEmpty) {
+      sb.writeln('Conduite à tenir :');
+      if (_catActions.isNotEmpty) {
+        for (final action in _catActions) {
+          sb.writeln('  - $action');
+        }
+      }
+      if (_catController.text.isNotEmpty && _catActions.isEmpty) {
+        sb.writeln('  ${_catController.text}');
+      }
+      sb.writeln();
+    }
+
     // E - EXPOSITION
     sb.writeln('E :');
     // Terrain
@@ -349,20 +363,6 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       sb.writeln('  Reste de l\'examen : ${_resteExamenController.text}');
     }
     sb.writeln();
-
-    // CAT - CONDUITE À TENIR
-    if (_catController.text.isNotEmpty || _catActions.isNotEmpty) {
-      sb.writeln('Conduite à tenir :');
-      if (_catActions.isNotEmpty) {
-        for (final action in _catActions) {
-          sb.writeln('  - $action');
-        }
-      }
-      if (_catController.text.isNotEmpty && _catActions.isEmpty) {
-        sb.writeln('  ${_catController.text}');
-      }
-      sb.writeln();
-    }
 
     // AU TOTAL
     sb.writeln('Au total :');
@@ -889,8 +889,8 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       ),
       _StepData('C - Circulation', Icons.favorite, _buildCirculationContent()),
       _StepData('D - Neurologie', Icons.psychology, _buildDisabilityContent()),
-      _StepData('E - Exposition', Icons.visibility, _buildExposureContent()),
       _StepData('CAT', Icons.medical_services, _buildCATContent()),
+      _StepData('E - Exposition', Icons.visibility, _buildExposureContent()),
     ];
 
     return Column(

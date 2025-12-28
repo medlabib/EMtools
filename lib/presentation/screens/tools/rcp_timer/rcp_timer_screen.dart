@@ -5,6 +5,7 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import '../../../../core/theme/app_theme.dart';
 
 /// RCP (Réanimation Cardio-Pulmonaire) Timer Screen
+/// Updated: 2025 (AHA/ERC Guidelines 2020-2025)
 /// Features:
 /// - Total elapsed time
 /// - Cycle counter (2 min cycles)

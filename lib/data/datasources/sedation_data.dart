@@ -1,5 +1,8 @@
 import '../../domain/entities/sedation.dart';
 
+/// Sedation Data Source
+/// Updated: 2025 (Guidelines 2024/2025)
+/// Includes RSI, Procedural Sedation, and Analgesia protocols.
 class SedationData {
   static final List<SedationDrug> allDrugs = [
     // =====================

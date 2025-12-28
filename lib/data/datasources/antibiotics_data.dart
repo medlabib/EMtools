@@ -1,6 +1,7 @@
 import '../../domain/entities/antibiotic.dart';
 
 /// Antibiotics database for EMtools
+/// Updated: 2025 (Latest Recommendations)
 /// 
 /// TRADEMARK NOTICE: Brand names (e.g., Augmentin®, Rocephine®) are registered
 /// trademarks of their respective pharmaceutical companies. Their use here is
