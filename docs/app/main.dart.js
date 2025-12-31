@@ -43240,13 +43240,13 @@ $3$curve$duration$rect(a,b,c){return this.F(this,A.z("call","$3$curve$duration$r
 $1$text(a){return this.F(this,A.z("call","$1$text",0,[a],["text"],0))},
 $1$dividerColor(a){return this.F(this,A.z("call","$1$dividerColor",0,[a],["dividerColor"],0))},
 $1$textTheme(a){return this.F(this,A.z("call","$1$textTheme",0,[a],["textTheme"],0))},
+$4$controller$icon$label$maxLines(a,b,c,d){return this.F(this,A.z("call","$4$controller$icon$label$maxLines",0,[a,b,c,d],["controller","icon","label","maxLines"],0))},
 $3$debugReport(a,b,c){return this.F(this,A.z("call","$3$debugReport",0,[a,b,c],["debugReport"],0))},
 $3$cancel$down$reason(a,b,c){return this.F(this,A.z("call","$3$cancel$down$reason",0,[a,b,c],["cancel","down","reason"],0))},
 $2$down$up(a,b){return this.F(this,A.z("call","$2$down$up",0,[a,b],["down","up"],0))},
 $1$down(a){return this.F(this,A.z("call","$1$down",0,[a],["down"],0))},
 $1$move(a){return this.F(this,A.z("call","$1$move",0,[a],["move"],0))},
 $3$composing$selection$text(a,b,c){return this.F(this,A.z("call","$3$composing$selection$text",0,[a,b,c],["composing","selection","text"],0))},
-$4$controller$icon$label$maxLines(a,b,c,d){return this.F(this,A.z("call","$4$controller$icon$label$maxLines",0,[a,b,c,d],["controller","icon","label","maxLines"],0))},
 $3$controller$icon$label(a,b,c){return this.F(this,A.z("call","$3$controller$icon$label",0,[a,b,c],["controller","icon","label"],0))},
 $5$controller$hint$icon$label$maxLines(a,b,c,d,e){return this.F(this,A.z("call","$5$controller$hint$icon$label$maxLines",0,[a,b,c,d,e],["controller","hint","icon","label","maxLines"],0))},
 $4$controller$icon$keyboardType$label(a,b,c,d){return this.F(this,A.z("call","$4$controller$icon$keyboardType$label",0,[a,b,c,d],["controller","icon","keyboardType","label"],0))},
@@ -46980,33 +46980,33 @@ a.a=r}r=(e.X?a.a=r+"  Pr\xe9sence de taches purpuriques.\n":r)+"\n"
 a.a=r
 r+="Total des gravit\xe9s : Il s'agit "+a2+" \xe2g\xe9"+a1+" de "+a5+" ans "+e.Tb()+"\n"
 a.a=r
-r+="\n"
-a.a=r
-r=a.a=r+"E :\n"
+r=a.a=r+"\n"
+o=e.ba
+if(o.a.a.length!==0||e.bo.length!==0){r=a.a=r+"Conduite \xe0 tenir :\n"
+n=e.bo
+k=n.length
+j=k===0
+if(!j)for(i=0;i<k;++i){r+="  - "+n[i]+"\n"
+a.a=r}o=o.a.a
+r=a.a=(o.length!==0&&j?a.a=r+("  "+o+"\n"):r)+"\n"}r=a.a=r+"E :\n"
 o=e.a6
 n=o.a.a
 if(n.length===0)a.a=r+"  Terrain : pas d'ant\xe9c\xe9dents m\xe9dicaux notables.\n"
 else{a.a=r+"  Terrain :\n"
-for(r=n.split("\n"),n=r.length,k=0;k<n;++k){j=r[k]
-if(B.e.og(j).length!==0)a.a+="    - "+j+"\n"}}i=A.a([],q)
-if(e.af)i.push("tabagique")
-else i.push("non tabagique")
-if(e.E)i.push("alcoolique")
-else i.push("non alcoolique")
-r="  Habitudes : "+B.b.b8(i,c)+".\n"
+for(r=n.split("\n"),n=r.length,i=0;i<n;++i){h=r[i]
+if(B.e.og(h).length!==0)a.a+="    - "+h+"\n"}}g=A.a([],q)
+if(e.af)g.push("tabagique")
+else g.push("non tabagique")
+if(e.E)g.push("alcoolique")
+else g.push("non alcoolique")
+r="  Habitudes : "+B.b.b8(g,c)+".\n"
 r=a.a+=r
 q=e.H.a.a
 if(q.length!==0){r+="  Histoire de la maladie : "+q+"\n"
 a.a=r}q=e.V.a.a
-r=a.a=(q.length!==0?a.a=r+("  Reste de l'examen : "+q+"\n"):r)+"\n"
-q=e.ba
-if(q.a.a.length!==0||e.bo.length!==0){r=a.a=r+"Conduite \xe0 tenir :\n"
-n=e.bo
-h=n.length
-g=h===0
-if(!g)for(k=0;k<h;++k){r+="  - "+n[k]+"\n"
-a.a=r}q=q.a.a
-r=a.a=(q.length!==0&&g?a.a=r+("  "+q+"\n"):r)+"\n"}a.a=r+"Au total :\n"
+r=(q.length!==0?a.a=r+("  Reste de l'examen : "+q+"\n"):r)+"\n"
+a.a=r
+a.a=r+"Au total :\n"
 r=o.a.a
 if(r.length===0)f="sans ant\xe9c\xe9dents m\xe9dicaux notables"
 else f="aux ant\xe9c\xe9dents de "+A.aKm(r,"\n",c)
@@ -47139,7 +47139,7 @@ Qt(){var s=null,r=this.acy(),q=A.R(16),p=A.a([new A.aK(0,B.D,B.b4.N(0.3),B.bj,12
 o=A.a5(A.a([r,B.dH,A.Q(s,A.dQ(!1,B.V,!0,s,A.fJ(!1,A.R(16),!0,A.ch(A.a3(A.a([B.a_Q,B.a7,A.p("G\xe9n\xe9rer le Rapport",s,s,s,s,B.ajs,s,s)],o),B.k,B.aP,B.f,0),s,s),s,!0,s,s,s,s,s,s,s,s,this.gafX(),s,s,s,s,s,s,s),B.j,B.z,0,s,s,s,s,s,B.bw),B.j,s,s,new A.O(s,s,s,q,p,B.ul,B.l),s,56,s,s,s,s,1/0),B.dG],o),B.k,B.h,B.f)
 return A.lr(new A.CL(o,B.iU,this.w),s,B.C,B.P,s,B.a8)},
 acy(){var s=this
-return A.a5(new A.eF(A.a([new A.ii("Identit\xe9",B.Zo,s.ac_()),new A.ii("Contexte",B.k8,s.abK()),new A.ii("A - Voies A\xe9riennes",B.dx,s.abt()),new A.ii("B - Respiration",B.nN,s.abD()),new A.ii("C - Circulation",B.hO,s.abI()),new A.ii("D - Neurologie",B.k5,s.abM()),new A.ii("E - Exposition",B.tK,s.abS()),new A.ii("CAT",B.k3,s.abE())],t.aQ),t.tP).gdJ().ed(0,new A.ayO(s),t.l).eD(0),B.k,B.h,B.f)},
+return A.a5(new A.eF(A.a([new A.ii("Identit\xe9",B.Zo,s.ac_()),new A.ii("Contexte",B.k8,s.abK()),new A.ii("A - Voies A\xe9riennes",B.dx,s.abt()),new A.ii("B - Respiration",B.nN,s.abD()),new A.ii("C - Circulation",B.hO,s.abI()),new A.ii("D - Neurologie",B.k5,s.abM()),new A.ii("CAT",B.k3,s.abE()),new A.ii("E - Exposition",B.tK,s.abS())],t.aQ),t.tP).gdJ().ed(0,new A.ayO(s),t.l).eD(0),B.k,B.h,B.f)},
 abv(a,b){var s=this.c
 s.toString
 return A.GM(new A.axB(this,A.l(s).ax.a===B.x,b,a),B.dT,A.dn(0,300+b*80,0),new A.az(0,1,t.Y),t.i)},

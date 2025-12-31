@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.1-blue" alt="Version">
+  <img src="https://img.shields.io/badge/version-0.1.2-blue" alt="Version">
   <img src="https://img.shields.io/badge/flutter-3.x-02569B?logo=flutter" alt="Flutter">
   <img src="https://img.shields.io/badge/platforms-Web%20%7C%20Android%20%7C%20Windows-green" alt="Platforms">
   <img src="https://img.shields.io/badge/license-MIT-yellow" alt="License">
@@ -28,7 +28,7 @@
 
 **EMtools** est une application complète d'outils médicaux conçue pour les **urgentistes** et **réanimateurs**. Elle offre une suite d'outils cliniques pour faciliter la prise en charge des patients en situation d'urgence.
 
-> ⚠️ **Version Beta (v0.1.1)** - Cette application est en développement actif. Les retours sont les bienvenus !
+> ⚠️ **Version Beta (v0.1.2)** - Cette application est en développement actif. Les retours sont les bienvenus !
 
 ---
 
