@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 import '../../../../core/widgets/animated_widgets.dart';
 import '../../../../domain/entities/vasoactive.dart';
 import '../../../../data/datasources/vasoactive_data.dart';
@@ -120,13 +121,13 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
   String _getCategoryName(VasoactiveCategory category) {
     switch (category) {
       case VasoactiveCategory.vasopressor:
-        return 'Vasopresseurs';
+        return context.t('vasopressors');
       case VasoactiveCategory.inotrope:
-        return 'Inotropes';
+        return context.t('inotropes');
       case VasoactiveCategory.vasodilator:
-        return 'Vasodilatateurs';
+        return context.t('vasodilators');
       case VasoactiveCategory.mixed:
-        return 'Mixtes';
+        return context.t('mixedCategory');
     }
   }
 
@@ -335,7 +336,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
           sliver: SliverToBoxAdapter(
             child: GlassContainer(
               child: Text(
-                drug.description,
+                context.tr(drug.description),
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   height: 1.5,
                 ),
@@ -372,25 +373,25 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
           sliver: SliverToBoxAdapter(
-            child: _buildInfoSection('Indications', drug.indications, Icons.check_circle_outline, AppColors.success, isDark),
+            child: _buildInfoSection(context.t('indications'), context.trList(drug.indications), Icons.check_circle_outline, AppColors.success, isDark),
           ),
         ),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
           sliver: SliverToBoxAdapter(
-            child: _buildInfoSection('Effets indésirables', drug.sideEffects, Icons.warning_amber_rounded, AppColors.warning, isDark),
+            child: _buildInfoSection(context.t('sideEffects'), context.trList(drug.sideEffects), Icons.warning_amber_rounded, AppColors.warning, isDark),
           ),
         ),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
           sliver: SliverToBoxAdapter(
-            child: _buildInfoSection('Contre-indications', drug.contraindications, Icons.block_rounded, AppColors.error, isDark),
+            child: _buildInfoSection(context.t('contraindications'), context.trList(drug.contraindications), Icons.block_rounded, AppColors.error, isDark),
           ),
         ),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),
           sliver: SliverToBoxAdapter(
-            child: _buildInfoSection('Notes', drug.notes, Icons.info_outline_rounded, AppColors.info, isDark),
+            child: _buildInfoSection(context.t('notes'), context.trList(drug.notes), Icons.info_outline_rounded, AppColors.info, isDark),
           ),
         ),
       ],
@@ -409,7 +410,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _buildResultItem(
-            'Débit PSE',
+            context.t('pumpRate'),
             flowRate.toStringAsFixed(1),
             'mL/h',
             Icons.speed_rounded,
@@ -422,7 +423,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
             color: color.withValues(alpha: 0.25),
           ),
           _buildResultItem(
-            'Durée',
+            context.t('duration'),
             duration >= 1 
                 ? duration.toStringAsFixed(1) 
                 : (duration * 60).toStringAsFixed(0),
@@ -499,7 +500,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
               ),
               const SizedBox(width: 12),
               Text(
-                'Calculateur PSE',
+                context.t('pumpCalculator'),
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -592,7 +593,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Concentration / Préparation',
+          context.t('concentrationPreparation'),
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -644,7 +645,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  drug.concentrations[_selectedConcentrationIndex].commonPrep,
+                  context.tr(drug.concentrations[_selectedConcentrationIndex].commonPrep),
                   style: TextStyle(
                     fontSize: 12,
                     color: AppColors.info,
@@ -667,7 +668,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Dose',
+              context.t('doseLabel'),
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -714,7 +715,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
               style: TextStyle(fontSize: 12, color: isDark ? Colors.grey[500] : Colors.grey[600]),
             ),
             Text(
-              'Typique: ${drug.doseRange.typical}',
+              context.t('typicalDose').replaceAll('{0}', '${drug.doseRange.typical}'),
               style: TextStyle(fontSize: 12, color: color),
             ),
             Text(
@@ -732,7 +733,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Volume seringue',
+          context.t('syringeVolume'),
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -804,7 +805,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
               ),
               const SizedBox(width: 12),
               Text(
-                'Effets récepteurs',
+                context.t('receptorEffects'),
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

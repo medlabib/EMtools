@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../data/datasources/protocols_data.dart';
 import '../../../../domain/entities/protocol.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 import '../../../../core/theme/app_theme.dart';
 
 // Pediatric pink color for highlighting pediatric protocols
@@ -20,7 +21,7 @@ class ProtocolDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final protocol = allProtocols.firstWhere(
       (p) => p.id == protocolId,
-      orElse: () => throw Exception('Protocole non trouvé'),
+      orElse: () => throw Exception(context.t('protocolNotFound')),
     );
 
     return _ProtocolDetailContent(protocol: protocol);
@@ -139,7 +140,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    protocol.category.displayName,
+                                    context.tr(protocol.category.displayName),
                                     style: TextStyle(
                                       color: categoryColor,
                                       fontWeight: FontWeight.w600,
@@ -156,7 +157,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                                   color: _pediatricPink,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: const Row(
+                                child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
@@ -166,7 +167,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                                     ),
                                     SizedBox(width: 4),
                                     Text(
-                                      'Pédiatrie',
+                                      context.t('pediatricsBadge'),
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w500,
@@ -180,7 +181,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          protocol.name,
+                          context.tr(protocol.name),
                           style: theme.textTheme.headlineSmall?.copyWith(
                             color: AppColors.getTextPrimary(isDark),
                             fontWeight: FontWeight.w700,
@@ -188,7 +189,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          protocol.description,
+                          context.tr(protocol.description),
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: AppColors.getTextSecondary(isDark),
                           ),
@@ -218,34 +219,34 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                   }
                 },
                 itemBuilder: (context) => [
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'expand',
                     child: Row(
                       children: [
                         Icon(Icons.unfold_more),
                         SizedBox(width: 8),
-                        Text('Tout déplier'),
+                        Text(context.t('expandAll')),
                       ],
                     ),
                   ),
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'collapse',
                     child: Row(
                       children: [
                         Icon(Icons.unfold_less),
                         SizedBox(width: 8),
-                        Text('Tout replier'),
+                        Text(context.t('collapseAll')),
                       ],
                     ),
                   ),
                   if (_hasSourceUrl)
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'source',
                       child: Row(
                         children: [
                           Icon(Icons.open_in_new),
                           SizedBox(width: 8),
-                          Text('Voir la source'),
+                          Text(context.t('viewSource')),
                         ],
                       ),
                     ),
@@ -262,21 +263,21 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Indication card
-                  if (indication != null && indication.isNotEmpty)
+                  if (indication != null && indication.fr.isNotEmpty)
                     _buildInfoCard(
                       context,
-                      title: 'Indications',
-                      content: indication,
+                      title: context.t('indications'),
+                      content: context.tr(indication),
                       icon: Icons.check_circle_outline,
                       color: Colors.green,
                     ),
 
                   // Contraindication card
-                  if (contraindication != null && contraindication.isNotEmpty)
+                  if (contraindication != null && contraindication.fr.isNotEmpty)
                     _buildInfoCard(
                       context,
                       title: AppStrings.contraindications,
-                      content: contraindication,
+                      content: context.tr(contraindication),
                       icon: Icons.cancel_outlined,
                       color: Colors.red,
                     ),
@@ -288,13 +289,13 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Étapes du protocole',
+                        context.t('protocolSteps'),
                         style: theme.textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        '${protocol.steps.length} étapes',
+                        context.t('stepsCountLabel').replaceAll('{0}', '${protocol.steps.length}'),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -335,13 +336,13 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Key points
-                  if (keyPoints != null && keyPoints.isNotEmpty) ...[
+                  if (keyPoints != null && keyPoints.fr.isNotEmpty) ...[
                     const SizedBox(height: 16),
                     _buildKeyPointsCard(context, keyPoints, categoryColor),
                   ],
 
                   // Source info
-                  if (protocol.source.isNotEmpty) ...[
+                  if (protocol.source.fr.isNotEmpty) ...[
                     const SizedBox(height: 16),
                     _buildSourceCard(context, protocol),
                   ],
@@ -351,7 +352,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                     const SizedBox(height: 16),
                     Center(
                       child: Text(
-                        'Dernière mise à jour: $lastUpdated',
+                        context.t('lastUpdated').replaceAll('{0}', '$lastUpdated'),
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -465,7 +466,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        step.title,
+                        context.tr(step.title),
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -489,15 +490,15 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Main content
-                    if (step.content.isNotEmpty)
+                    if (step.content.fr.isNotEmpty)
                       Text(
-                        step.content,
+                        context.tr(step.content),
                         style: theme.textTheme.bodyMedium,
                       ),
 
                     // Bullet points
                     if (bulletPoints != null && bulletPoints.isNotEmpty) ...[
-                      if (step.content.isNotEmpty) const SizedBox(height: 12),
+                      if (step.content.fr.isNotEmpty) const SizedBox(height: 12),
                       ...bulletPoints.map((point) => Padding(
                             padding: const EdgeInsets.only(bottom: 8),
                             child: Row(
@@ -514,7 +515,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    point,
+                                    context.tr(point),
                                     style: theme.textTheme.bodyMedium,
                                   ),
                                 ),
@@ -524,7 +525,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                     ],
 
                     // Warning box
-                    if (warning != null && warning.isNotEmpty) ...[
+                    if (warning != null && warning.fr.isNotEmpty) ...[
                       const SizedBox(height: 12),
                       Container(
                         padding: const EdgeInsets.all(12),
@@ -546,7 +547,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                warning,
+                                context.tr(warning),
                                 style: theme.textTheme.bodyMedium?.copyWith(
                                   color: Colors.red.shade700,
                                 ),
@@ -558,7 +559,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                     ],
 
                     // Tip box
-                    if (tip != null && tip.isNotEmpty) ...[
+                    if (tip != null && tip.fr.isNotEmpty) ...[
                       const SizedBox(height: 12),
                       Container(
                         padding: const EdgeInsets.all(12),
@@ -580,7 +581,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                tip,
+                                context.tr(tip),
                                 style: theme.textTheme.bodyMedium?.copyWith(
                                   color: Colors.blue.shade700,
                                 ),
@@ -600,7 +601,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
     );
   }
 
-  Widget _buildKeyPointsCard(BuildContext context, String keyPoints, Color categoryColor) {
+  Widget _buildKeyPointsCard(BuildContext context, LString keyPoints, Color categoryColor) {
     final theme = Theme.of(context);
 
     return Card(
@@ -621,7 +622,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'Points clés',
+                  context.t('keyPointsSection'),
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -630,7 +631,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
             ),
             const SizedBox(height: 16),
             Text(
-              keyPoints,
+              context.tr(keyPoints),
               style: theme.textTheme.bodyMedium,
             ),
           ],
@@ -664,7 +665,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Source',
+                      context.t('sourceLabel'),
                       style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,
@@ -672,7 +673,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      protocol.source,
+                      context.tr(protocol.source),
                       style: theme.textTheme.bodyMedium,
                     ),
                   ],

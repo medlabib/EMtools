@@ -30,6 +30,18 @@ void main() {
         expect(drugIds, contains('atropine'));
         expect(drugIds, contains('lidocaine'));
       });
+
+      test('contains reversal agents', () {
+        final drugIds = SedationData.allDrugs.map((d) => d.id).toList();
+        expect(drugIds, contains('naloxone'));
+        expect(drugIds, contains('flumazenil'));
+        expect(drugIds, contains('sugammadex'));
+      });
+
+      test('contains dexmedetomidine', () {
+        final drugIds = SedationData.allDrugs.map((d) => d.id).toList();
+        expect(drugIds, contains('dexmedetomidine'));
+      });
     });
 
     group('Propofol Data', () {
@@ -91,16 +103,16 @@ void main() {
 
       test('lists hemodynamic stability as advantage', () {
         expect(
-          etomidate.advantages.any((a) => a.toLowerCase().contains('hémodynamique') || 
-                                          a.toLowerCase().contains('stabilit')),
+          etomidate.advantages.any((a) => a.fr.toLowerCase().contains('hémodynamique') || 
+                                          a.fr.toLowerCase().contains('stabilit')),
           true,
         );
       });
 
       test('mentions adrenal suppression in side effects', () {
         expect(
-          etomidate.sideEffects.any((s) => s.toLowerCase().contains('surrénalienne') ||
-                                           s.toLowerCase().contains('surrénal')),
+          etomidate.sideEffects.any((s) => s.fr.toLowerCase().contains('surrénalienne') ||
+                                           s.fr.toLowerCase().contains('surrénal')),
           true,
         );
       });
@@ -129,7 +141,7 @@ void main() {
 
       test('lists bronchodilation as advantage', () {
         expect(
-          ketamine.advantages.any((a) => a.toLowerCase().contains('bronchodilat')),
+          ketamine.advantages.any((a) => a.fr.toLowerCase().contains('bronchodilat')),
           true,
         );
       });
@@ -157,8 +169,8 @@ void main() {
       test('lists hyperthermia maligne in contraindications', () {
         expect(
           succinylcholine.contraindications.any(
-            (c) => c.toLowerCase().contains('hyperthermie') ||
-                   c.toLowerCase().contains('maligne'),
+            (c) => c.fr.toLowerCase().contains('hyperthermie') ||
+                   c.fr.toLowerCase().contains('maligne'),
           ),
           true,
         );
@@ -167,7 +179,7 @@ void main() {
       test('lists hyperkalemia in contraindications', () {
         expect(
           succinylcholine.contraindications.any(
-            (c) => c.toLowerCase().contains('hyperkali'),
+            (c) => c.fr.toLowerCase().contains('hyperkali'),
           ),
           true,
         );
@@ -191,7 +203,7 @@ void main() {
 
       test('mentions sugammadex for reversal', () {
         expect(
-          rocuronium.notes.any((n) => n.toLowerCase().contains('sugammadex')),
+          rocuronium.notes.any((n) => n.fr.toLowerCase().contains('sugammadex')),
           true,
         );
       });
@@ -224,7 +236,7 @@ void main() {
 
       test('mentions chest wall rigidity', () {
         expect(
-          fentanyl.sideEffects.any((s) => s.toLowerCase().contains('rigidité')),
+          fentanyl.sideEffects.any((s) => s.fr.toLowerCase().contains('rigidité')),
           true,
         );
       });
@@ -273,7 +285,7 @@ void main() {
         for (final drug in SedationData.allDrugs) {
           expect(drug.id, isNotEmpty, reason: 'Drug missing id');
           expect(drug.name, isNotEmpty, reason: '${drug.id} missing name');
-          expect(drug.drugClass, isNotEmpty, reason: '${drug.id} missing drugClass');
+          expect(drug.drugClass.fr, isNotEmpty, reason: '${drug.id} missing drugClass');
           expect(drug.role, isNotEmpty, reason: '${drug.id} missing role');
           expect(drug.sedationTypes, isNotEmpty, reason: '${drug.id} missing sedationTypes');
           expect(drug.standardDose, greaterThan(0), reason: '${drug.id} invalid dose');
@@ -287,7 +299,7 @@ void main() {
 
       test('all drugs have clinical information', () {
         for (final drug in SedationData.allDrugs) {
-          expect(drug.mechanism, isNotEmpty, reason: '${drug.id} missing mechanism');
+          expect(drug.mechanism.fr, isNotEmpty, reason: '${drug.id} missing mechanism');
           expect(drug.indications, isNotEmpty, reason: '${drug.id} missing indications');
           expect(drug.sideEffects, isNotEmpty, reason: '${drug.id} missing sideEffects');
         }

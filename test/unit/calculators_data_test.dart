@@ -11,9 +11,9 @@ void main() {
     test('each calculator should have required fields', () {
       for (final calc in allCalculators) {
         expect(calc.id, isNotEmpty, reason: 'Calculator should have id');
-        expect(calc.name, isNotEmpty, reason: 'Calculator ${calc.id} should have name');
+        expect(calc.name.fr, isNotEmpty, reason: 'Calculator ${calc.id} should have name');
         expect(calc.shortName, isNotEmpty, reason: 'Calculator ${calc.id} should have shortName');
-        expect(calc.description, isNotEmpty, reason: 'Calculator ${calc.id} should have description');
+        expect(calc.description.fr, isNotEmpty, reason: 'Calculator ${calc.id} should have description');
         expect(calc.fields, isNotEmpty, reason: 'Calculator ${calc.id} should have fields');
         expect(calc.calculate, isNotNull, reason: 'Calculator ${calc.id} should have calculate function');
         expect(calc.interpretations, isNotEmpty, reason: 'Calculator ${calc.id} should have interpretations');
@@ -24,7 +24,7 @@ void main() {
       for (final calc in allCalculators) {
         for (final field in calc.fields) {
           expect(field.id, isNotEmpty, reason: 'Field in ${calc.id} should have id');
-          expect(field.label, isNotEmpty, reason: 'Field ${field.id} in ${calc.id} should have label');
+          expect(field.label.fr, isNotEmpty, reason: 'Field ${field.id} in ${calc.id} should have label');
 
           if (field.type == CalculatorFieldType.select) {
             expect(field.options, isNotNull, reason: 'Select field ${field.id} should have options');
@@ -49,7 +49,7 @@ void main() {
         // Check that min <= max for each interpretation
         for (final interp in sorted) {
           expect(interp.min, lessThanOrEqualTo(interp.max),
-              reason: 'In ${calc.id}, interpretation ${interp.label} should have min <= max');
+              reason: 'In ${calc.id}, interpretation ${interp.label.fr} should have min <= max');
         }
       }
     });
@@ -90,14 +90,14 @@ void main() {
       final interp = gcs.interpretations.firstWhere(
         (i) => 15 >= i.min && 15 <= i.max,
       );
-      expect(interp.label, 'Normal');
+      expect(interp.label.fr, 'Normal');
     });
 
     test('interpretation for GCS 3-8 is Sévère', () {
       final interp = gcs.interpretations.firstWhere(
         (i) => 8 >= i.min && 8 <= i.max,
       );
-      expect(interp.label, 'Sévère');
+      expect(interp.label.fr, 'Sévère');
     });
   });
 
@@ -155,7 +155,7 @@ void main() {
         for (final field in calc.fields) {
           if (field.type == CalculatorFieldType.select && field.options != null) {
             for (final opt in field.options!) {
-              expect(opt.label, isNotEmpty);
+              expect(opt.label.fr, isNotEmpty);
               expect(opt.value, isNotNull);
             }
           }
@@ -199,8 +199,8 @@ void main() {
       for (final calc in allCalculators) {
         for (final interp in calc.interpretations) {
           expect(interp.color, isNotNull);
-          expect(interp.label, isNotEmpty);
-          expect(interp.description, isNotEmpty);
+          expect(interp.label.fr, isNotEmpty);
+          expect(interp.description.fr, isNotEmpty);
         }
       }
     });

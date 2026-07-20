@@ -99,13 +99,13 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
       case AntibioticClass.nitroimidazole:
         return AppStrings.nitroimidazoles;
       case AntibioticClass.oxazolidinone:
-        return 'Oxazolidinones';
+        return AppStrings.oxazolidinones;
       case AntibioticClass.lipopeptide:
-        return 'Lipopeptides';
+        return AppStrings.lipopeptides;
       case AntibioticClass.lincosamide:
-        return 'Lincosamides';
+        return AppStrings.lincosamides;
       case AntibioticClass.monobactam:
-        return 'Monobactames';
+        return AppStrings.monobactams;
       case AntibioticClass.other:
         return AppStrings.others;
     }
@@ -283,10 +283,10 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
         unselectedLabelColor: AppColors.getTextSecondary(isDark),
         indicatorColor: color,
         indicatorWeight: 3,
-        tabs: const [
-          Tab(icon: Icon(Icons.info_outline), text: 'Infos'),
-          Tab(icon: Icon(Icons.science_outlined), text: 'Dose Rénale'),
-          Tab(icon: Icon(Icons.warning_amber_outlined), text: 'Interactions'),
+        tabs: [
+          Tab(icon: const Icon(Icons.info_outline), text: context.t('infoTab')),
+          Tab(icon: const Icon(Icons.science_outlined), text: context.t('renalDoseTab')),
+          Tab(icon: const Icon(Icons.warning_amber_outlined), text: context.t('interactionsTab')),
         ],
       ),
     );
@@ -297,13 +297,13 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
         padding: const EdgeInsets.all(16),
         children: [
           _buildInfoCard(
-            title: 'Posologie Standard',
+            title: context.t('standardDosage'),
             icon: Icons.medical_services_outlined,
             color: color,
             children: [
-              _buildInfoRow('Adulte', '${_antibiotic.standardDose.adult} ${context.tr(_antibiotic.standardDose.frequency)}'),
+              _buildInfoRow(context.t('adult'), '${_antibiotic.standardDose.adult} ${context.tr(_antibiotic.standardDose.frequency)}'),
               if (_antibiotic.standardDose.duration != null)
-                _buildInfoRow('Durée', context.tr(_antibiotic.standardDose.duration!)),
+                _buildInfoRow(context.t('duration'), context.tr(_antibiotic.standardDose.duration!)),
             ],
           ),
           const SizedBox(height: 16),
@@ -338,11 +338,11 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
             ),
           const SizedBox(height: 16),
           _buildInfoCard(
-            title: 'Informations Complémentaires',
+            title: context.t('additionalInformation'),
             icon: Icons.article_outlined,
             color: AppColors.info,
             children: [
-              _buildInfoRow('Catégorie Grossesse', _antibiotic.pregnancyCategory),
+              _buildInfoRow(context.t('pregnancyCategoryLabel'), _antibiotic.pregnancyCategory),
             ],
           ),
           const SizedBox(height: 100),
@@ -486,7 +486,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                       Icon(Icons.tune, color: color),
                       const SizedBox(width: 12),
                       Text(
-                        'Calculateur DFG',
+                        context.t('gfrCalculator'),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -504,7 +504,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'DFG:',
+                            context.t('gfrLabel'),
                             style: TextStyle(
                               fontSize: 16,
                               color: AppColors.getTextSecondary(isDark),
@@ -521,7 +521,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'mL/min',
+                            context.t('mlPerMin'),
                             style: TextStyle(
                               fontSize: 14,
                               color: AppColors.getTextSecondary(isDark),
@@ -576,7 +576,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Dose Recommandée',
+                  context.t('recommendedDose'),
                   style: TextStyle(
                     color: AppColors.getTextSecondary(isDark),
                     fontSize: 14,
@@ -598,7 +598,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
           const SizedBox(height: 24),
           // Reference Table
           Text(
-            'Table de Référence',
+            context.t('referenceTable'),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

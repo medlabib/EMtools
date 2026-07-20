@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:emtools/data/datasources/vasoactive_data.dart';
 import 'package:emtools/domain/entities/vasoactive.dart';
+import 'package:emtools/core/l10n/localized.dart';
 
 void main() {
   group('VasoactiveData', () {
@@ -20,7 +21,7 @@ void main() {
         expect(drug.id, isNotEmpty, reason: 'Drug ID should not be empty');
         expect(drug.name, isNotEmpty, reason: 'Drug name should not be empty');
         expect(drug.genericName, isNotEmpty, reason: 'Generic name should not be empty');
-        expect(drug.description, isNotEmpty, reason: 'Description should not be empty');
+        expect(drug.description.fr, isNotEmpty, reason: 'Description should not be empty');
         expect(drug.concentrations, isNotEmpty, reason: '${drug.name} should have concentrations');
         expect(drug.indications, isNotEmpty, reason: '${drug.name} should have indications');
         expect(drug.notes, isNotEmpty, reason: '${drug.name} should have notes');
@@ -58,7 +59,7 @@ void main() {
             reason: '${drug.name} concentration ${conc.label} should have positive mg/mL');
           expect(conc.label, isNotEmpty,
             reason: '${drug.name} concentration should have label');
-          expect(conc.commonPrep, isNotEmpty,
+          expect(conc.commonPrep.fr, isNotEmpty,
             reason: '${drug.name} concentration should have common prep');
         }
       }
@@ -116,7 +117,7 @@ void main() {
 
     test('should include septic shock in indications', () {
       expect(
-        noradrenaline.indications.any((i) => i.toLowerCase().contains('septique')),
+        noradrenaline.indications.any((i) => i.fr.toLowerCase().contains('septique')),
         isTrue,
       );
     });
@@ -140,14 +141,14 @@ void main() {
 
     test('should include anaphylactic shock in indications', () {
       expect(
-        adrenaline.indications.any((i) => i.toLowerCase().contains('anaphylact')),
+        adrenaline.indications.any((i) => i.fr.toLowerCase().contains('anaphylact')),
         isTrue,
       );
     });
 
     test('should include cardiac arrest in indications', () {
       expect(
-        adrenaline.indications.any((i) => i.toLowerCase().contains('arrêt cardiaque')),
+        adrenaline.indications.any((i) => i.fr.toLowerCase().contains('arrêt cardiaque')),
         isTrue,
       );
     });
@@ -196,11 +197,11 @@ void main() {
       const conc = DrugConcentration(
         label: '0.5 mg/mL',
         mgPerMl: 0.5,
-        commonPrep: '8 mg in 16 mL',
+        commonPrep: LString('8 mg in 16 mL', '8 mg in 16 mL'),
       );
       expect(conc.label, '0.5 mg/mL');
       expect(conc.mgPerMl, 0.5);
-      expect(conc.commonPrep, '8 mg in 16 mL');
+      expect(conc.commonPrep.fr, '8 mg in 16 mL');
     });
   });
 

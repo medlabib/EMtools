@@ -128,6 +128,10 @@ const _en = <String, String>{
   'sulfonamides': 'Sulfonamides',
   'nitroimidazoles': 'Nitroimidazoles',
   'others': 'Others',
+  'oxazolidinones': 'Oxazolidinones',
+  'lipopeptides': 'Lipopeptides',
+  'lincosamides': 'Lincosamides',
+  'monobactams': 'Monobactams',
   'metabolic': 'Metabolic',
   'metabolicDesc': 'Metabolic calculations',
   'paste': 'Paste',
@@ -505,6 +509,189 @@ const _en = <String, String>{
   'reportWillAppear': 'The report will appear here',
   'airwayLabel': 'Airway',
   'abcdeSubtitle': 'Structured ABCDE Assessment',
+
+  // Antibiotic Detail
+  'infoTab': 'Information',
+  'renalDoseTab': 'Renal Dose',
+  'interactionsTab': 'Interactions',
+  'standardDosage': 'Standard Dosage',
+  'additionalInformation': 'Additional Information',
+  'pregnancyCategoryLabel': 'Pregnancy Category',
+  'gfrCalculator': 'GFR Calculator',
+  'gfrLabel': 'GFR:',
+  'recommendedDose': 'Recommended Dose',
+  'referenceTable': 'Reference Table',
+  'mlPerMin': 'mL/min',
+
+  // Blood Gas UI
+  'completeAnalysis': 'Complete analysis with ventilation',
+  'calculatedParameters': 'Calculated Parameters',
+  'vtPerKgPBW': 'Vt/kg PBW',
+  'drivingPressureMetric': 'Driving Pressure',
+  'caO2': 'CaO₂',
+  'bloodGasSection': 'Blood Gas',
+  'biochemistrySection': 'Biochemistry',
+  'albumin': 'Albumin',
+  'ventilatorSection': 'Ventilator',
+  'vt': 'Vt',
+  'respiratoryRateLabel': 'RR',
+  'peep': 'PEEP',
+  'pplat': 'Pplat',
+  'ppeak': 'Ppeak',
+  'referencesFormulas': 'References & Formulas',
+  'winterFormula': "Winter's Formula",
+  'aaGradientRef': 'A-a Gradient',
+  'pfRatioBerlin': 'P/F Ratio (Berlin 2012)',
+  'arterialO2Content': 'Arterial O2 Content',
+  'adrogueMadiasFormula': "Adrogue-Madias Formula",
+  'pbwFormula': 'PBW (Ideal Body Weight)',
+  'disclaimerTool': '⚠️ This tool is for informational purposes only. Clinical decisions must always be based on medical judgment.',
+
+  // RCP Timer
+  'unknownRhythm': 'Unknown',
+  'vfPulselessVt': 'VF/Pulseless VT',
+  'asystoleRhythm': 'Asystole',
+  'peaRhythm': 'PEA',
+  'roscRhythm': 'ROSC',
+  'cprStarted': 'CPR started',
+  'cprPaused': 'CPR paused',
+  'adrenalineAdministered': 'Adrenaline administered ({0}mg total)',
+  'shockDelivered': 'Shock #{0}',
+  'amiodaroneAdministered': 'Amiodarone administered',
+  'rhythmRecorded': 'Rhythm: {0}',
+  'cycleCompleteMsg': 'Cycle {0} complete - Check rhythm!',
+  'adrenalineNow': 'Adrenaline 1mg IV/IO now!',
+  'cprSettings': 'CPR Settings',
+  'adrenalineInterval': 'Adrenaline Interval',
+  'recommendationRhythm': 'Recommendation: 3–5 min depending on rhythm',
+  'metronomeSizeLabel': 'Metronome Size',
+  'vibrationLabel': 'Vibration',
+  'hapticFeedbackDesc': 'Haptic feedback for alerts',
+  'soundLabel': 'Sound',
+  'soundAlertsDesc': 'Audible alerts (coming soon)',
+  'cprTimerTitle': 'CPR Timer',
+  'historyLabel': 'History',
+  'cprInProgress': 'CPR IN PROGRESS',
+  'totalTime': 'Total Time',
+  'cycleLabel': 'Cycle',
+  'secondsRemaining': '{0}s remaining',
+  'adrenalineLabel': 'Adrenaline',
+  'nowExcl': 'NOW!',
+  'totalMg': 'Total: {0} mg',
+  'metronomeCompressions': 'Compression Metronome',
+  'targetRate': 'Target: 100–120/min',
+  'compressionsCount': 'Compressions: {0}',
+  'cardiacRhythm': 'Cardiac Rhythm',
+  'shockableRhythmMsg': 'Shockable rhythm — Defibrillation indicated',
+  'done': 'DONE',
+  'roscPostArrest': 'ROSC — Post-cardiac arrest care',
+  'quickActions': 'Quick Actions',
+  'shocksCount': '{0} shocks',
+  'shockAction': 'Shock ({0})',
+  'amiodaroneLabel': 'Amiodarone',
+  'pauseLabel': 'PAUSE',
+  'startLabel': 'START',
+  'eventHistory': 'Event History',
+
+  // Protocol Detail
+  'protocolNotFound': 'Protocol not found',
+  'pediatricsBadge': 'Pediatrics',
+  'expandAll': 'Expand all',
+  'collapseAll': 'Collapse all',
+  'viewSource': 'View source',
+  'keyPointsSection': 'Key Points',
+  'sourceLabel': 'Source',
+  'protocolSteps': 'Protocol Steps',
+  'lastUpdated': 'Last updated: {0}',
+  'stepsCountLabel': '{0} steps',
+
+  // Settings
+  'appDisclaimer': '⚠️ This application is a decision-support tool and does not replace clinical judgment.',
+
+  // Vasoactive
+  'vasopressors': 'Vasopressors',
+  'inotropes': 'Inotropes',
+  'vasodilators': 'Vasodilators',
+  'mixedCategory': 'Mixed',
+  'pumpRate': 'Pump Rate',
+  'pumpCalculator': 'Pump Calculator',
+  'concentrationPreparation': 'Concentration / Preparation',
+  'doseLabel': 'Dose',
+  'typicalDose': 'Typical: {0}',
+  'uiPerMin': 'UI/min',
+  'syringeVolume': 'Syringe Volume',
+  'receptorEffects': 'Receptor Effects',
+
+  // Metabolic
+  'metabolicDisorders': 'Metabolic Disorders',
+  'metabolicSubtitle': 'Sodium • Potassium • Calcium',
+  'sodiumTab': 'Sodium',
+  'potassiumTab': 'Potassium',
+  'calciumTab': 'Calcium',
+  'sodiumParameters': 'Sodium Parameters',
+  'hyponatremia': 'Hyponatremia',
+  'hypernatremia': 'Hypernatremia',
+  'currentNa': 'Current Na (mEq/L)',
+  'targetNa': 'Target Na (mEq/L)',
+  'correctionMode': 'Correction Mode',
+  'chronic': 'Chronic (>48h)',
+  'acute': 'Acute (<48h)',
+  'soluteSelection': 'Solution Selection',
+  'soluteA': 'Solute A',
+  'soluteB': 'Solute B',
+  'infusionRates': 'Infusion Rates',
+  'totalFlowRate': 'Total Flow Rate',
+  'predictedVariation': 'Predicted Variation',
+  'detailLabel': 'Details',
+  'totalBodyWater': 'Total Body Water',
+  'freeWaterDeficit': 'Free Water Deficit',
+  'sodiumDeficitLabel': 'Sodium Deficit',
+  'kaliemia': 'Kalemia',
+  'potassiumLevel': 'Potassium (mEq/L)',
+  'ecgFindings': 'ECG Findings',
+  'typicallySeenK': 'Typically seen if K > {0}',
+  'recommendedTreatments': 'Recommended Treatments',
+  'calcemia': 'Calcemia',
+  'calciumTotal': 'Total Calcium (mg/dL)',
+  'albuminLabel': 'Albumin (g/dL)',
+  'correctedCalcium': 'Corrected Calcium',
+  'formulaLabel': 'Formula',
+  'calciumFormula': 'Corrected Ca = Total Ca + 0.8 × (4 - Albumin)',
+  'normalValuesRange': 'Normal values: 8.5 - 10.5 mg/dL',
+  'criticalStatus': 'Critical',
+  'elevatedStatus': 'Elevated',
+  'lowStatus': 'Low',
+  'normalStatus': 'Normal',
+  'hypocalcemiaSevere': 'Severe Hypocalcemia',
+  'hypocalcemia': 'Hypocalcemia',
+  'hypercalcemiaSevere': 'Severe Hypercalcemia',
+  'hypercalcemia': 'Hypercalcemia',
+  'urgencyImmediate': 'Immediate',
+  'urgencyUrgent': 'Urgent',
+  'urgencyAdjunct': 'Adjunct',
+  'urgencyDefinitive': 'Definitive',
+  'naRateRecoHypoAcute': '1-2 mEq/L/h (max 8-10 mEq/L/24h)',
+  'naRateRecoHypoChronic': '≤0.5 mEq/L/h (max 8 mEq/L/24h)',
+  'naRateRecoHyperAcute': '1-2 mEq/L/h (max 12 mEq/L/24h)',
+  'naRateRecoHyperChronic': '≤0.5 mEq/L/h (max 10-12 mEq/L/24h)',
+  'naRateWarningHypoAcute': 'Rapid correction acceptable if onset <48h',
+  'naRateWarningHypoChronic': '⚠️ Risk of central pontine myelinolysis if correction too rapid',
+  'naRateWarningHyperAcute': 'Rapid correction possible if onset <24h',
+  'naRateWarningHyperChronic': '⚠️ Risk of cerebral edema if correction too rapid',
+  'naSafeMarginHypoAcute': '✓ Safe: ≤10 mEq/L in 24h, ≤18 mEq/L in 48h',
+  'naSafeMarginHypoChronic': '✓ Safe: ≤8 mEq/L in 24h (10-12 if Na<120 + symptoms)',
+  'naSafeMarginHyperAcute': '✓ Safe: ≤12 mEq/L in 24h (if acute)',
+  'naSafeMarginHyperChronic': '✓ Safe: ≤10 mEq/L in 24h (chronic)',
+  'naDangerMarginHypoAcute': '⚠️ ODS Danger: >10-12 mEq/L in 24h',
+  'naDangerMarginHypoChronic': '⚠️ ODS Danger: >8 mEq/L in 24h if chronic',
+  'naDangerMarginHyperAcute': '⚠️ Danger: Cerebral edema if >12 mEq/L/24h',
+  'naDangerMarginHyperChronic': '⚠️ Danger: Cerebral edema if >12 mEq/L/24h',
+  'soluteATotalLabel': 'Solute A ({0})',
+  'soluteBTotalLabel': 'Solute B ({0})',
+  'correctionRateTitle': 'Recommended Rate ({0})',
+
+  // Sedation
+  'newborn': 'Newborn',
 };
 
 const _fr = <String, String>{
@@ -633,6 +820,10 @@ const _fr = <String, String>{
   'sulfonamides': 'Sulfamides',
   'nitroimidazoles': 'Nitroimidazoles',
   'others': 'Autres',
+  'oxazolidinones': 'Oxazolidinones',
+  'lipopeptides': 'Lipopeptides',
+  'lincosamides': 'Lincosamides',
+  'monobactams': 'Monobactames',
   'metabolic': 'Métabolique',
   'metabolicDesc': 'Calculs métaboliques',
   'paste': 'Paste',
@@ -1010,6 +1201,189 @@ const _fr = <String, String>{
   'reportWillAppear': 'Le rapport apparaîtra ici',
   'airwayLabel': 'Voies Aériennes',
   'abcdeSubtitle': 'Évaluation ABCDE structurée',
+
+  // Antibiotic Detail
+  'infoTab': 'Infos',
+  'renalDoseTab': 'Dose Rénale',
+  'interactionsTab': 'Interactions',
+  'standardDosage': 'Posologie Standard',
+  'additionalInformation': 'Informations Complémentaires',
+  'pregnancyCategoryLabel': 'Catégorie Grossesse',
+  'gfrCalculator': 'Calculateur DFG',
+  'gfrLabel': 'DFG:',
+  'recommendedDose': 'Dose Recommandée',
+  'referenceTable': 'Table de Référence',
+  'mlPerMin': 'mL/min',
+
+  // Blood Gas UI
+  'completeAnalysis': 'Analyse complète avec ventilation',
+  'calculatedParameters': 'Paramètres calculés',
+  'vtPerKgPBW': 'Vt/kg PBW',
+  'drivingPressureMetric': 'Driving Pressure',
+  'caO2': 'CaO₂',
+  'bloodGasSection': 'Gazométrie',
+  'biochemistrySection': 'Biochemistry',
+  'albumin': 'Albumine',
+  'ventilatorSection': 'Ventilator',
+  'vt': 'Vt',
+  'respiratoryRateLabel': 'FR',
+  'peep': 'PEEP',
+  'pplat': 'Pplat',
+  'ppeak': 'Ppeak',
+  'referencesFormulas': 'Références & Formules',
+  'winterFormula': 'Formule de Winter',
+  'aaGradientRef': 'Gradient A-a',
+  'pfRatioBerlin': 'Rapport P/F (Berlin 2012)',
+  'arterialO2Content': 'Contenu artériel en O2',
+  'adrogueMadiasFormula': "Formule d'Adrogue-Madias",
+  'pbwFormula': 'PBW (Poids Idéal)',
+  'disclaimerTool': '⚠️ Cet outil est fourni à titre informatif uniquement. La décision clinique finale doit toujours être basée sur le jugement médical.',
+
+  // RCP Timer
+  'unknownRhythm': 'Inconnu',
+  'vfPulselessVt': 'FV/TV sans pouls',
+  'asystoleRhythm': 'Asystolie',
+  'peaRhythm': 'AESP',
+  'roscRhythm': 'ROSC',
+  'cprStarted': 'RCP démarrée',
+  'cprPaused': 'RCP en pause',
+  'adrenalineAdministered': 'Adrénaline administrée ({0}mg total)',
+  'shockDelivered': 'Choc électrique n°{0}',
+  'amiodaroneAdministered': 'Amiodarone administrée',
+  'rhythmRecorded': 'Rythme: {0}',
+  'cycleCompleteMsg': 'Cycle {0} terminé - Vérifier le rythme!',
+  'adrenalineNow': 'Adrénaline 1mg IV/IO maintenant!',
+  'cprSettings': 'Paramètres RCP',
+  'adrenalineInterval': 'Intervalle Adrénaline',
+  'recommendationRhythm': 'Recommandation: 3–5 min selon le rythme',
+  'metronomeSizeLabel': 'Taille du Métronome',
+  'vibrationLabel': 'Vibration',
+  'hapticFeedbackDesc': 'Retour haptique pour les alertes',
+  'soundLabel': 'Son',
+  'soundAlertsDesc': 'Alertes sonores (à venir)',
+  'cprTimerTitle': 'Chronomètre RCP',
+  'historyLabel': 'Historique',
+  'cprInProgress': 'RCP EN COURS',
+  'totalTime': 'Temps Total',
+  'cycleLabel': 'Cycle',
+  'secondsRemaining': '{0}s restantes',
+  'adrenalineLabel': 'Adrénaline',
+  'nowExcl': 'MAINTENANT!',
+  'totalMg': 'Total: {0} mg',
+  'metronomeCompressions': 'Métronome Compressions',
+  'targetRate': 'Objectif: 100–120/min',
+  'compressionsCount': 'Compressions: {0}',
+  'cardiacRhythm': 'Rythme cardiaque',
+  'shockableRhythmMsg': 'Rythme choquable — Défibrillation indiquée',
+  'done': 'FAIT',
+  'roscPostArrest': 'ROSC — Soins post-arrêt cardiaque',
+  'quickActions': 'Actions rapides',
+  'shocksCount': '{0} chocs',
+  'shockAction': 'Choc ({0})',
+  'amiodaroneLabel': 'Amiodarone',
+  'pauseLabel': 'PAUSE',
+  'startLabel': 'DÉMARRER',
+  'eventHistory': 'Historique des événements',
+
+  // Protocol Detail
+  'protocolNotFound': 'Protocole non trouvé',
+  'pediatricsBadge': 'Pédiatrie',
+  'expandAll': 'Tout déplier',
+  'collapseAll': 'Tout replier',
+  'viewSource': 'Voir la source',
+  'keyPointsSection': 'Points clés',
+  'sourceLabel': 'Source',
+  'protocolSteps': 'Étapes du protocole',
+  'lastUpdated': 'Dernière mise à jour: {0}',
+  'stepsCountLabel': '{0} étapes',
+
+  // Settings
+  'appDisclaimer': '⚠️ Cette application est un outil d\'aide à la décision et ne remplace pas le jugement clinique.',
+
+  // Vasoactive
+  'vasopressors': 'Vasopresseurs',
+  'inotropes': 'Inotropes',
+  'vasodilators': 'Vasodilatateurs',
+  'mixedCategory': 'Mixtes',
+  'pumpRate': 'Débit PSE',
+  'pumpCalculator': 'Calculateur PSE',
+  'concentrationPreparation': 'Concentration / Préparation',
+  'doseLabel': 'Dose',
+  'typicalDose': 'Typique: {0}',
+  'uiPerMin': 'UI/min',
+  'syringeVolume': 'Volume seringue',
+  'receptorEffects': 'Effets récepteurs',
+
+  // Metabolic
+  'metabolicDisorders': 'Troubles Métaboliques',
+  'metabolicSubtitle': 'Sodium • Potassium • Calcium',
+  'sodiumTab': 'Sodium',
+  'potassiumTab': 'Potassium',
+  'calciumTab': 'Calcium',
+  'sodiumParameters': 'Paramètres Sodiques',
+  'hyponatremia': 'Hyponatrémie',
+  'hypernatremia': 'Hypernatrémie',
+  'currentNa': 'Na Actuel (mEq/L)',
+  'targetNa': 'Na Cible (mEq/L)',
+  'correctionMode': 'Mode de Correction',
+  'chronic': 'Chronique (>48h)',
+  'acute': 'Aigu (<48h)',
+  'soluteSelection': 'Sélection des Solutés',
+  'soluteA': 'Soluté A',
+  'soluteB': 'Soluté B',
+  'infusionRates': 'Débits de Perfusion',
+  'totalFlowRate': 'Débit Total',
+  'predictedVariation': 'Variation Prédite',
+  'detailLabel': 'Détails',
+  'totalBodyWater': 'Eau Corporelle Totale',
+  'freeWaterDeficit': 'Déficit en Eau Libre',
+  'sodiumDeficitLabel': 'Déficit en Sodium',
+  'kaliemia': 'Kaliémie',
+  'potassiumLevel': 'Potassium (mEq/L)',
+  'ecgFindings': 'Signes ECG',
+  'typicallySeenK': 'Typiquement vu si K > {0}',
+  'recommendedTreatments': 'Traitements Recommandés',
+  'calcemia': 'Calcémie',
+  'calciumTotal': 'Calcium Total (mg/dL)',
+  'albuminLabel': 'Albumine (g/dL)',
+  'correctedCalcium': 'Calcium Corrigé',
+  'formulaLabel': 'Formule',
+  'calciumFormula': 'Ca corrigé = Ca total + 0.8 × (4 - Albumine)',
+  'normalValuesRange': 'Valeurs normales: 8.5 - 10.5 mg/dL',
+  'criticalStatus': 'Critique',
+  'elevatedStatus': 'Élevé',
+  'lowStatus': 'Bas',
+  'normalStatus': 'Normal',
+  'hypocalcemiaSevere': 'Hypocalcémie sévère',
+  'hypocalcemia': 'Hypocalcémie',
+  'hypercalcemiaSevere': 'Hypercalcémie sévère',
+  'hypercalcemia': 'Hypercalcémie',
+  'urgencyImmediate': 'Immédiat',
+  'urgencyUrgent': 'Urgent',
+  'urgencyAdjunct': 'Adjuvant',
+  'urgencyDefinitive': 'Définitif',
+  'naRateRecoHypoAcute': '1-2 mEq/L/h (max 8-10 mEq/L/24h)',
+  'naRateRecoHypoChronic': '≤0.5 mEq/L/h (max 8 mEq/L/24h)',
+  'naRateRecoHyperAcute': '1-2 mEq/L/h (max 12 mEq/L/24h)',
+  'naRateRecoHyperChronic': '≤0.5 mEq/L/h (max 10-12 mEq/L/24h)',
+  'naRateWarningHypoAcute': 'Correction rapide acceptable si installation <48h',
+  'naRateWarningHypoChronic': '⚠️ Risque de myélinolyse centro-pontine si correction trop rapide',
+  'naRateWarningHyperAcute': 'Correction rapide possible si installation <24h',
+  'naRateWarningHyperChronic': '⚠️ Risque d\'œdème cérébral si correction trop rapide',
+  'naSafeMarginHypoAcute': '✓ Sûr: ≤10 mEq/L en 24h, ≤18 mEq/L en 48h',
+  'naSafeMarginHypoChronic': '✓ Sûr: ≤8 mEq/L en 24h (10-12 si Na<120 + symptômes)',
+  'naSafeMarginHyperAcute': '✓ Sûr: ≤12 mEq/L en 24h (si aigu)',
+  'naSafeMarginHyperChronic': '✓ Sûr: ≤10 mEq/L en 24h (chronique)',
+  'naDangerMarginHypoAcute': '⚠️ Danger ODS: >10-12 mEq/L en 24h',
+  'naDangerMarginHypoChronic': '⚠️ Danger ODS: >8 mEq/L en 24h si chronique',
+  'naDangerMarginHyperAcute': '⚠️ Danger: Œdème cérébral si >12 mEq/L/24h',
+  'naDangerMarginHyperChronic': '⚠️ Danger: Œdème cérébral si >12 mEq/L/24h',
+  'soluteATotalLabel': 'Soluté A ({0})',
+  'soluteBTotalLabel': 'Soluté B ({0})',
+  'correctionRateTitle': 'Vitesse Recommandée ({0})',
+
+  // Sedation
+  'newborn': 'Nouveau-né',
 };
 
 final locProvider = Provider<Map<String, String>>((ref) {
@@ -1478,4 +1852,175 @@ class AppStrings {
   static String get favoritesCount => _t('favoritesCount');
   static String get totalLabel => _t('totalLabel');
   static String get patientWeightLabel => _t('patientWeightLabel');
+  static String get infoTab => _t('infoTab');
+  static String get renalDoseTab => _t('renalDoseTab');
+  static String get interactionsTab => _t('interactionsTab');
+  static String get standardDosage => _t('standardDosage');
+  static String get additionalInformation => _t('additionalInformation');
+  static String get pregnancyCategoryLabel => _t('pregnancyCategoryLabel');
+  static String get gfrCalculator => _t('gfrCalculator');
+  static String get gfrLabel => _t('gfrLabel');
+  static String get recommendedDose => _t('recommendedDose');
+  static String get referenceTable => _t('referenceTable');
+  static String get mlPerMin => _t('mlPerMin');
+  static String get oxazolidinones => _t('oxazolidinones');
+  static String get lipopeptides => _t('lipopeptides');
+  static String get lincosamides => _t('lincosamides');
+  static String get monobactams => _t('monobactams');
+  static String get completeAnalysis => _t('completeAnalysis');
+  static String get calculatedParameters => _t('calculatedParameters');
+  static String get vtPerKgPBW => _t('vtPerKgPBW');
+  static String get drivingPressureMetric => _t('drivingPressureMetric');
+  static String get caO2 => _t('caO2');
+  static String get bloodGasSection => _t('bloodGasSection');
+  static String get biochemistrySection => _t('biochemistrySection');
+  static String get albumin => _t('albumin');
+  static String get ventilatorSection => _t('ventilatorSection');
+  static String get vt => _t('vt');
+  static String get respiratoryRateLabel => _t('respiratoryRateLabel');
+  static String get peep => _t('peep');
+  static String get pplat => _t('pplat');
+  static String get ppeak => _t('ppeak');
+  static String get referencesFormulas => _t('referencesFormulas');
+  static String get winterFormula => _t('winterFormula');
+  static String get aaGradientRef => _t('aaGradientRef');
+  static String get pfRatioBerlin => _t('pfRatioBerlin');
+  static String get arterialO2Content => _t('arterialO2Content');
+  static String get adrogueMadiasFormula => _t('adrogueMadiasFormula');
+  static String get pbwFormula => _t('pbwFormula');
+  static String get disclaimerTool => _t('disclaimerTool');
+  static String get unknownRhythm => _t('unknownRhythm');
+  static String get vfPulselessVt => _t('vfPulselessVt');
+  static String get asystoleRhythm => _t('asystoleRhythm');
+  static String get peaRhythm => _t('peaRhythm');
+  static String get roscRhythm => _t('roscRhythm');
+  static String get cprStarted => _t('cprStarted');
+  static String get cprPaused => _t('cprPaused');
+  static String get adrenalineAdministered => _t('adrenalineAdministered');
+  static String get shockDelivered => _t('shockDelivered');
+  static String get amiodaroneAdministered => _t('amiodaroneAdministered');
+  static String get rhythmRecorded => _t('rhythmRecorded');
+  static String get cycleCompleteMsg => _t('cycleCompleteMsg');
+  static String get adrenalineNow => _t('adrenalineNow');
+  static String get cprSettings => _t('cprSettings');
+  static String get adrenalineInterval => _t('adrenalineInterval');
+  static String get recommendationRhythm => _t('recommendationRhythm');
+  static String get metronomeSizeLabel => _t('metronomeSizeLabel');
+  static String get vibrationLabel => _t('vibrationLabel');
+  static String get hapticFeedbackDesc => _t('hapticFeedbackDesc');
+  static String get soundLabel => _t('soundLabel');
+  static String get soundAlertsDesc => _t('soundAlertsDesc');
+  static String get cprTimerTitle => _t('cprTimerTitle');
+  static String get historyLabel => _t('historyLabel');
+  static String get cprInProgress => _t('cprInProgress');
+  static String get totalTime => _t('totalTime');
+  static String get cycleLabel => _t('cycleLabel');
+  static String get secondsRemaining => _t('secondsRemaining');
+  static String get adrenalineLabel => _t('adrenalineLabel');
+  static String get nowExcl => _t('nowExcl');
+  static String get totalMg => _t('totalMg');
+  static String get metronomeCompressions => _t('metronomeCompressions');
+  static String get targetRate => _t('targetRate');
+  static String get compressionsCount => _t('compressionsCount');
+  static String get cardiacRhythm => _t('cardiacRhythm');
+  static String get shockableRhythmMsg => _t('shockableRhythmMsg');
+  static String get done => _t('done');
+  static String get roscPostArrest => _t('roscPostArrest');
+  static String get quickActions => _t('quickActions');
+  static String get shocksCount => _t('shocksCount');
+  static String get shockAction => _t('shockAction');
+  static String get amiodaroneLabel => _t('amiodaroneLabel');
+  static String get pauseLabel => _t('pauseLabel');
+  static String get startLabel => _t('startLabel');
+  static String get eventHistory => _t('eventHistory');
+  static String get protocolNotFound => _t('protocolNotFound');
+  static String get pediatricsBadge => _t('pediatricsBadge');
+  static String get expandAll => _t('expandAll');
+  static String get collapseAll => _t('collapseAll');
+  static String get viewSource => _t('viewSource');
+  static String get keyPointsSection => _t('keyPointsSection');
+  static String get sourceLabel => _t('sourceLabel');
+  static String get protocolSteps => _t('protocolSteps');
+  static String get lastUpdated => _t('lastUpdated');
+  static String get stepsCountLabel => _t('stepsCountLabel');
+  static String get appDisclaimer => _t('appDisclaimer');
+  static String get vasopressors => _t('vasopressors');
+  static String get inotropes => _t('inotropes');
+  static String get vasodilators => _t('vasodilators');
+  static String get mixedCategory => _t('mixedCategory');
+  static String get pumpRate => _t('pumpRate');
+  static String get pumpCalculator => _t('pumpCalculator');
+  static String get concentrationPreparation => _t('concentrationPreparation');
+  static String get doseLabel => _t('doseLabel');
+  static String get typicalDose => _t('typicalDose');
+  static String get uiPerMin => _t('uiPerMin');
+  static String get syringeVolume => _t('syringeVolume');
+  static String get receptorEffects => _t('receptorEffects');
+  static String get metabolicDisorders => _t('metabolicDisorders');
+  static String get metabolicSubtitle => _t('metabolicSubtitle');
+  static String get sodiumTab => _t('sodiumTab');
+  static String get potassiumTab => _t('potassiumTab');
+  static String get calciumTab => _t('calciumTab');
+  static String get sodiumParameters => _t('sodiumParameters');
+  static String get hyponatremia => _t('hyponatremia');
+  static String get hypernatremia => _t('hypernatremia');
+  static String get currentNa => _t('currentNa');
+  static String get targetNa => _t('targetNa');
+  static String get correctionMode => _t('correctionMode');
+  static String get chronic => _t('chronic');
+  static String get acute => _t('acute');
+  static String get soluteSelection => _t('soluteSelection');
+  static String get soluteA => _t('soluteA');
+  static String get soluteB => _t('soluteB');
+  static String get infusionRates => _t('infusionRates');
+  static String get totalFlowRate => _t('totalFlowRate');
+  static String get predictedVariation => _t('predictedVariation');
+  static String get detailLabel => _t('detailLabel');
+  static String get totalBodyWater => _t('totalBodyWater');
+  static String get freeWaterDeficit => _t('freeWaterDeficit');
+  static String get sodiumDeficitLabel => _t('sodiumDeficitLabel');
+  static String get kaliemia => _t('kaliemia');
+  static String get potassiumLevel => _t('potassiumLevel');
+  static String get ecgFindings => _t('ecgFindings');
+  static String get typicallySeenK => _t('typicallySeenK');
+  static String get recommendedTreatments => _t('recommendedTreatments');
+  static String get calcemia => _t('calcemia');
+  static String get calciumTotal => _t('calciumTotal');
+  static String get albuminLabel => _t('albuminLabel');
+  static String get correctedCalcium => _t('correctedCalcium');
+  static String get formulaLabel => _t('formulaLabel');
+  static String get calciumFormula => _t('calciumFormula');
+  static String get normalValuesRange => _t('normalValuesRange');
+  static String get criticalStatus => _t('criticalStatus');
+  static String get elevatedStatus => _t('elevatedStatus');
+  static String get lowStatus => _t('lowStatus');
+  static String get normalStatus => _t('normalStatus');
+  static String get hypocalcemiaSevere => _t('hypocalcemiaSevere');
+  static String get hypocalcemia => _t('hypocalcemia');
+  static String get hypercalcemiaSevere => _t('hypercalcemiaSevere');
+  static String get hypercalcemia => _t('hypercalcemia');
+  static String get urgencyImmediate => _t('urgencyImmediate');
+  static String get urgencyUrgent => _t('urgencyUrgent');
+  static String get urgencyAdjunct => _t('urgencyAdjunct');
+  static String get urgencyDefinitive => _t('urgencyDefinitive');
+  static String get naRateRecoHypoAcute => _t('naRateRecoHypoAcute');
+  static String get naRateRecoHypoChronic => _t('naRateRecoHypoChronic');
+  static String get naRateRecoHyperAcute => _t('naRateRecoHyperAcute');
+  static String get naRateRecoHyperChronic => _t('naRateRecoHyperChronic');
+  static String get naRateWarningHypoAcute => _t('naRateWarningHypoAcute');
+  static String get naRateWarningHypoChronic => _t('naRateWarningHypoChronic');
+  static String get naRateWarningHyperAcute => _t('naRateWarningHyperAcute');
+  static String get naRateWarningHyperChronic => _t('naRateWarningHyperChronic');
+  static String get naSafeMarginHypoAcute => _t('naSafeMarginHypoAcute');
+  static String get naSafeMarginHypoChronic => _t('naSafeMarginHypoChronic');
+  static String get naSafeMarginHyperAcute => _t('naSafeMarginHyperAcute');
+  static String get naSafeMarginHyperChronic => _t('naSafeMarginHyperChronic');
+  static String get naDangerMarginHypoAcute => _t('naDangerMarginHypoAcute');
+  static String get naDangerMarginHypoChronic => _t('naDangerMarginHypoChronic');
+  static String get naDangerMarginHyperAcute => _t('naDangerMarginHyperAcute');
+  static String get naDangerMarginHyperChronic => _t('naDangerMarginHyperChronic');
+  static String get soluteATotalLabel => _t('soluteATotalLabel');
+  static String get soluteBTotalLabel => _t('soluteBTotalLabel');
+  static String get correctionRateTitle => _t('correctionRateTitle');
+  static String get newborn => _t('newborn');
 }

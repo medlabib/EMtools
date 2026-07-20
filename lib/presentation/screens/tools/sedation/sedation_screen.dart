@@ -3,6 +3,7 @@ import '../../../../domain/entities/sedation.dart';
 import '../../../../data/datasources/sedation_data.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 
 class SedationScreen extends StatefulWidget {
   const SedationScreen({super.key});
@@ -55,7 +56,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   String _getAgeGroupLabel(AgeGroup group) {
     switch (group) {
       case AgeGroup.neonate:
-        return 'Nouveau-né';
+        return AppStrings.newborn;
       case AgeGroup.infant:
         return AppStrings.infant;
       case AgeGroup.child:
@@ -433,7 +434,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
       if (_searchQuery.isEmpty) return true;
       return drug.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
              drug.genericName.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-             drug.drugClass.toLowerCase().contains(_searchQuery.toLowerCase());
+             '${drug.drugClass.fr} ${drug.drugClass.en}'.toLowerCase().contains(_searchQuery.toLowerCase());
     }).toList();
 
     return Column(
@@ -590,7 +591,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
     );
 
     final doseInfo = _calculateDose(drug);
-    final cardColor = _getDrugColor(drug.drugClass);
+    final cardColor = _getDrugColor(drug.drugClass.fr);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -660,7 +661,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        drug.drugClass,
+                        context.tr(drug.drugClass),
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
@@ -820,19 +821,33 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
 
   Color _getDrugColor(String drugClass) {
     switch (drugClass.toLowerCase()) {
+      case 'hypnotique':
       case 'sédatif':
       case 'sedative':
         return AppColors.primary;
       case 'analgésique':
       case 'analgesic':
+      case 'opioïde':
+      case 'opioid':
         return AppColors.accentTeal;
+      case 'benzodiazépine':
+      case 'benzodiazepine':
+        return AppColors.accentPurple;
       case 'paralytique':
       case 'paralytic':
+      case 'curare dépolarisant':
+      case 'curare non-dépolarisant':
         return AppColors.error;
       case 'dissociatif':
       case 'dissociative':
         return AppColors.accentPurple;
       case 'adjuvant':
+      case 'anticholinergique':
+      case 'anesthésique local':
+      case 'agoniste alpha-2':
+      case 'antagoniste opioïde':
+      case 'antagoniste des benzodiazépines':
+      case 'agent de décurarisation (cyclodextrine)':
         return AppColors.warning;
       default:
         return AppColors.info;
@@ -847,7 +862,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
       final ageSpecific = drug.dosesByAge.firstWhere((d) => d.ageGroup == _ageGroup);
       dosePerKg = ageSpecific.dose;
       if (ageSpecific.notes != null) {
-        notes = ageSpecific.notes!;
+        notes = context.tr(ageSpecific.notes!);
       }
     } catch (_) {
       // No specific dose for this age group, use standard
@@ -929,7 +944,7 @@ class _DrugDetailsSheet extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildHeader(isDark),
+                    _buildHeader(isDark, context.tr(drug.drugClass)),
                     const SizedBox(height: 24),
                     _buildDoseCard(isDark),
                     const SizedBox(height: 20),
@@ -937,44 +952,44 @@ class _DrugDetailsSheet extends StatelessWidget {
                       AppStrings.concentrations,
                       Icons.science_outlined,
                       AppColors.primary,
-                      Text(drug.concentrations.join(', ')),
+                      Text(context.trList(drug.concentrations).join(', ')),
                     ),
                     _buildDetailSection(
                       AppStrings.mechanism,
                       Icons.psychology_outlined,
                       AppColors.accentPurple,
-                      Text(drug.mechanism, style: TextStyle(color: AppColors.getTextPrimary(isDark))),
+                      Text(context.tr(drug.mechanism), style: TextStyle(color: AppColors.getTextPrimary(isDark))),
                     ),
                     _buildDetailSection(
                       AppStrings.indications,
                       Icons.check_circle_outline,
                       AppColors.success,
-                      _buildBulletList(drug.indications, AppColors.success, isDark),
+                      _buildBulletList(context.trList(drug.indications), AppColors.success, isDark),
                     ),
                     _buildDetailSection(
                       AppStrings.contraindications,
                       Icons.block,
                       AppColors.error,
-                      _buildBulletList(drug.contraindications, AppColors.error, isDark),
+                      _buildBulletList(context.trList(drug.contraindications), AppColors.error, isDark),
                     ),
                     _buildDetailSection(
                       AppStrings.sideEffects,
                       Icons.warning_amber_outlined,
                       AppColors.warning,
-                      _buildBulletList(drug.sideEffects, AppColors.warning, isDark),
+                      _buildBulletList(context.trList(drug.sideEffects), AppColors.warning, isDark),
                     ),
                     _buildDetailSection(
                       AppStrings.precautions,
                       Icons.info_outline,
                       AppColors.info,
-                      _buildBulletList(drug.precautions, AppColors.info, isDark),
+                      _buildBulletList(context.trList(drug.precautions), AppColors.info, isDark),
                     ),
                     if (drug.notes.isNotEmpty)
                       _buildDetailSection(
                         AppStrings.notes,
                         Icons.note_alt_outlined,
                         AppColors.getTextSecondary(isDark),
-                        _buildBulletList(drug.notes, AppColors.getTextSecondary(isDark), isDark),
+                        _buildBulletList(context.trList(drug.notes), AppColors.getTextSecondary(isDark), isDark),
                       ),
                     const SizedBox(height: 40),
                   ],
@@ -987,7 +1002,7 @@ class _DrugDetailsSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(bool isDark) {
+  Widget _buildHeader(bool isDark, String resolvedClass) {
     return Row(
       children: [
         Container(
@@ -1036,7 +1051,7 @@ class _DrugDetailsSheet extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  drug.drugClass,
+                  resolvedClass,
                   style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,

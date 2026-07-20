@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/l10n/localized.dart';
 
 enum ProtocolCategory {
   cardiology,
@@ -15,30 +16,30 @@ enum ProtocolCategory {
 }
 
 extension ProtocolCategoryExtension on ProtocolCategory {
-  String get displayName {
+  LString get displayName {
     switch (this) {
       case ProtocolCategory.cardiology:
-        return 'Cardiologie';
+        return LString('Cardiologie', 'Cardiology');
       case ProtocolCategory.respiratory:
-        return 'Respiratoire';
+        return LString('Respiratoire', 'Respiratory');
       case ProtocolCategory.neurology:
-        return 'Neurologie';
+        return LString('Neurologie', 'Neurology');
       case ProtocolCategory.trauma:
-        return 'Traumatologie';
+        return LString('Traumatologie', 'Traumatology');
       case ProtocolCategory.sepsis:
-        return 'Sepsis / Infections';
+        return LString('Sepsis / Infections', 'Sepsis / Infections');
       case ProtocolCategory.toxicology:
-        return 'Toxicologie';
+        return LString('Toxicologie', 'Toxicology');
       case ProtocolCategory.metabolic:
-        return 'Métabolique';
+        return LString('Métabolique', 'Metabolic');
       case ProtocolCategory.pediatric:
-        return 'Pédiatrie';
+        return LString('Pédiatrie', 'Pediatrics');
       case ProtocolCategory.obstetric:
-        return 'Obstétrique';
+        return LString('Obstétrique', 'Obstetrics');
       case ProtocolCategory.analgesia:
-        return 'Analgésie / Sédation';
+        return LString('Analgésie / Sédation', 'Analgesia / Sedation');
       case ProtocolCategory.resuscitation:
-        return 'Réanimation';
+        return LString('Réanimation', 'Resuscitation');
     }
   }
 
@@ -98,11 +99,11 @@ extension ProtocolCategoryExtension on ProtocolCategory {
 }
 
 class ProtocolStep {
-  final String title;
-  final String content;
-  final List<String>? bulletPoints;
-  final String? warning;
-  final String? tip;
+  final LString title;
+  final LString content;
+  final List<LString>? bulletPoints;
+  final LString? warning;
+  final LString? tip;
 
   const ProtocolStep({
     required this.title,
@@ -115,14 +116,14 @@ class ProtocolStep {
 
 class Protocol {
   final String id;
-  final String name;
+  final LString name;
   final ProtocolCategory category;
-  final String description;
+  final LString description;
   final List<ProtocolStep> steps;
-  final String? indication;
-  final String? contraindication;
-  final String? keyPoints;
-  final String source;
+  final LString? indication;
+  final LString? contraindication;
+  final LString? keyPoints;
+  final LString source;
   final String? sourceUrl;
   final int? lastUpdated;
   final bool isPediatric;

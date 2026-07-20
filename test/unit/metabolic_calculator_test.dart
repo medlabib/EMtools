@@ -99,7 +99,7 @@ void main() {
         
         final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
         expect(result.isUnsafe, true);
-        expect(result.safetyWarning, contains('ODS'));
+        expect(result.safetyWarning.fr, contains('ODS'));
       });
 
       test('allows faster correction for acute hyponatremia', () {
@@ -201,14 +201,14 @@ void main() {
       test('has calcium gluconate as first treatment', () {
         final calcium = MetabolicCalculator.hyperkalemiaTreatments
             .firstWhere((t) => t.id == 'calcium_gluconate');
-        expect(calcium.mechanism, 'Cardioprotection');
+        expect(calcium.mechanism.fr, 'Cardioprotection');
         expect(calcium.urgency, 'immediate');
       });
 
       test('has insulin/glucose as shift therapy', () {
         final insulinGlucose = MetabolicCalculator.hyperkalemiaTreatments
             .firstWhere((t) => t.id == 'insulin_glucose');
-        expect(insulinGlucose.mechanism, 'Transfert intracellulaire');
+        expect(insulinGlucose.mechanism.fr, 'Transfert intracellulaire');
       });
     });
   });

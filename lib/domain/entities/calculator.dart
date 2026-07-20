@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/l10n/localized.dart';
 
 enum CalculatorCategory {
   trauma,
@@ -22,9 +23,9 @@ enum CalculatorFieldType {
 }
 
 class CalculatorOption {
-  final String label;
+  final LString label;
   final double value;
-  final String? description;
+  final LString? description;
 
   const CalculatorOption({
     required this.label,
@@ -35,7 +36,7 @@ class CalculatorOption {
 
 class CalculatorField {
   final String id;
-  final String label;
+  final LString label;
   final CalculatorFieldType type;
   final List<CalculatorOption>? options;
   final double? min;
@@ -58,8 +59,8 @@ class CalculatorField {
 class ScoreInterpretation {
   final double min;
   final double max;
-  final String label;
-  final String description;
+  final LString label;
+  final LString description;
   final Color color;
 
   const ScoreInterpretation({
@@ -73,10 +74,10 @@ class ScoreInterpretation {
 
 class Calculator {
   final String id;
-  final String name;
+  final LString name;
   final String shortName;
   final CalculatorCategory category;
-  final String description;
+  final LString description;
   final List<CalculatorField> fields;
   final double Function(Map<String, dynamic> values) calculate;
   final List<ScoreInterpretation> interpretations;

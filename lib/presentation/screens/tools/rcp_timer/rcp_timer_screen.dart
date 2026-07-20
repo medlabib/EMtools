@@ -59,14 +59,25 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
   final List<_RcpEvent> _eventLog = [];
 
   // Rhythm type
-  String _rhythmType = 'Inconnu';
+  String _rhythmType = 'unknown';
   final List<String> _rhythmTypes = [
-    'Inconnu',
-    'FV/TV sans pouls',
-    'Asystolie',
-    'AESP',
-    'ROSC',
+    'unknown',
+    'vfPulselessVt',
+    'asystole',
+    'pea',
+    'rosc',
   ];
+
+  String _rhythmDisplayName(String key) {
+    switch (key) {
+      case 'unknown': return context.t('unknownRhythm');
+      case 'vfPulselessVt': return context.t('vfPulselessVt');
+      case 'asystole': return context.t('asystoleRhythm');
+      case 'pea': return context.t('peaRhythm');
+      case 'rosc': return context.t('roscRhythm');
+      default: return key;
+    }
+  }
 
   @override
   void initState() {
@@ -97,7 +108,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
       _isRunning = true;
     });
 
-    _addEvent('RCP démarrée');
+    _addEvent(context.t('cprStarted'));
 
     // Main timer - updates every second
     _mainTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -137,7 +148,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
       _isRunning = false;
     });
 
-    _addEvent('RCP en pause');
+    _addEvent(context.t('cprPaused'));
   }
 
   void _resetTimer() {
@@ -153,7 +164,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
       _adrenalineAlertShown = false;
       _compressionCount = 0;
       _shockCount = 0;
-      _rhythmType = 'Inconnu';
+      _rhythmType = 'unknown';
       _eventLog.clear();
     });
   }
@@ -201,7 +212,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
       _timeSinceLastAdrenaline = Duration.zero;
       _adrenalineAlertShown = false;
     });
-    _addEvent('Adrénaline administrée (${_adrenalineCount}mg total)');
+    _addEvent(context.t('adrenalineAdministered').replaceAll('{0}', '$_adrenalineCount'));
     if (_vibrationEnabled) HapticFeedback.mediumImpact();
   }
 
@@ -209,12 +220,12 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
     setState(() {
       _shockCount++;
     });
-    _addEvent('Choc électrique n°$_shockCount');
+    _addEvent(context.t('shockDelivered').replaceAll('{0}', '$_shockCount'));
     if (_vibrationEnabled) HapticFeedback.heavyImpact();
   }
 
   void _recordAmiodarone() {
-    _addEvent('Amiodarone administrée');
+    _addEvent(context.t('amiodaroneAdministered'));
     if (_vibrationEnabled) HapticFeedback.lightImpact();
   }
 
@@ -222,7 +233,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
     setState(() {
       _rhythmType = rhythm;
     });
-    _addEvent('Rythme: $rhythm');
+    _addEvent(context.t('rhythmRecorded').replaceAll('{0}', _rhythmDisplayName(rhythm)));
   }
 
   void _addEvent(String description) {
@@ -242,7 +253,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
           children: [
             const Icon(Icons.refresh, color: Colors.white),
             const SizedBox(width: 8),
-            Text('Cycle $_cycleCount terminé - Vérifier le rythme!'),
+            Text(context.t('cycleCompleteMsg').replaceAll('{0}', '$_cycleCount')),
           ],
         ),
         backgroundColor: AppColors.warning,
@@ -265,13 +276,13 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
           children: [
             const Icon(Icons.medication, color: Colors.white),
             const SizedBox(width: 8),
-            const Text('Adrénaline 1mg IV/IO maintenant!'),
+            Text(context.t('adrenalineNow')),
           ],
         ),
         backgroundColor: AppColors.error,
         duration: const Duration(seconds: 10),
         action: SnackBarAction(
-          label: 'FAIT',
+          label: context.t('done'),
           textColor: Colors.white,
           onPressed: _recordAdrenaline,
         ),
@@ -308,7 +319,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               ),
               const SizedBox(height: 20),
               Text(
-                'Paramètres RCP',
+                context.t('cprSettings'),
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -317,7 +328,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               
               // Adrenaline Interval
               Text(
-                'Intervalle Adrénaline',
+                context.t('adrenalineInterval'),
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -349,7 +360,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               ),
               const SizedBox(height: 8),
               Text(
-                'Recommandation: 3-5 min selon le rythme',
+                context.t('recommendationRhythm'),
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.getTextSecondary(isDark),
                 ),
@@ -359,7 +370,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               
               // Metronome Size
               Text(
-                'Taille du Métronome',
+                context.t('metronomeSizeLabel'),
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -389,8 +400,8 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               
               // Sound & Vibration
               SwitchListTile(
-                title: const Text('Vibration'),
-                subtitle: const Text('Retour haptique pour les alertes'),
+                title: Text(context.t('vibrationLabel')),
+                subtitle: Text(context.t('hapticFeedbackDesc')),
                 value: _vibrationEnabled,
                 onChanged: (value) {
                   setModalState(() {});
@@ -400,8 +411,8 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               ),
               
               SwitchListTile(
-                title: const Text('Son'),
-                subtitle: const Text('Alertes sonores (à venir)'),
+                title: Text(context.t('soundLabel')),
+                subtitle: Text(context.t('soundAlertsDesc')),
                 value: _soundEnabled,
                 onChanged: (value) {
                   setModalState(() {});
@@ -425,7 +436,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text('Fermer'),
+                  child: Text(context.t('close')),
                 ),
               ),
               const SizedBox(height: 16),
@@ -461,21 +472,21 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chronomètre RCP'),
+        title: Text(context.t('cprTimerTitle')),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            tooltip: 'Paramètres',
+            tooltip: context.t('settings'),
             onPressed: _isRunning ? null : () => _showSettings(context),
           ),
           IconButton(
             icon: const Icon(Icons.history),
-            tooltip: 'Historique',
+            tooltip: context.t('historyLabel'),
             onPressed: () => _showEventLog(context),
           ),
           IconButton(
             icon: const Icon(Icons.refresh),
-            tooltip: 'Réinitialiser',
+            tooltip: context.t('reset'),
             onPressed: _isRunning ? null : _resetTimer,
           ),
         ],
@@ -537,7 +548,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
         child: Column(
           children: [
             Text(
-              'Temps Total',
+              context.t('totalTime'),
               style: theme.textTheme.titleMedium?.copyWith(
                 color: labelColor,
               ),
@@ -567,7 +578,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'RCP EN COURS',
+                    context.t('cprInProgress'),
                     style: theme.textTheme.titleSmall?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -596,7 +607,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                 Icon(Icons.loop, color: AppColors.accentTeal, size: 20),
                 const SizedBox(width: 8),
                 Text(
-                  'Cycle',
+                  context.t('cycleLabel'),
                   style: theme.textTheme.titleSmall?.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
@@ -619,7 +630,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
             ),
             const SizedBox(height: 4),
             Text(
-              '${secondsRemaining}s restant',
+              context.t('secondsRemaining').replaceAll('{0}', '$secondsRemaining'),
               style: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
@@ -650,7 +661,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Adrénaline',
+                  context.t('adrenalineLabel'),
                   style: theme.textTheme.titleSmall?.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
@@ -659,7 +670,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
             ),
             const SizedBox(height: 8),
             Text(
-              isOverdue ? 'MAINTENANT!' : _formatDuration(Duration(seconds: secondsRemaining)),
+              isOverdue ? context.t('nowExcl') : _formatDuration(Duration(seconds: secondsRemaining)),
               style: theme.textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: isOverdue ? AppColors.error : AppColors.warning,
@@ -676,7 +687,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
             ),
             const SizedBox(height: 4),
             Text(
-              'Total: ${_adrenalineCount}mg',
+              context.t('totalMg').replaceAll('{0}', '$_adrenalineCount'),
               style: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
@@ -697,7 +708,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Métronome Compressions',
+                  context.t('metronomeCompressions'),
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -787,7 +798,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                           ),
                         ),
                         Text(
-                          'BPM',
+                          context.t('bpm'),
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: theme.colorScheme.onSurfaceVariant,
                           ),
@@ -812,13 +823,13 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               ),
               const SizedBox(height: 12),
               Text(
-                'Objectif: 100-120/min',
+                context.t('targetRate'),
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),
               ),
               Text(
-                'Compressions: $_compressionCount',
+                context.t('compressionsCount').replaceAll('{0}', '$_compressionCount'),
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                   fontWeight: FontWeight.w600,
@@ -841,7 +852,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Rythme cardiaque',
+              context.t('cardiacRhythm'),
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -852,11 +863,11 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               runSpacing: 8,
               children: _rhythmTypes.map((rhythm) {
                 final isSelected = _rhythmType == rhythm;
-                final isShockable = rhythm == 'FV/TV sans pouls';
-                final isRosc = rhythm == 'ROSC';
+                final isShockable = rhythm == 'vfPulselessVt';
+                final isRosc = rhythm == 'rosc';
 
                 return ChoiceChip(
-                  label: Text(rhythm),
+                  label: Text(_rhythmDisplayName(rhythm)),
                   selected: isSelected,
                   onSelected: (_) => _setRhythm(rhythm),
                   selectedColor: isRosc
@@ -869,7 +880,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                 );
               }).toList(),
             ),
-            if (_rhythmType == 'FV/TV sans pouls') ...[
+            if (_rhythmType == 'vfPulselessVt') ...[
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(8),
@@ -882,7 +893,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                     Icon(Icons.electric_bolt, color: AppColors.error, size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      'Rythme choquable - Défibrillation indiquée',
+                      context.t('shockableRhythmMsg'),
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: AppColors.error,
                         fontWeight: FontWeight.bold,
@@ -892,7 +903,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                 ),
               ),
             ],
-            if (_rhythmType == 'ROSC') ...[
+            if (_rhythmType == 'rosc') ...[
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(8),
@@ -905,7 +916,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                     Icon(Icons.favorite, color: AppColors.success, size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      'ROSC - Soins post-arrêt cardiaque',
+                      context.t('roscPostArrest'),
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: AppColors.success,
                         fontWeight: FontWeight.bold,
@@ -932,7 +943,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Actions rapides',
+                  context.t('quickActions'),
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -950,7 +961,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                         Icon(Icons.electric_bolt, size: 16, color: AppColors.error),
                         const SizedBox(width: 4),
                         Text(
-                          '$_shockCount chocs',
+                          context.t('shocksCount').replaceAll('{0}', '$_shockCount'),
                           style: TextStyle(
                             color: AppColors.error,
                             fontWeight: FontWeight.bold,
@@ -968,19 +979,19 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
               children: [
                 _buildActionButton(
                   icon: Icons.medication,
-                  label: 'Adrénaline',
+                  label: context.t('adrenalineLabel'),
                   color: AppColors.warning,
                   onPressed: _recordAdrenaline,
                 ),
                 _buildActionButton(
                   icon: Icons.electric_bolt,
-                  label: 'Choc ($_shockCount)',
+                  label: context.t('shockAction').replaceAll('{0}', '$_shockCount'),
                   color: AppColors.error,
                   onPressed: _recordShock,
                 ),
                 _buildActionButton(
                   icon: Icons.science,
-                  label: 'Amiodarone',
+                  label: context.t('amiodaroneLabel'),
                   color: AppColors.accentPurple,
                   onPressed: _recordAmiodarone,
                 ),
@@ -1018,7 +1029,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
             onPressed: _isRunning ? _pauseTimer : _startTimer,
             icon: Icon(_isRunning ? Icons.pause : Icons.play_arrow, size: 32),
             label: Text(
-              _isRunning ? 'PAUSE' : 'DÉMARRER',
+              _isRunning ? context.t('pauseLabel') : context.t('startLabel'),
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             style: ElevatedButton.styleFrom(
@@ -1055,7 +1066,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Historique des événements',
+                        context.t('eventHistory'),
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 import '../../../../core/widgets/animated_widgets.dart';
 import '../../../../data/datasources/calculators_data.dart';
 import '../../../../domain/entities/calculator.dart';
@@ -121,7 +122,7 @@ class _CalculatorsScreenState extends State<CalculatorsScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
     
     final filteredCalculators = allCalculators.where((calc) {
-      final matchesSearch = calc.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
+      final matchesSearch = '${calc.name.fr} ${calc.name.en}'.toLowerCase().contains(_searchQuery.toLowerCase()) ||
           calc.shortName.toLowerCase().contains(_searchQuery.toLowerCase());
       final matchesCategory = _selectedCategory == null || calc.category == _selectedCategory;
       return matchesSearch && matchesCategory;
@@ -476,7 +477,7 @@ class _CalculatorCardState extends State<_CalculatorCard> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      widget.calculator.name,
+                      context.tr(widget.calculator.name),
                       style: TextStyle(
                         fontSize: 13,
                         color: isDark ? Colors.grey[400] : Colors.grey[600],

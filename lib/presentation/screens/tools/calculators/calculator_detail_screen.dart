@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 import '../../../../core/widgets/animated_widgets.dart';
 import '../../../../data/datasources/calculators_data.dart';
 import '../../../../domain/entities/calculator.dart';
@@ -73,8 +74,8 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
         orElse: () => ScoreInterpretation(
           min: 0,
           max: 0,
-          label: 'Non défini',
-          description: 'Résultat hors plage',
+          label: LString('Non défini', 'Non défini'),
+          description: LString('Résultat hors plage', 'Résultat hors plage'),
           color: Colors.grey,
         ),
       );
@@ -134,7 +135,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
                 index: 0,
                 child: GlassContainer(
                   child: Text(
-                    _calculator.description,
+                    context.tr(_calculator.description),
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       height: 1.5,
                     ),
@@ -265,7 +266,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
           ),
           const SizedBox(height: 8),
           Text(
-            _calculator.name,
+            context.tr(_calculator.name),
             style: TextStyle(
               fontSize: 15,
               color: AppColors.getTextSecondary(isDark),
@@ -296,7 +297,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            field.label,
+            context.tr(field.label),
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
               fontWeight: FontWeight.w600,
             ),
@@ -348,7 +349,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                option.label,
+                                context.tr(option.label),
                                 style: TextStyle(
                                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                                   color: isDark ? Colors.white : Colors.black87,
@@ -357,7 +358,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
                               if (option.description != null) ...[
                                 const SizedBox(height: 4),
                                 Text(
-                                  option.description!,
+                                  context.tr(option.description!),
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -397,7 +398,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
           Row(
             children: [
               Text(
-                field.label,
+                context.tr(field.label),
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -500,7 +501,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
               const SizedBox(width: 16),
               Expanded(
                 child: Text(
-                  field.label,
+                  context.tr(field.label),
                   style: TextStyle(
                     fontWeight: isChecked ? FontWeight.w600 : FontWeight.w500,
                     color: isDark ? Colors.white : Colors.black87,
@@ -581,7 +582,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
-              _interpretation?.label ?? '',
+              _interpretation != null ? context.tr(_interpretation!.label) : '',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -592,7 +593,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
           if (_interpretation?.description != null) ...[
             const SizedBox(height: 16),
             Text(
-              _interpretation!.description,
+              context.tr(_interpretation!.description),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 height: 1.5,

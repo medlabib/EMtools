@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../data/datasources/protocols_data.dart';
 import '../../../../domain/entities/protocol.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 
 // Pediatric pink color for highlighting pediatric protocols
 const Color _pediatricPink = Color(0xFFEC4899);
@@ -71,9 +72,9 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
     if (_searchQuery.isNotEmpty) {
       final query = _searchQuery.toLowerCase();
       protocols = protocols.where((p) {
-        return p.name.toLowerCase().contains(query) ||
-            p.description.toLowerCase().contains(query) ||
-            p.category.displayName.toLowerCase().contains(query);
+        return p.name.fr.toLowerCase().contains(query) ||
+            p.description.fr.toLowerCase().contains(query) ||
+            p.category.displayName.fr.toLowerCase().contains(query);
       }).toList();
     }
 
@@ -83,7 +84,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
       final bFav = _favorites.contains(b.id);
       if (aFav && !bFav) return -1;
       if (!aFav && bFav) return 1;
-      return a.name.compareTo(b.name);
+      return a.name.fr.compareTo(b.name.fr);
     });
 
     return protocols;
@@ -159,7 +160,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
               children: [
                 _buildCategoryChip(null, AppStrings.all, Icons.all_inclusive),
                 ...ProtocolCategory.values.map((category) =>
-                    _buildCategoryChip(category, category.displayName, category.icon)),
+                    _buildCategoryChip(category, context.tr(category.displayName), category.icon)),
               ],
             ),
           ),
@@ -306,7 +307,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                           children: [
                             Expanded(
                               child: Text(
-                                protocol.name,
+                                context.tr(protocol.name),
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -342,7 +343,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          protocol.category.displayName,
+                          context.tr(protocol.category.displayName),
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: categoryColor,
                             fontWeight: FontWeight.w500,
@@ -362,7 +363,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
               ),
               const SizedBox(height: 12),
               Text(
-                protocol.description,
+                context.tr(protocol.description),
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),
@@ -384,7 +385,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
                   ),
-                  if (protocol.source.isNotEmpty) ...[
+                  if (protocol.source.fr.isNotEmpty) ...[
                     const SizedBox(width: 16),
                     Icon(
                       Icons.source,
@@ -394,7 +395,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                     const SizedBox(width: 4),
                     Expanded(
                       child: Text(
-                        protocol.source,
+                        context.tr(protocol.source),
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),

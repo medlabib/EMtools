@@ -244,7 +244,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Analyse complète avec ventilation',
+                      context.t('completeAnalysis'),
                       style: TextStyle(
                         fontSize: 14,
                         color: AppColors.getTextSecondary(isDark),
@@ -295,7 +295,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Diagnostic',
+                      context.t('diagnosis'),
                       style: TextStyle(
                         fontSize: 13,
                         color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -327,7 +327,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             child: Column(
               children: [
                 _buildSummaryRow(
-                  'Trouble primaire',
+                  context.t('primaryDisorder'),
                   context.tr(BloodGasResultLocalizer.primary(_results.primary)),
                   statusColor,
                   isDark,
@@ -335,7 +335,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                 if (context.tr(BloodGasResultLocalizer.combinedMessage(_results)).isNotEmpty) ...[
                   const SizedBox(height: 8),
                   _buildSummaryRow(
-                    'Compensation',
+                    context.t('compensation'),
                     context.tr(BloodGasResultLocalizer.combinedMessage(_results)),
                     AppColors.info,
                     isDark,
@@ -393,7 +393,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               ),
               const SizedBox(width: 12),
               Text(
-                'Paramètres calculés',
+                context.t('calculatedParameters'),
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -410,7 +410,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           childAspectRatio: 1.6,
           children: [
             _buildMetricCard(
-              'Trou anionique corrigé',
+              context.t('correctedAnionGap'),
               _results.agCorrected.toStringAsFixed(1),
               'mEq/L',
               Icons.show_chart_rounded,
@@ -418,7 +418,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               isDark,
             ),
             _buildMetricCard(
-              'Rapport P/F',
+              context.t('paoFio2Ratio'),
               _results.pfRatio.toStringAsFixed(0),
               context.tr(BloodGasResultLocalizer.ardsGrade(_results.ardsGrade)),
               Icons.air,
@@ -426,7 +426,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               isDark,
             ),
             _buildMetricCard(
-              'Vt/kg PBW',
+              context.t('vtPerKgPBW'),
               _results.vtPerKg.toStringAsFixed(1),
               'ml/kg',
               Icons.straighten_rounded,
@@ -434,7 +434,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               isDark,
             ),
             _buildMetricCard(
-              'Driving Pressure',
+              context.t('drivingPressureMetric'),
               _results.drivingPressure.toStringAsFixed(0),
               'cmH₂O',
               Icons.speed_rounded,
@@ -442,7 +442,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               isDark,
             ),
             _buildMetricCard(
-              'Gradient A-a',
+              context.t('aaGradient'),
               _results.aaGradient.toStringAsFixed(1),
               'mmHg',
               Icons.compare_arrows_rounded,
@@ -450,7 +450,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               isDark,
             ),
             _buildMetricCard(
-              'CaO₂',
+              context.t('caO2'),
               _results.cao2.toStringAsFixed(1),
               'mL/dL',
               Icons.opacity_rounded,
@@ -582,7 +582,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     return _buildSection(
       context,
       isDark,
-      'Gazométrie',
+      context.t('bloodGasSection'),
       Icons.air,
       AppColors.error,
       [
@@ -667,7 +667,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     return _buildSection(
       context,
       isDark,
-      'Biochemistry',
+      context.t('biochemistrySection'),
       Icons.science_outlined,
       AppColors.accentTeal,
       [
@@ -699,7 +699,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'Albumine',
+                context.t('albumin'),
                 'g/dL',
                 _data.alb,
                 (v) => _update(_data.copyWith(alb: v)),
@@ -728,7 +728,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     return _buildSection(
       context,
       isDark,
-      'Ventilator',
+      context.t('ventilatorSection'),
       Icons.medication_outlined,
       AppColors.primaryPurple,
       [
@@ -736,7 +736,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'FiO₂',
+                AppStrings.fio2,
                 '%',
                 _data.fio2 * 100,
                 (v) => _update(_data.copyWith(fio2: v / 100)),
@@ -746,7 +746,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'Vt',
+                context.t('vt'),
                 'mL',
                 _data.vt,
                 (v) => _update(_data.copyWith(vt: v)),
@@ -760,7 +760,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'FR',
+                context.t('respiratoryRateLabel'),
                 '/min',
                 _data.rr,
                 (v) => _update(_data.copyWith(rr: v)),
@@ -770,7 +770,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'PEEP',
+                context.t('peep'),
                 'cmH₂O',
                 _data.peep,
                 (v) => _update(_data.copyWith(peep: v)),
@@ -784,7 +784,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'Pplat',
+                context.t('pplat'),
                 'cmH₂O',
                 _data.pplat,
                 (v) => _update(_data.copyWith(pplat: v)),
@@ -794,7 +794,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'Ppeak',
+                context.t('ppeak'),
                 'cmH₂O',
                 _data.ppeak,
                 (v) => _update(_data.copyWith(ppeak: v)),
@@ -854,32 +854,32 @@ class _BloodGasScreenState extends State<BloodGasScreen>
   Widget _buildReferencesSection(BuildContext context, bool isDark) {
     final references = [
       (
-        'Formule de Winter',
+        context.t('winterFormula'),
         'Compensation respiratoire attendue pour l\'acidose métabolique',
         'Winter SD et al. Ann Intern Med. 1967;66(2):312-322',
       ),
       (
-        'Gradient A-a',
+        context.t('aaGradientRef'),
         'P(A-a)O2 = PAO2 - PaO2, Normal < 2.5 + (0.21 × âge)',
         'Kanber GJ et al. Chest. 1986;89(2):241-248',
       ),
       (
-        'Rapport P/F (Berlin 2012)',
+        context.t('pfRatioBerlin'),
         'ARDS léger: 200-300, modéré: 100-200, sévère: <100',
         'The ARDS Definition Task Force. JAMA. 2012;307(23):2526-2533',
       ),
       (
-        'Contenu artériel en O2',
+        context.t('arterialO2Content'),
         'CaO2 = (Hb × 1.34 × SaO2/100) + (0.003 × PaO2)',
         'West JB. Respiratory Physiology. 10th ed. 2016',
       ),
       (
-        'Formule d\'Adrogue-Madias',
+        context.t('adrogueMadiasFormula'),
         'Correction des dysnatrémies avec calcul du déficit/excès en eau libre',
         'Adrogue HJ, Madias NE. N Engl J Med. 2000;342(20):1493-1499',
       ),
       (
-        'PBW (Poids Idéal)',
+        context.t('pbwFormula'),
         'Male: 50 + 0.91(H-152.4), Female: 45.5 + 0.91(H-152.4)',
         'ARDSNet Protocol. N Engl J Med. 2000;342:1301-1308',
       ),
@@ -888,7 +888,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     return _buildSection(
       context,
       isDark,
-      'Références & Formules',
+      context.t('referencesFormulas'),
       Icons.library_books_outlined,
       AppColors.info,
       [
@@ -900,7 +900,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
         )),
         const SizedBox(height: 12),
         Text(
-          '⚠️ Cet outil est fourni à titre informatif uniquement. La décision clinique finale doit toujours être basée sur le jugement médical.',
+          context.t('disclaimerTool'),
           style: TextStyle(
             fontSize: 12,
             fontStyle: FontStyle.italic,

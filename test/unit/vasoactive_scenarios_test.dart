@@ -206,8 +206,8 @@ void main() {
       test('Verify dose-dependent effects described correctly', () {
         // Low dose (<0.1): β predominant (inotrope)
         // High dose (>0.1): α predominant (vasopressor)
-        expect(adrenaline.notes.any((n) => n.contains('< 0.1') && n.contains('β')), isTrue);
-        expect(adrenaline.notes.any((n) => n.contains('> 0.1') && n.contains('α')), isTrue);
+        expect(adrenaline.notes.any((n) => n.fr.contains('< 0.1') && n.fr.contains('β')), isTrue);
+        expect(adrenaline.notes.any((n) => n.fr.contains('> 0.1') && n.fr.contains('α')), isTrue);
       });
     });
 
@@ -234,7 +234,7 @@ void main() {
 
       test('Vasopressin is NOT weight-based', () {
         expect(vasopressin.doseUnit, 'UI/min');
-        expect(vasopressin.notes.any((n) => n.toLowerCase().contains('fixe')), isTrue);
+        expect(vasopressin.notes.any((n) => n.fr.toLowerCase().contains('fixe')), isTrue);
       });
 
       test('Verify dose range per SSC guidelines', () {
@@ -311,7 +311,7 @@ void main() {
       });
 
       test('Verify milrinone requires renal dose adjustment', () {
-        expect(milrinone.notes.any((n) => n.toLowerCase().contains('rénal')), isTrue);
+        expect(milrinone.notes.any((n) => n.fr.toLowerCase().contains('rénal')), isTrue);
       });
     });
 
@@ -374,8 +374,8 @@ void main() {
       test('Noradrenaline is first-line for septic shock', () {
         final norad = VasoactiveData.allDrugs.firstWhere((d) => d.id == 'noradrenaline');
         expect(norad.indications.any((i) => 
-            i.toLowerCase().contains('septique') && 
-            i.toLowerCase().contains('1')), isTrue);
+            i.fr.toLowerCase().contains('septique') && 
+            i.fr.toLowerCase().contains('1')), isTrue);
       });
     });
 

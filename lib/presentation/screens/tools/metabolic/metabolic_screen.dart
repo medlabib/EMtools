@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../domain/entities/metabolic.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 
 class MetabolicScreen extends StatefulWidget {
   const MetabolicScreen({super.key});
@@ -130,7 +131,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Troubles Métaboliques',
+                              context.t('metabolicDisorders'),
                               style: TextStyle(
                                 color: AppColors.getTextPrimary(isDark),
                                 fontSize: 24,
@@ -138,7 +139,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                               ),
                             ),
                             Text(
-                              'Sodium • Potassium • Calcium',
+                              context.t('metabolicSubtitle'),
                               style: TextStyle(
                                 color: AppColors.getTextSecondary(isDark),
                                 fontSize: 14,
@@ -168,10 +169,10 @@ class _MetabolicScreenState extends State<MetabolicScreen>
         unselectedLabelColor: isDark ? Colors.grey[400] : AppColors.textSecondary,
         indicatorColor: AppColors.accentPurple,
         indicatorWeight: 3,
-        tabs: const [
-          Tab(icon: Icon(Icons.water_drop_outlined), text: 'Sodium'),
-          Tab(icon: Icon(Icons.bolt_outlined), text: 'Potassium'),
-          Tab(icon: Icon(Icons.bubble_chart_outlined), text: 'Calcium'),
+        tabs: [
+          Tab(icon: const Icon(Icons.water_drop_outlined), text: context.t('sodiumTab')),
+          Tab(icon: const Icon(Icons.bolt_outlined), text: context.t('potassiumTab')),
+          Tab(icon: const Icon(Icons.bubble_chart_outlined), text: context.t('calciumTab')),
         ],
       ),
     );
@@ -232,7 +233,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                 Icon(Icons.person_outline, color: AppColors.primary),
                 const SizedBox(width: 12),
                 Text(
-                  'Paramètres du Patient',
+                  context.t('patientParameters'),
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -400,7 +401,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                 Icon(Icons.water_drop, color: AppColors.warning),
                 const SizedBox(width: 12),
                 Text(
-                  'Paramètres Sodiques',
+                  context.t('sodiumParameters'),
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -424,7 +425,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                     children: [
                       Expanded(
                         child: _buildToggleButton(
-                          label: 'Hyponatrémie',
+                          label: context.t('hyponatremia'),
                           isSelected: _naDirection == SodiumDirection.hypo,
                           color: AppColors.info,
                           onTap: () => _switchSodiumDirection(SodiumDirection.hypo),
@@ -432,7 +433,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                       ),
                       Expanded(
                         child: _buildToggleButton(
-                          label: 'Hypernatrémie',
+                          label: context.t('hypernatremia'),
                           isSelected: _naDirection == SodiumDirection.hyper,
                           color: AppColors.error,
                           onTap: () => _switchSodiumDirection(SodiumDirection.hyper),
@@ -445,13 +446,13 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                 Row(
                   children: [
                     Expanded(child: _buildTextField(
-                      label: 'Na Actuel (mEq/L)',
+                      label: context.t('currentNa'),
                       value: _baselineNa.toString(),
                       onChanged: (v) => setState(() => _baselineNa = double.tryParse(v) ?? _baselineNa),
                     )),
                     const SizedBox(width: 12),
                     Expanded(child: _buildTextField(
-                      label: 'Na Cible (mEq/L)',
+                      label: context.t('targetNa'),
                       value: _targetNa.toString(),
                       onChanged: (v) => setState(() => _targetNa = double.tryParse(v) ?? _targetNa),
                     )),
@@ -459,17 +460,17 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                 ),
                 const SizedBox(height: 16),
                 _buildDropdown<CorrectionMode>(
-                  label: 'Mode de Correction',
+                  label: context.t('correctionMode'),
                   value: _naMode,
-                  items: const [
-                    DropdownMenuItem(value: CorrectionMode.chronic, child: Text('Chronique (>48h)')),
-                    DropdownMenuItem(value: CorrectionMode.acute, child: Text('Aigu (<48h)')),
+                  items: [
+                    DropdownMenuItem(value: CorrectionMode.chronic, child: Text(context.t('chronic'))),
+                    DropdownMenuItem(value: CorrectionMode.acute, child: Text(context.t('acute'))),
                   ],
                   onChanged: (v) => setState(() => _naMode = v!),
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Sélection des Solutés',
+                  context.t('soluteSelection'),
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -480,21 +481,21 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                 Row(
                   children: [
                     Expanded(child: _buildDropdown<IVFluid>(
-                      label: 'Soluté A',
+                      label: context.t('soluteA'),
                       value: _fluidA,
                       items: MetabolicCalculator.ivFluids.map((f) => DropdownMenuItem(
                         value: f,
-                        child: Text(f.name, overflow: TextOverflow.ellipsis),
+                        child: Text(context.tr(f.name), overflow: TextOverflow.ellipsis),
                       )).toList(),
                       onChanged: (v) => setState(() => _fluidA = v!),
                     )),
                     const SizedBox(width: 12),
                     Expanded(child: _buildDropdown<IVFluid>(
-                      label: 'Soluté B',
+                      label: context.t('soluteB'),
                       value: _fluidB,
                       items: MetabolicCalculator.ivFluids.map((f) => DropdownMenuItem(
                         value: f,
-                        child: Text(f.name, overflow: TextOverflow.ellipsis),
+                        child: Text(context.tr(f.name), overflow: TextOverflow.ellipsis),
                       )).toList(),
                       onChanged: (v) => setState(() => _fluidB = v!),
                     )),
@@ -565,30 +566,28 @@ class _MetabolicScreenState extends State<MetabolicScreen>
     final String dangerMargin;
     
     if (_naDirection == SodiumDirection.hypo) {
-      // Hyponatremia correction margins
       if (_naMode == CorrectionMode.acute) {
-        rateReco = '1-2 mEq/L/h (max 8-10 mEq/L/24h)';
-        rateWarning = 'Correction rapide acceptable si installation <48h';
-        safeMargin = '✓ Sûr: ≤10 mEq/L en 24h, ≤18 mEq/L en 48h';
-        dangerMargin = '⚠️ Danger ODS: >10-12 mEq/L en 24h';
+        rateReco = context.t('naRateRecoHypoAcute');
+        rateWarning = context.t('naRateWarningHypoAcute');
+        safeMargin = context.t('naSafeMarginHypoAcute');
+        dangerMargin = context.t('naDangerMarginHypoAcute');
       } else {
-        rateReco = '≤0.5 mEq/L/h (max 8 mEq/L/24h)';
-        rateWarning = '⚠️ Risque de myélinolyse centro-pontine si correction trop rapide';
-        safeMargin = '✓ Sûr: ≤8 mEq/L en 24h (10-12 si Na<120 + symptômes)';
-        dangerMargin = '⚠️ Danger ODS: >8 mEq/L en 24h si chronique';
+        rateReco = context.t('naRateRecoHypoChronic');
+        rateWarning = context.t('naRateWarningHypoChronic');
+        safeMargin = context.t('naSafeMarginHypoChronic');
+        dangerMargin = context.t('naDangerMarginHypoChronic');
       }
     } else {
-      // Hypernatremia correction margins
       if (_naMode == CorrectionMode.acute) {
-        rateReco = '1-2 mEq/L/h (max 12 mEq/L/24h)';
-        rateWarning = 'Correction rapide possible si installation <24h';
-        safeMargin = '✓ Sûr: ≤12 mEq/L en 24h (si aigu)';
-        dangerMargin = '⚠️ Danger: Œdème cérébral si >12 mEq/L/24h';
+        rateReco = context.t('naRateRecoHyperAcute');
+        rateWarning = context.t('naRateWarningHyperAcute');
+        safeMargin = context.t('naSafeMarginHyperAcute');
+        dangerMargin = context.t('naDangerMarginHyperAcute');
       } else {
-        rateReco = '≤0.5 mEq/L/h (max 10-12 mEq/L/24h)';
-        rateWarning = '⚠️ Risque d\'œdème cérébral si correction trop rapide';
-        safeMargin = '✓ Sûr: ≤10 mEq/L en 24h (chronique)';
-        dangerMargin = '⚠️ Danger: Œdème cérébral si >12 mEq/L/24h';
+        rateReco = context.t('naRateRecoHyperChronic');
+        rateWarning = context.t('naRateWarningHyperChronic');
+        safeMargin = context.t('naSafeMarginHyperChronic');
+        dangerMargin = context.t('naDangerMarginHyperChronic');
       }
     }
     
@@ -612,7 +611,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      result.safetyWarning,
+                      context.tr(result.safetyWarning),
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -648,7 +647,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            'Vitesse Recommandée (${_naMode == CorrectionMode.acute ? "Aigu" : "Chronique"})',
+                            context.t('correctionRateTitle').replaceAll('{0}', _naMode == CorrectionMode.acute ? context.t('acute') : context.t('chronic')),
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -698,8 +697,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                     ],
                   ),
                 ),
-                const Text(
-                  'Débits de Perfusion',
+                Text(
+                  context.t('infusionRates'),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -707,25 +706,25 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   ),
                 ),
                 const SizedBox(height: 16),
-                _buildResultItem('Soluté A (${_fluidA.name})', '${result.fluidARate} mL/h'),
-                _buildResultItem('Soluté B (${_fluidB.name})', '${result.fluidBRate} mL/h'),
+                _buildResultItem(context.t('soluteATotalLabel').replaceAll('{0}', context.tr(_fluidA.name)), '${result.fluidARate} mL/h'),
+                _buildResultItem(context.t('soluteBTotalLabel').replaceAll('{0}', context.tr(_fluidB.name)), '${result.fluidBRate} mL/h'),
                 const Divider(color: Colors.white30, height: 24),
-                _buildResultItem('Débit Total', '${result.totalRate} mL/h'),
-                _buildResultItem('Variation Prédite', '${result.ratePerHour.toStringAsFixed(2)} mEq/L/h'),
+                _buildResultItem(context.t('totalFlowRate'), '${result.totalRate} mL/h'),
+                _buildResultItem(context.t('predictedVariation'), '${result.ratePerHour.toStringAsFixed(2)} mEq/L/h'),
                 const Divider(color: Colors.white30, height: 24),
-                const Text(
-                  'Détails',
+                Text(
+                  context.t('detailLabel'),
                   style: TextStyle(
                     color: Colors.white70,
                     fontSize: 14,
                   ),
                 ),
                 const SizedBox(height: 8),
-                _buildResultItem('Eau Corporelle Totale', '${result.tbw.toStringAsFixed(1)} L'),
+                _buildResultItem(context.t('totalBodyWater'), '${result.tbw.toStringAsFixed(1)} L'),
                 if (result.freeWaterDeficit > 0)
-                  _buildResultItem('Déficit en Eau Libre', '${result.freeWaterDeficit.toStringAsFixed(1)} L'),
+                  _buildResultItem(context.t('freeWaterDeficit'), '${result.freeWaterDeficit.toStringAsFixed(1)} L'),
                 if (result.sodiumDeficit > 0)
-                  _buildResultItem('Déficit en Sodium', '${result.sodiumDeficit.toStringAsFixed(0)} mEq'),
+                  _buildResultItem(context.t('sodiumDeficitLabel'), '${result.sodiumDeficit.toStringAsFixed(0)} mEq'),
               ],
             ),
           ),
@@ -785,7 +784,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                         Icon(Icons.bolt, color: AppColors.warning),
                         const SizedBox(width: 12),
                         Text(
-                          'Kaliémie',
+                          context.t('kaliemia'),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -801,7 +800,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                       children: [
                         Expanded(
                           child: _buildTextField(
-                            label: 'Potassium (mEq/L)',
+                            label: context.t('potassiumLevel'),
                             value: _kLevel.toString(),
                             onChanged: (v) => setState(() => _kLevel = double.tryParse(v) ?? _kLevel),
                           ),
@@ -859,7 +858,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                         Icon(Icons.monitor_heart_outlined, color: AppColors.error),
                         const SizedBox(width: 12),
                         Text(
-                          'Signes ECG',
+                          context.t('ecgFindings'),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -873,7 +872,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                     final finding = entry.value;
                     return CheckboxListTile(
                       title: Text(
-                        finding.name,
+                        context.tr(finding.name),
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: AppColors.getTextPrimary(isDark),
@@ -881,7 +880,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                       ),
                       subtitle: finding.threshold != null 
                         ? Text(
-                            'Typiquement vu si K > ${finding.threshold}',
+                            context.t('typicallySeenK').replaceAll('{0}', '${finding.threshold}'),
                             style: TextStyle(color: AppColors.getTextSecondary(isDark)),
                           ) 
                         : null,
@@ -903,7 +902,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             // Treatments
             if (_kLevel > 5.0 || _selectedECG.isNotEmpty) ...[
               Text(
-                'Traitements Recommandés',
+                context.t('recommendedTreatments'),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -913,8 +912,18 @@ class _MetabolicScreenState extends State<MetabolicScreen>
               const SizedBox(height: 12),
               ...MetabolicCalculator.hyperkalemiaTreatments.asMap().entries.map((entry) {
                 final t = entry.value;
-                final isImmediate = t.urgency == 'immediate';
-                final cardColor = isImmediate ? AppColors.error : AppColors.warning;
+                final urgency = t.urgency;
+                final cardColor = urgency == 'immediate' ? AppColors.error
+                    : urgency == 'urgent' ? AppColors.warning
+                    : urgency == 'definitive' ? AppColors.accentCyan
+                    : AppColors.info;
+                final urgencyLabels = <String, String>{
+                  'immediate': context.t('urgencyImmediate'),
+                  'urgent': context.t('urgencyUrgent'),
+                  'adjunct': context.t('urgencyAdjunct'),
+                  'definitive': context.t('urgencyDefinitive'),
+                };
+                final urgencyLabel = urgencyLabels[urgency] ?? urgency;
                 
                 return Container(
                           margin: const EdgeInsets.only(bottom: 12),
@@ -939,7 +948,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                               ),
                             ),
                             title: Text(
-                              t.name,
+                              context.tr(t.name),
                               style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
                             subtitle: Column(
@@ -947,11 +956,11 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                               children: [
                                 const SizedBox(height: 4),
                                 Text(
-                                  'Dose: ${t.dose}',
+                                  '${AppStrings.doseLabel}: ${context.tr(t.dose)}',
                                   style: TextStyle(color: AppColors.getTextSecondary(isDark)),
                                 ),
                                 Text(
-                                  t.notes,
+                                  context.tr(t.notes),
                                   style: TextStyle(
                                     color: AppColors.getTextHint(isDark),
                                     fontSize: 12,
@@ -968,7 +977,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
-                                isImmediate ? 'Urgent' : 'Modéré',
+                                urgencyLabel,
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 11,
@@ -996,11 +1005,11 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   String _getKaliumStatus() {
-    if (_kLevel > 6.5) return 'Critique';
-    if (_kLevel > 5.5) return 'Élevé';
-    if (_kLevel < 3.0) return 'Critique';
-    if (_kLevel < 3.5) return 'Bas';
-    return 'Normal';
+    if (_kLevel > 6.5) return context.t('criticalStatus');
+    if (_kLevel > 5.5) return context.t('elevatedStatus');
+    if (_kLevel < 3.0) return context.t('criticalStatus');
+    if (_kLevel < 3.5) return context.t('lowStatus');
+    return context.t('normalStatus');
   }
 
   Widget _buildCalciumTab() {
@@ -1035,7 +1044,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                         Icon(Icons.bubble_chart, color: AppColors.accentCyan),
                         const SizedBox(width: 12),
                         Text(
-                          'Calcémie',
+                          context.t('calcemia'),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -1050,13 +1059,13 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                     child: Column(
                       children: [
                         _buildTextField(
-                          label: 'Calcium Total (mg/dL)',
+                          label: context.t('calciumTotal'),
                           value: _totalCalcium.toString(),
                           onChanged: (v) => setState(() => _totalCalcium = double.tryParse(v) ?? _totalCalcium),
                         ),
                         const SizedBox(height: 16),
                         _buildTextField(
-                          label: 'Albumine (g/dL)',
+                          label: context.t('albuminLabel'),
                           value: _albumin.toString(),
                           onChanged: (v) => setState(() => _albumin = double.tryParse(v) ?? _albumin),
                         ),
@@ -1082,8 +1091,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                     size: 48,
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    'Calcium Corrigé',
+                  Text(
+                    context.t('correctedCalcium'),
                     style: TextStyle(
                       color: Colors.white70,
                       fontSize: 16,
@@ -1135,7 +1144,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                       Icon(Icons.info_outline, color: AppColors.info),
                       const SizedBox(width: 8),
                       Text(
-                        'Formule',
+                        context.t('formulaLabel'),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: AppColors.info,
@@ -1151,7 +1160,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      'Ca corrigé = Ca total + 0.8 × (4 - Albumine)',
+                      context.t('calciumFormula'),
                       style: TextStyle(
                         fontFamily: 'monospace',
                         color: AppColors.getTextPrimary(isDark),
@@ -1160,7 +1169,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Valeurs normales: 8.5 - 10.5 mg/dL',
+                    context.t('normalValuesRange'),
                     style: TextStyle(
                       color: AppColors.getTextSecondary(isDark),
                     ),
@@ -1182,10 +1191,10 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   String _getCalciumStatus(double ca) {
-    if (ca < 7.0) return 'Hypocalcémie sévère';
-    if (ca < 8.5) return 'Hypocalcémie';
-    if (ca > 12.0) return 'Hypercalcémie sévère';
-    if (ca > 10.5) return 'Hypercalcémie';
-    return 'Normal';
+    if (ca < 7.0) return context.t('hypocalcemiaSevere');
+    if (ca < 8.5) return context.t('hypocalcemia');
+    if (ca > 12.0) return context.t('hypercalcemiaSevere');
+    if (ca > 10.5) return context.t('hypercalcemia');
+    return context.t('normalStatus');
   }
 }

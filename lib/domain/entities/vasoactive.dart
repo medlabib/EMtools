@@ -1,9 +1,11 @@
+import '../../core/l10n/localized.dart';
+
 enum VasoactiveCategory { vasopressor, inotrope, vasodilator, mixed }
 
 class DrugConcentration {
   final String label;
   final double mgPerMl;
-  final String commonPrep;
+  final LString commonPrep;
 
   const DrugConcentration({
     required this.label,
@@ -47,16 +49,16 @@ class VasoactiveDrug {
   final String name;
   final String genericName;
   final VasoactiveCategory category;
-  final String description;
+  final LString description;
   final List<DrugConcentration> concentrations;
   final int defaultConcentrationIndex;
   final String doseUnit; // 'mcg/kg/min', 'mcg/min', 'mg/h', 'UI/min'
   final DrugDoseRange doseRange;
-  final List<String> indications;
+  final List<LString> indications;
   final DrugEffects effects;
-  final List<String> sideEffects;
-  final List<String> contraindications;
-  final List<String> notes;
+  final List<LString> sideEffects;
+  final List<LString> contraindications;
+  final List<LString> notes;
 
   const VasoactiveDrug({
     required this.id,

@@ -180,7 +180,7 @@ void main() {
         // Delta = 15 mEq/L, Rate = 15/24 = 0.625 mEq/L/h > 0.33 (8/24)
         expect(result.deltaNa, 15.0);
         expect(result.isUnsafe, true);
-        expect(result.safetyWarning.toLowerCase(), contains('ods'));
+        expect(result.safetyWarning.fr.toLowerCase(), contains('ods'));
       });
 
       test('Acute symptomatic hyponatremia - higher rate allowed', () {
@@ -247,7 +247,7 @@ void main() {
         // Rate = 25/24 = 1.04 mEq/L/h > 0.5 limit
         expect(result.deltaNa, -25.0);
         expect(result.isUnsafe, true);
-        expect(result.safetyWarning.toLowerCase(), contains('œdème cérébral'));
+        expect(result.safetyWarning.fr.toLowerCase(), contains('œdème cérébral'));
       });
     });
 
@@ -284,14 +284,14 @@ void main() {
         final treatment = MetabolicCalculator.hyperkalemiaTreatments
             .firstWhere((t) => t.id == 'calcium_gluconate');
         expect(treatment.urgency, 'immediate');
-        expect(treatment.mechanism, 'Cardioprotection');
+        expect(treatment.mechanism.fr, 'Cardioprotection');
       });
 
       test('Insulin-glucose is the most effective shift therapy', () {
         final treatment = MetabolicCalculator.hyperkalemiaTreatments
             .firstWhere((t) => t.id == 'insulin_glucose');
         expect(treatment.urgency, 'urgent');
-        expect(treatment.mechanism, 'Transfert intracellulaire');
+        expect(treatment.mechanism.fr, 'Transfert intracellulaire');
       });
 
       test('Hyperkalemia ECG changes correlate with K+ level', () {

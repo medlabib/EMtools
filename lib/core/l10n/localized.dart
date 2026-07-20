@@ -16,6 +16,8 @@ class LString {
   final String fr;
   final String en;
 
+  static const empty = LString('', '');
+
   const LString(this.fr, this.en);
 
   /// Resolve to a concrete string for [lang].
