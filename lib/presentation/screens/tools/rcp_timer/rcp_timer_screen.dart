@@ -521,33 +521,32 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
   }
 
   Widget _buildMainTimer(ThemeData theme) {
+    final isDark = theme.brightness == Brightness.dark;
+    final running = _isRunning;
+    final labelColor = running ? Colors.white70 : AppColors.getTextSecondary(isDark);
+    final valueColor = running ? Colors.white : AppColors.getTextPrimary(isDark);
     return Card(
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          gradient: LinearGradient(
-            colors: _isRunning
-                ? [AppColors.error.withValues(alpha: 0.8), AppColors.error]
-                : [AppColors.primaryBlue, AppColors.primaryIndigo],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+          color: running ? AppColors.error : AppColors.getCardColor(isDark),
+          border: running ? null : Border.all(color: AppColors.getBorderColor(isDark)),
         ),
         child: Column(
           children: [
             Text(
               'Temps Total',
               style: theme.textTheme.titleMedium?.copyWith(
-                color: Colors.white70,
+                color: labelColor,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               _formatDurationLong(_elapsedTime),
               style: theme.textTheme.displayLarge?.copyWith(
-                color: Colors.white,
+                color: valueColor,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'monospace',
                 fontSize: 64,

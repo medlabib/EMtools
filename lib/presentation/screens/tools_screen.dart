@@ -41,7 +41,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.medicalReport,
         subtitle: AppStrings.medicalReportDesc,
         icon: Icons.assignment_outlined,
-        gradient: AppColors.medicalGradient,
         route: '/tools/medical-report',
         category: 'emergency',
         keywords: ['rapport', 'medical', 'abcde', 'urgence', 'evaluation'],
@@ -50,7 +49,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.calculators,
         subtitle: AppStrings.calculatorsDesc,
         icon: Icons.calculate_outlined,
-        color: AppColors.success,
         route: '/tools/calculators',
         category: 'calculators',
         keywords: ['calcul', 'score', 'sofa', 'apache', 'wells', 'chads'],
@@ -59,7 +57,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.bloodGas,
         subtitle: AppStrings.bloodGasDesc,
         icon: Icons.air,
-        color: AppColors.error,
         route: '/tools/blood-gas',
         category: 'icu',
         keywords: ['gaz', 'sang', 'ph', 'paco2', 'hco3', 'acidose', 'alcalose', 'ards'],
@@ -68,7 +65,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.vasoactive,
         subtitle: AppStrings.vasoactiveDesc,
         icon: Icons.favorite_outline,
-        color: AppColors.warning,
         route: '/tools/vasoactive',
         category: 'icu',
         keywords: ['vasoactif', 'noradrenaline', 'adrenaline', 'dobutamine', 'dopamine'],
@@ -77,7 +73,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.sedation,
         subtitle: AppStrings.sedationDesc,
         icon: Icons.bed_outlined,
-        color: AppColors.accentTeal,
         route: '/tools/sedation',
         category: 'icu',
         keywords: ['sedation', 'isr', 'intubation', 'propofol', 'ketamine', 'etomidate'],
@@ -86,7 +81,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.metabolic,
         subtitle: AppStrings.metabolicDesc,
         icon: Icons.water_drop_outlined,
-        color: AppColors.primaryIndigo,
         route: '/tools/metabolic',
         category: 'icu',
         keywords: ['metabolique', 'sodium', 'potassium', 'calcium', 'dysnatremie', 'hypokaliemie'],
@@ -95,7 +89,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.antibiotics,
         subtitle: AppStrings.antibioticsDesc,
         icon: Icons.medication_outlined,
-        gradient: AppColors.accentGradient,
         route: '/tools/antibiotics',
         category: 'tools',
         keywords: ['antibiotique', 'infection', 'amoxicilline', 'ceftriaxone', 'renal'],
@@ -104,7 +97,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.protocols,
         subtitle: AppStrings.protocolsDesc,
         icon: Icons.format_list_numbered,
-        color: AppColors.primaryPurple,
         route: '/tools/protocols',
         category: 'emergency',
         keywords: ['protocole', 'acr', 'avc', 'sepsis', 'trauma', 'pediatrie', 'urgence', 'reanimation'],
@@ -113,11 +105,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: AppStrings.rcpTimer,
         subtitle: AppStrings.rcpTimerDesc,
         icon: Icons.timer,
-        gradient: LinearGradient(
-          colors: [AppColors.error, AppColors.error.withValues(alpha: 0.7)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
         route: '/tools/rcp-timer',
         category: 'emergency',
         keywords: ['rcp', 'reanimation', 'acr', 'massage', 'compression', 'adrenaline', 'chronometre', 'timer'],
@@ -215,41 +202,38 @@ class _ToolsScreenState extends State<ToolsScreen> {
         bottom: 16,
       ),
       decoration: BoxDecoration(
-        gradient: AppColors.primaryGradient,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryBlue.withValues(alpha: 0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: AppColors.getCardColor(isDark),
+        border: Border(
+          bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
+        ),
       ),
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
+            icon: Icon(Icons.arrow_back_rounded, color: AppColors.getTextPrimary(isDark)),
             onPressed: _toggleSearch,
           ),
           Expanded(
             child: Container(
               height: 44,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(22),
+                color: AppColors.getBackgroundColor(isDark),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.getBorderColor(isDark)),
               ),
               child: TextField(
                 controller: _searchController,
                 focusNode: _searchFocusNode,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color: AppColors.getTextPrimary(isDark), fontSize: 16),
                 decoration: InputDecoration(
                   hintText: AppStrings.searchTool,
-                  hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
+                  hintStyle: TextStyle(color: AppColors.getTextHint(isDark)),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  prefixIcon: Icon(Icons.search, color: Colors.white.withValues(alpha: 0.7)),
+                  prefixIcon: Icon(Icons.search, color: AppColors.getTextSecondary(isDark)),
                   suffixIcon: _searchQuery.isNotEmpty
                       ? IconButton(
-                          icon: Icon(Icons.clear, color: Colors.white.withValues(alpha: 0.7)),
+                          icon: Icon(Icons.clear, color: AppColors.getTextSecondary(isDark)),
                           onPressed: () {
                             setState(() {
                               _searchQuery = '';
@@ -295,7 +279,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
                     height: 180,
                     actions: [
                       IconButton(
-                        icon: const Icon(Icons.search_rounded, color: Colors.white),
+                        icon: Icon(Icons.search_rounded, color: AppColors.primary),
                         onPressed: _toggleSearch,
                       ),
                     ],
@@ -406,10 +390,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
                           title: tool.title,
                           subtitle: tool.subtitle,
                           icon: tool.icon,
-                          iconColor: tool.color,
-                          gradient: tool.gradient,
                           onTap: () => context.go(tool.route),
-                          animationDelay: 100 + (index * 50),
                         ),
                         // Favorite button
                         Positioned(
@@ -451,8 +432,6 @@ class _ToolData {
   final String title;
   final String subtitle;
   final IconData icon;
-  final Color? color;
-  final Gradient? gradient;
   final String route;
   final String category;
   final List<String> keywords;
@@ -461,8 +440,6 @@ class _ToolData {
     required this.title,
     required this.subtitle,
     required this.icon,
-    this.color,
-    this.gradient,
     required this.route,
     required this.category,
     required this.keywords,
@@ -492,27 +469,20 @@ class _CategoryChip extends StatelessWidget {
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           decoration: BoxDecoration(
-            gradient: isSelected ? AppColors.primaryGradient : null,
             color: isSelected
-                ? null
+                ? AppColors.primary
                 : (isDark ? AppColors.cardDark : AppColors.cardLight),
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: isSelected
-                ? [
-                    BoxShadow(
-                      color: AppColors.primaryBlue.withValues(alpha: 0.3),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]
-                : null,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isSelected ? AppColors.primary : AppColors.getBorderColor(isDark),
+            ),
           ),
           child: Text(
             label,
             style: TextStyle(
               color: isSelected
                   ? Colors.white
-                  : (isDark ? Colors.grey[300] : Colors.grey[700]),
+                  : AppColors.getTextSecondary(isDark),
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
               fontSize: 14,
             ),

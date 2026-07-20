@@ -234,6 +234,8 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
   }
 
   Widget _buildHeader(BuildContext context, VasoactiveDrug? drug) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final accent = drug != null ? _getCategoryColor(drug.category) : AppColors.primary;
     return Container(
       padding: EdgeInsets.fromLTRB(
         20,
@@ -242,16 +244,9 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
         24,
       ),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: drug != null 
-              ? [_getCategoryColor(drug.category), _getCategoryColor(drug.category).withValues(alpha: 0.8)]
-              : [const Color(0xFFEC4899), const Color(0xFFBE185D), const Color(0xFF9D174D)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+        color: AppColors.getCardColor(isDark),
+        border: Border(
+          bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
         ),
       ),
       child: Column(
@@ -264,12 +259,12 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    color: accent.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_back_rounded,
-                    color: Colors.white,
+                    color: accent,
                   ),
                 ),
               ),
@@ -282,12 +277,12 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(14),
+                  color: accent.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(
                   drug != null ? _getCategoryIcon(drug.category) : Icons.favorite_outline,
-                  color: Colors.white,
+                  color: accent,
                   size: 28,
                 ),
               ),
@@ -298,10 +293,10 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
                   children: [
                     Text(
                       drug?.name ?? AppStrings.vasoactiveTitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.getTextPrimary(isDark),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -309,7 +304,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
                       drug?.genericName ?? AppStrings.vasoactiveDesc,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: AppColors.getTextSecondary(isDark),
                       ),
                     ),
                   ],
@@ -406,19 +401,9 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [color, color.withValues(alpha: 0.8)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: color.withValues(alpha: 0.3),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
+        color: color.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -428,11 +413,13 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
             flowRate.toStringAsFixed(1),
             'mL/h',
             Icons.speed_rounded,
+            color,
+            isDark,
           ),
           Container(
             width: 1,
             height: 60,
-            color: Colors.white.withValues(alpha: 0.3),
+            color: color.withValues(alpha: 0.25),
           ),
           _buildResultItem(
             'Durée',
@@ -441,22 +428,24 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
                 : (duration * 60).toStringAsFixed(0),
             duration >= 1 ? 'h' : 'min',
             Icons.timer_outlined,
+            color,
+            isDark,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildResultItem(String label, String value, String unit, IconData icon) {
+  Widget _buildResultItem(String label, String value, String unit, IconData icon, Color color, bool isDark) {
     return Column(
       children: [
-        Icon(icon, color: Colors.white.withValues(alpha: 0.8), size: 24),
+        Icon(icon, color: color, size: 24),
         const SizedBox(height: 8),
         Text(
           label,
           style: TextStyle(
             fontSize: 13,
-            color: Colors.white.withValues(alpha: 0.9),
+            color: AppColors.getTextSecondary(isDark),
           ),
         ),
         const SizedBox(height: 4),
@@ -465,10 +454,10 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
           children: [
             Text(
               value,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                color: AppColors.getTextPrimary(isDark),
               ),
             ),
             Padding(
@@ -477,7 +466,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
                 unit,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white.withValues(alpha: 0.9),
+                  color: AppColors.getTextSecondary(isDark),
                 ),
               ),
             ),
@@ -492,14 +481,8 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -803,14 +786,8 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -918,14 +895,8 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1021,13 +992,6 @@ class _DrugCardState extends State<_DrugCard> {
               color: widget.color.withValues(alpha: 0.2),
               width: 1,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: widget.isDark ? 0.2 : 0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

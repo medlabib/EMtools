@@ -13,7 +13,6 @@ class SedationScreen extends StatefulWidget {
 
 class _SedationScreenState extends State<SedationScreen> with TickerProviderStateMixin {
   late TabController _tabController;
-  late AnimationController _animationController;
   final TextEditingController _weightController = TextEditingController(text: '70');
   final TextEditingController _ageController = TextEditingController(text: '40');
   final TextEditingController _searchController = TextEditingController();
@@ -27,17 +26,12 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 800),
-      vsync: this,
-    )..forward();
     _updateAgeGroup();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-    _animationController.dispose();
     _weightController.dispose();
     _ageController.dispose();
     _searchController.dispose();
@@ -122,21 +116,23 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   }
 
   Widget _buildSliverAppBar() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SliverAppBar(
       expandedHeight: 140,
       pinned: true,
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.getCardColor(isDark),
+      foregroundColor: AppColors.getTextPrimary(isDark),
+      surfaceTintColor: AppColors.getCardColor(isDark),
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+        icon: Icon(Icons.arrow_back_ios, color: AppColors.getTextPrimary(isDark)),
         onPressed: () => Navigator.of(context).pop(),
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [AppColors.primary, AppColors.primaryDark],
+          decoration: BoxDecoration(
+            color: AppColors.getCardColor(isDark),
+            border: Border(
+              bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
             ),
           ),
           child: SafeArea(
@@ -151,12 +147,12 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(16),
+                          color: AppColors.primary.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Icon(
                           Icons.medical_services_rounded,
-                          color: Colors.white,
+                          color: AppColors.primary,
                           size: 28,
                         ),
                       ),
@@ -167,16 +163,16 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                           children: [
                             Text(
                               AppStrings.sedationAnalgesia,
-                              style: const TextStyle(
-                                color: Colors.white,
+                              style: TextStyle(
+                                color: AppColors.getTextPrimary(isDark),
                                 fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                             Text(
                               AppStrings.sedationDesc,
                               style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.8),
+                                color: AppColors.getTextSecondary(isDark),
                                 fontSize: 14,
                               ),
                             ),
@@ -196,48 +192,32 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
 
   Widget _buildPatientInputs() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return SlideTransition(
-      position: Tween<Offset>(
-        begin: const Offset(0, -0.2),
-        end: Offset.zero,
-      ).animate(CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeOutCubic,
-      )),
-      child: FadeTransition(
-        opacity: _animationController,
-        child: Container(
-          margin: const EdgeInsets.all(16),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: isDark ? AppColors.cardDark : Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-                blurRadius: 20,
-                offset: const Offset(0, 4),
+    return Container(
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: AppColors.getCardColor(isDark),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.person_outline, 
+                color: AppColors.primary, size: 20),
+              const SizedBox(width: 8),
+              Text(
+                AppStrings.patientParameters,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: isDark ? Colors.white : AppColors.textPrimary,
+                ),
               ),
             ],
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.person_outline, 
-                    color: AppColors.primary, size: 20),
-                  const SizedBox(width: 8),
-                  Text(
-                    AppStrings.patientParameters,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.white : AppColors.textPrimary,
-                    ),
-                  ),
-                ],
-              ),
               const SizedBox(height: 16),
               Row(
                 children: [
@@ -295,9 +275,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
               ),
             ],
           ),
-        ),
-      ),
-    );
+        );
   }
 
   Widget _buildInputField({
@@ -348,24 +326,16 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: TabBar(
         controller: _tabController,
         labelColor: Colors.white,
         unselectedLabelColor: isDark ? Colors.grey[400] : AppColors.textSecondary,
         indicator: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [AppColors.primary, AppColors.primaryDark],
-          ),
-          borderRadius: BorderRadius.circular(12),
+          color: AppColors.primary,
+          borderRadius: BorderRadius.circular(8),
         ),
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.all(4),
@@ -473,14 +443,8 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
           child: Container(
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF2D2D2D) : Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 2),
-                ),
-              ],
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.getBorderColor(isDark)),
             ),
             child: TextField(
               controller: _searchController,
@@ -544,10 +508,8 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [color.withValues(alpha: 0.1), color.withValues(alpha: 0.05)],
-        ),
-        borderRadius: BorderRadius.circular(16),
+        color: color.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
@@ -617,20 +579,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
   }
 
   Widget _buildAnimatedDrugCard(String drugId, int index) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0, end: 1),
-      duration: Duration(milliseconds: 300 + (index * 50)),
-      curve: Curves.easeOutCubic,
-      builder: (context, value, child) {
-        return Transform.translate(
-          offset: Offset(0, 20 * (1 - value)),
-          child: Opacity(
-            opacity: value,
-            child: _buildDrugCard(drugId),
-          ),
-        );
-      },
-    );
+    return _buildDrugCard(drugId);
   }
 
   Widget _buildDrugCard(String drugId) {
@@ -647,20 +596,14 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(12),
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(12),
           onTap: () => _showDrugDetails(drug, doseInfo),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -673,9 +616,7 @@ class _SedationScreenState extends State<SedationScreen> with TickerProviderStat
                       width: 48,
                       height: 48,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [cardColor, cardColor.withValues(alpha: 0.7)],
-                        ),
+                        color: cardColor,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
@@ -1053,10 +994,8 @@ class _DrugDetailsSheet extends StatelessWidget {
           width: 60,
           height: 60,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [AppColors.primary, AppColors.primaryDark],
-            ),
-            borderRadius: BorderRadius.circular(16),
+            color: AppColors.primary,
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Center(
             child: Text(
@@ -1116,13 +1055,8 @@ class _DrugDetailsSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppColors.success.withValues(alpha: isDark ? 0.2 : 0.1),
-            AppColors.accentEmerald.withValues(alpha: isDark ? 0.1 : 0.05),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(20),
+        color: AppColors.success.withValues(alpha: isDark ? 0.15 : 0.08),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.success.withValues(alpha: 0.3)),
       ),
       child: Column(

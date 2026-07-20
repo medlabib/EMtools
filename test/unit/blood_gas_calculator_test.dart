@@ -79,7 +79,7 @@ void main() {
           hco3: 24,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.status, 'Normal');
+        expect(result.status, AcidBaseStatus.normal);
       });
 
       test('detects metabolic acidosis', () {
@@ -89,8 +89,8 @@ void main() {
           hco3: 14,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.status, 'Acidose');
-        expect(result.primary, 'Métabolique');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.primary, PrimaryDisorder.metabolic);
       });
 
       test('detects respiratory acidosis', () {
@@ -100,8 +100,8 @@ void main() {
           hco3: 26,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.status, 'Acidose');
-        expect(result.primary, 'Respiratoire');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.primary, PrimaryDisorder.respiratory);
       });
 
       test('detects metabolic alkalosis', () {
@@ -111,8 +111,8 @@ void main() {
           hco3: 34,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.status, 'Alcalose');
-        expect(result.primary, 'Métabolique');
+        expect(result.status, AcidBaseStatus.alkalosis);
+        expect(result.primary, PrimaryDisorder.metabolic);
       });
 
       test('detects respiratory alkalosis', () {
@@ -122,8 +122,8 @@ void main() {
           hco3: 22,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.status, 'Alcalose');
-        expect(result.primary, 'Respiratoire');
+        expect(result.status, AcidBaseStatus.alkalosis);
+        expect(result.primary, PrimaryDisorder.respiratory);
       });
     });
 
@@ -136,7 +136,7 @@ void main() {
           hco3: 14,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.winterMsg, contains('Compensée'));
+        expect(result.compensation, CompensationStatus.metabolicCompensatedPure);
       });
 
       test('detects metabolic acidosis with respiratory acidosis', () {
@@ -147,7 +147,7 @@ void main() {
           hco3: 14,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.winterMsg, contains('Acidose Resp'));
+        expect(result.compensation, CompensationStatus.addedRespiratoryAcidosis);
       });
 
       test('detects metabolic acidosis with respiratory alkalosis', () {
@@ -158,7 +158,7 @@ void main() {
           hco3: 14,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.winterMsg, contains('Alcalose Resp'));
+        expect(result.compensation, CompensationStatus.addedRespiratoryAlkalosis);
       });
     });
 
@@ -196,7 +196,7 @@ void main() {
           fio2: 1.0,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.ardsGrade, 'SDRA Léger');
+        expect(result.ardsGrade, ArdsGrade.mild);
       });
 
       test('classifies moderate ARDS', () {
@@ -205,7 +205,7 @@ void main() {
           fio2: 1.0,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.ardsGrade, 'SDRA Modéré');
+        expect(result.ardsGrade, ArdsGrade.moderate);
       });
 
       test('classifies severe ARDS', () {
@@ -214,7 +214,7 @@ void main() {
           fio2: 1.0,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.ardsGrade, 'SDRA Sévère');
+        expect(result.ardsGrade, ArdsGrade.severe);
       });
 
       test('calculates A-a gradient', () {
@@ -242,19 +242,19 @@ void main() {
       test('normal lactate', () {
         final data = BloodGasPatientData(lactate: 1.5);
         final result = BloodGasCalculator.calculate(data);
-        expect(result.lactateStatus, 'Normal');
+        expect(result.lactateStatus, LactateStatus.normal);
       });
 
       test('hyperlactatemia', () {
         final data = BloodGasPatientData(lactate: 3.0);
         final result = BloodGasCalculator.calculate(data);
-        expect(result.lactateStatus, 'Hyperlactatémie');
+        expect(result.lactateStatus, LactateStatus.hyperlactatemia);
       });
 
       test('shock/hypoperfusion', () {
         final data = BloodGasPatientData(lactate: 5.0);
         final result = BloodGasCalculator.calculate(data);
-        expect(result.lactateStatus, 'Choc / Hypoperfusion');
+        expect(result.lactateStatus, LactateStatus.shock);
       });
     });
 

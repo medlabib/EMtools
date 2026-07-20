@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/config/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'presentation/providers/theme_provider.dart';
-import 'presentation/providers/language_provider.dart';
+import 'core/l10n/localized.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,9 @@ class _EMToolsAppState extends ConsumerState<EMToolsApp> {
   Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeProvider);
-    ref.watch(languageProvider);
+    // Keeps the LString ambient language in sync (transitively watches
+    // languageProvider, so the usual language rebuild still fires).
+    ref.watch(ambientLanguageProvider);
 
     return MaterialApp.router(
       title: 'EMtools',

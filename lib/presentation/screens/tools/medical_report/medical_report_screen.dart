@@ -16,7 +16,6 @@ class MedicalReportScreen extends ConsumerStatefulWidget {
 class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
-  late AnimationController _animationController;
   late TabController _tabController;
 
   // Form State - Identity
@@ -93,16 +92,11 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 800),
-      vsync: this,
-    )..forward();
     _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
     _tabController.dispose();
     _patientNameController.dispose();
     _ageController.dispose();
@@ -539,17 +533,20 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   }
 
   Widget _buildSliverAppBar() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SliverAppBar(
       expandedHeight: 140,
       pinned: true,
-      backgroundColor: AppColors.accentTeal,
+      backgroundColor: AppColors.getCardColor(isDark),
+      foregroundColor: AppColors.getTextPrimary(isDark),
+      surfaceTintColor: AppColors.getCardColor(isDark),
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+        icon: Icon(Icons.arrow_back_ios, color: AppColors.getTextPrimary(isDark)),
         onPressed: () => Navigator.of(context).pop(),
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.copy_rounded, color: Colors.white),
+          icon: Icon(Icons.copy_rounded, color: AppColors.primary),
           onPressed: _generatedReport.isEmpty
               ? null
               : () {
@@ -562,19 +559,22 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       ],
       flexibleSpace: FlexibleSpaceBar(
         background: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [AppColors.accentTeal, AppColors.accentEmerald]),
+          decoration: BoxDecoration(
+            color: AppColors.getCardColor(isDark),
+            border: Border(
+              bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
+            ),
           ),
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.end, children: [
                 Row(children: [
-                  Container(padding: const EdgeInsets.all(12), decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(16)), child: const Icon(Icons.description_rounded, color: Colors.white, size: 28)),
+                  Container(padding: const EdgeInsets.all(12), decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(10)), child: const Icon(Icons.description_rounded, color: AppColors.primary, size: 28)),
                   const SizedBox(width: 16),
                   Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text(AppStrings.medicalReportTitle, style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-                    Text(context.t('abcdeSubtitle'), style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 14)),
+                    Text(AppStrings.medicalReportTitle, style: TextStyle(color: AppColors.getTextPrimary(isDark), fontSize: 24, fontWeight: FontWeight.w700)),
+                    Text(context.t('abcdeSubtitle'), style: TextStyle(color: AppColors.getTextSecondary(isDark), fontSize: 14)),
                   ])),
                 ]),
               ]),
@@ -605,12 +605,12 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       margin: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: isDark ? AppColors.cardDark : Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.03), blurRadius: 10, offset: const Offset(0, 2))]),
+      decoration: BoxDecoration(color: isDark ? AppColors.cardDark : Colors.white, borderRadius: BorderRadius.circular(12), border: Border.all(color: AppColors.getBorderColor(isDark))),
       child: TabBar(
         controller: _tabController,
         labelColor: Colors.white,
         unselectedLabelColor: isDark ? Colors.grey[400] : AppColors.textSecondary,
-        indicator: BoxDecoration(gradient: const LinearGradient(colors: [AppColors.accentTeal, AppColors.accentEmerald]), borderRadius: BorderRadius.circular(12)),
+        indicator: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(8)),
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.all(4),
         tabs: [
@@ -649,32 +649,19 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
 
   Widget _buildAnimatedStepCard(_StepData step, int index) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0, end: 1),
-      duration: Duration(milliseconds: 300 + (index * 80)),
-      curve: Curves.easeOutCubic,
-      builder: (context, value, child) {
-        return Transform.translate(
-          offset: Offset(0, 20 * (1 - value)),
-          child: Opacity(
-            opacity: value,
-            child: Container(
+    return Container(
               margin: const EdgeInsets.only(bottom: 12),
-              decoration: BoxDecoration(color: isDark ? AppColors.cardDark : Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04), blurRadius: 10, offset: const Offset(0, 2))]),
+              decoration: BoxDecoration(color: isDark ? AppColors.cardDark : Colors.white, borderRadius: BorderRadius.circular(12), border: Border.all(color: AppColors.getBorderColor(isDark))),
               child: Theme(
                 data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
                   initiallyExpanded: index == 0,
-                  leading: Container(width: 40, height: 40, decoration: BoxDecoration(gradient: LinearGradient(colors: [_getStepColor(index), _getStepColor(index).withValues(alpha: 0.7)]), borderRadius: BorderRadius.circular(12)), child: Icon(step.icon, color: Colors.white, size: 20)),
+                  leading: Container(width: 40, height: 40, decoration: BoxDecoration(color: _getStepColor(index).withValues(alpha: 0.12), borderRadius: BorderRadius.circular(10), border: Border.all(color: _getStepColor(index).withValues(alpha: 0.3))), child: Icon(step.icon, color: _getStepColor(index), size: 20)),
                   title: Text(step.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: isDark ? Colors.white : AppColors.textPrimary)),
                   children: [Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 16), child: step.content)],
                 ),
               ),
-            ),
-          ),
-        );
-      },
-    );
+            );
   }
 
   Color _getStepColor(int index) {
@@ -895,7 +882,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(children: [Icon(Icons.psychology, color: AppColors.accentPurple, size: 20), const SizedBox(width: 8), Text(context.t('gcsScore'), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: isDark ? Colors.white : AppColors.textPrimary))]),
-          Container(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), decoration: BoxDecoration(gradient: const LinearGradient(colors: [AppColors.accentPurple, AppColors.primary]), borderRadius: BorderRadius.circular(20)), child: Text('$_gcsTotal/15', style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold))),
+          Container(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(8)), child: Text('$_gcsTotal/15', style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold))),
         ]),
         const SizedBox(height: 16),
         Row(children: [
@@ -1022,8 +1009,8 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   Widget _buildGenerateButton() {
     return Container(
       width: double.infinity, height: 56,
-      decoration: BoxDecoration(gradient: const LinearGradient(colors: [AppColors.accentTeal, AppColors.accentEmerald]), borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: AppColors.accentTeal.withValues(alpha: 0.3), blurRadius: 12, offset: const Offset(0, 4))]),
-      child: Material(color: Colors.transparent, child: InkWell(borderRadius: BorderRadius.circular(16), onTap: _generateReport, child: Center(child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [const Icon(Icons.description_rounded, color: Colors.white), const SizedBox(width: 12), Text(AppStrings.generateReport, style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold))])))),
+      decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(10)),
+      child: Material(color: Colors.transparent, child: InkWell(borderRadius: BorderRadius.circular(10), onTap: _generateReport, child: Center(child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [const Icon(Icons.description_rounded, color: Colors.white), const SizedBox(width: 12), Text(AppStrings.generateReport, style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold))])))),
     );
   }
 

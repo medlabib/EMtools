@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../data/datasources/protocols_data.dart';
 import '../../../../domain/entities/protocol.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/theme/app_theme.dart';
 
 // Pediatric pink color for highlighting pediatric protocols
 const Color _pediatricPink = Color(0xFFEC4899);
@@ -87,6 +88,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     final protocol = widget.protocol;
     final categoryColor = protocol.category.color;
     final indication = protocol.indication;
@@ -101,16 +103,15 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
           SliverAppBar(
             expandedHeight: 200,
             pinned: true,
+            backgroundColor: AppColors.getCardColor(isDark),
+            foregroundColor: AppColors.getTextPrimary(isDark),
+            surfaceTintColor: AppColors.getCardColor(isDark),
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      categoryColor,
-                      categoryColor.withValues(alpha: 0.7),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                  color: AppColors.getCardColor(isDark),
+                  border: Border(
+                    bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
                   ),
                 ),
                 child: SafeArea(
@@ -124,23 +125,24 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.2),
+                                color: categoryColor.withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: categoryColor.withValues(alpha: 0.3)),
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Icon(
                                     protocol.category.icon,
-                                    color: Colors.white,
+                                    color: categoryColor,
                                     size: 16,
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
                                     protocol.category.displayName,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
+                                    style: TextStyle(
+                                      color: categoryColor,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ],
@@ -180,15 +182,15 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                         Text(
                           protocol.name,
                           style: theme.textTheme.headlineSmall?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            color: AppColors.getTextPrimary(isDark),
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                         const SizedBox(height: 8),
                         Text(
                           protocol.description,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.white.withValues(alpha: 0.9),
+                            color: AppColors.getTextSecondary(isDark),
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,

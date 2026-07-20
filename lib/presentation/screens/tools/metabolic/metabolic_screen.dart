@@ -84,21 +84,23 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   Widget _buildSliverAppBar() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SliverAppBar(
       expandedHeight: 140,
       pinned: true,
-      backgroundColor: AppColors.accentPurple,
+      backgroundColor: AppColors.getCardColor(isDark),
+      foregroundColor: AppColors.getTextPrimary(isDark),
+      surfaceTintColor: AppColors.getCardColor(isDark),
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+        icon: Icon(Icons.arrow_back_ios, color: AppColors.getTextPrimary(isDark)),
         onPressed: () => Navigator.of(context).pop(),
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [AppColors.accentPurple, AppColors.primary],
+            color: AppColors.getCardColor(isDark),
+            border: Border(
+              bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
             ),
           ),
           child: SafeArea(
@@ -113,12 +115,12 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(16),
+                          color: AppColors.primary.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Icon(
                           Icons.science_rounded,
-                          color: Colors.white,
+                          color: AppColors.primary,
                           size: 28,
                         ),
                       ),
@@ -127,18 +129,18 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Troubles Métaboliques',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.getTextPrimary(isDark),
                                 fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                             Text(
                               'Sodium • Potassium • Calcium',
                               style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.8),
+                                color: AppColors.getTextSecondary(isDark),
                                 fontSize: 14,
                               ),
                             ),
@@ -213,14 +215,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.borderLight),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -388,14 +384,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
     return Container(
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         children: [
@@ -604,17 +594,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
     
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [color, color.withValues(alpha: 0.8)],
-        ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: color.withValues(alpha: 0.3),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: color,
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         children: [
@@ -788,14 +769,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             Container(
               decoration: BoxDecoration(
                 color: isDark ? AppColors.cardDark : Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
-                    blurRadius: 10,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.getBorderColor(isDark)),
               ),
               child: Column(
                 children: [
@@ -868,14 +843,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             Container(
               decoration: BoxDecoration(
                 color: isDark ? AppColors.cardDark : Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
-                    blurRadius: 10,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.getBorderColor(isDark)),
               ),
               child: Column(
                 children: [
@@ -943,20 +912,11 @@ class _MetabolicScreenState extends State<MetabolicScreen>
               ),
               const SizedBox(height: 12),
               ...MetabolicCalculator.hyperkalemiaTreatments.asMap().entries.map((entry) {
-                final index = entry.key;
                 final t = entry.value;
                 final isImmediate = t.urgency == 'immediate';
                 final cardColor = isImmediate ? AppColors.error : AppColors.warning;
                 
-                return TweenAnimationBuilder<double>(
-                  tween: Tween(begin: 0, end: 1),
-                  duration: Duration(milliseconds: 300 + (index * 100)),
-                  builder: (context, value, child) {
-                    return Transform.translate(
-                      offset: Offset(20 * (1 - value), 0),
-                      child: Opacity(
-                        opacity: value,
-                        child: Container(
+                return Container(
                           margin: const EdgeInsets.only(bottom: 12),
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -964,13 +924,6 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                             border: Border.all(
                               color: cardColor.withValues(alpha: 0.3),
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.02),
-                                blurRadius: 6,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
                           ),
                           child: ListTile(
                             contentPadding: const EdgeInsets.all(12),
@@ -1024,11 +977,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    );
-                  },
-                );
+                        );
               }),
             ],
             const SizedBox(height: 100),
@@ -1070,14 +1019,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             Container(
               decoration: BoxDecoration(
                 color: isDark ? AppColors.cardDark : Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
-                    blurRadius: 10,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.getBorderColor(isDark)),
               ),
               child: Column(
                 children: [
@@ -1127,17 +1070,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             // Result Card
             Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [caColor, caColor.withValues(alpha: 0.8)],
-                ),
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: caColor.withValues(alpha: 0.3),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+                color: caColor,
+                borderRadius: BorderRadius.circular(12),
               ),
               padding: const EdgeInsets.all(24),
               child: Column(
@@ -1189,14 +1123,8 @@ class _MetabolicScreenState extends State<MetabolicScreen>
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
-                    blurRadius: 10,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.borderLight),
               ),
               padding: const EdgeInsets.all(16),
               child: Column(

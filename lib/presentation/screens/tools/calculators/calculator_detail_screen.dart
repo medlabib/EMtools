@@ -468,20 +468,13 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: isDark ? AppColors.cardDark : AppColors.cardLight,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isChecked 
-                  ? AppColors.primaryBlue 
-                  : Colors.transparent,
-              width: 2,
+                  ? AppColors.primary 
+                  : AppColors.getBorderColor(isDark),
+              width: isChecked ? 2 : 1,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
           ),
           child: Row(
             children: [

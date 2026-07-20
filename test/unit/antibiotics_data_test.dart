@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:emtools/data/datasources/antibiotics_data.dart';
 import 'package:emtools/domain/entities/antibiotic.dart';
+import 'package:emtools/core/l10n/localized.dart';
 
 void main() {
   group('Antibiotics Data', () {
@@ -12,7 +13,7 @@ void main() {
       for (final ab in allAntibiotics) {
         expect(ab.id, isNotEmpty, reason: 'Antibiotic should have id');
         expect(ab.name, isNotEmpty, reason: 'Antibiotic ${ab.id} should have name');
-        expect(ab.genericName, isNotEmpty, reason: 'Antibiotic ${ab.id} should have genericName');
+        expect(ab.genericName.fr, isNotEmpty, reason: 'Antibiotic ${ab.id} should have genericName');
         expect(ab.route, isNotEmpty, reason: 'Antibiotic ${ab.id} should have route');
         expect(ab.indications, isNotEmpty, reason: 'Antibiotic ${ab.id} should have indications');
         expect(ab.contraindications, isNotEmpty, reason: 'Antibiotic ${ab.id} should have contraindications');
@@ -24,7 +25,7 @@ void main() {
       for (final ab in allAntibiotics) {
         expect(ab.standardDose.adult, isNotEmpty,
             reason: 'Antibiotic ${ab.id} should have adult dose');
-        expect(ab.standardDose.frequency, isNotEmpty,
+        expect(ab.standardDose.frequency.fr, isNotEmpty,
             reason: 'Antibiotic ${ab.id} should have frequency');
       }
     });
@@ -74,7 +75,7 @@ void main() {
       final amox = allAntibiotics.where((ab) => ab.id == 'amoxicillin');
       expect(amox, isNotEmpty);
       final drug = amox.first;
-      expect(drug.genericName, contains('Amoxicilline'));
+      expect(drug.genericName.fr, contains('Amoxicilline'));
       expect(drug.antibioticClass, AntibioticClass.penicillin);
     });
 
@@ -93,7 +94,7 @@ void main() {
         for (final adj in ab.renalAdjustment) {
           expect(adj.gfr, isNotEmpty,
               reason: 'Renal adjustment for ${ab.id} should have GFR range');
-          expect(adj.dose, isNotEmpty,
+          expect(adj.dose.fr, isNotEmpty,
               reason: 'Renal adjustment for ${ab.id} should have dose');
         }
       }
@@ -115,27 +116,11 @@ void main() {
         for (final interaction in ab.interactions) {
           expect(interaction.drug, isNotEmpty,
               reason: 'Interaction for ${ab.id} should have drug name');
-          expect(interaction.effect, isNotEmpty,
+          expect(interaction.effect.fr, isNotEmpty,
               reason: 'Interaction for ${ab.id} should have effect');
           expect(interaction.severity, isNotNull,
               reason: 'Interaction for ${ab.id} should have severity');
         }
-      }
-    });
-  });
-
-  group('Tunisia Availability', () {
-    test('some antibiotics should be available in Tunisia', () {
-      final available = allAntibiotics.where((ab) => ab.availableInTunisia);
-      expect(available, isNotEmpty);
-    });
-
-    test('available antibiotics should have price info', () {
-      final available = allAntibiotics.where((ab) => ab.availableInTunisia);
-      for (final ab in available) {
-        // Most available antibiotics should have price, but not all
-        // Just verify the field exists
-        expect(ab.tunisiaPrice == null || ab.tunisiaPrice!.isNotEmpty, isTrue);
       }
     });
   });
@@ -166,14 +151,14 @@ void main() {
     test('should store values correctly', () {
       const dose = DoseInfo(
         adult: '1g',
-        frequency: 'q8h',
-        duration: '7 days',
-        maxDose: '4g/day',
+        frequency: LString('q8h', 'q8h'),
+        duration: LString('7 jours', '7 days'),
+        maxDose: LString('4g/jour', '4g/day'),
       );
       expect(dose.adult, '1g');
-      expect(dose.frequency, 'q8h');
-      expect(dose.duration, '7 days');
-      expect(dose.maxDose, '4g/day');
+      expect(dose.frequency.fr, 'q8h');
+      expect(dose.duration!.en, '7 days');
+      expect(dose.maxDose!.en, '4g/day');
     });
   });
 
@@ -181,12 +166,12 @@ void main() {
     test('should store values correctly', () {
       const adj = RenalAdjustment(
         gfr: '10-30',
-        dose: '500mg q12h',
-        notes: 'Monitor closely',
+        dose: LString('500mg q12h', '500mg q12h'),
+        notes: LString('Surveiller', 'Monitor closely'),
       );
       expect(adj.gfr, '10-30');
-      expect(adj.dose, '500mg q12h');
-      expect(adj.notes, 'Monitor closely');
+      expect(adj.dose.fr, '500mg q12h');
+      expect(adj.notes!.en, 'Monitor closely');
     });
   });
 
@@ -195,13 +180,13 @@ void main() {
       const interaction = DrugInteraction(
         drug: 'Warfarin',
         severity: InteractionSeverity.major,
-        effect: 'Increased INR',
-        recommendation: 'Monitor INR closely',
+        effect: LString('INR augmenté', 'Increased INR'),
+        recommendation: LString('Surveiller l\'INR', 'Monitor INR closely'),
       );
       expect(interaction.drug, 'Warfarin');
       expect(interaction.severity, InteractionSeverity.major);
-      expect(interaction.effect, 'Increased INR');
-      expect(interaction.recommendation, 'Monitor INR closely');
+      expect(interaction.effect.en, 'Increased INR');
+      expect(interaction.recommendation!.en, 'Monitor INR closely');
     });
   });
 }

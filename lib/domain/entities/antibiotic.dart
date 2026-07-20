@@ -1,3 +1,5 @@
+import '../../core/l10n/localized.dart';
+
 enum AntibioticClass {
   penicillin,
   cephalosporin,
@@ -9,6 +11,10 @@ enum AntibioticClass {
   glycopeptide,
   nitroimidazole,
   sulfonamide,
+  oxazolidinone,
+  lipopeptide,
+  lincosamide,
+  monobactam,
   other
 }
 
@@ -28,10 +34,11 @@ enum InteractionSeverity {
 }
 
 class DoseInfo {
+  /// Numeric/neutral dose expression (e.g. "1g", "15-20 mg/kg").
   final String adult;
-  final String frequency;
-  final String? duration;
-  final String? maxDose;
+  final LString frequency;
+  final LString? duration;
+  final LString? maxDose;
 
   const DoseInfo({
     required this.adult,
@@ -42,9 +49,10 @@ class DoseInfo {
 }
 
 class RenalAdjustment {
-  final String gfr; // e.g., "30-59", "<15"
-  final String dose;
-  final String? notes;
+  /// GFR band used for matching (e.g. "30-59", "<15"); kept language-neutral.
+  final String gfr;
+  final LString dose;
+  final LString? notes;
 
   const RenalAdjustment({
     required this.gfr,
@@ -54,10 +62,11 @@ class RenalAdjustment {
 }
 
 class DrugInteraction {
+  /// Interacting drug/class name (kept as a single identifier string).
   final String drug;
   final InteractionSeverity severity;
-  final String effect;
-  final String? recommendation;
+  final LString effect;
+  final LString? recommendation;
 
   const DrugInteraction({
     required this.drug,
@@ -70,28 +79,26 @@ class DrugInteraction {
 class Antibiotic {
   final String id;
   final String name;
-  final String genericName;
+  final LString genericName;
   final AntibioticClass antibioticClass;
   final SpectrumType spectrum;
   final List<String> route; // PO, IV, IM
-  
+
   final DoseInfo standardDose;
   final List<RenalAdjustment> renalAdjustment;
-  final String? hepaticAdjustment;
-  final String? pediatricDose;
-  
-  final List<String> indications;
-  final List<String> contraindications;
-  final List<String> sideEffects;
+  final LString? hepaticAdjustment;
+  final LString? pediatricDose;
+
+  final List<LString> indications;
+  final List<LString> contraindications;
+  final List<LString> sideEffects;
   final List<DrugInteraction> interactions;
-  final List<String>? monitoring;
+  final List<LString>? monitoring;
   final String pregnancyCategory;
-  
-  final bool availableInTunisia;
-  final String? tunisiaPrice;
+
   final bool requiresPrescription;
-  
-  final String? notes;
+
+  final LString? notes;
 
   const Antibiotic({
     required this.id,
@@ -110,8 +117,6 @@ class Antibiotic {
     required this.interactions,
     this.monitoring,
     required this.pregnancyCategory,
-    required this.availableInTunisia,
-    this.tunisiaPrice,
     required this.requiresPrescription,
     this.notes,
   });

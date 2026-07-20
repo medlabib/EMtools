@@ -26,15 +26,15 @@ void main() {
         final result = BloodGasCalculator.calculate(data);
         
         // Expected: Metabolic acidosis
-        expect(result.status, 'Acidose');
-        expect(result.primary, 'Métabolique');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.primary, PrimaryDisorder.metabolic);
         
         // Expected AG: 140 - (100 + 8) = 32 (elevated)
         expect(result.agUncorrected, 32.0);
         
         // Winter's formula: Expected PaCO2 = 1.5 * 8 + 8 = 20 ±2
         // Actual PaCO2 = 20, so appropriately compensated
-        expect(result.winterMsg, contains('Compensée'));
+        expect(result.compensation, CompensationStatus.metabolicCompensatedPure);
       });
 
       test('DKA with superimposed respiratory acidosis (exhausted patient)', () {
@@ -49,9 +49,9 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Acidose');
+        expect(result.status, AcidBaseStatus.acidosis);
         // Winter's: Expected PaCO2 = 20, actual = 35 (too high)
-        expect(result.winterMsg, contains('Acidose Resp'));
+        expect(result.compensation, CompensationStatus.addedRespiratoryAcidosis);
       });
 
       test('DKA with superimposed respiratory alkalosis (sepsis)', () {
@@ -66,9 +66,9 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Acidose');
+        expect(result.status, AcidBaseStatus.acidosis);
         // Winter's: Expected PaCO2 = 20, actual = 12 (too low)
-        expect(result.winterMsg, contains('Alcalose Resp'));
+        expect(result.compensation, CompensationStatus.addedRespiratoryAlkalosis);
       });
     });
 
@@ -85,8 +85,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Acidose');
-        expect(result.primary, 'Respiratoire');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.primary, PrimaryDisorder.respiratory);
         
         // For chronic: ΔHCO3 = 3.5 * (ΔPaCO2/10) = 3.5 * 3 = 10.5
         // Expected HCO3 = 24 + 10.5 = 34.5
@@ -105,11 +105,8 @@ void main() {
         
         // pH is normal, but there are abnormalities
         // Should detect compensated state
-        expect(result.primary.toLowerCase(), anyOf(
-          contains('compensé'),
-          contains('chronique'),
-          contains('respiratoire'),
-        ));
+        expect(result.status, AcidBaseStatus.compensated);
+        expect(result.primary, PrimaryDisorder.mixed);
       });
     });
 
@@ -131,7 +128,7 @@ void main() {
         final result = BloodGasCalculator.calculate(data);
         
         // Lactate elevated
-        expect(result.lactateStatus, 'Hyperlactatémie');
+        expect(result.lactateStatus, LactateStatus.hyperlactatemia);
         
         // P/F ratio = 75/0.4 = 187.5 (moderate hypoxemia)
         expect(result.pfRatio, closeTo(187.5, 0.1));
@@ -151,8 +148,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Acidose');
-        expect(result.lactateStatus, 'Choc / Hypoperfusion');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.lactateStatus, LactateStatus.shock);
         
         // AG = 138 - (100 + 12) = 26
         expect(result.agUncorrected, 26.0);
@@ -162,7 +159,7 @@ void main() {
         
         // ARDS assessment: P/F = 60/0.8 = 75 (severe)
         expect(result.pfRatio, 75.0);
-        expect(result.ardsGrade, 'SDRA Sévère');
+        expect(result.ardsGrade, ArdsGrade.severe);
       });
     });
 
@@ -180,8 +177,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Alcalose');
-        expect(result.primary, 'Métabolique');
+        expect(result.status, AcidBaseStatus.alkalosis);
+        expect(result.primary, PrimaryDisorder.metabolic);
         
         // AG = 138 - (88 + 38) = 12 (normal)
         expect(result.agUncorrected, 12.0);
@@ -224,8 +221,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Alcalose');
-        expect(result.primary, 'Respiratoire');
+        expect(result.status, AcidBaseStatus.alkalosis);
+        expect(result.primary, PrimaryDisorder.respiratory);
         // Acute - HCO3 hasn't dropped significantly
       });
     });
@@ -245,8 +242,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Acidose');
-        expect(result.primary, 'Métabolique');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.primary, PrimaryDisorder.metabolic);
         
         // AG = 140 - (116 + 12) = 12 (NORMAL - non-AG acidosis)
         expect(result.agUncorrected, 12.0);
@@ -274,7 +271,7 @@ void main() {
         
         // P/F = 65/0.6 = 108 (moderate-severe ARDS)
         expect(result.pfRatio, closeTo(108.3, 0.1));
-        expect(result.ardsGrade, 'SDRA Modéré');
+        expect(result.ardsGrade, ArdsGrade.moderate);
         
         // Vt/kg: PBW ≈ 70.57, Vt/kg = 420/70.57 ≈ 5.95 mL/kg (good, <8)
         expect(result.vtPerKg, closeTo(5.95, 0.1));
@@ -332,8 +329,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Acidose');
-        expect(result.lactateStatus, 'Choc / Hypoperfusion');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.lactateStatus, LactateStatus.shock);
         
         // AG = 142 - (100 + 12) = 30 (high AG from lactate)
         expect(result.agUncorrected, 30.0);
@@ -356,8 +353,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Alcalose');
-        expect(result.primary, 'Respiratoire');
+        expect(result.status, AcidBaseStatus.alkalosis);
+        expect(result.primary, PrimaryDisorder.respiratory);
         
         // P/F = 55/0.4 = 137.5 (significant hypoxemia)
         expect(result.pfRatio, closeTo(137.5, 0.1));
@@ -382,8 +379,8 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         
-        expect(result.status, 'Acidose');
-        expect(result.primary, 'Métabolique');
+        expect(result.status, AcidBaseStatus.acidosis);
+        expect(result.primary, PrimaryDisorder.metabolic);
         
         // AG = 138 - (108 + 15) = 15
         expect(result.agUncorrected, 15.0);
@@ -459,7 +456,7 @@ void main() {
           hco3: 5,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.status, 'Acidose');
+        expect(result.status, AcidBaseStatus.acidosis);
       });
 
       test('Extremely high pH (severe alkalemia)', () {
@@ -469,7 +466,7 @@ void main() {
           hco3: 40,
         );
         final result = BloodGasCalculator.calculate(data);
-        expect(result.status, 'Alcalose');
+        expect(result.status, AcidBaseStatus.alkalosis);
       });
 
       test('Borderline acidosis (pH 7.35)', () {
@@ -480,7 +477,7 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         // pH 7.35 is the lower limit of normal
-        expect(result.status, anyOf('Normal', 'Acidose'));
+        expect(result.status, anyOf(AcidBaseStatus.normal, AcidBaseStatus.acidosis));
       });
 
       test('Borderline alkalosis (pH 7.45)', () {
@@ -491,7 +488,7 @@ void main() {
         );
         final result = BloodGasCalculator.calculate(data);
         // pH 7.45 is the upper limit of normal
-        expect(result.status, anyOf('Normal', 'Alcalose'));
+        expect(result.status, anyOf(AcidBaseStatus.normal, AcidBaseStatus.alkalosis));
       });
     });
 
@@ -550,7 +547,7 @@ void main() {
           
           // TA = 140 - (114 + 14) = 12 (normal despite acidosis)
           expect(result.agUncorrected, 12.0);
-          expect(result.status, 'Acidose');
+          expect(result.status, AcidBaseStatus.acidosis);
         });
       });
 
@@ -792,7 +789,7 @@ void main() {
         
         // TA = 140 - (102 + 20) = 18 (starting to elevate)
         expect(result.agUncorrected, 18.0);
-        expect(result.status, 'Alcalose');
+        expect(result.status, AcidBaseStatus.alkalosis);
       });
 
       test('Ethylene glycol poisoning', () {

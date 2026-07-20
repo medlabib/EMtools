@@ -1,3 +1,5 @@
+import '../../core/l10n/localized.dart';
+
 enum SedationType { rsi, procedural, maintenance }
 enum DrugRole { induction, paralytic, analgesic, sedative, adjunct }
 enum AgeGroup { neonate, infant, child, adult, elderly }
@@ -7,7 +9,7 @@ class DoseByAge {
   final String ageRange;
   final double dose;
   final double? maxDose;
-  final String? notes;
+  final LString? notes;
 
   const DoseByAge({
     required this.ageGroup,
@@ -22,7 +24,7 @@ class SedationDrug {
   final String id;
   final String name;
   final String genericName;
-  final String drugClass;
+  final LString drugClass;
   final List<DrugRole> role;
   final List<SedationType> sedationTypes;
   
@@ -39,21 +41,21 @@ class SedationDrug {
   final int durationMinutes;
   
   // Clinical info
-  final String mechanism;
-  final List<String> indications;
-  final List<String> advantages;
-  final List<String> sideEffects;
-  final List<String> contraindications;
-  final List<String> precautions;
+  final LString mechanism;
+  final List<LString> indications;
+  final List<LString> advantages;
+  final List<LString> sideEffects;
+  final List<LString> contraindications;
+  final List<LString> precautions;
   
   // Preparation
-  final List<String> concentrations;
-  final String? dilution;
+  final List<LString> concentrations;
+  final LString? dilution;
   
   // Special considerations
-  final String? renalAdjustment;
-  final String? hepaticAdjustment;
-  final List<String> notes;
+  final LString? renalAdjustment;
+  final LString? hepaticAdjustment;
+  final List<LString> notes;
 
   const SedationDrug({
     required this.id,

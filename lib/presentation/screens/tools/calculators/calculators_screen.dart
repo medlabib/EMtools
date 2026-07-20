@@ -257,14 +257,8 @@ class _CalculatorsScreenState extends State<CalculatorsScreen>
     return Container(
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: TextField(
         decoration: InputDecoration(
@@ -379,18 +373,9 @@ class _CategoryChip extends StatelessWidget {
                 : (isDark ? AppColors.cardDark : AppColors.cardLight),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: isSelected ? color : Colors.transparent,
+              color: isSelected ? color : AppColors.getBorderColor(isDark),
               width: 1.5,
             ),
-            boxShadow: isSelected
-                ? [
-                    BoxShadow(
-                      color: color.withValues(alpha: 0.3),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]
-                : null,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -456,18 +441,11 @@ class _CalculatorCardState extends State<_CalculatorCard> {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: isDark ? AppColors.cardDark : AppColors.cardLight,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: widget.color.withValues(alpha: 0.1),
+              color: AppColors.getBorderColor(isDark),
               width: 1,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
           ),
           child: Row(
             children: [

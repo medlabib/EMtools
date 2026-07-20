@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/l10n/localized.dart';
 import '../../../../core/widgets/animated_widgets.dart';
 import '../../../../domain/entities/blood_gas.dart';
 
@@ -58,15 +59,17 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     _calculate();
   }
 
-  Color _getStatusColor(String status) {
-    if (status.toLowerCase().contains('acidosis') || status.toLowerCase().contains('acidémie')) {
-      return AppColors.error;
-    } else if (status.toLowerCase().contains('alkalosis') || status.toLowerCase().contains('alcalose')) {
-      return AppColors.warning;
-    } else if (status.toLowerCase().contains('normal')) {
-      return AppColors.success;
+  Color _getStatusColor(AcidBaseStatus status) {
+    switch (status) {
+      case AcidBaseStatus.acidosis:
+        return AppColors.error;
+      case AcidBaseStatus.alkalosis:
+        return AppColors.warning;
+      case AcidBaseStatus.normal:
+        return AppColors.success;
+      case AcidBaseStatus.compensated:
+        return AppColors.info;
     }
-    return AppColors.info;
   }
 
   @override
@@ -161,6 +164,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
   }
 
   Widget _buildHeader(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.fromLTRB(
         20,
@@ -168,15 +172,10 @@ class _BloodGasScreenState extends State<BloodGasScreen>
         20,
         24,
       ),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFFDC2626), Color(0xFFB91C1C), Color(0xFF991B1B)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+      decoration: BoxDecoration(
+        color: AppColors.getCardColor(isDark),
+        border: Border(
+          bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
         ),
       ),
       child: Column(
@@ -189,12 +188,12 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
                     Icons.arrow_back_rounded,
-                    color: Colors.white,
+                    color: AppColors.primary,
                   ),
                 ),
               ),
@@ -204,12 +203,12 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
                     Icons.refresh_rounded,
-                    color: Colors.white,
+                    color: AppColors.primary,
                   ),
                 ),
               ),
@@ -221,12 +220,12 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(14),
+                  color: AppColors.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(
                   Icons.air,
-                  color: Colors.white,
+                  color: AppColors.primary,
                   size: 28,
                 ),
               ),
@@ -237,10 +236,10 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                   children: [
                     Text(
                       AppStrings.bloodGasTitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.getTextPrimary(isDark),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -248,7 +247,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                       'Analyse complète avec ventilation',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: AppColors.getTextSecondary(isDark),
                       ),
                     ),
                   ],
@@ -304,7 +303,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      _results.status,
+                      context.tr(BloodGasResultLocalizer.status(_results.status)),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -329,15 +328,15 @@ class _BloodGasScreenState extends State<BloodGasScreen>
               children: [
                 _buildSummaryRow(
                   'Trouble primaire',
-                  _results.primary,
+                  context.tr(BloodGasResultLocalizer.primary(_results.primary)),
                   statusColor,
                   isDark,
                 ),
-                if (_results.winterMsg.isNotEmpty) ...[
+                if (context.tr(BloodGasResultLocalizer.combinedMessage(_results)).isNotEmpty) ...[
                   const SizedBox(height: 8),
                   _buildSummaryRow(
                     'Compensation',
-                    _results.winterMsg,
+                    context.tr(BloodGasResultLocalizer.combinedMessage(_results)),
                     AppColors.info,
                     isDark,
                   ),
@@ -388,7 +387,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
                 width: 4,
                 height: 24,
                 decoration: BoxDecoration(
-                  gradient: AppColors.primaryGradient,
+                  color: AppColors.primary,
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -421,7 +420,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             _buildMetricCard(
               'Rapport P/F',
               _results.pfRatio.toStringAsFixed(0),
-              _results.ardsGrade,
+              context.tr(BloodGasResultLocalizer.ardsGrade(_results.ardsGrade)),
               Icons.air,
               _results.pfRatio < 300 ? AppColors.error : AppColors.success,
               isDark,
@@ -476,14 +475,8 @@ class _BloodGasScreenState extends State<BloodGasScreen>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -826,14 +819,8 @@ class _BloodGasScreenState extends State<BloodGasScreen>
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
