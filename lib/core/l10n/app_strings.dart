@@ -509,6 +509,47 @@ const _en = <String, String>{
   'reportWillAppear': 'The report will appear here',
   'airwayLabel': 'Airway',
   'abcdeSubtitle': 'Structured ABCDE Assessment',
+  // Context section
+  'contextSection': 'Context',
+  // Airway dropdown
+  'airwayClear': 'Clear',
+  'airwayObstructed': 'Obstructed',
+  'airwayThreatened': 'Threatened',
+  // Chest expansion
+  'chestSymmetric': 'Symmetric',
+  'chestAsymmetric': 'Asymmetric',
+  // Oxygen device
+  'oxygenNone': 'None',
+  'oxygenNasal': 'Nasal cannula',
+  'oxygenSimpleMask': 'Simple mask',
+  'oxygenNRB': 'Non-rebreather',
+  'oxygenNIV': 'NIV',
+  // Extremities
+  'extremitiesWarm': 'Warm, well perfused',
+  'extremitiesCold': 'Cold',
+  'extremitiesCyanotic': 'Cyanotic',
+  // Heart failure signs
+  'hjrLabel': 'HJR',
+  // ECG rhythm
+  'ecgSinus': 'Sinus',
+  'ecgIrregular': 'Irregular',
+  'ecgAFib': 'AFib',
+  'ecgFlutter': 'Flutter',
+  // ECG components
+  'ecgNormal': 'Normal',
+  'ecgTall': 'Tall',
+  'ecgBiphasic': 'Biphasic',
+  'ecgProlonged': 'Prolonged',
+  'ecgShort': 'Short',
+  'ecgFlat': 'Flat',
+  'ecgInverted': 'Inverted',
+  // QRS
+  'qrsNarrow': 'Narrow (< 120ms)',
+  'qrsWide': 'Wide (≥ 120ms)',
+  // Pupils
+  'pupilsPERRL': 'PERRL (reactive)',
+  'pupilsAnisocoria': 'Anisocoria',
+  'pupilsFixed': 'Fixed',
 
   // Antibiotic Detail
   'infoTab': 'Information',
@@ -1201,6 +1242,47 @@ const _fr = <String, String>{
   'reportWillAppear': 'Le rapport apparaîtra ici',
   'airwayLabel': 'Voies Aériennes',
   'abcdeSubtitle': 'Évaluation ABCDE structurée',
+  // Context section
+  'contextSection': 'Contexte',
+  // Airway dropdown
+  'airwayClear': 'Libres',
+  'airwayObstructed': 'Obstruées',
+  'airwayThreatened': 'À risque',
+  // Chest expansion
+  'chestSymmetric': 'Symétrique',
+  'chestAsymmetric': 'Asymétrique',
+  // Oxygen device
+  'oxygenNone': 'Aucun',
+  'oxygenNasal': 'Lunettes nasales',
+  'oxygenSimpleMask': 'Masque simple',
+  'oxygenNRB': 'Masque haute concentration',
+  'oxygenNIV': 'VNI',
+  // Extremities
+  'extremitiesWarm': 'Chaudes, bien perfusées',
+  'extremitiesCold': 'Froides',
+  'extremitiesCyanotic': 'Cyanosées',
+  // Heart failure signs
+  'hjrLabel': 'RHJ',
+  // ECG rhythm
+  'ecgSinus': 'Sinusal',
+  'ecgIrregular': 'Irrégulier',
+  'ecgAFib': 'FA',
+  'ecgFlutter': 'Flutter',
+  // ECG components
+  'ecgNormal': 'Normale',
+  'ecgTall': 'Ample',
+  'ecgBiphasic': 'Biphasique',
+  'ecgProlonged': 'Allongé',
+  'ecgShort': 'Court',
+  'ecgFlat': 'Aplatie',
+  'ecgInverted': 'Inversée',
+  // QRS
+  'qrsNarrow': 'Fins (< 120ms)',
+  'qrsWide': 'Larges (≥ 120ms)',
+  // Pupils
+  'pupilsPERRL': 'PERRL (réactives)',
+  'pupilsAnisocoria': 'Anisocorie',
+  'pupilsFixed': 'Fixes',
 
   // Antibiotic Detail
   'infoTab': 'Infos',

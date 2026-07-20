@@ -636,7 +636,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   Widget _buildStepperCard() {
     final steps = [
       _StepData(AppStrings.patientInfo, Icons.person, _buildIdentityContent()),
-      _StepData('Contexte', Icons.warning_amber, _buildContextContent()),
+      _StepData(context.t('contextSection'), Icons.warning_amber, _buildContextContent()),
       _StepData('A - ${context.t('airwayLabel')}', Icons.air, _buildAirwayContent()),
       _StepData('B - ${context.t('breathing')}', Icons.monitor_heart, _buildBreathingContent()),
       _StepData('C - ${context.t('circulation')}', Icons.favorite, _buildCirculationContent()),
@@ -692,7 +692,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
 
   Widget _buildAirwayContent() {
     return Column(children: [
-      _buildDropdownField(value: _airwayStatus, label: context.t('airwayStatus'), icon: Icons.air, items: const [DropdownMenuItem(value: 'clear', child: Text('Clear')), DropdownMenuItem(value: 'obstructed', child: Text('Obstructed')), DropdownMenuItem(value: 'threatened', child: Text('Threatened'))], onChanged: (v) => setState(() => _airwayStatus = v!)),
+      _buildDropdownField(value: _airwayStatus, label: context.t('airwayStatus'), icon: Icons.air, items: [DropdownMenuItem(value: 'clear', child: Text(context.t('airwayClear'))), DropdownMenuItem(value: 'obstructed', child: Text(context.t('airwayObstructed'))), DropdownMenuItem(value: 'threatened', child: Text(context.t('airwayThreatened')))], onChanged: (v) => setState(() => _airwayStatus = v!)),
       if (_airwayStatus != 'clear') ...[const SizedBox(height: 16), _buildTextField(controller: _airwayDeviceController, label: context.t('deviceAction'), icon: Icons.medical_services_outlined)],
     ]);
   }
@@ -716,7 +716,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
         _buildChip(context.t('wobGasping'), 'gasping', _workOfBreathing, (v) => setState(() { if (_workOfBreathing.contains(v)) { _workOfBreathing.remove(v); } else { _workOfBreathing.add(v); } })),
       ]),
       const SizedBox(height: 16),
-      _buildDropdownField(value: _chestExpansion, label: context.t('chestExpansion'), icon: Icons.open_with, items: const [DropdownMenuItem(value: 'symmetric', child: Text('Symmetric')), DropdownMenuItem(value: 'asymmetric', child: Text('Asymmetric'))], onChanged: (v) => setState(() => _chestExpansion = v!)),
+      _buildDropdownField(value: _chestExpansion, label: context.t('chestExpansion'), icon: Icons.open_with, items: [DropdownMenuItem(value: 'symmetric', child: Text(context.t('chestSymmetric'))), DropdownMenuItem(value: 'asymmetric', child: Text(context.t('chestAsymmetric')))], onChanged: (v) => setState(() => _chestExpansion = v!)),
       if (_isTrauma) ...[
         const SizedBox(height: 16),
         _buildTextField(controller: _traumaRibsController, label: context.t('ribCrepitus'), icon: Icons.broken_image_outlined, hint: context.t('ribCrepitusHint')),
@@ -727,7 +727,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       _buildTextField(controller: _auscultationController, label: context.t('lungAuscultation'), icon: Icons.hearing, hint: context.t('lungAuscultationHint'), maxLines: 2),
       const SizedBox(height: 16),
       Row(children: [
-        Expanded(child: _buildDropdownField(value: _oxygenDevice, label: context.t('oxygenDevice'), icon: Icons.masks_outlined, items: const [DropdownMenuItem(value: '', child: Text('None')), DropdownMenuItem(value: 'nasal', child: Text('Nasal cannula')), DropdownMenuItem(value: 'simpleMask', child: Text('Simple mask')), DropdownMenuItem(value: 'nrb', child: Text('Non-rebreather')), DropdownMenuItem(value: 'niv', child: Text('NIV'))], onChanged: (v) => setState(() => _oxygenDevice = v!))),
+        Expanded(child: _buildDropdownField(value: _oxygenDevice, label: context.t('oxygenDevice'), icon: Icons.masks_outlined, items: [DropdownMenuItem(value: '', child: Text(context.t('oxygenNone'))), DropdownMenuItem(value: 'nasal', child: Text(context.t('oxygenNasal'))), DropdownMenuItem(value: 'simpleMask', child: Text(context.t('oxygenSimpleMask'))), DropdownMenuItem(value: 'nrb', child: Text(context.t('oxygenNRB'))), DropdownMenuItem(value: 'niv', child: Text(context.t('oxygenNIV')))], onChanged: (v) => setState(() => _oxygenDevice = v!))),
         if (_oxygenDevice.isNotEmpty) ...[const SizedBox(width: 16), Expanded(child: _buildTextField(controller: _oxygenFlowController, label: context.t('flowRate'), icon: Icons.speed, keyboardType: TextInputType.number))],
       ]),
       const SizedBox(height: 16),
@@ -752,7 +752,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
   Widget _buildCirculationContent() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      _buildDropdownField(value: _extremities, label: context.t('extremities'), icon: Icons.back_hand_outlined, items: const [DropdownMenuItem(value: 'warm', child: Text('Warm, well perfused')), DropdownMenuItem(value: 'cold', child: Text('Cold')), DropdownMenuItem(value: 'cyanotic', child: Text('Cyanotic'))], onChanged: (v) => setState(() => _extremities = v!)),
+      _buildDropdownField(value: _extremities, label: context.t('extremities'), icon: Icons.back_hand_outlined, items: [DropdownMenuItem(value: 'warm', child: Text(context.t('extremitiesWarm'))), DropdownMenuItem(value: 'cold', child: Text(context.t('extremitiesCold'))), DropdownMenuItem(value: 'cyanotic', child: Text(context.t('extremitiesCyanotic')))], onChanged: (v) => setState(() => _extremities = v!)),
       const SizedBox(height: 16),
       Text(context.t('shockSigns'), style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.getTextSecondary(isDark))),
       const SizedBox(height: 8),
@@ -767,7 +767,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       const SizedBox(height: 8),
       Wrap(spacing: 8, runSpacing: 8, children: [
         _buildChip(context.t('jugularDistension'), 'jvd', _heartFailureSigns, (v) => setState(() { if (_heartFailureSigns.contains(v)) { _heartFailureSigns.remove(v); } else { _heartFailureSigns.add(v); } })),
-        _buildChip('RHJ', 'hjr', _heartFailureSigns, (v) => setState(() { if (_heartFailureSigns.contains(v)) { _heartFailureSigns.remove(v); } else { _heartFailureSigns.add(v); } })),
+        _buildChip(context.t('hjrLabel'), 'hjr', _heartFailureSigns, (v) => setState(() { if (_heartFailureSigns.contains(v)) { _heartFailureSigns.remove(v); } else { _heartFailureSigns.add(v); } })),
         _buildChip(context.t('peripheralEdema'), 'peripheralEdema', _heartFailureSigns, (v) => setState(() { if (_heartFailureSigns.contains(v)) { _heartFailureSigns.remove(v); } else { _heartFailureSigns.add(v); } })),
       ]),
       const SizedBox(height: 16),
@@ -791,19 +791,19 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
         Row(children: [Icon(Icons.monitor_heart, color: AppColors.error, size: 20), const SizedBox(width: 8), Text('ECG', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.getTextPrimary(isDark)))]),
         const SizedBox(height: 16),
         Row(children: [
-          Expanded(child: _buildDropdownField(value: _ecgRhythm, label: context.t('rhythm'), icon: Icons.timeline, items: const [DropdownMenuItem(value: 'sinus', child: Text('Sinus')), DropdownMenuItem(value: 'irregular', child: Text('Irregular')), DropdownMenuItem(value: 'af', child: Text('AFib')), DropdownMenuItem(value: 'flutter', child: Text('Flutter'))], onChanged: (v) => setState(() => _ecgRhythm = v!))),
+          Expanded(child: _buildDropdownField(value: _ecgRhythm, label: context.t('rhythm'), icon: Icons.timeline, items: [DropdownMenuItem(value: 'sinus', child: Text(context.t('ecgSinus'))), DropdownMenuItem(value: 'irregular', child: Text(context.t('ecgIrregular'))), DropdownMenuItem(value: 'af', child: Text(context.t('ecgAFib'))), DropdownMenuItem(value: 'flutter', child: Text(context.t('ecgFlutter')))], onChanged: (v) => setState(() => _ecgRhythm = v!))),
           if (_ecgRhythm == 'af' || _ecgRhythm == 'flutter') ...[const SizedBox(width: 16), Expanded(child: _buildTextField(controller: _ecgRateController, label: context.t('ventricularRate'), icon: Icons.speed, keyboardType: TextInputType.number))],
         ]),
         const SizedBox(height: 12),
         Row(children: [
-          Expanded(child: _buildMiniDropdown(context.t('pWave'), _ecgP, ['normal', 'ample', 'biphasic'], ['Normal', 'Tall', 'Biphasic'], (v) => setState(() => _ecgP = v))),
+          Expanded(child: _buildMiniDropdown(context.t('pWave'), _ecgP, ['normal', 'ample', 'biphasic'], [context.t('ecgNormal'), context.t('ecgTall'), context.t('ecgBiphasic')], (v) => setState(() => _ecgP = v))),
           const SizedBox(width: 8),
-          Expanded(child: _buildMiniDropdown(context.t('prInterval'), _ecgPR, ['normal', 'prolonged', 'short'], ['Normal', 'Prolonged', 'Short'], (v) => setState(() => _ecgPR = v))),
+          Expanded(child: _buildMiniDropdown(context.t('prInterval'), _ecgPR, ['normal', 'prolonged', 'short'], [context.t('ecgNormal'), context.t('ecgProlonged'), context.t('ecgShort')], (v) => setState(() => _ecgPR = v))),
           const SizedBox(width: 8),
-          Expanded(child: _buildMiniDropdown(context.t('tWave'), _ecgT, ['normal', 'ample', 'flat', 'inverted'], ['Normal', 'Tall', 'Flat', 'Inverted'], (v) => setState(() => _ecgT = v))),
+          Expanded(child: _buildMiniDropdown(context.t('tWave'), _ecgT, ['normal', 'ample', 'flat', 'inverted'], [context.t('ecgNormal'), context.t('ecgTall'), context.t('ecgFlat'), context.t('ecgInverted')], (v) => setState(() => _ecgT = v))),
         ]),
         const SizedBox(height: 12),
-        _buildDropdownField(value: _ecgQRS, label: context.t('qrs'), icon: Icons.show_chart, items: const [DropdownMenuItem(value: 'narrow', child: Text('Narrow (< 120ms)')), DropdownMenuItem(value: 'wide', child: Text('Wide (≥ 120ms)'))], onChanged: (v) => setState(() => _ecgQRS = v!)),
+        _buildDropdownField(value: _ecgQRS, label: context.t('qrs'), icon: Icons.show_chart, items: [DropdownMenuItem(value: 'narrow', child: Text(context.t('qrsNarrow'))), DropdownMenuItem(value: 'wide', child: Text(context.t('qrsWide')))], onChanged: (v) => setState(() => _ecgQRS = v!)),
         if (_ecgQRS == 'wide') ...[
           const SizedBox(height: 12),
           _buildTextField(controller: _ecgQRSDetailsController, label: context.t('blockType'), icon: Icons.notes, hint: 'RBBB, LBBB, LAFB...'),
@@ -829,7 +829,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
     return Column(children: [
       _buildGCSSection(),
       const SizedBox(height: 16),
-      _buildDropdownField(value: _pupils, label: context.t('pupils'), icon: Icons.visibility, items: const [DropdownMenuItem(value: 'perrl', child: Text('PERRL (reactive)')), DropdownMenuItem(value: 'anisocoria', child: Text('Anisocoria')), DropdownMenuItem(value: 'fixed', child: Text('Fixed'))], onChanged: (v) => setState(() => _pupils = v!)),
+      _buildDropdownField(value: _pupils, label: context.t('pupils'), icon: Icons.visibility, items: [DropdownMenuItem(value: 'perrl', child: Text(context.t('pupilsPERRL'))), DropdownMenuItem(value: 'anisocoria', child: Text(context.t('pupilsAnisocoria'))), DropdownMenuItem(value: 'fixed', child: Text(context.t('pupilsFixed')))], onChanged: (v) => setState(() => _pupils = v!)),
       if (_pupils != 'perrl') ...[const SizedBox(height: 12), _buildTextField(controller: _pupilsDetailsController, label: context.t('pupilDetails'), icon: Icons.remove_red_eye)],
       const SizedBox(height: 16),
       _buildTextField(controller: _neuroDeficitController, label: context.t('neuroDeficit'), icon: Icons.accessibility_new, hint: context.t('neuroDeficitHint'), maxLines: 2),
