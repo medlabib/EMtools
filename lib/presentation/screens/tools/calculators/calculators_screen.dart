@@ -59,7 +59,7 @@ class _CalculatorsScreenState extends State<CalculatorsScreen>
       case CalculatorCategory.laboratory:
         return AppStrings.laboratory;
       case CalculatorCategory.other:
-        return 'Autre';
+        return AppStrings.others;
     }
   }
 

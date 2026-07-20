@@ -366,6 +366,18 @@ const _en = <String, String>{
   'successLogout': 'Logged out successfully',
   'successLogin': 'Logged in successfully',
 
+  // Calculator
+  'calculatorNotFound': 'Calculator not found',
+  'enterValue': 'Enter a value',
+  'cannotOpenLink': 'Cannot open link',
+
+  // Interactions
+  'interactionMajor': 'Major',
+  'interactionModerate': 'Moderate',
+
+  // Disclaimer
+  'disclaimerText': '\u26a0\ufe0f This application is a decision-support tool and does not replace clinical judgment.',
+
   // Units
   'kg': 'kg',
   'lbs': 'lbs',
@@ -1098,6 +1110,18 @@ const _fr = <String, String>{
   'successUpdated': 'Mis à jour avec succès',
   'successLogout': 'Déconnexion réussie',
   'successLogin': 'Connexion réussie',
+
+  // Calculator
+  'calculatorNotFound': 'Calculateur non trouvé',
+  'enterValue': 'Entrer une valeur',
+  'cannotOpenLink': 'Impossible d\'ouvrir le lien',
+
+  // Interactions
+  'interactionMajor': 'Majeure',
+  'interactionModerate': 'Modérée',
+
+  // Disclaimer
+  'disclaimerText': '\u26a0\ufe0f Cette application est un outil d\'aide à la décision et ne remplace pas le jugement clinique.',
 
   // Units
   'kg': 'kg',
@@ -1971,6 +1995,7 @@ class AppStrings {
   static String get adrogueMadiasFormula => _t('adrogueMadiasFormula');
   static String get pbwFormula => _t('pbwFormula');
   static String get disclaimerTool => _t('disclaimerTool');
+  static String get disclaimerText => _t('disclaimerText');
   static String get unknownRhythm => _t('unknownRhythm');
   static String get vfPulselessVt => _t('vfPulselessVt');
   static String get asystoleRhythm => _t('asystoleRhythm');

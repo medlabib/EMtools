@@ -74,8 +74,8 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
         orElse: () => ScoreInterpretation(
           min: 0,
           max: 0,
-          label: LString('Non défini', 'Non défini'),
-          description: LString('Résultat hors plage', 'Résultat hors plage'),
+          label: LString('Non défini', 'Undefined'),
+          description: LString('Résultat hors plage', 'Result out of range'),
           color: Colors.grey,
         ),
       );
@@ -97,7 +97,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
 
     if (!_calculatorFound) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Erreur')),
+        appBar: AppBar(title: Text(AppStrings.error)),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -109,7 +109,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
               ),
               const SizedBox(height: 16),
               Text(
-                'Calculateur non trouvé',
+                context.t('calculatorNotFound'),
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ],
@@ -424,7 +424,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                hintText: 'Entrer une valeur',
+                hintText: context.t('enterValue'),
                 hintStyle: TextStyle(
                   color: isDark ? Colors.grey[500] : Colors.grey[400],
                 ),
@@ -617,7 +617,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('Impossible d\'ouvrir le lien'),
+                  content: Text(context.t('cannotOpenLink')),
                   backgroundColor: AppColors.error,
                 ),
               );

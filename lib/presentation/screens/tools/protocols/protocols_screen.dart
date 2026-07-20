@@ -330,7 +330,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                                     ),
                                     const SizedBox(width: 2),
                                     Text(
-                                      'Pédia',
+                                      AppStrings.pediatricsBadge,
                                       style: theme.textTheme.labelSmall?.copyWith(
                                         color: _pediatricPink,
                                         fontWeight: FontWeight.bold,

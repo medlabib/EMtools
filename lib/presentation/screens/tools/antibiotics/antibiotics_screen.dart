@@ -47,13 +47,13 @@ class _AntibioticsScreenState extends State<AntibioticsScreen> {
       case AntibioticClass.nitroimidazole:
         return AppStrings.nitroimidazoles;
       case AntibioticClass.oxazolidinone:
-        return 'Oxazolidinones';
+        return AppStrings.oxazolidinones;
       case AntibioticClass.lipopeptide:
-        return 'Lipopeptides';
+        return AppStrings.lipopeptides;
       case AntibioticClass.lincosamide:
-        return 'Lincosamides';
+        return AppStrings.lincosamides;
       case AntibioticClass.monobactam:
-        return 'Monobactames';
+        return AppStrings.monobactams;
       case AntibioticClass.other:
         return AppStrings.others;
     }

@@ -794,7 +794,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                               borderRadius: BorderRadius.circular(8),
                                             ),
                                             child: Text(
-                                              isMajor ? 'Majeure' : 'Modérée',
+                                              isMajor ? context.t('interactionMajor') : context.t('interactionModerate'),
                                               style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 11,

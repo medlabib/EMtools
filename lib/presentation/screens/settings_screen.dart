@@ -53,8 +53,8 @@ class SettingsScreen extends ConsumerWidget {
                     context.t('appSubtitle'),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    '\u26a0\ufe0f This application is a decision-support tool and does not replace clinical judgment.',
+                  Text(
+                    AppStrings.disclaimerText,
                     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 12),
                   ),
                 ],
