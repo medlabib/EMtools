@@ -12,29 +12,13 @@ class DashboardScreen extends ConsumerStatefulWidget {
   ConsumerState<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends ConsumerState<DashboardScreen>
-    with TickerProviderStateMixin {
-  late AnimationController _headerController;
-  late Animation<double> _headerAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _headerController = AnimationController(
-      duration: const Duration(milliseconds: 800),
-      vsync: this,
-    );
-    _headerAnimation = CurvedAnimation(
-      parent: _headerController,
-      curve: Curves.easeOutCubic,
-    );
-    _headerController.forward();
-  }
-
-  @override
-  void dispose() {
-    _headerController.dispose();
-    super.dispose();
+class _DashboardScreenState extends ConsumerState<DashboardScreen> {
+  String _getGreeting(BuildContext context) {
+    final hour = DateTime.now().hour;
+    if (hour < 5) return context.t('goodNight');
+    if (hour < 12) return context.t('goodMorning');
+    if (hour < 18) return context.t('goodAfternoon');
+    return context.t('goodEvening');
   }
 
   @override
@@ -44,281 +28,262 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen>
     final isTablet = screenWidth > 600;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
+      backgroundColor: AppColors.getBackgroundColor(isDark),
       body: CustomScrollView(
         slivers: [
-          // App Title Header
-          SliverToBoxAdapter(
-            child: AnimatedBuilder(
-              animation: _headerAnimation,
-              builder: (context, child) {
-                return Transform.translate(
-                  offset: Offset(0, -50 * (1 - _headerAnimation.value)),
-                  child: Opacity(
-                    opacity: _headerAnimation.value,
-                    child: child,
-                  ),
-                );
-              },
-              child: _buildSimpleHeader(context, isDark),
-            ),
-          ),
-
-          // Favoris Title
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 12),
-            sliver: SliverToBoxAdapter(
-              child: AnimatedListItem(
-                index: 0,
-                child: Row(
-                  children: [
-                    Container(
-                      width: 4,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        gradient: AppColors.primaryGradient,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      AppStrings.favorites,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-          // Quick Actions Grid
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            sliver: SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isTablet ? 3 : 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 1.0,
-              ),
-              delegate: SliverChildListDelegate([
-                AnimatedToolCard(
-                  title: AppStrings.medicalReport,
-                  subtitle: AppStrings.medicalReportDesc,
-                  icon: Icons.assignment_outlined,
-                  gradient: AppColors.medicalGradient,
-                  onTap: () => context.go('/tools/medical-report'),
-                  animationDelay: 100,
-                ),
-                AnimatedToolCard(
-                  title: AppStrings.calculators,
-                  subtitle: AppStrings.calculatorsDesc,
-                  icon: Icons.calculate_outlined,
-                  iconColor: AppColors.success,
-                  onTap: () => context.go('/tools/calculators'),
-                  animationDelay: 150,
-                ),
-                AnimatedToolCard(
-                  title: AppStrings.bloodGas,
-                  subtitle: AppStrings.bloodGasDesc,
-                  icon: Icons.air,
-                  iconColor: AppColors.error,
-                  onTap: () => context.go('/tools/blood-gas'),
-                  animationDelay: 200,
-                ),
-                AnimatedToolCard(
-                  title: AppStrings.vasoactive,
-                  subtitle: AppStrings.vasoactiveDesc,
-                  icon: Icons.favorite_outline,
-                  iconColor: AppColors.warning,
-                  onTap: () => context.go('/tools/vasoactive'),
-                  animationDelay: 250,
-                ),
-                AnimatedToolCard(
-                  title: AppStrings.sedation,
-                  subtitle: AppStrings.sedationDesc,
-                  icon: Icons.bed_outlined,
-                  iconColor: AppColors.accentTeal,
-                  onTap: () => context.go('/tools/sedation'),
-                  animationDelay: 300,
-                ),
-                AnimatedToolCard(
-                  title: AppStrings.allTools,
-                  subtitle: AppStrings.viewAllTools,
-                  icon: Icons.grid_view_rounded,
-                  gradient: AppColors.accentGradient,
-                  onTap: () => context.go('/tools'),
-                  animationDelay: 350,
-                ),
-              ]),
-            ),
-          ),
-
-          // Recent Activity Section - now showing tips
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 24, 20, 12),
-            sliver: SliverToBoxAdapter(
-              child: AnimatedListItem(
-                index: 2,
-                child: Row(
-                  children: [
-                    Container(
-                      width: 4,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        gradient: AppColors.accentGradient,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      AppStrings.allTools,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-          // All Tools Grid
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
-            sliver: SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isTablet ? 3 : 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 1.1,
-              ),
-              delegate: SliverChildListDelegate([
-                AnimatedToolCard(
-                  title: AppStrings.antibiotics,
-                  subtitle: AppStrings.antibioticsDesc,
-                  icon: Icons.medication_outlined,
-                  iconColor: AppColors.accentPurple,
-                  onTap: () => context.go('/tools/antibiotics'),
-                  animationDelay: 400,
-                ),
-                AnimatedToolCard(
-                  title: AppStrings.metabolic,
-                  subtitle: AppStrings.metabolicDesc,
-                  icon: Icons.science_outlined,
-                  iconColor: AppColors.accentEmerald,
-                  onTap: () => context.go('/tools/metabolic'),
-                  animationDelay: 450,
-                ),
-              ]),
-            ),
-          ),
+          _buildHeaderSliver(isDark),
+          _buildStatsSliver(isDark),
+          _buildSectionTitle(context.t('favorites')),
+          _buildQuickActionsGrid(isTablet),
+          _buildSectionTitle(context.t('allTools')),
+          _buildAllToolsGrid(isTablet),
         ],
       ),
     );
   }
 
-  Widget _buildSimpleHeader(BuildContext context, bool isDark) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isDesktop = screenWidth > 800;
-    final topPadding = isDesktop ? 24.0 : MediaQuery.of(context).padding.top + 20;
-    
-    return Container(
-      padding: EdgeInsets.fromLTRB(
-        20,
-        topPadding,
-        20,
-        20,
-      ),
-      decoration: BoxDecoration(
-        gradient: AppColors.medicalGradient,
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+  Widget _buildHeaderSliver(bool isDark) {
+    return SliverToBoxAdapter(
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.getCardColor(isDark),
+          border: Border(
+            bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
+          ),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryBlue.withValues(alpha: 0.3),
-            blurRadius: 30,
-            offset: const Offset(0, 10),
+        child: SafeArea(
+          bottom: false,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _getGreeting(context),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.getTextSecondary(isDark),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        context.t('appName'),
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.getTextPrimary(isDark),
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        context.t('appSubtitle'),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.getTextSecondary(isDark),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                IconButton(
+                  onPressed: () => context.go('/settings'),
+                  icon: Icon(
+                    Icons.settings_outlined,
+                    color: AppColors.getTextSecondary(isDark),
+                  ),
+                  tooltip: context.t('settings'),
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
-      child: Stack(
-        children: [
-          // Decorative elements
-          Positioned(
-            top: -30,
-            right: -30,
-            child: Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.1),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: -20,
-            left: -20,
-            child: Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.08),
-              ),
-            ),
-          ),
-          // Content
-          Row(
-            children: [
-              Expanded(
+    );
+  }
+
+  Widget _buildStatsSliver(bool isDark) {
+    final stats = [
+      _StatItem(icon: Icons.calculate_rounded, value: '40+', label: context.t('statScores')),
+      _StatItem(icon: Icons.description_rounded, value: '50+', label: context.t('statProtocols')),
+      _StatItem(icon: Icons.medication_rounded, value: '9', label: context.t('statTools')),
+    ];
+
+    return SliverPadding(
+      padding: const EdgeInsets.fromLTRB(20, 24, 20, 8),
+      sliver: SliverToBoxAdapter(
+        child: Row(
+          children: List.generate(stats.length, (i) {
+            return Expanded(
+              child: Container(
+                margin: EdgeInsets.only(right: i < 2 ? 12 : 0),
+                padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
+                decoration: BoxDecoration(
+                  color: AppColors.getCardColor(isDark),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.getBorderColor(isDark)),
+                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(stats[i].icon, color: AppColors.primary, size: 22),
+                    ),
+                    const SizedBox(height: 10),
                     Text(
-                      AppStrings.appName,
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                      stats[i].value,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.getTextPrimary(isDark),
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 2),
                     Text(
-                      AppStrings.appSubtitle,
+                      stats[i].label,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white.withValues(alpha: 0.9),
+                        fontSize: 11,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.getTextSecondary(isDark),
                       ),
+                      maxLines: 1,
                     ),
                   ],
                 ),
               ),
-              // Settings button
-              GestureDetector(
-                onTap: () => context.go('/settings'),
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white.withValues(alpha: 0.2),
-                  ),
-                  child: const Icon(
-                    Icons.settings_outlined,
-                    color: Colors.white,
-                    size: 24,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+            );
+          }),
+        ),
       ),
     );
   }
+
+  Widget _buildSectionTitle(String title) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return SliverPadding(
+      padding: const EdgeInsets.fromLTRB(20, 24, 20, 12),
+      sliver: SliverToBoxAdapter(
+        child: Row(
+          children: [
+            Container(
+              width: 4,
+              height: 22,
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppColors.getTextPrimary(isDark),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildQuickActionsGrid(bool isTablet) {
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      sliver: SliverGrid(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: isTablet ? 3 : 2,
+          mainAxisSpacing: 16,
+          crossAxisSpacing: 16,
+          childAspectRatio: 1.0,
+        ),
+        delegate: SliverChildListDelegate([
+          AnimatedToolCard(
+            title: context.t('medicalReport'),
+            subtitle: context.t('medicalReportDesc'),
+            icon: Icons.assignment_outlined,
+            onTap: () => context.go('/tools/medical-report'),
+          ),
+          AnimatedToolCard(
+            title: context.t('calculators'),
+            subtitle: context.t('calculatorsDesc'),
+            icon: Icons.calculate_outlined,
+            onTap: () => context.go('/tools/calculators'),
+          ),
+          AnimatedToolCard(
+            title: context.t('bloodGas'),
+            subtitle: context.t('bloodGasDesc'),
+            icon: Icons.air,
+            onTap: () => context.go('/tools/blood-gas'),
+          ),
+          AnimatedToolCard(
+            title: context.t('vasoactive'),
+            subtitle: context.t('vasoactiveDesc'),
+            icon: Icons.favorite_outline,
+            onTap: () => context.go('/tools/vasoactive'),
+          ),
+          AnimatedToolCard(
+            title: context.t('sedation'),
+            subtitle: context.t('sedationDesc'),
+            icon: Icons.bed_outlined,
+            onTap: () => context.go('/tools/sedation'),
+          ),
+          AnimatedToolCard(
+            title: context.t('allTools'),
+            subtitle: context.t('viewAllTools'),
+            icon: Icons.grid_view_rounded,
+            onTap: () => context.go('/tools'),
+          ),
+        ]),
+      ),
+    );
+  }
+
+  Widget _buildAllToolsGrid(bool isTablet) {
+    return SliverPadding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
+      sliver: SliverGrid(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: isTablet ? 3 : 2,
+          mainAxisSpacing: 16,
+          crossAxisSpacing: 16,
+          childAspectRatio: 1.1,
+        ),
+        delegate: SliverChildListDelegate([
+          AnimatedToolCard(
+            title: context.t('antibiotics'),
+            subtitle: context.t('antibioticsDesc'),
+            icon: Icons.medication_outlined,
+            onTap: () => context.go('/tools/antibiotics'),
+          ),
+          AnimatedToolCard(
+            title: context.t('metabolic'),
+            subtitle: context.t('metabolicDesc'),
+            icon: Icons.science_outlined,
+            onTap: () => context.go('/tools/metabolic'),
+          ),
+        ]),
+      ),
+    );
+  }
+}
+
+class _StatItem {
+  final IconData icon;
+  final String value, label;
+  _StatItem({
+    required this.icon,
+    required this.value,
+    required this.label,
+  });
 }

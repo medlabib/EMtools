@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/l10n/app_strings.dart';
 
 /// RCP (Réanimation Cardio-Pulmonaire) Timer Screen
 /// Updated: 2025 (AHA/ERC Guidelines 2020-2025)
@@ -1071,7 +1072,7 @@ class _RcpTimerScreenState extends State<RcpTimerScreen> with TickerProviderStat
                     child: _eventLog.isEmpty
                         ? Center(
                             child: Text(
-                              'Aucun événement enregistré',
+                              AppStrings.noEventsRecorded,
                               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                                   ),

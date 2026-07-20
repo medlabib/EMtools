@@ -211,10 +211,9 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
         24,
       ),
       decoration: BoxDecoration(
-        gradient: AppColors.medicalGradient,
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+        color: AppColors.getCardColor(isDark),
+        border: Border(
+          bottom: BorderSide(color: AppColors.getBorderColor(isDark)),
         ),
       ),
       child: Column(
@@ -228,12 +227,12 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
                     Icons.arrow_back_rounded,
-                    color: Colors.white,
+                    color: AppColors.primary,
                   ),
                 ),
               ),
@@ -243,12 +242,12 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(12),
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
                     Icons.refresh_rounded,
-                    color: Colors.white,
+                    color: AppColors.primary,
                   ),
                 ),
               ),
@@ -258,10 +257,10 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
           // Calculator name
           Text(
             _calculator.shortName,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              color: AppColors.getTextPrimary(isDark),
             ),
           ),
           const SizedBox(height: 8),
@@ -269,7 +268,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
             _calculator.name,
             style: TextStyle(
               fontSize: 15,
-              color: Colors.white.withValues(alpha: 0.9),
+              color: AppColors.getTextSecondary(isDark),
             ),
           ),
         ],
@@ -306,14 +305,8 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
           Container(
             decoration: BoxDecoration(
               color: isDark ? AppColors.cardDark : AppColors.cardLight,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.getBorderColor(isDark)),
             ),
             child: Column(
               children: field.options?.map((option) {
@@ -422,14 +415,8 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
           Container(
             decoration: BoxDecoration(
               color: isDark ? AppColors.cardDark : AppColors.cardLight,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.getBorderColor(isDark)),
             ),
             child: TextFormField(
               initialValue: _values[field.id]?.toString() ?? '',
@@ -538,21 +525,14 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
     return Container(
       height: 56,
       decoration: BoxDecoration(
-        gradient: AppColors.primaryGradient,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryBlue.withValues(alpha: 0.3),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
+        color: AppColors.primary,
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: _calculate,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(10),
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

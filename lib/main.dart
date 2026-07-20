@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/config/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'presentation/providers/theme_provider.dart';
+import 'presentation/providers/language_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,16 +13,22 @@ void main() async {
   ));
 }
 
-class EMToolsApp extends ConsumerWidget {
+class EMToolsApp extends ConsumerStatefulWidget {
   const EMToolsApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<EMToolsApp> createState() => _EMToolsAppState();
+}
+
+class _EMToolsAppState extends ConsumerState<EMToolsApp> {
+  @override
+  Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeProvider);
-    
+    ref.watch(languageProvider);
+
     return MaterialApp.router(
-      title: 'EMTools',
+      title: 'EMtools',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeMode,

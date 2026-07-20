@@ -527,7 +527,7 @@ class _VasoactiveScreenState extends State<VasoactiveScreen>
 
           // Weight
           _buildInputField(
-            label: 'Poids du patient',
+            label: AppStrings.patientWeightLabel,
             unit: 'kg',
             controller: _weightController,
             onChanged: _onWeightChanged,

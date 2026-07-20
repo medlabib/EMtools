@@ -21,13 +21,13 @@ class _ToolsScreenState extends State<ToolsScreen> {
   Set<String> _favorites = {};
   static const String _favoritesKey = 'tool_favorites';
 
-  final _categories = <String, String>{
-    'all': 'Tous',
-    'favorites': '⭐ Favoris',
-    'calculators': 'Calculateurs',
-    'emergency': 'Urgences',
-    'icu': 'Réanimation',
-    'tools': 'Outils',
+  Map<String, String> get _categories => {
+    'all': AppStrings.all,
+    'favorites': AppStrings.favoritesCategory,
+    'calculators': AppStrings.calculatorsCategory,
+    'emergency': AppStrings.emergencyCategory,
+    'icu': AppStrings.icuCategory,
+    'tools': AppStrings.toolsCategory,
   };
 
   late final List<_ToolData> _allTools;
@@ -242,7 +242,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
                 focusNode: _searchFocusNode,
                 style: const TextStyle(color: Colors.white, fontSize: 16),
                 decoration: InputDecoration(
-                  hintText: 'Rechercher un outil...',
+                  hintText: AppStrings.searchTool,
                   hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -308,7 +308,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
               sliver: SliverToBoxAdapter(
                 child: Text(
-                  '${tools.length} résultat${tools.length != 1 ? 's' : ''} pour "$_searchQuery"',
+                  AppStrings.toolsCount.replaceAll('{0}', '${tools.length}').replaceAll('{1}', tools.length != 1 ? 's' : '').replaceAll('{2}', _searchQuery),
                   style: TextStyle(
                     color: isDark ? Colors.grey[400] : Colors.grey[600],
                     fontSize: 14,
@@ -360,8 +360,8 @@ class _ToolsScreenState extends State<ToolsScreen> {
                     const SizedBox(height: 16),
                     Text(
                       _selectedCategory == 'favorites'
-                          ? 'Aucun favori'
-                          : 'Aucun outil trouvé',
+                          ? AppStrings.noFavorites
+                          : AppStrings.noToolFound,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -371,8 +371,8 @@ class _ToolsScreenState extends State<ToolsScreen> {
                     const SizedBox(height: 8),
                     Text(
                       _selectedCategory == 'favorites'
-                          ? 'Appuyez sur ⭐ pour ajouter des favoris'
-                          : 'Essayez une autre recherche',
+                          ? AppStrings.addFavoritesHint
+                          : AppStrings.tryAnotherSearch,
                       style: TextStyle(
                         fontSize: 14,
                         color: isDark ? Colors.grey[500] : Colors.grey[500],

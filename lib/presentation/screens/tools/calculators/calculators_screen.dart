@@ -169,7 +169,7 @@ class _CalculatorsScreenState extends State<CalculatorsScreen>
                   child: Row(
                     children: [
                       _CategoryChip(
-                        label: 'Tous',
+                        label: AppStrings.all,
                         icon: Icons.apps_rounded,
                         isSelected: _selectedCategory == null,
                         color: AppColors.primaryBlue,
@@ -268,7 +268,7 @@ class _CalculatorsScreenState extends State<CalculatorsScreen>
       ),
       child: TextField(
         decoration: InputDecoration(
-          hintText: '${AppStrings.search} un calculateur...',
+          hintText: '${AppStrings.search} a calculator...',
           hintStyle: TextStyle(
             color: isDark ? Colors.grey[500] : Colors.grey[400],
           ),

@@ -1,0 +1,1 @@
+C++17 with MSVC (/W4, /WX, exceptions disabled via `_HAS_EXCEPTIONS=0`), CMake ≥ 3.14, Win32 desktop API, and the Flutter Engine C++ client (`flutter/dart_project.h`, `flutter/flutter_view_controller.h`).

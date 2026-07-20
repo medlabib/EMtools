@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../data/datasources/protocols_data.dart';
 import '../../../../domain/entities/protocol.dart';
+import '../../../../core/l10n/app_strings.dart';
 
 // Pediatric pink color for highlighting pediatric protocols
 const Color _pediatricPink = Color(0xFFEC4899);
@@ -97,14 +98,14 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Protocoles'),
+        title: Text(AppStrings.protocols),
         actions: [
           IconButton(
             icon: Icon(
               _showPediatricOnly ? Icons.child_care : Icons.child_care_outlined,
               color: _showPediatricOnly ? _pediatricPink : null,
             ),
-            tooltip: 'Pédiatrie uniquement',
+            tooltip: AppStrings.pediatricsOnly,
             onPressed: () {
               setState(() {
                 _showPediatricOnly = !_showPediatricOnly;
@@ -121,7 +122,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: 'Rechercher un protocole...',
+                hintText: AppStrings.searchProtocols,
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: _searchQuery.isNotEmpty
                     ? IconButton(
@@ -156,7 +157,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               children: [
-                _buildCategoryChip(null, 'Tous', Icons.all_inclusive),
+                _buildCategoryChip(null, AppStrings.all, Icons.all_inclusive),
                 ...ProtocolCategory.values.map((category) =>
                     _buildCategoryChip(category, category.displayName, category.icon)),
               ],
@@ -169,7 +170,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
             child: Row(
               children: [
                 Text(
-                  '${filteredProtocols.length} protocole${filteredProtocols.length > 1 ? 's' : ''}',
+                  AppStrings.protocolCount.replaceAll('{0}', '${filteredProtocols.length}').replaceAll('{1}', filteredProtocols.length > 1 ? 's' : ''),
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
@@ -179,7 +180,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                   Icon(Icons.star, size: 14, color: Colors.amber.shade600),
                   const SizedBox(width: 4),
                   Text(
-                    '${_favorites.length} favori${_favorites.length > 1 ? 's' : ''}',
+                    AppStrings.favoritesCount.replaceAll('{0}', '${_favorites.length}').replaceAll('{1}', _favorites.length > 1 ? 's' : ''),
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -187,7 +188,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                 ],
                 const Spacer(),
                 Text(
-                  'Total: $_totalProtocolCount',
+                  AppStrings.totalLabel.replaceAll('{0}', '$_totalProtocolCount'),
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
@@ -210,7 +211,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'Aucun protocole trouvé',
+                          AppStrings.noProtocolsFound,
                           style: theme.textTheme.titleMedium?.copyWith(
                             color: theme.colorScheme.onSurfaceVariant,
                           ),

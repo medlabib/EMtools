@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../data/datasources/protocols_data.dart';
 import '../../../../domain/entities/protocol.dart';
+import '../../../../core/l10n/app_strings.dart';
 
 // Pediatric pink color for highlighting pediatric protocols
 const Color _pediatricPink = Color(0xFFEC4899);
@@ -272,7 +273,7 @@ class _ProtocolDetailContentState extends State<_ProtocolDetailContent> {
                   if (contraindication != null && contraindication.isNotEmpty)
                     _buildInfoCard(
                       context,
-                      title: 'Contre-indications',
+                      title: AppStrings.contraindications,
                       content: contraindication,
                       icon: Icons.cancel_outlined,
                       color: Colors.red,

@@ -263,7 +263,7 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                     )),
                     const SizedBox(width: 12),
                     Expanded(child: _buildDropdown<AgeGroup>(
-                      label: 'Groupe d\'âge',
+                      label: AppStrings.ageGroup,
                       value: _ageGroup,
                       items: AgeGroup.values.map((g) => DropdownMenuItem(
                         value: g,

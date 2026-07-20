@@ -951,8 +951,8 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
           const SizedBox(height: 16),
           Text(
             _patientMedications.isEmpty
-              ? 'Ajoutez les médicaments du patient'
-              : 'Aucune interaction détectée',
+              ? AppStrings.addPatientMeds
+              : AppStrings.noInteractionsDetected,
             style: TextStyle(
               fontSize: 16,
               color: _patientMedications.isEmpty 

@@ -541,7 +541,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     return _buildSection(
       context,
       isDark,
-      'Patient',
+      AppStrings.patientInfo,
       Icons.person_outline_rounded,
       AppColors.primaryBlue,
       [
@@ -549,11 +549,11 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildSelectField(
-                'Sexe',
+                AppStrings.sex,
                 _data.gender,
                 [
-                  ('male', 'Homme'),
-                  ('female', 'Femme'),
+                  ('male', AppStrings.male),
+                  ('female', AppStrings.female),
                 ],
                 (v) => _update(_data.copyWith(gender: v)),
                 isDark,
@@ -562,7 +562,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'Taille',
+                AppStrings.height,
                 'cm',
                 _data.height,
                 (v) => _update(_data.copyWith(height: v)),
@@ -572,8 +572,8 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'Âge',
-                'ans',
+                AppStrings.age,
+                AppStrings.years,
                 _data.age,
                 (v) => _update(_data.copyWith(age: v)),
                 isDark,
@@ -597,7 +597,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'pH',
+                AppStrings.pH,
                 '',
                 _data.ph,
                 (v) => _update(_data.copyWith(ph: v)),
@@ -608,7 +608,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'PaCO₂',
+                AppStrings.pCO2,
                 'mmHg',
                 _data.paco2,
                 (v) => _update(_data.copyWith(paco2: v)),
@@ -622,7 +622,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'PaO₂',
+                AppStrings.pO2,
                 'mmHg',
                 _data.pao2,
                 (v) => _update(_data.copyWith(pao2: v)),
@@ -632,7 +632,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'HCO₃⁻',
+                AppStrings.hCO3,
                 'mEq/L',
                 _data.hco3,
                 (v) => _update(_data.copyWith(hco3: v)),
@@ -646,7 +646,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'SaO₂',
+                AppStrings.saturation,
                 '%',
                 _data.sao2,
                 (v) => _update(_data.copyWith(sao2: v)),
@@ -656,7 +656,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'Lactate',
+                AppStrings.lactate,
                 'mmol/L',
                 _data.lactate,
                 (v) => _update(_data.copyWith(lactate: v)),
@@ -674,7 +674,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     return _buildSection(
       context,
       isDark,
-      'Biochimie',
+      'Biochemistry',
       Icons.science_outlined,
       AppColors.accentTeal,
       [
@@ -682,7 +682,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
           children: [
             Expanded(
               child: _buildNumberInput(
-                'Na⁺',
+                AppStrings.sodium,
                 'mEq/L',
                 _data.na,
                 (v) => _update(_data.copyWith(na: v)),
@@ -692,7 +692,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'Cl⁻',
+                AppStrings.chloride,
                 'mEq/L',
                 _data.cl,
                 (v) => _update(_data.copyWith(cl: v)),
@@ -717,7 +717,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
             const SizedBox(width: 12),
             Expanded(
               child: _buildNumberInput(
-                'Hémoglobine',
+                AppStrings.hemoglobin,
                 'g/dL',
                 _data.hb,
                 (v) => _update(_data.copyWith(hb: v)),
@@ -735,7 +735,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     return _buildSection(
       context,
       isDark,
-      'Ventilateur',
+      'Ventilator',
       Icons.medication_outlined,
       AppColors.primaryPurple,
       [
@@ -893,7 +893,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
       ),
       (
         'PBW (Poids Idéal)',
-        'Homme: 50 + 0.91(H-152.4), Femme: 45.5 + 0.91(H-152.4)',
+        'Male: 50 + 0.91(H-152.4), Female: 45.5 + 0.91(H-152.4)',
         'ARDSNet Protocol. N Engl J Med. 2000;342:1301-1308',
       ),
     ];
