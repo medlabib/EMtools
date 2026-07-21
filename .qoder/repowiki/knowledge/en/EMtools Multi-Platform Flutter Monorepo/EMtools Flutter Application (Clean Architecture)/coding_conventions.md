@@ -1,3 +1,0 @@
-- Domain entities are extended by data-layer models (e.g. UserModel extends User) so business types stay framework-free.
-- Calculator and datasource classes expose static or class-scoped data tables consumed directly by Riverpod providers rather than through repositories.
-- Unit tests pair a *scenarios_test.dart file with a *_data_test.dart file per calculator, using scenario-driven assertions against known inputs/outputs.

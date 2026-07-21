@@ -1,3 +1,0 @@
-- All public headers use include guards named after the target path (e.g. `RUNNER_WIN32_WINDOW_H_`) rather than module names.
-- New classes are derived from `Win32Window` and implement virtual `OnCreate`/`OnDestroy`/`MessageHandler` hooks instead of overriding `WndProc` directly.
-- Build configuration is centralized through the `APPLY_STANDARD_SETTINGS(TARGET)` function so every target shares the same C++17 standard, warning level, and exception policy.

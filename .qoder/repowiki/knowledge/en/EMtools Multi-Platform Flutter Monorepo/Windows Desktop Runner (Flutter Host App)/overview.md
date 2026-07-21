@@ -1,1 +1,0 @@
-CMake-based Windows host application that bootstraps a Win32 window and embeds the Flutter engine to run the Dart frontend as a native executable.

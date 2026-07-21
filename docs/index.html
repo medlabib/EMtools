@@ -3,639 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMtools - Outils Médicaux d'Urgence | Calculateurs, RCP, ABCDE</title>
-    <meta name="description" content="EMtools - Application gratuite d'outils médicaux pour urgentistes et réanimateurs. Timer RCP, évaluation ABCDE, 40+ calculateurs, gazométrie, drogues vasoactives, sédation ISR.">
-    <meta name="keywords" content="médecine urgence, calculateur médical, gazométrie, sédation ISR, ABCDE, urgentiste, réanimation, RCP, timer RCP, SOFA, Glasgow, vasoactifs">
+    <title>EMtools — Emergency Medicine Tools | Outils de Médecine d'Urgence</title>
+    <meta name="description" content="EMtools — Free bilingual medical app for emergency physicians. CPR timer, ABCDE assessment, 40+ calculators, blood gas, vasoactive drugs, sedation protocols, antibiotic guide.">
+    <meta name="keywords" content="emergency medicine, medical calculator, ABCDE, CPR timer, SOFA, Glasgow, vasoactive, blood gas, antibiotic guide, urgentiste, réanimation">
     <meta name="author" content="Dr. Labib">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="EMtools - Outils Médicaux d'Urgence">
-    <meta property="og:description" content="Application gratuite d'outils médicaux pour urgentistes. Timer RCP, évaluation ABCDE, 40+ calculateurs, gazométrie, drogues vasoactives.">
+
+    <meta property="og:title" content="EMtools — Emergency Medicine Tools">
+    <meta property="og:description" content="Free bilingual medical decision-support app for emergency physicians and intensivists.">
     <meta property="og:image" content="https://medlabib.github.io/EMtools/logo.png">
     <meta property="og:url" content="https://medlabib.github.io/EMtools/">
     <meta property="og:type" content="website">
-    
-    <!-- Twitter Card -->
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="EMtools - Outils Médicaux d'Urgence">
-    <meta name="twitter:description" content="Application gratuite d'outils médicaux pour urgentistes et réanimateurs.">
+    <meta name="twitter:title" content="EMtools — Emergency Medicine Tools">
+    <meta name="twitter:description" content="Free bilingual medical decision-support app for emergency physicians and intensivists.">
     <meta name="twitter:image" content="https://medlabib.github.io/EMtools/logo.png">
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/png" href="./logo.png">
     <link rel="apple-touch-icon" href="./logo.png">
-    
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #10b981;
-            --accent: #8b5cf6;
-            --background: #0f172a;
-            --surface: #1e293b;
-            --surface-light: #334155;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --gradient: linear-gradient(135deg, #2563eb 0%, #8b5cf6 50%, #10b981 100%);
+            --bg: #0a0f1e;
+            --surface: #131a2e;
+            --surface2: #1a2340;
+            --border: rgba(255,255,255,0.06);
+            --text: #e8ecf4;
+            --muted: #8892a8;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --green: #10b981;
+            --red: #ef4444;
+            --amber: #f59e0b;
+            --cyan: #06b6d4;
+            --pink: #ec4899;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--background);
+            background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
+
+        /* Background effects */
+        .bg-grid {
+            position: fixed; inset: 0; z-index: -2;
+            background-image:
+                radial-gradient(circle at 15% 85%, rgba(59,130,246,0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 15%, rgba(139,92,246,0.08) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(16,185,129,0.04) 0%, transparent 50%);
         }
-        
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
-            animation: float 20s ease-in-out infinite;
+
+        .bg-dots {
+            position: fixed; inset: 0; z-index: -1; opacity: 0.3;
+            background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(5deg); }
-            66% { transform: translate(-20px, 20px) rotate(-5deg); }
-        }
-        
+
         /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(15, 23, 42, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 0.875rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10,15,30,0.82);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            font-size: 1.5rem;
+
+        .nav-brand {
+            display: flex; align-items: center; gap: 0.625rem;
+            font-weight: 700; font-size: 1.35rem; color: var(--text);
+            text-decoration: none;
         }
-        
-        .logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-        }
-        
-        .logo span {
-            background: var(--gradient);
+        .nav-brand img { width: 36px; height: 36px; border-radius: 9px; }
+        .nav-brand .gradient-text {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
+
+        .nav-links { display: flex; gap: 1.75rem; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--muted); text-decoration: none; font-weight: 500;
+            font-size: 0.9rem; transition: color 0.2s;
         }
-        
-        .nav-links a:hover {
-            color: var(--text);
-        }
-        
-        /* Hero Section */
+        .nav-links a:hover { color: var(--text); }
+
+        /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 2rem 4rem;
-            text-align: center;
+            min-height: 100vh; display: flex; align-items: center;
+            justify-content: center; padding: 7rem 2rem 4rem; text-align: center;
         }
-        
-        .hero-content {
-            max-width: 900px;
+        .hero-inner { max-width: 780px; }
+
+        .pill {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.35rem 0.9rem; border-radius: 100px;
+            font-size: 0.8rem; font-weight: 500;
+            background: rgba(16,185,129,0.1);
+            color: var(--green);
+            border: 1px solid rgba(16,185,129,0.2);
+            margin-bottom: 1.75rem;
         }
-        
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--surface);
-            border-radius: 50px;
-            font-size: 0.875rem;
-            color: var(--secondary);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+        .pill::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 900; line-height: 1.08; margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
-        
-        .badge::before {
-            content: '●';
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        
-        h1 .highlight {
-            background: var(--gradient);
+        .hero h1 .hl {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 3rem;
+        .hero .sub {
+            font-size: 1.05rem; color: var(--muted); line-height: 1.55;
+            margin: 0 auto 2.5rem;
         }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
+
+        .btn-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.85rem 1.75rem; border-radius: 12px;
+            font-weight: 600; font-size: 0.95rem; text-decoration: none;
+            transition: all 0.25s; cursor: pointer; border: none;
         }
-        
         .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: #fff;
+            box-shadow: 0 4px 18px rgba(59,130,246,0.35);
         }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(37, 99, 235, 0.5);
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.5); }
+        .btn-outline {
+            background: transparent; color: var(--text);
+            border: 1px solid rgba(255,255,255,0.14);
         }
-        
-        .btn-secondary {
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--surface-light);
+        .btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+
+        /* Sections */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1150px; margin: 0 auto; }
+        .section-head { text-align: center; margin-bottom: 3.5rem; }
+        .section-head h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+        .section-head p { color: var(--muted); font-size: 1.05rem; }
+
+        /* Feature cards */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+        .card {
+            background: var(--surface); border-radius: 18px; padding: 1.75rem;
+            border: 1px solid var(--border); transition: all 0.3s;
         }
-        
-        .btn-secondary:hover {
-            background: var(--surface-light);
-            transform: translateY(-2px);
+        .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); }
+
+        .card-icon {
+            width: 50px; height: 50px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.45rem; margin-bottom: 1.25rem;
         }
-        
-        /* Features Section */
-        .features {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+
+        /* Tools grid */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; }
+        .tool-chip {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.9rem 1.1rem; border-radius: 14px;
+            background: var(--surface2); border: 1px solid var(--border);
+            transition: all 0.25s;
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
+        .tool-chip:hover { border-color: rgba(255,255,255,0.15); transform: scale(1.02); }
+        .tci { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+        .tct h4 { font-size: 0.9rem; font-weight: 600; }
+        .tct span { font-size: 0.78rem; color: var(--muted); }
+
+        /* Download cards */
+        .dl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+        .dl-card {
+            background: var(--surface); border-radius: 20px; padding: 2.25rem;
+            border: 1px solid var(--border); text-align: center; transition: all 0.3s;
         }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 1.125rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            background: var(--surface);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid var(--surface-light);
-            transition: all 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.2);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-        
-        /* Tools Preview */
-        .tools-preview {
-            padding: 4rem 2rem;
-            background: var(--surface);
-        }
-        
-        .tools-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .tool-card {
-            background: var(--background);
-            border-radius: 16px;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid var(--surface-light);
-            transition: all 0.3s;
-        }
-        
-        .tool-card:hover {
-            border-color: var(--accent);
-            transform: scale(1.02);
-        }
-        
-        .tool-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .tool-info h4 {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .tool-info p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        
-        /* Download Section */
-        .download {
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-        
-        .download-cards {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .download-card {
-            background: var(--surface);
-            border-radius: 20px;
-            padding: 2.5rem;
-            min-width: 280px;
-            flex: 1;
-            max-width: 400px;
-            border: 1px solid var(--surface-light);
-            transition: all 0.3s;
-        }
-        
-        .download-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .download-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .download-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .download-card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-        
+        .dl-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); }
+        .dl-card .emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .dl-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .dl-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.4rem; }
+
         /* Footer */
         footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--surface-light);
+            padding: 2.5rem 2rem; text-align: center;
+            border-top: 1px solid var(--border); color: var(--muted); font-size: 0.88rem;
         }
-        
-        footer p {
-            color: var(--text-muted);
-        }
-        
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .hero {
-                padding: 5rem 1rem 3rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
+        footer a { color: var(--blue); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        footer .heart { color: var(--red); }
+
+        @media (max-width: 700px) {
+            .nav { padding: 0.75rem 1rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    
-    <nav>
-        <div class="logo">
-            <img src="./logo.png" alt="EMtools Logo">
-            <span>EMtools</span>
-        </div>
+    <div class="bg-grid"></div>
+    <div class="bg-dots"></div>
+
+    <nav class="nav">
+        <a class="nav-brand" href="./">
+            <img src="./logo.png" alt="EMtools">
+            <span class="gradient-text">EMtools</span>
+        </a>
         <ul class="nav-links">
-            <li><a href="#features">Fonctionnalités</a></li>
-            <li><a href="#tools">Outils</a></li>
-            <li><a href="#download">Télécharger</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#download">Download</a></li>
             <li><a href="https://github.com/medlabib/EMtools" target="_blank">GitHub</a></li>
         </ul>
     </nav>
-    
+
     <section class="hero">
-        <div class="hero-content">
-            <div class="badge">Version 0.1.2 Beta • Web | Android | Windows</div>
+        <div class="hero-inner">
+            <div class="pill">Bilingual FR/EN • Free & Open Source</div>
             <h1>
-                Outils Médicaux<br>
-                <span class="highlight">d'Urgence</span>
+                Emergency<br>Medicine <span class="hl">Tools</span>
             </h1>
-            <p class="hero-description">
-                EMtools est une application complète pour les urgentistes et réanimateurs. 
-                Timer RCP, évaluation ABCDE, 40+ calculateurs médicaux, interprétation de gazométrie, 
-                drogues vasoactives, protocoles de sédation ISR, et bien plus encore.
+            <p class="sub">
+                A comprehensive, bilingual decision-support toolkit built for emergency physicians and intensivists.
+                CPR timer, ABCDE assessment, 40+ clinical calculators, blood gas analysis, vasoactive drugs,
+                sedation protocols, antibiotic guide — all in your pocket.
             </p>
-            <div class="cta-buttons">
-                <a href="./app/" class="btn btn-primary">
-                    🚀 Lancer l'Application Web
-                </a>
-                <a href="#download" class="btn btn-secondary">
-                    📥 Télécharger
-                </a>
+            <div class="btn-row">
+                <a href="./app/" class="btn btn-primary">🚀 Launch Web App</a>
+                <a href="#download" class="btn btn-outline">📥 Download</a>
             </div>
         </div>
     </section>
-    
-    <section class="features" id="features">
-        <div class="section-title">
-            <h2>Fonctionnalités Principales</h2>
-            <p>Tout ce dont vous avez besoin pour la médecine d'urgence</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon" style="background: rgba(239, 68, 68, 0.2);">⏱️</div>
-                <h3>Timer RCP</h3>
-                <p>Chronomètre interactif pour l'arrêt cardiaque avec cycles automatiques, alertes adrénaline et rapport RCP.</p>
+
+    <section id="features">
+        <div class="container">
+            <div class="section-head">
+                <h2>Core Features</h2>
+                <p>Everything you need for acute care at your fingertips</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background: rgba(37, 99, 235, 0.2);">🩺</div>
-                <h3>Évaluation ABCDE</h3>
-                <p>Générez des rapports médicaux structurés avec détection automatique de la gravité et format narratif français.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background: rgba(16, 185, 129, 0.2);">🧮</div>
-                <h3>40+ Calculateurs</h3>
-                <p>GCS, SOFA, APACHE II, Wells, CHA₂DS₂-VASc, et bien d'autres scores médicaux validés.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background: rgba(236, 72, 153, 0.2);">🫁</div>
-                <h3>Gazométrie Artérielle</h3>
-                <p>Interprétation automatique avec calcul du gradient A-a, P/F ratio, et classification ARDS.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background: rgba(245, 158, 11, 0.2);">💊</div>
-                <h3>Drogues Vasoactives</h3>
-                <p>Calcul des débits de noradrénaline, adrénaline, dobutamine avec conversions automatiques.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background: rgba(139, 92, 246, 0.2);">😴</div>
-                <h3>Protocoles de Sédation</h3>
-                <p>ISR, sédation procédurale, et analgésie avec dosages adaptés au poids.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon" style="background: rgba(6, 182, 212, 0.2);">💧</div>
-                <h3>Troubles Métaboliques</h3>
-                <p>Correction de dysnatrémie, dyskaliémie et dyscalcémie avec formules Adrogué-Madias.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(239,68,68,0.15);">⏱️</div>
+                    <h3>CPR Timer</h3>
+                    <p>Interactive cardiac arrest timer with automatic 2-min cycles, epinephrine alerts, shock counter &amp; auto-generated report.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(59,130,246,0.15);">📝</div>
+                    <h3>ABCDE Assessment</h3>
+                    <p>Structured trauma report with automatic severity triage and bilingual clinical narrative generation.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(16,185,129,0.15);">🧮</div>
+                    <h3>40+ Calculators</h3>
+                    <p>GCS, SOFA, APACHE II, CURB‑65, Wells, CHA₂DS₂‑VASc, HAS‑BLED, HEART, NIHSS &amp; more validated scores.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(236,72,153,0.15);">🫁</div>
+                    <h3>Blood Gas Analysis</h3>
+                    <p>Acid-base classification, A‑a gradient, P/F ratio, and ARDS Berlin classification.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(245,158,11,0.15);">💉</div>
+                    <h3>Vasoactive Drugs</h3>
+                    <p>Norepinephrine, epinephrine, dobutamine, dopamine infusion calculators with customizable dilution.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(139,92,246,0.15);">😴</div>
+                    <h3>Sedation Protocols</h3>
+                    <p>RSI protocols with weight‑based dosing, preoxygenation checklist &amp; procedural sedation.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(6,182,212,0.15);">💧</div>
+                    <h3>Metabolic Disorders</h3>
+                    <p>Dysnatremia, dyskalemia, dyscalcemia correction using Adrogué‑Madias formula.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(236,72,153,0.15);">💊</div>
+                    <h3>Antibiotic Guide</h3>
+                    <p>Spectrum, dosing, renal adjustment &amp; major drug interactions for 50+ antibiotics.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background:rgba(16,185,129,0.15);">📋</div>
+                    <h3>55 Protocols</h3>
+                    <p>Emergency department clinical pathways and management guidelines.</p>
+                </div>
             </div>
         </div>
     </section>
-    
-    <section class="tools-preview" id="tools">
-        <div class="tools-container">
-            <div class="section-title">
-                <h2>Outils Disponibles</h2>
-                <p>Une suite complète d'outils pour votre pratique quotidienne</p>
+
+    <section id="tools" style="background:var(--surface);">
+        <div class="container">
+            <div class="section-head">
+                <h2>Available Tools</h2>
+                <p>A complete suite for daily clinical practice</p>
             </div>
             <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #2563eb, #8b5cf6);">📋</div>
-                    <div class="tool-info">
-                        <h4>Évaluation ABCDE</h4>
-                        <p>Rapport médical structuré</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6);">📋</div>
+                    <div class="tct"><h4>ABCDE Assessment</h4><span>Structured trauma report</span></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #10b981, #059669);">🧮</div>
-                    <div class="tool-info">
-                        <h4>Calculateurs</h4>
-                        <p>Scores médicaux validés</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#10b981,#059669);">🧮</div>
+                    <div class="tct"><h4>Calculators</h4><span>40+ validated scores</span></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🫁</div>
-                    <div class="tool-info">
-                        <h4>Gazométrie</h4>
-                        <p>Interprétation automatique</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#ef4444,#dc2626);">🫁</div>
+                    <div class="tct"><h4>Blood Gas</h4><span>Acid-base interpretation</span></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">❤️</div>
-                    <div class="tool-info">
-                        <h4>Vasoactifs</h4>
-                        <p>Calcul des débits</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#f59e0b,#d97706);">💉</div>
+                    <div class="tct"><h4>Vasoactive</h4><span>Infusion rate calculator</span></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">😴</div>
-                    <div class="tool-info">
-                        <h4>Sédation</h4>
-                        <p>Protocoles ISR</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">😴</div>
+                    <div class="tct"><h4>Sedation</h4><span>RSI &amp; procedural protocols</span></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">💧</div>
-                    <div class="tool-info">
-                        <h4>Métabolique</h4>
-                        <p>Correction ionique</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">💧</div>
+                    <div class="tct"><h4>Metabolic</h4><span>Electrolyte correction</span></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">💊</div>
-                    <div class="tool-info">
-                        <h4>Antibiotiques</h4>
-                        <p>Guide avec ajustement rénal</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#ec4899,#db2777);">💊</div>
+                    <div class="tct"><h4>Antibiotics</h4><span>Renal-adjusted dosing</span></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon" style="background: linear-gradient(135deg, #ef4444, #b91c1c);">⏱️</div>
-                    <div class="tool-info">
-                        <h4>Timer RCP</h4>
-                        <p>Chronomètre réanimation</p>
-                    </div>
+                <div class="tool-chip">
+                    <div class="tci" style="background:linear-gradient(135deg,#ef4444,#b91c1c);">⏱️</div>
+                    <div class="tct"><h4>CPR Timer</h4><span>Arrest management</span></div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section class="download" id="download">
-        <div class="section-title">
-            <h2>Téléchargez EMtools</h2>
-            <p>Disponible sur plusieurs plateformes</p>
-        </div>
-        <div class="download-cards">
-            <div class="download-card">
-                <div class="icon">🌐</div>
-                <h3>Application Web</h3>
-                <p>Utilisez EMtools directement dans votre navigateur, sans installation.</p>
-                <a href="./app/" class="btn btn-primary">Ouvrir l'App Web</a>
+
+    <section id="download">
+        <div class="container">
+            <div class="section-head">
+                <h2>Get EMtools</h2>
+                <p>Available on web, Android, and Windows</p>
             </div>
-            <div class="download-card">
-                <div class="icon">🤖</div>
-                <h3>Android</h3>
-                <p>Téléchargez l'APK pour Android et installez-la sur votre appareil.</p>
-                <a href="https://github.com/medlabib/EMtools/releases" class="btn btn-secondary" target="_blank">Télécharger APK v0.1.2</a>
-            </div>
-            <div class="download-card">
-                <div class="icon">🖥️</div>
-                <h3>Windows</h3>
-                <p>Application native Windows. Téléchargez et décompressez l'archive ZIP.</p>
-                <a href="https://github.com/medlabib/EMtools/releases" class="btn btn-secondary" target="_blank">Télécharger Windows v0.1.2</a>
+            <div class="dl-grid">
+                <div class="dl-card">
+                    <div class="emoji">🌐</div>
+                    <h3>Web App</h3>
+                    <p>Use EMtools directly in your browser — no installation required.</p>
+                    <a href="./app/" class="btn btn-primary">Open Web App</a>
+                </div>
+                <div class="dl-card">
+                    <div class="emoji">🤖</div>
+                    <h3>Android</h3>
+                    <p>Download the APK and install on your Android device.</p>
+                    <a href="https://github.com/medlabib/EMtools/releases" class="btn btn-outline" target="_blank">Download APK</a>
+                </div>
+                <div class="dl-card">
+                    <div class="emoji">🖥️</div>
+                    <h3>Windows</h3>
+                    <p>Native Windows application. Download and unzip the archive.</p>
+                    <a href="https://github.com/medlabib/EMtools/releases" class="btn btn-outline" target="_blank">Download Windows</a>
+                </div>
             </div>
         </div>
     </section>
-    
+
     <footer>
         <p>
-            Fait avec ❤️ pour les professionnels de santé par <strong>Dr. Labib</strong><br>
-            <a href="https://github.com/medlabib/EMtools" target="_blank">Code source sur GitHub</a> • 
-            <a href="https://github.com/medlabib/EMtools/issues" target="_blank">Signaler un problème</a><br>
-            © 2024-2025 EMtools - Licence MIT
+            Built with <span class="heart">❤️</span> for healthcare professionals by <strong>Dr. Labib</strong><br>
+            <a href="https://github.com/medlabib/EMtools" target="_blank">Source Code</a> •
+            <a href="https://github.com/medlabib/EMtools/issues" target="_blank">Report an Issue</a><br>
+            © 2024–2026 EMtools — MIT License
         </p>
     </footer>
 </body>

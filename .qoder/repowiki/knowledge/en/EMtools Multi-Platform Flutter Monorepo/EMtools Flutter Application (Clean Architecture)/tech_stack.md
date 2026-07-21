@@ -1,1 +1,0 @@
-Flutter with Material 3 theming, flutter_riverpod for reactive state management, and deferred loading via a custom DeferredWidget to lazily load tool screens.

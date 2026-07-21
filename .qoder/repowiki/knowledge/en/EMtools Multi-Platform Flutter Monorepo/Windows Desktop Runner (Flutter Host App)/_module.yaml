@@ -1,9 +1,0 @@
-schema_version: 1
-module_path: windows_target
-title: Windows Desktop Runner (Flutter Host App)
-scope:
-    - windows/
-source_files: []
-depends_on: []
-related_to:
-    - path: flutter_app
