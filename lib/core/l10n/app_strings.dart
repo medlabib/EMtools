@@ -1,6 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../presentation/providers/language_provider.dart';
 
 const _en = <String, String>{
   // General
@@ -547,6 +545,11 @@ const _en = <String, String>{
   'ecgIrregular': 'Irregular',
   'ecgAFib': 'AFib',
   'ecgFlutter': 'Flutter',
+  // App
+  'appVersion': 'Version {0}',
+
+  // ECG section title
+  'ecgLabel': 'ECG',
   // ECG components
   'ecgNormal': 'Normal',
   'ecgTall': 'Tall',
@@ -924,7 +927,7 @@ const _fr = <String, String>{
   'lactate': 'Lactate',
   'sodium': 'Sodium',
   'potassium': 'Potassium',
-  'chloride': 'Chlore',
+  'chloride': 'Chlorure',
   'glucose': 'Glucose',
   'hemoglobin': 'Hémoglobine',
   'saturation': 'Saturation',
@@ -1019,12 +1022,12 @@ const _fr = <String, String>{
   'medicalReportTitle': 'Évaluation ABCDE',
   'patientInfo': 'Informations Patient',
   'chiefComplaint': 'Motif de Consultation',
-  'historyOfPresentIllness': 'Histoire de la Maladie',
+  'historyOfPresentIllness': 'Histoire de la maladie (HDM)',
   'pastMedicalHistory': 'Antécédents Médicaux',
   'medications': 'Médicaments',
   'allergies': 'Allergies',
   'familyHistory': 'Antécédents Familiaux',
-  'socialHistory': 'Mode de Vie',
+  'socialHistory': 'Habitudes de vie',
   'physicalExam': 'Examen Physique',
   'vitalSigns': 'Signes Vitaux',
   'assessment': 'Évaluation',
@@ -1080,7 +1083,7 @@ const _fr = <String, String>{
   'users': 'Utilisateurs',
   'userManagement': 'Gestion des Utilisateurs',
   'statistics': 'Statistiques',
-  'analytics': 'Analytiques',
+  'analytics': 'Analyses',
   'systemSettings': 'Paramètres Système',
   'logs': 'Journaux',
   'active': 'Actif',
@@ -1292,6 +1295,8 @@ const _fr = <String, String>{
   'ecgIrregular': 'Irrégulier',
   'ecgAFib': 'FA',
   'ecgFlutter': 'Flutter',
+  // ECG section title
+  'ecgLabel': 'ECG',
   // ECG components
   'ecgNormal': 'Normale',
   'ecgTall': 'Ample',
@@ -1325,12 +1330,12 @@ const _fr = <String, String>{
   'completeAnalysis': 'Analyse complète avec ventilation',
   'calculatedParameters': 'Paramètres calculés',
   'vtPerKgPBW': 'Vt/kg PBW',
-  'drivingPressureMetric': 'Driving Pressure',
+  'drivingPressureMetric': 'Pression motrice',
   'caO2': 'CaO₂',
   'bloodGasSection': 'Gazométrie',
-  'biochemistrySection': 'Biochemistry',
+  'biochemistrySection': 'Biochimie',
   'albumin': 'Albumine',
-  'ventilatorSection': 'Ventilator',
+  'ventilatorSection': 'Paramètres ventilatoires',
   'vt': 'Vt',
   'respiratoryRateLabel': 'FR',
   'peep': 'PEEP',
@@ -1403,10 +1408,11 @@ const _fr = <String, String>{
   'lastUpdated': 'Dernière mise à jour: {0}',
   'stepsCountLabel': '{0} étapes',
 
+  // Version
+  'appVersion': 'Version {0}',
+
   // Settings
   'appDisclaimer': '⚠️ Cette application est un outil d\'aide à la décision et ne remplace pas le jugement clinique.',
-
-  // Vasoactive
   'vasopressors': 'Vasopresseurs',
   'inotropes': 'Inotropes',
   'vasodilators': 'Vasodilatateurs',
@@ -1492,17 +1498,10 @@ const _fr = <String, String>{
   'newborn': 'Nouveau-né',
 };
 
-final locProvider = Provider<Map<String, String>>((ref) {
-  final lang = ref.watch(languageProvider);
-  final map = lang == AppLanguage.english ? _en : _fr;
-  AppStrings._currentStrings = map;
-  return map;
-});
-
 /// Convenience extension for getting localized strings from BuildContext
 extension Loc on BuildContext {
   String t(String key) {
-    return AppStrings._currentStrings[key] ?? _fr[key] ?? key;
+    return AppStrings._currentStrings[key] ?? _en[key] ?? key;
   }
 }
 
@@ -1510,9 +1509,14 @@ extension Loc on BuildContext {
 /// Uses a static map directly updated by the provider.
 // ignore: non_constant_identifier_names
 class AppStrings {
-  static Map<String, String> _currentStrings = _fr;
+  static Map<String, String> _currentStrings = _en;
 
-  static String _t(String key) => _currentStrings[key] ?? _fr[key] ?? key;
+  /// Called eagerly by the language provider whenever the language changes.
+  static void setLanguage(int langIndex) {
+    _currentStrings = langIndex == 1 ? _en : _fr;
+  }
+
+  static String _t(String key) => _currentStrings[key] ?? _en[key] ?? key;
 
   static void setAmbientContext(BuildContext? ctx) {}
   static void refreshContext() {}

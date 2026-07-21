@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/l10n/app_strings.dart';
+
 enum AppLanguage { french, english }
 
 final languageChangeNotifier = ValueNotifier<int>(0);
@@ -15,6 +17,7 @@ class LanguageNotifier extends Notifier<AppLanguage> {
 
   @override
   AppLanguage build() {
+    AppStrings.setLanguage(AppLanguage.french.index);
     _loadLanguage();
     return AppLanguage.french;
   }
@@ -22,14 +25,19 @@ class LanguageNotifier extends Notifier<AppLanguage> {
   Future<void> _loadLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final lang = prefs.getString(_langKey);
-    state = lang == 'english' ? AppLanguage.english : AppLanguage.french;
+    final newLang = lang == 'english' ? AppLanguage.english : AppLanguage.french;
+    state = newLang;
+    AppStrings.setLanguage(newLang.index);
+    languageChangeNotifier.value++;
   }
 
   Future<void> setLanguage(AppLanguage lang) async {
+    debugPrint('[LanguageNotifier] setLanguage → $lang (index=${lang.index})');
     state = lang;
+    AppStrings.setLanguage(lang.index);
+    languageChangeNotifier.value++;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_langKey, lang == AppLanguage.english ? 'english' : 'french');
-    languageChangeNotifier.value++;
   }
 
   Future<void> toggleLanguage() async {

@@ -788,7 +788,7 @@ class _MedicalReportScreenState extends ConsumerState<MedicalReportScreen>
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(color: AppColors.error.withValues(alpha: isDark ? 0.15 : 0.05), borderRadius: BorderRadius.circular(16), border: Border.all(color: AppColors.error.withValues(alpha: 0.2))),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [Icon(Icons.monitor_heart, color: AppColors.error, size: 20), const SizedBox(width: 8), Text('ECG', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.getTextPrimary(isDark)))]),
+        Row(children: [Icon(Icons.monitor_heart, color: AppColors.error, size: 20), const SizedBox(width: 8), Text(context.t('ecgLabel'), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.getTextPrimary(isDark)))]),
         const SizedBox(height: 16),
         Row(children: [
           Expanded(child: _buildDropdownField(value: _ecgRhythm, label: context.t('rhythm'), icon: Icons.timeline, items: [DropdownMenuItem(value: 'sinus', child: Text(context.t('ecgSinus'))), DropdownMenuItem(value: 'irregular', child: Text(context.t('ecgIrregular'))), DropdownMenuItem(value: 'af', child: Text(context.t('ecgAFib'))), DropdownMenuItem(value: 'flutter', child: Text(context.t('ecgFlutter')))], onChanged: (v) => setState(() => _ecgRhythm = v!))),
