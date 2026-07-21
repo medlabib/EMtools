@@ -34,8 +34,22 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - name: Build web
-        run: flutter build web --release --base-href "/EMtools/"
+      - name: Build web app
+        run: flutter build web --release --base-href "/EMtools/app/"
+
+      - name: Assemble deploy directory
+        run: |
+          mkdir deploy
+          # Landing page + assets at root
+          cp docs/index.html deploy/
+          cp docs/logo.png deploy/
+          cp docs/logo.svg deploy/
+          cp docs/.nojekyll deploy/
+          cp docs/LICENSE deploy/
+          # Wiki docs
+          cp -r docs/wiki deploy/wiki
+          # Flutter web app under /app
+          cp -r build/web deploy/app
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -43,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/web'
+          path: 'deploy'
 
   deploy:
     environment:
