@@ -155,7 +155,7 @@ void main() {
         );
         final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
         
-        // Delta = 7 mEq/L, Rate = 7/24 = 0.29 mEq/L/h (safe, <0.33)
+        // Delta = 7 mEq/L, Rate = 7/24 = 0.29 mEq/L/h (safe, ≤8/24h cap)
         expect(result.deltaNa, 7.0);
         expect(result.ratePerHour, closeTo(0.29, 0.01));
         expect(result.isUnsafe, false);
@@ -177,7 +177,7 @@ void main() {
         );
         final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
         
-        // Delta = 15 mEq/L, Rate = 15/24 = 0.625 mEq/L/h > 0.33 (8/24)
+        // Delta = 15 mEq/L, Rate = 15/24 = 0.625 mEq/L/h; |15| > cap 6 (high ODS risk, Na<115)
         expect(result.deltaNa, 15.0);
         expect(result.isUnsafe, true);
         expect(result.safetyWarning.fr.toLowerCase(), contains('ods'));
@@ -199,9 +199,9 @@ void main() {
         );
         final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
         
-        // Acute allows faster correction initially
+        // Acute allows faster correction initially; 5 mmol ≤ 8/24h cap
         expect(result.deltaNa, 5.0);
-        // Rate = 5/24 = 0.21 mEq/L/h (well within acute limit of 1.5)
+        // Rate = 5/24 = 0.21 mEq/L/h
         expect(result.isUnsafe, false);
       });
 
@@ -222,7 +222,7 @@ void main() {
         final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
         
         // Delta = -10 mEq/L, Rate = -10/24 = -0.42 mEq/L/h
-        // Max rate for chronic hypernatremia is 0.5 mEq/L/h
+        // |10| ≤ chronic hyper cap (10 mmol/24h) → safe
         expect(result.deltaNa, -10.0);
         expect(result.ratePerHour.abs(), closeTo(0.42, 0.01));
         expect(result.isUnsafe, false);
@@ -244,7 +244,7 @@ void main() {
         );
         final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
         
-        // Rate = 25/24 = 1.04 mEq/L/h > 0.5 limit
+        // |25| > chronic hyper cap (10 mmol/24h) → unsafe
         expect(result.deltaNa, -25.0);
         expect(result.isUnsafe, true);
         expect(result.safetyWarning.fr.toLowerCase(), contains('œdème cérébral'));

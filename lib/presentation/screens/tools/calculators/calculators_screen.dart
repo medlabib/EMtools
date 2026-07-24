@@ -198,7 +198,7 @@ class _CalculatorsScreenState extends State<CalculatorsScreen>
             padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
             sliver: SliverToBoxAdapter(
               child: Text(
-                '${filteredCalculators.length} calculateur${filteredCalculators.length > 1 ? 's' : ''} trouvé${filteredCalculators.length > 1 ? 's' : ''}',
+                '${filteredCalculators.length} ${context.t('calculatorsFound')}',
                 style: TextStyle(
                   color: isDark ? Colors.grey[400] : Colors.grey[600],
                   fontSize: 14,
@@ -263,7 +263,7 @@ class _CalculatorsScreenState extends State<CalculatorsScreen>
       ),
       child: TextField(
         decoration: InputDecoration(
-          hintText: '${AppStrings.search} a calculator...',
+          hintText: context.t('searchCalculator'),
           hintStyle: TextStyle(
             color: isDark ? Colors.grey[500] : Colors.grey[400],
           ),

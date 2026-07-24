@@ -312,6 +312,9 @@ const _en = <String, String>{
   'contactUs': 'Contact Us',
   'rateApp': 'Rate the App',
   'darkMode': 'Dark mode',
+  'preferences': 'Preferences',
+  'on': 'On',
+  'off': 'Off',
 
   // Auth
   'email': 'Email Address',
@@ -745,9 +748,32 @@ const _en = <String, String>{
   'soluteATotalLabel': 'Solute A ({0})',
   'soluteBTotalLabel': 'Solute B ({0})',
   'correctionRateTitle': 'Recommended Rate ({0})',
+  'naPerLiterRise': 'ΔNa per litre of infusate',
+  'naPlannedDelta24h': 'Planned correction (24h)',
+  'naCorrectionSpread': 'Correction spread over {0} days',
+  'naRecommendedVolume': 'Recommended volume (24h)',
+  'naBolusTitle': 'Symptomatic bolus protocol',
+  'naOvercorrectionTitle': 'Safety guardrails',
+  'naFormulaRef': 'Formulas: Adrogué-Madias (Δ/L) + Rose (volume). Ref: NEJM 2023; Kidney360 2023.',
 
   // Sedation
   'newborn': 'Newborn',
+
+  // --- Localization completion (hardcoded strings externalized) ---
+  'addMedicationHint': 'Add patient medication...',
+  'interactionWith': 'Interaction with',
+  'effectLabel': 'Effect:',
+  'toCheckInteractions': 'to check interactions',
+  'withListedMedications': 'with the listed medications',
+  'rangeLabel': 'Range',
+  'searchCalculator': 'Search a calculator...',
+  'calculatorsFound': 'calculators found',
+  'steps': 'steps',
+  'winterFormulaDesc': 'Expected respiratory compensation for metabolic acidosis',
+  'aaGradientDesc': 'P(A-a)O2 = PAO2 - PaO2, Normal < 2.5 + (0.21 × age)',
+  'pfRatioDesc': 'ARDS mild: 200-300, moderate: 100-200, severe: <100',
+  'adrogueMadiasDesc': 'Correction of dysnatremias with free water deficit/excess calculation',
+  'pbwFormulaDesc': 'Male: 50 + 0.91(H-152.4), Female: 45.5 + 0.91(H-152.4)',
 };
 
 const _fr = <String, String>{
@@ -1062,6 +1088,9 @@ const _fr = <String, String>{
   'contactUs': 'Nous Contacter',
   'rateApp': 'Noter l\'Application',
   'darkMode': 'Mode sombre',
+  'preferences': 'Préférences',
+  'on': 'Activé',
+  'off': 'Désactivé',
 
   // Auth
   'email': 'Adresse Email',
@@ -1493,9 +1522,32 @@ const _fr = <String, String>{
   'soluteATotalLabel': 'Soluté A ({0})',
   'soluteBTotalLabel': 'Soluté B ({0})',
   'correctionRateTitle': 'Vitesse Recommandée ({0})',
+  'naPerLiterRise': 'ΔNa par litre de soluté',
+  'naPlannedDelta24h': 'Correction planifiée (24h)',
+  'naCorrectionSpread': 'Correction étalée sur {0} jours',
+  'naRecommendedVolume': 'Volume recommandé (24h)',
+  'naBolusTitle': 'Protocole bolus symptomatique',
+  'naOvercorrectionTitle': 'Garde-fous de sécurité',
+  'naFormulaRef': 'Formules: Adrogué-Madias (Δ/L) + Rose (volume). Réf: NEJM 2023; Kidney360 2023.',
 
   // Sedation
   'newborn': 'Nouveau-né',
+
+  // --- Localization completion (hardcoded strings externalized) ---
+  'addMedicationHint': 'Ajouter un médicament du patient...',
+  'interactionWith': 'Interaction avec',
+  'effectLabel': 'Effet:',
+  'toCheckInteractions': 'pour vérifier les interactions',
+  'withListedMedications': 'avec les médicaments listés',
+  'rangeLabel': 'Plage',
+  'searchCalculator': 'Rechercher une calculatrice...',
+  'calculatorsFound': 'calculateurs trouvés',
+  'steps': 'étapes',
+  'winterFormulaDesc': 'Compensation respiratoire attendue pour l\'acidose métabolique',
+  'aaGradientDesc': 'P(A-a)O2 = PAO2 - PaO2, Normal < 2.5 + (0.21 × âge)',
+  'pfRatioDesc': 'ARDS léger: 200-300, modéré: 100-200, sévère: <100',
+  'adrogueMadiasDesc': 'Correction des dysnatrémies avec calcul du déficit/excès en eau libre',
+  'pbwFormulaDesc': 'Homme: 50 + 0.91(H-152.4), Femme: 45.5 + 0.91(H-152.4)',
 };
 
 /// Convenience extension for getting localized strings from BuildContext

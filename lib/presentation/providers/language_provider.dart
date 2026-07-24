@@ -32,7 +32,6 @@ class LanguageNotifier extends Notifier<AppLanguage> {
   }
 
   Future<void> setLanguage(AppLanguage lang) async {
-    debugPrint('[LanguageNotifier] setLanguage → $lang (index=${lang.index})');
     state = lang;
     AppStrings.setLanguage(lang.index);
     languageChangeNotifier.value++;

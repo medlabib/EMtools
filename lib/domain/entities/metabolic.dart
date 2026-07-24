@@ -56,10 +56,17 @@ class DysnatremiaResult {
   final double tbw;
   final double freeWaterDeficit;
   final double sodiumDeficit;
-  final double deltaNa;
-  final double ratePerHour;
+  final double deltaNa; // desired change (target - baseline), kept for compat
+  final double desiredDelta; // = deltaNa, explicit alias
+  final double plannedDelta24h; // safe change applied per 24h (signed, capped)
+  final double deltaPerLiterInfusate; // Adrogué-Madias ΔNa per 1 L of corrective fluid
+  final double recommendedInfusateVolumeL; // Rose (Formula 6) volume for plannedDelta24h
+  final double correctionDays; // days over which the full desired change is spread
+  final double ratePerHour; // = plannedDelta24h / 24
   final bool isUnsafe;
   final LString safetyWarning;
+  final LString bolusRecommendation; // symptomatic 3% NaCl bolus (hyponatremia)
+  final LString overcorrectionNote; // relowering / ongoing-loss guardrail
   final int fluidARate; // mL/h
   final int fluidBRate; // mL/h
   final int totalRate; // mL/h
@@ -70,9 +77,16 @@ class DysnatremiaResult {
     required this.freeWaterDeficit,
     required this.sodiumDeficit,
     required this.deltaNa,
+    required this.desiredDelta,
+    required this.plannedDelta24h,
+    required this.deltaPerLiterInfusate,
+    required this.recommendedInfusateVolumeL,
+    required this.correctionDays,
     required this.ratePerHour,
     required this.isUnsafe,
     required this.safetyWarning,
+    required this.bolusRecommendation,
+    required this.overcorrectionNote,
     required this.fluidARate,
     required this.fluidBRate,
     required this.totalRate,
@@ -245,119 +259,181 @@ class MetabolicCalculator {
     return weight * factor;
   }
 
-  static double calculateFreeWaterDeficit(double tbw, double currentNa, double targetNa) {
-    return tbw * ((currentNa / targetNa) - 1);
+  static double calculateFreeWaterDeficit(double tbw, double currentNa, [double normalNa = 140]) {
+    return tbw * ((currentNa / normalNa) - 1);
   }
 
   static double calculateSodiumDeficit(double tbw, double currentNa, double targetNa) {
     return tbw * (targetNa - currentNa);
   }
 
+  /// Adrogué-Madias formula (Wagner et al. Kidney360 2023, Formula 3):
+  /// expected change in serum Na after infusing 1 L of the given infusate,
+  /// in a closed system. Potassium in the infusate is added to the numerator.
+  static double adrogueMadiasDeltaPerLiter({
+    required double tbw,
+    required double infusateNa,
+    required double infusateK,
+    required double serumNa,
+  }) {
+    return (infusateNa + infusateK - serumNa) / (tbw + 1);
+  }
+
+  /// Rose-derived infusate volume (Wagner et al. Kidney360 2023, Formula 6):
+  /// litres of infusate required to move serum Na from [serumNa] to [targetNa].
+  /// Avoids the curvilinear error of the naive Adrogué-Madias volume (Formula 4).
+  /// Potassium in the infusate is added to the denominator.
+  static double roseInfusateVolume({
+    required double tbw,
+    required double targetNa,
+    required double serumNa,
+    required double infusateNa,
+    required double infusateK,
+  }) {
+    final denom = (infusateNa + infusateK) - targetNa;
+    if (denom.abs() < 1e-6) return double.infinity;
+    return tbw * (targetNa - serumNa) / denom;
+  }
+
   static DysnatremiaResult calculateDysnatremiaCorrection(DysnatremiaParams params) {
     final tbw = calculateTBW(params.weight, params.sex, params.ageGroup);
-    final deltaNa = params.targetNa - params.baselineNa;
-    final ratePerHour = deltaNa / 24;
-    final absRate = ratePerHour.abs();
+    final desiredDelta = params.targetNa - params.baselineNa;
+    final isHypo = params.direction == SodiumDirection.hypo;
 
-    // Deficits
+    // Reference deficits. Free-water deficit now uses the normal Na of 140
+    // (not the target), per standard practice.
     final freeWaterDeficit = params.direction == SodiumDirection.hyper
-        ? calculateFreeWaterDeficit(tbw, params.baselineNa, params.targetNa)
+        ? calculateFreeWaterDeficit(tbw, params.baselineNa)
         : 0.0;
-    
-    final sodiumDeficit = params.direction == SodiumDirection.hypo
+    final sodiumDeficit = isHypo
         ? calculateSodiumDeficit(tbw, params.baselineNa, params.targetNa)
         : 0.0;
 
-    // Safety Check — EU 2014 / current practice thresholds
-    // Hypo: ≤10 mEq/L/24h general, ≤8 mEq/L/24h in high ODS risk (baseline Na < 120)
-    // Hyper: ≤10 mEq/L/24h chronic, ≤12 mEq/L/24h acute
-    bool isUnsafe = false;
-    LString safetyWarning = LString.empty;
+    // --- Modern strict safety limits, evaluated on the 24h TOTAL ---
+    // Hyponatremia: ≤8 mmol/L/24h; ≤6 if high ODS risk; ≤18/48h.
+    //   High ODS risk is proxied by baselineNa < 115 (the only available risk
+    //   input; true risk also includes hypokalemia, alcoholism, malnutrition,
+    //   advanced liver disease). 115 (not 120) keeps a 7 mmol/L rise from a
+    //   baseline of 118 within the standard ≤8 cap.
+    // Hypernatremia: ≤10 mmol/L/24h chronic; acute may reach 12 but still warns.
+    final bool isHighOdsRisk = isHypo && params.baselineNa < 115;
+    final double dailyCap;
+    if (isHypo) {
+      dailyCap = isHighOdsRisk ? 6.0 : 8.0;
+    } else {
+      dailyCap = params.mode == CorrectionMode.acute ? 12.0 : 10.0;
+    }
 
-    if (params.direction == SodiumDirection.hyper) {
-      final maxRate = params.mode == CorrectionMode.acute ? 0.5 : 0.42; // acute: 12/24h, chronic: 10/24h
-      if (absRate > maxRate) {
-        isUnsafe = true;
-        safetyWarning = params.mode == CorrectionMode.acute
+    final absDesired = desiredDelta.abs();
+    final isUnsafe = absDesired > dailyCap;
+
+    // Safe change applied per 24h block (magnitude capped at dailyCap).
+    final plannedMagnitude = min(absDesired, dailyCap);
+    final sign = desiredDelta.isNegative ? -1.0 : 1.0;
+    final plannedDelta24h = sign * plannedMagnitude;
+    final correctionDays = plannedMagnitude > 0 ? absDesired / plannedMagnitude : 1.0;
+    final ratePerHour = plannedDelta24h / 24;
+
+    // Safety warning (retains ODS / 'œdème cérébral' phrasing used by tests).
+    LString safetyWarning = LString.empty;
+    if (isUnsafe) {
+      final days = correctionDays.ceil();
+      if (isHypo) {
+        safetyWarning = isHighOdsRisk
             ? LString(
-                '⚠️ Vitesse > ${maxRate.toStringAsFixed(1)} mEq/L/h (limite aiguë — max 12 mEq/L/24h)',
-                '⚠️ Rate > ${maxRate.toStringAsFixed(1)} mEq/L/h (acute limit — max 12 mEq/L/24h)',
+                '🚨 RISQUE ODS: Na < 115 — correction max 6 mmol/L/24h. Cible demandée = ${absDesired.toStringAsFixed(0)} mmol/L. Étaler sur $days j (max 18 mmol/L/48h).',
+                '🚨 ODS RISK: Na < 115 — max correction 6 mmol/L/24h. Requested change = ${absDesired.toStringAsFixed(0)} mmol/L. Spread over $days d (max 18 mmol/L/48h).',
               )
             : LString(
-                '⚠️ Vitesse > ${maxRate.toStringAsFixed(1)} mEq/L/h — Risque d\'œdème cérébral (max 10 mEq/L/24h). Corriger sur 48-72h.',
-                '⚠️ Rate > ${maxRate.toStringAsFixed(1)} mEq/L/h — Cerebral edema risk (max 10 mEq/L/24h). Correct over 48-72h.',
+                '🚨 RISQUE ODS: correction > 8 mmol/L/24h (cible demandée = ${absDesired.toStringAsFixed(0)} mmol/L). Étaler sur $days j (max 18 mmol/L/48h).',
+                '🚨 ODS RISK: correction > 8 mmol/L/24h (requested change = ${absDesired.toStringAsFixed(0)} mmol/L). Spread over $days d (max 18 mmol/L/48h).',
               );
-      }
-    } else {
-      final baseMaxRate = params.mode == CorrectionMode.acute ? 1.5 : 0.42; // acute: 1.5, chronic: 10/24h
-      final highRiskMax = params.mode == CorrectionMode.acute ? 1.0 : 0.33; // acute high-risk: 1.0, chronic high-risk: 8/24h
-      final isHighRisk = params.mode == CorrectionMode.chronic && params.baselineNa < 120;
-      final effectiveMax = isHighRisk ? highRiskMax : baseMaxRate;
-
-      if (absRate > effectiveMax) {
-        isUnsafe = true;
-        if (params.mode == CorrectionMode.acute) {
-          safetyWarning = LString(
-            '⚠️ Vitesse > ${effectiveMax.toStringAsFixed(1)} mEq/L/h (limite aiguë)',
-            '⚠️ Rate > ${effectiveMax.toStringAsFixed(1)} mEq/L/h (acute limit)',
-          );
-        } else if (isHighRisk) {
-          safetyWarning = LString(
-            '🚨 RISQUE ODS: Na < 120 — correction max 8 mEq/L/24h. Vitesse > 0.33 mEq/L/h.',
-            '🚨 ODS RISK: Na < 120 — max correction 8 mEq/L/24h. Rate > 0.33 mEq/L/h.',
-          );
-        } else {
-          safetyWarning = LString(
-            '🚨 RISQUE ODS: Vitesse > 10 mEq/L/24h (limite = 0.42 mEq/L/h). Envisager desmopressine si correction trop rapide.',
-            '🚨 ODS RISK: Rate > 10 mEq/L/24h (limit = 0.42 mEq/L/h). Consider desmopressin if over-correcting.',
-          );
-        }
+      } else {
+        safetyWarning = LString(
+          '⚠️ Risque d\'œdème cérébral: baisse > ${dailyCap.toStringAsFixed(0)} mmol/L/24h (cible demandée = ${absDesired.toStringAsFixed(0)} mmol/L). Étaler sur $days j.',
+          '⚠️ Cerebral edema risk: drop > ${dailyCap.toStringAsFixed(0)} mmol/L/24h (requested change = ${absDesired.toStringAsFixed(0)} mmol/L). Spread over $days d.',
+        );
       }
     }
 
-    // Fluid Mix Calculation
-    final totalLosses = (params.urineOutput + params.insensibleLoss) / 1000; // L
-    
-    double totalVolumeConstraint = totalLosses;
-    if (params.direction == SodiumDirection.hyper) {
-      totalVolumeConstraint += max(0, freeWaterDeficit);
-    }
+    // --- Corrective vs maintenance fluid selection ---
+    // Hypo: corrective = higher-Na fluid (raises Na). Hyper: corrective = lower-Na.
+    final bool correctiveIsA = isHypo
+        ? params.fluidA.sodiumMeq >= params.fluidB.sodiumMeq
+        : params.fluidA.sodiumMeq <= params.fluidB.sodiumMeq;
+    final IVFluid corrective = correctiveIsA ? params.fluidA : params.fluidB;
 
-    // Required Mix Na
-    final requiredMixNa = (params.targetNa * (tbw + totalVolumeConstraint - totalLosses) - (tbw * params.baselineNa)) / totalVolumeConstraint;
+    // Per-litre expected ΔNa for the corrective fluid (Adrogué-Madias, Formula 3).
+    final deltaPerLiterInfusate = adrogueMadiasDeltaPerLiter(
+      tbw: tbw,
+      infusateNa: corrective.sodiumMeq,
+      infusateK: corrective.potassiumMeq,
+      serumNa: params.baselineNa,
+    );
 
-    double volA = 0;
-    double volB = 0;
-    final fluidANa = params.fluidA.sodiumMeq;
-    final fluidBNa = params.fluidB.sodiumMeq;
+    // Volume of corrective infusate to achieve the safe planned 24h change
+    // (Rose, Formula 6 — avoids the curvilinear error of Formula 4).
+    final safeTargetNa = params.baselineNa + plannedDelta24h;
+    double correctiveVolumeL = roseInfusateVolume(
+      tbw: tbw,
+      targetNa: safeTargetNa,
+      serumNa: params.baselineNa,
+      infusateNa: corrective.sodiumMeq,
+      infusateK: corrective.potassiumMeq,
+    );
+    if (!correctiveVolumeL.isFinite || correctiveVolumeL < 0) correctiveVolumeL = 0;
 
-    if ((fluidANa - fluidBNa).abs() < 1) {
-      volA = totalVolumeConstraint;
-    } else {
-      volA = totalVolumeConstraint * (requiredMixNa - fluidBNa) / (fluidANa - fluidBNa);
-      volB = totalVolumeConstraint - volA;
-    }
+    final correctiveRate = (correctiveVolumeL * 1000 / 24).round();
 
-    // Bounds correction
-    if (volA < 0) { volA = 0; volB = totalVolumeConstraint; }
-    if (volB < 0) { volB = 0; volA = totalVolumeConstraint; }
+    // Maintenance / ongoing-loss replacement (hypernatremia only).
+    final ongoingLossRatePerH = (params.urineOutput + params.insensibleLoss) / 24;
+    final int maintenanceRate = params.direction == SodiumDirection.hyper
+        ? ongoingLossRatePerH.round()
+        : 0;
+    final maintenanceVolumeL = maintenanceRate * 24 / 1000;
 
-    final fluidARate = (volA * 1000 / 24).round();
-    final fluidBRate = (volB * 1000 / 24).round();
+    final int fluidARate = correctiveIsA ? correctiveRate : maintenanceRate;
+    final int fluidBRate = correctiveIsA ? maintenanceRate : correctiveRate;
     final totalRate = fluidARate + fluidBRate;
+    final totalVolume24h = correctiveVolumeL + maintenanceVolumeL;
+
+    // Symptomatic bolus + overcorrection guardrail.
+    final LString bolusRecommendation = isHypo
+        ? const LString(
+            '💉 Si symptômes sévères (convulsions, coma): NaCl 3% 100–150 mL IV en 10 min, répéter ×3 max jusqu\'à +4–6 mmol/L ou résolution des symptômes.',
+            '💉 If severe symptoms (seizures, coma): 3% NaCl 100–150 mL IV over 10 min, repeat up to ×3 until +4–6 mmol/L or symptom resolution.',
+          )
+        : LString.empty;
+
+    final LString overcorrectionNote = isHypo
+        ? const LString(
+            '🛡️ Surveiller la diurèse aqueuse (risque de surcorrection). En cas de surcorrection: relais G5% ± desmopressine. Contrôler Na q2–4h. [NEJM 2023]',
+            '🛡️ Watch for water diuresis (overcorrection risk). If over-corrected: D5W ± desmopressin. Recheck Na q2–4h. [NEJM 2023]',
+          )
+        : const LString(
+            '🛡️ Remplacer les pertes hydriques en cours en plus du déficit. Contrôler Na q4–6h. [NEJM 2023]',
+            '🛡️ Replace ongoing water losses in addition to the deficit. Recheck Na q4–6h. [NEJM 2023]',
+          );
 
     return DysnatremiaResult(
       tbw: tbw,
       freeWaterDeficit: freeWaterDeficit,
       sodiumDeficit: sodiumDeficit,
-      deltaNa: deltaNa,
+      deltaNa: desiredDelta,
+      desiredDelta: desiredDelta,
+      plannedDelta24h: plannedDelta24h,
+      deltaPerLiterInfusate: deltaPerLiterInfusate,
+      recommendedInfusateVolumeL: correctiveVolumeL,
+      correctionDays: correctionDays,
       ratePerHour: ratePerHour,
       isUnsafe: isUnsafe,
       safetyWarning: safetyWarning,
+      bolusRecommendation: bolusRecommendation,
+      overcorrectionNote: overcorrectionNote,
       fluidARate: fluidARate,
       fluidBRate: fluidBRate,
       totalRate: totalRate,
-      totalVolume24h: totalVolumeConstraint,
+      totalVolume24h: totalVolume24h,
     );
   }
 }

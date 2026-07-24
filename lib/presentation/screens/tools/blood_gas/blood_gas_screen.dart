@@ -855,7 +855,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
     final references = [
       (
         context.t('winterFormula'),
-        'Compensation respiratoire attendue pour l\'acidose métabolique',
+        context.t('winterFormulaDesc'),
         'Winter SD et al. Ann Intern Med. 1967;66(2):312-322',
       ),
       (
@@ -865,7 +865,7 @@ class _BloodGasScreenState extends State<BloodGasScreen>
       ),
       (
         context.t('pfRatioBerlin'),
-        'ARDS léger: 200-300, modéré: 100-200, sévère: <100',
+        context.t('pfRatioDesc'),
         'The ARDS Definition Task Force. JAMA. 2012;307(23):2526-2533',
       ),
       (
@@ -875,12 +875,12 @@ class _BloodGasScreenState extends State<BloodGasScreen>
       ),
       (
         context.t('adrogueMadiasFormula'),
-        'Correction des dysnatrémies avec calcul du déficit/excès en eau libre',
+        context.t('adrogueMadiasDesc'),
         'Adrogue HJ, Madias NE. N Engl J Med. 2000;342(20):1493-1499',
       ),
       (
         context.t('pbwFormula'),
-        'Male: 50 + 0.91(H-152.4), Female: 45.5 + 0.91(H-152.4)',
+        context.t('pbwFormulaDesc'),
         'ARDSNet Protocol. N Engl J Med. 2000;342:1301-1308',
       ),
     ];

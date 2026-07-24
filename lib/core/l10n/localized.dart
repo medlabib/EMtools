@@ -52,7 +52,6 @@ AppLanguage lStringAmbientLanguage = AppLanguage.french;
 final ambientLanguageProvider = Provider<AppLanguage>((ref) {
   final lang = ref.watch(languageProvider);
   lStringAmbientLanguage = lang;
-  debugPrint('[ambientLanguage] updated lStringAmbientLanguage → ${lang.name}');
   return lang;
 });
 

@@ -444,7 +444,7 @@ class _CalculatorDetailScreenState extends State<CalculatorDetailScreen>
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Text(
-                'Plage: ${field.min?.toStringAsFixed(0) ?? '?'} - ${field.max?.toStringAsFixed(0) ?? '?'}',
+                '${context.t('rangeLabel')}: ${field.min?.toStringAsFixed(0) ?? '?'} - ${field.max?.toStringAsFixed(0) ?? '?'}',
                 style: TextStyle(
                   fontSize: 12,
                   color: isDark ? Colors.grey[500] : Colors.grey[600],

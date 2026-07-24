@@ -33,13 +33,13 @@ class AnimatedToolCard extends StatelessWidget {
 
     return Material(
       color: AppColors.getCardColor(isDark),
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
             border: Border.all(color: AppColors.getBorderColor(isDark)),
           ),
           padding: const EdgeInsets.all(20),
@@ -340,7 +340,7 @@ class GlassContainer extends StatelessWidget {
       padding: padding ?? const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.getCardColor(isDark),
-        borderRadius: borderRadius ?? BorderRadius.circular(12),
+        borderRadius: borderRadius ?? BorderRadius.circular(AppSpacing.radiusCard),
         border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: child,

@@ -356,11 +356,12 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
     required Color color,
     required List<Widget> children,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.getCardColor(isDark),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderLight),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -676,7 +677,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                     child: TextField(
                       controller: _medicationController,
                       decoration: InputDecoration(
-                        hintText: 'Ajouter un médicament du patient...',
+                        hintText: context.t('addMedicationHint'),
                         hintStyle: TextStyle(color: AppColors.textHint),
                         prefixIcon: Icon(Icons.medication_outlined, color: AppColors.primary),
                         border: InputBorder.none,
@@ -778,7 +779,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                           ),
                                           const SizedBox(width: 8),
                                           Text(
-                                            'Interaction avec ${interaction.drug}',
+                                            '${context.t('interactionWith')} ${interaction.drug}',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: cardColor,
@@ -811,7 +812,7 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Effet:',
+                                            context.t('effectLabel'),
                                             style: TextStyle(
                                               fontWeight: FontWeight.w600,
                                               color: AppColors.getTextSecondary(isDark),
@@ -908,8 +909,8 @@ class _AntibioticDetailScreenState extends State<AntibioticDetailScreen>
           const SizedBox(height: 8),
           Text(
             _patientMedications.isEmpty
-              ? 'pour vérifier les interactions'
-              : 'avec les médicaments listés',
+              ? context.t('toCheckInteractions')
+              : context.t('withListedMedications'),
             style: TextStyle(
               color: AppColors.getTextHint(isDark),
             ),

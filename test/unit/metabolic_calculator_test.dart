@@ -118,7 +118,7 @@ void main() {
         );
         
         final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
-        // 8/24 = 0.33 mEq/L/h, acute limit is 1.5, so should be safe
+        // 8 mEq/L = daily cap (≤8/24h), so should be safe
         expect(result.isUnsafe, false);
       });
 
@@ -209,6 +209,203 @@ void main() {
         final insulinGlucose = MetabolicCalculator.hyperkalemiaTreatments
             .firstWhere((t) => t.id == 'insulin_glucose');
         expect(insulinGlucose.mechanism.fr, 'Transfert intracellulaire');
+      });
+    });
+
+    group('Adrogué-Madias Formula (per-litre ΔNa)', () {
+      test('TBW 40, 3% NaCl (513), serum Na 100 → ~10.07 mmol/L per L', () {
+        final delta = MetabolicCalculator.adrogueMadiasDeltaPerLiter(
+          tbw: 40,
+          infusateNa: 513,
+          infusateK: 0,
+          serumNa: 100,
+        );
+        // (513 - 100) / (40 + 1) = 413/41 ≈ 10.07
+        expect(delta, closeTo(10.07, 0.01));
+      });
+
+      test('includes infusate K in numerator (Ringer Lactate)', () {
+        final delta = MetabolicCalculator.adrogueMadiasDeltaPerLiter(
+          tbw: 42,
+          infusateNa: 130,
+          infusateK: 4,
+          serumNa: 120,
+        );
+        // (130+4-120) / (42+1) = 14/43 ≈ 0.326
+        expect(delta, closeTo(0.326, 0.001));
+      });
+
+      test('returns negative when infusate Na < serum Na (D5W for hypernatremia)', () {
+        final delta = MetabolicCalculator.adrogueMadiasDeltaPerLiter(
+          tbw: 42,
+          infusateNa: 0,
+          infusateK: 0,
+          serumNa: 160,
+        );
+        // (0-160)/(42+1) = -160/43 ≈ -3.72
+        expect(delta, closeTo(-3.72, 0.01));
+      });
+    });
+
+    group('Rose Infusate Volume (Formula 6)', () {
+      test('TBW 40, raise Na from 100 to 110 with 3% NaCl → ~0.99 L', () {
+        final vol = MetabolicCalculator.roseInfusateVolume(
+          tbw: 40,
+          targetNa: 110,
+          serumNa: 100,
+          infusateNa: 513,
+          infusateK: 0,
+        );
+        // 40*(110-100)/(513-110) = 400/403 ≈ 0.993
+        expect(vol, closeTo(0.993, 0.01));
+      });
+
+      test('lower Na with D5W: TBW 42, drop from 160 to 150 → 2.8 L', () {
+        final vol = MetabolicCalculator.roseInfusateVolume(
+          tbw: 42,
+          targetNa: 150,
+          serumNa: 160,
+          infusateNa: 0,
+          infusateK: 0,
+        );
+        // 42*(150-160)/(0-150) = 42*(-10)/(-150) = 2.8
+        expect(vol, closeTo(2.8, 0.01));
+      });
+
+      test('returns infinity when denominator near zero', () {
+        final vol = MetabolicCalculator.roseInfusateVolume(
+          tbw: 42,
+          targetNa: 154,
+          serumNa: 140,
+          infusateNa: 154,
+          infusateK: 0,
+        );
+        expect(vol, double.infinity);
+      });
+    });
+
+    group('Planned-Delta Capping & Correction Days', () {
+      test('caps a 20 mmol desired rise at 8 mmol/24h, spread over 3 days', () {
+        final params = DysnatremiaParams(
+          weight: 70,
+          sex: Sex.male,
+          ageGroup: AgeGroup.adult,
+          baselineNa: 115,
+          targetNa: 135, // desired = 20
+          direction: SodiumDirection.hypo,
+          mode: CorrectionMode.chronic,
+          urineOutput: 1000,
+          insensibleLoss: 800,
+          fluidA: MetabolicCalculator.ivFluids[5], // 3% NaCl
+          fluidB: MetabolicCalculator.ivFluids[4], // NS
+        );
+        final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
+        expect(result.plannedDelta24h, 8.0); // capped at 8
+        expect(result.correctionDays, closeTo(2.5, 0.01)); // 20/8=2.5
+        expect(result.isUnsafe, true);
+      });
+
+      test('high ODS risk caps at 6 mmol/24h', () {
+        final params = DysnatremiaParams(
+          weight: 70,
+          sex: Sex.male,
+          ageGroup: AgeGroup.adult,
+          baselineNa: 110, // <115 → high risk
+          targetNa: 125, // desired = 15
+          direction: SodiumDirection.hypo,
+          mode: CorrectionMode.chronic,
+          urineOutput: 1000,
+          insensibleLoss: 800,
+          fluidA: MetabolicCalculator.ivFluids[5],
+          fluidB: MetabolicCalculator.ivFluids[4],
+        );
+        final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
+        expect(result.plannedDelta24h, 6.0); // capped at 6 (high ODS risk)
+        expect(result.correctionDays, closeTo(2.5, 0.01)); // 15/6=2.5
+        expect(result.isUnsafe, true);
+        expect(result.safetyWarning.fr.toLowerCase(), contains('ods'));
+      });
+
+      test('within-cap rise does not flag unsafe', () {
+        final params = DysnatremiaParams(
+          weight: 70,
+          sex: Sex.male,
+          ageGroup: AgeGroup.adult,
+          baselineNa: 125,
+          targetNa: 131, // desired = 6, cap = 8
+          direction: SodiumDirection.hypo,
+          mode: CorrectionMode.chronic,
+          urineOutput: 1000,
+          insensibleLoss: 800,
+          fluidA: MetabolicCalculator.ivFluids[5],
+          fluidB: MetabolicCalculator.ivFluids[4],
+        );
+        final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
+        expect(result.plannedDelta24h, 6.0); // equals desired
+        expect(result.correctionDays, 1.0);
+        expect(result.isUnsafe, false);
+      });
+    });
+
+    group('Bolus & Overcorrection Notes', () {
+      test('hyponatremia includes bolus recommendation', () {
+        final params = DysnatremiaParams(
+          weight: 70,
+          sex: Sex.male,
+          ageGroup: AgeGroup.adult,
+          baselineNa: 115,
+          targetNa: 120,
+          direction: SodiumDirection.hypo,
+          mode: CorrectionMode.acute,
+          urineOutput: 1000,
+          insensibleLoss: 800,
+          fluidA: MetabolicCalculator.ivFluids[5], // 3% NaCl
+          fluidB: MetabolicCalculator.ivFluids[4],
+        );
+        final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
+        expect(result.bolusRecommendation.fr, contains('NaCl 3%'));
+        expect(result.bolusRecommendation.en, contains('3% NaCl'));
+      });
+
+      test('hypernatremia has no bolus recommendation', () {
+        final params = DysnatremiaParams(
+          weight: 70,
+          sex: Sex.male,
+          ageGroup: AgeGroup.adult,
+          baselineNa: 160,
+          targetNa: 150,
+          direction: SodiumDirection.hyper,
+          mode: CorrectionMode.chronic,
+          urineOutput: 1000,
+          insensibleLoss: 800,
+          fluidA: MetabolicCalculator.ivFluids[0],
+          fluidB: MetabolicCalculator.ivFluids[4],
+        );
+        final result = MetabolicCalculator.calculateDysnatremiaCorrection(params);
+        expect(result.bolusRecommendation.fr, isEmpty);
+      });
+
+      test('overcorrection note present for both directions', () {
+        final hypoParams = DysnatremiaParams(
+          weight: 70, sex: Sex.male, ageGroup: AgeGroup.adult,
+          baselineNa: 120, targetNa: 126,
+          direction: SodiumDirection.hypo, mode: CorrectionMode.chronic,
+          urineOutput: 1000, insensibleLoss: 800,
+          fluidA: MetabolicCalculator.ivFluids[5],
+          fluidB: MetabolicCalculator.ivFluids[4],
+        );
+        final hyperParams = DysnatremiaParams(
+          weight: 70, sex: Sex.male, ageGroup: AgeGroup.adult,
+          baselineNa: 155, targetNa: 148,
+          direction: SodiumDirection.hyper, mode: CorrectionMode.chronic,
+          urineOutput: 1000, insensibleLoss: 800,
+          fluidA: MetabolicCalculator.ivFluids[0],
+          fluidB: MetabolicCalculator.ivFluids[4],
+        );
+        final hypoResult = MetabolicCalculator.calculateDysnatremiaCorrection(hypoParams);
+        final hyperResult = MetabolicCalculator.calculateDysnatremiaCorrection(hyperParams);
+        expect(hypoResult.overcorrectionNote.fr, contains('desmopressine'));
+        expect(hyperResult.overcorrectionNote.fr, contains('pertes hydriques'));
       });
     });
   });

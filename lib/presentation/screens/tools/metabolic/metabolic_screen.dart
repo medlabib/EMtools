@@ -213,11 +213,12 @@ class _MetabolicScreenState extends State<MetabolicScreen>
   }
 
   Widget _buildPatientSection() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.getCardColor(isDark),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderLight),
+        border: Border.all(color: AppColors.getBorderColor(isDark)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -712,6 +713,13 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                 _buildResultItem(context.t('totalFlowRate'), '${result.totalRate} mL/h'),
                 _buildResultItem(context.t('predictedVariation'), '${result.ratePerHour.toStringAsFixed(2)} mEq/L/h'),
                 const Divider(color: Colors.white30, height: 24),
+                // New formula-derived fields
+                _buildResultItem(context.t('naPerLiterRise'), '${result.deltaPerLiterInfusate.toStringAsFixed(2)} mEq/L'),
+                _buildResultItem(context.t('naPlannedDelta24h'), '${result.plannedDelta24h.toStringAsFixed(1)} mEq/L'),
+                if (result.correctionDays > 1)
+                  _buildResultItem(context.t('naCorrectionSpread').replaceAll('{0}', result.correctionDays.ceil().toString()), ''),
+                _buildResultItem(context.t('naRecommendedVolume'), '${result.recommendedInfusateVolumeL.toStringAsFixed(2)} L'),
+                const Divider(color: Colors.white30, height: 24),
                 Text(
                   context.t('detailLabel'),
                   style: TextStyle(
@@ -725,6 +733,60 @@ class _MetabolicScreenState extends State<MetabolicScreen>
                   _buildResultItem(context.t('freeWaterDeficit'), '${result.freeWaterDeficit.toStringAsFixed(1)} L'),
                 if (result.sodiumDeficit > 0)
                   _buildResultItem(context.t('sodiumDeficitLabel'), '${result.sodiumDeficit.toStringAsFixed(0)} mEq'),
+                // Bolus recommendation (hyponatremia)
+                if (result.bolusRecommendation != LString.empty) ...[
+                  const Divider(color: Colors.white30, height: 24),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          context.t('naBolusTitle'),
+                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          context.tr(result.bolusRecommendation),
+                          style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+                // Overcorrection guardrail
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.10),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        context.t('naOvercorrectionTitle'),
+                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        context.tr(result.overcorrectionNote),
+                        style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+                // Formula reference
+                const SizedBox(height: 12),
+                Text(
+                  context.t('naFormulaRef'),
+                  style: TextStyle(color: Colors.white.withValues(alpha: 0.5), fontSize: 10, fontStyle: FontStyle.italic),
+                ),
               ],
             ),
           ),

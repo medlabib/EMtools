@@ -380,7 +380,7 @@ class _ProtocolsScreenState extends State<ProtocolsScreen> {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    '${protocol.steps.length} étapes',
+                    '${protocol.steps.length} ${context.t('steps')}',
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),

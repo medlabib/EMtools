@@ -22,7 +22,6 @@ class LanguageRebuildShell extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lang = ref.watch(languageProvider);
     final ver = languageChangeNotifier.value;
-    debugPrint('[LanguageRebuildShell] build → lang=${lang.name}, ver=$ver, location=$location');
     return AppShell(
       key: ValueKey('shell_${lang.name}_$ver'),
       location: location,
