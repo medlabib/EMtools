@@ -44,7 +44,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   windows:
-    runs-on: windows-latest
+    # windows-latest lacks a VS version supported by Flutter 3.35.7's CMake toolchain
+    runs-on: windows-2022
     needs: android
     steps:
       - name: Checkout
