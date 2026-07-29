@@ -90,6 +90,8 @@ ENV/
 # PyInstaller
 *.manifest
 *.spec
+# but keep the Windows runner manifest required by the Flutter build
+!windows/runner/runner.exe.manifest
 
 # Installer logs
 pip-log.txt
